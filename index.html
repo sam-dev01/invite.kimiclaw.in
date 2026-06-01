@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#FCFAF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#12110F" media="(prefers-color-scheme: dark)">
+    <title>invite.kimiclaw.in | Premium Digital Wedding Invitations with RSVP</title>
+    <meta name="description" content="Stunning handcrafted digital wedding invitations with RSVP tracking via WhatsApp, interactive maps, event timelines, music players, and photos.">
+    <meta name="keywords" content="digital wedding invitations, whatsapp wedding invite, luxury digital invites, wedding websites rsvp">
+    <link rel="canonical" href="https://invite.kimiclaw.in/">
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://invite.kimiclaw.in/">
+    <meta property="og:title" content="invite.kimiclaw.in | Premium Digital Wedding Invitations">
+    <meta property="og:description" content="Stunning handcrafted digital wedding invitations with RSVP via WhatsApp, interactive maps, event timelines, music players, and 38 premium designs.">
+    <meta property="og:image" content="https://invite.kimiclaw.in/assets/palace_backdrop.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="invite.kimiclaw.in | Premium Digital Wedding Invitations">
+    <meta name="twitter:description" content="Stunning handcrafted digital wedding invitations with RSVP via WhatsApp, interactive maps, event timelines, music players, and 38 premium designs.">
+    <link rel="stylesheet" href="styles.css?v=1.0.1">
+    <script>
+      window.addEventListener('error', function(e) {
+        const banner = document.createElement('div');
+        banner.className = 'debug-error-banner';
+        banner.style.position = 'fixed';
+        banner.style.top = '0';
+        banner.style.left = '0';
+        banner.style.width = '100%';
+        banner.style.background = '#e74c3c';
+        banner.style.color = 'white';
+        banner.style.padding = '16px';
+        banner.style.zIndex = '999999';
+        banner.style.fontFamily = 'monospace';
+        banner.style.fontSize = '14px';
+        banner.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+        banner.innerHTML = '<strong>⚠️ JavaScript Runtime Error:</strong> ' + e.message + '<br><small>in ' + e.filename + ' at line ' + e.lineno + ':' + e.colno + '</small>';
+        document.body.appendChild(banner);
+      });
+    </script>
+  </head>
+  <body data-theme="light">
+    
+    <!-- Premium Frosted Navigation Header -->
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="invite.kimiclaw.in Home">
+        <div class="brand-logo">K</div>
+        <div class="brand-text">
+          <strong data-i18n="brandName">invite.kimiclaw.in</strong>
+          <small data-i18n="brandSubtitle">Premium Digital Invitations</small>
+        </div>
+      </a>
+      
+      <!-- Hamburger Menu Button for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="nav-menu">
+        <div class="nav-links">
+          <a href="#how-it-works" class="nav-link" data-i18n="navHowItWorks">How it works</a>
+          <a href="#playground" class="nav-link" data-i18n="navPlayground">Features</a>
+          <a href="#designs-hub" class="nav-link" data-i18n="navDesigns">Designs</a>
+          <a href="#pricing" class="nav-link" data-i18n="navPricing">Pricing</a>
+        </div>
+        <div class="nav-actions">
+          <button class="lang-toggle" id="lang-btn" aria-label="Toggle language">ES</button>
+          <button class="icon-btn" id="theme-btn" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Dynamic Application Container -->
+    <main id="app">
+      
+      <!-- Home View Layout -->
+      <div id="home-view">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+          <div class="hero-content">
+            <p class="eyebrow" data-i18n="heroEyebrow">Premium Custom Wedding Websites</p>
+            <h1 data-i18n="heroTitle">Handcrafted <span>digital invitations</span> that wow your guests.</h1>
+            <p class="hero-lead" data-i18n="heroLead">Elevate your wedding announcement. Stunning invitation websites complete with instant RSVP via WhatsApp, music player, interactive maps, schedules, and photos.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#designs" data-i18n="heroBtnExplore">Explore Catalog</a>
+              <button class="btn btn-secondary" id="hero-wizard-btn" data-i18n="heroBtnOrder">Start Guided Order</button>
+            </div>
+          </div>
+          
+          <div class="hero-visual">
+            <div class="visual-backdrop">
+              <div class="visual-backdrop-inner"></div>
+            </div>
+            <!-- Dynamic Smartphone Simulator -->
+            <div class="phone-mockup">
+              <div class="phone-screen">
+                <iframe src="demos/bloom-template/source/index.html" id="hero-phone-iframe" title="Interactive Invitation Preview"></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Steps Section -->
+        <section class="section bg-sec" id="how-it-works">
+          <div class="section-header">
+            <p class="eyebrow" data-i18n="stepsEyebrow">The Process</p>
+            <h2 data-i18n="stepsTitle">From premium template to custom delivery.</h2>
+            <p data-i18n="stepsDesc">We turn your selected template into a beautifully customized wedding invitation link in 4 simple steps.</p>
+          </div>
+          
+          <div class="steps-grid">
+            <article class="step-card">
+              <div class="step-number">01</div>
+              <h3 data-i18n="step1Title">Select Your Design</h3>
+              <p data-i18n="step1Desc">Browse our catalog of 38 premium responsive wedding templates and choose the style that resonates with your wedding theme.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-number">02</div>
+              <h3 data-i18n="step2Title">Personalize details</h3>
+              <p data-i18n="step2Desc">Provide your names, dates, maps, photos, custom music playlist, and RSVP questions through our guided order form wizard.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-number">03</div>
+              <h3 data-i18n="step3Title">Review Draft Preview</h3>
+              <p data-i18n="step3Desc">Our designers customize the invitation specifically for you, setting up interactive features and delivering a draft preview link.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-number">04</div>
+              <h3 data-i18n="step4Title">Go Live & Share</h3>
+              <p data-i18n="step4Desc">Once approved, your premium invite link is live! Share it easily with your guests via WhatsApp, Email, or Social Media.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Interactive Sandbox Playground -->
+        <section class="section" id="playground">
+          <div class="section-header">
+            <p class="eyebrow" data-i18n="playEyebrow">Interactive Sandbox</p>
+            <h2 data-i18n="playTitle">Try the premium features.</h2>
+            <p data-i18n="playDesc">Interact with our simulated features below to see how they behave on a guests' mobile phone screen.</p>
+          </div>
+          
+          <div class="sandbox-layout">
+            <div class="sandbox-tabs">
+              
+              <button class="sandbox-tab active" data-feature="rsvp">
+                <div class="sandbox-tab-icon">💬</div>
+                <div class="sandbox-tab-info">
+                  <h3 data-i18n="tabRsvpTitle">Instant RSVP via WhatsApp</h3>
+                  <p data-i18n="tabRsvpDesc">Simulate filling out food preferences and generating a beautifully formatted RSVP WhatsApp message.</p>
+                </div>
+              </button>
+              
+              <button class="sandbox-tab" data-feature="music">
+                <div class="sandbox-tab-icon">🎵</div>
+                <div class="sandbox-tab-info">
+                  <h3 data-i18n="tabMusicTitle">Ambient Music Player</h3>
+                  <p data-i18n="tabMusicDesc">Test our elegant, integrated floating music play widget with simulated sound wave feedback.</p>
+                </div>
+              </button>
+              
+              <button class="sandbox-tab" data-feature="timeline">
+                <div class="sandbox-tab-icon">⏳</div>
+                <div class="sandbox-tab-info">
+                  <h3 data-i18n="tabTimeTitle">Interactive Event Schedule</h3>
+                  <p data-i18n="tabTimeDesc">Interactive wedding itinerary showing ceremonies, dress codes, dinner, and dancing timelines.</p>
+                </div>
+              </button>
+              
+              <button class="sandbox-tab" data-feature="maps">
+                <div class="sandbox-tab-icon">📍</div>
+                <div class="sandbox-tab-info">
+                  <h3 data-i18n="tabMapsTitle">Venue Map Integration</h3>
+                  <p data-i18n="tabMapsDesc">Allows guests to view event locations and tap direct navigation coordinates for Google Maps.</p>
+                </div>
+              </button>
+              
+            </div>
+            
+            <div class="sandbox-simulator">
+              <div class="phone-mockup">
+                <div class="phone-screen">
+                  
+                  <!-- Inside Phone Simulator screen -->
+                  <div class="sim-screen" id="sim-display-box">
+                    <!-- Dynamic simulated feature widget goes here -->
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Template Catalog Section -->
+        <section class="section bg-sec" id="designs">
+          <div class="section-header">
+            <p class="eyebrow" data-i18n="catEyebrow">Design Catalog</p>
+            <h2 data-i18n="catTitle">Choose your unique style.</h2>
+            <p data-i18n="catDesc">Explore our comprehensive collection of 38 luxury invitation templates designed to look spectacular on any mobile screen.</p>
+          </div>
+          
+          <div class="catalog-filters">
+            <button class="filter-btn active" data-filter="all" data-i18n="filterAll">All Designs</button>
+            <button class="filter-btn" data-filter="bestsellers" data-i18n="filterBest">Bestsellers</button>
+            <button class="filter-btn" data-filter="classical" data-i18n="filterClassic">Classical</button>
+            <button class="filter-btn" data-filter="modern" data-i18n="filterModern">Modern</button>
+            <button class="filter-btn" data-filter="editorial" data-i18n="filterEditorial">Editorial</button>
+            <button class="filter-btn" data-filter="traditional" data-i18n="filterTraditional">Traditional</button>
+            <button class="filter-btn" data-filter="indian" data-i18n="filterIndian">Indian</button>
+            <button class="filter-btn" data-filter="savethedate" data-i18n="filterStd">Save the Date</button>
+          </div>
+          
+          <div class="design-grid" id="catalog-grid">
+            <!-- Dynamic injection of 25 templates -->
+          </div>
+          
+          <div style="text-align: center; margin-top: 48px;">
+            <a href="#designs-hub" class="btn btn-gold" data-i18n="viewAllDesignsBtn" style="display: inline-block; padding: 14px 36px; font-size: 16px; letter-spacing: 1px;">View All 38 Designs</a>
+          </div>
+        </section>
+
+        <!-- Pricing Section with Dynamic Calculator -->
+        <section class="section" id="pricing">
+          <div class="section-header">
+            <p class="eyebrow" data-i18n="priceEyebrow">Pricing Plans</p>
+            <h2 data-i18n="priceTitle">Tailored packages for premium needs.</h2>
+            <p data-i18n="priceDesc">Transparent, flat pricing with zero monthly fees. Choose your package and configure custom add-ons instantly.</p>
+          </div>
+          
+          <div class="pricing-grid">
+            
+            <article class="price-card">
+              <h3 data-i18n="plan1Name" style="text-align: center; font-family: var(--font-serif); font-size: 32px; color: var(--text-primary); margin-bottom: 8px;">Essential</h3>
+              <p data-i18n="plan1Desc" style="text-align: center; margin-bottom: 16px;">Elegantly personal single-page invite featuring core invitation elements and beautiful photo presentation.</p>
+              <ul class="price-features">
+                <li>Customizable Couple Names</li>
+                <li>Shareable Invitation Link</li>
+                <li>Custom QR Code Access</li>
+                <li>Delivery within 24 Hours</li>
+              </ul>
+              <a href="#designs" class="btn btn-secondary" style="display: block; text-align: center; margin-top: auto;">View Templates</a>
+            </article>
+            
+            <article class="price-card featured" style="background: linear-gradient(145deg, #ffffff, #FCFAF7);">
+              <span class="price-badge" data-i18n="badgeFeatured">Popular</span>
+              <h3 data-i18n="plan2Name" style="text-align: center; font-family: var(--font-serif); font-size: 32px; color: var(--accent-gold); margin-bottom: 8px;">Premium</h3>
+              <p data-i18n="plan2Desc" style="text-align: center; margin-bottom: 16px;">A highly customizable and feature-packed digital wedding invitation experience with custom timelines and RSVP.</p>
+              <ul class="price-features">
+                <li>Fully Customizable Invitation Page</li>
+                <li>Custom Domain Setup</li>
+                <li>Premium Photo Gallery Experience</li>
+                <li>Personalized Theme & Layout Design</li>
+                <li>Interactive RSVP Integration</li>
+                <li>Advanced Animations & Effects</li>
+              </ul>
+              <a href="https://api.whatsapp.com/send?phone=34600000000&text=Hi,%20I'm%20interested%20in%20the%20Premium%20custom%20wedding%20invitation%20plan." class="btn btn-gold" target="_blank" rel="noreferrer" style="display: block; text-align: center; margin-top: auto;">Contact Now</a>
+            </article>
+            
+          </div>
+          
+
+        </section>
+
+        <!-- Custom Consultation Section -->
+        <section class="section bg-sec" id="consultation">
+          <div class="consultation">
+            <div class="consult-content">
+              <p class="eyebrow" data-i18n="consultEyebrow">Custom Consultation</p>
+              <h2 data-i18n="consultTitle">Do you want a completely unique masterpiece?</h2>
+              <p data-i18n="consultDesc">If you need an extraordinary wedding website designed entirely from scratch, with interactive elements, special animations, custom illustrations, or multi-day guest accommodations, get in touch with our lead designer today.</p>
+            </div>
+            
+            <form class="consult-form" id="consult-form">
+              <div class="form-group">
+                <label for="consult-name" data-i18n="labelName">Your Name</label>
+                <input type="text" id="consult-name" required placeholder="e.g. Sofia & Marc">
+              </div>
+              <div class="form-group">
+                <label for="consult-whatsapp" data-i18n="labelPhone">WhatsApp / Phone</label>
+                <input type="tel" id="consult-whatsapp" required placeholder="+34 600 000 000">
+              </div>
+              <div class="form-group">
+                <label for="consult-details" data-i18n="labelNotes">Wedding details & ideas</label>
+                <textarea id="consult-details" rows="3" placeholder="Tell us your wedding concept, ideas, or select a style from the catalog..."></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit" data-i18n="consultBtn">Send Request</button>
+            </form>
+          </div>
+        </section>
+        
+      </div>
+
+      <!-- Separate Full Page Designs Hub View -->
+      <div id="designs-hub-view" style="display: none;">
+        <section class="section" id="designs-hub">
+          <div class="section-header">
+            <p class="eyebrow" data-i18n="catEyebrow">Design Catalog</p>
+            <h2 data-i18n="hubTitle">Colección Atelier</h2>
+            <p data-i18n="hubDesc">Browse all our 38 luxury invitation designs. Filter by category, search by name, and instantly test them in our interactive smartphone simulator.</p>
+          </div>
+          
+          <!-- Search & Filter Controls -->
+          <div class="hub-controls">
+            <div class="form-group" style="width: 100%;">
+              <input type="text" id="hub-search-input" placeholder="Search designs by name..." style="padding: 14px 20px; border-radius: 30px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-primary); font-family: var(--font-sans); width: 100%; box-shadow: var(--shadow-sm); outline: none;">
+            </div>
+            <div class="catalog-filters" style="margin-bottom: 0;">
+              <button class="filter-btn active" data-hub-filter="all" data-i18n="filterAll">All Designs</button>
+              <button class="filter-btn" data-hub-filter="bestsellers" data-i18n="filterBest">Bestsellers</button>
+              <button class="filter-btn" data-hub-filter="classical" data-i18n="filterClassic">Classical</button>
+              <button class="filter-btn" data-hub-filter="modern" data-i18n="filterModern">Modern</button>
+              <button class="filter-btn" data-hub-filter="editorial" data-i18n="filterEditorial">Editorial</button>
+              <button class="filter-btn" data-hub-filter="traditional" data-i18n="filterTraditional">Traditional</button>
+              <button class="filter-btn" data-hub-filter="indian" data-i18n="filterIndian">Indian</button>
+              <button class="filter-btn" data-hub-filter="savethedate" data-i18n="filterStd">Save the Date</button>
+            </div>
+          </div>
+          
+          <div class="design-grid" id="hub-catalog-grid">
+            <!-- Dynamic injection of 25 templates with beautiful image previews -->
+          </div>
+        </section>
+      </div>
+
+      <!-- Immersive Catalog Details View -->
+      <div id="detail-view" style="display: none;">
+        <section class="detail-page">
+          <div class="back-link" id="detail-back-link">
+            <span>←</span> <span data-i18n="detailBack">Back to catalog</span>
+          </div>
+          
+          <div class="detail-layout">
+            <!-- Left Info Panel -->
+            <div class="detail-copy">
+
+              <!-- ===== CHECKOUT STEP 1: Choose Layout + Buy Now ===== -->
+              <div class="checkout-step checkout-step-active" id="checkout-step-1">
+                <p class="eyebrow" id="detail-tag">Travel inspired</p>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
+                  <h1 id="detail-title" style="margin-bottom: 0;">Aventureros</h1>
+                  <span id="detail-code" class="design-code-badge" style="position: static; font-size: 12px; padding: 6px 12px; border-radius: 6px; box-shadow: none;">KIMI-02</span>
+                </div>
+                <p class="lead" id="detail-desc">A cinematic travel-style digital invitation with customized ticket styling, itineraries, maps, music player, and WhatsApp guest replies.</p>
+                
+                <ul class="feature-list" id="detail-features">
+                  <!-- Injected features list -->
+                </ul>
+                
+                <div class="calc-section" style="margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                  <span class="calc-section-label" data-i18n="detailPlanLabel">Choose Layout Base Plan</span>
+                  <select id="detail-plan-selector" style="font-family: var(--font-sans); width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                    <option value="Simple">Simple — ₹999</option>
+                    <option value="CustomDomain" selected>Custom Domain — ₹1,999</option>
+                    <option value="ScratchGallery">Scratch + Photo Gallery — ₹2,999</option>
+                  </select>
+                </div>
+                
+                <div class="detail-actions" style="flex-wrap: wrap;">
+                  <button class="btn btn-gold" id="detail-buy-btn" style="flex: 1 1 100%; font-size: 17px; padding: 16px 24px;">Buy Now</button>
+                </div>
+              </div>
+
+              <!-- ===== CHECKOUT STEP 2: Details & Contact Information ===== -->
+              <div class="checkout-step" id="checkout-step-2">
+                <!-- Progress Indicator -->
+                <div class="checkout-progress">
+                  <div class="checkout-progress-step completed"><span>1</span><small>Choose</small></div>
+                  <div class="checkout-progress-line completed"></div>
+                  <div class="checkout-progress-step active"><span>2</span><small>Details</small></div>
+                  <div class="checkout-progress-line"></div>
+                  <div class="checkout-progress-step"><span>3</span><small>Payment</small></div>
+                  <div class="checkout-progress-line"></div>
+                  <div class="checkout-progress-step"><span>4</span><small>Confirm</small></div>
+                </div>
+
+                <h2 class="checkout-heading">Wedding & Contact Details</h2>
+                <p class="checkout-subtitle">Tell us about your wedding and how to reach you.</p>
+
+                <form id="checkout-details-form" class="checkout-form" onsubmit="return false;">
+                  <div class="checkout-section-label">🎊 Wedding Details</div>
+                  <div class="checkout-form-grid">
+                    <div class="checkout-field">
+                      <label for="ck-bride">Bride's Name <span class="req">*</span></label>
+                      <input type="text" id="ck-bride" name="brideName" required placeholder="e.g. Tanya">
+                    </div>
+                    <div class="checkout-field">
+                      <label for="ck-groom">Groom's Name <span class="req">*</span></label>
+                      <input type="text" id="ck-groom" name="groomName" required placeholder="e.g. Rohan">
+                    </div>
+                    <div class="checkout-field">
+                      <label for="ck-date">Wedding Date <span class="req">*</span></label>
+                      <input type="date" id="ck-date" name="weddingDate" required>
+                    </div>
+                    <div class="checkout-field">
+                      <label for="ck-venue">Wedding Venue <span class="req">*</span></label>
+                      <input type="text" id="ck-venue" name="venue" required placeholder="e.g. Umaid Bhawan, Jodhpur">
+                    </div>
+                    <div class="checkout-field full-width">
+                      <label for="ck-notes">Special Requests / Notes</label>
+                      <textarea id="ck-notes" name="notes" rows="3" placeholder="Music preferences, ceremony details, dress code, etc."></textarea>
+                    </div>
+                  </div>
+
+                  <div class="checkout-section-label" style="margin-top: 24px;">📱 Contact Information</div>
+                  <div class="checkout-form-grid">
+                    <div class="checkout-field">
+                      <label for="ck-contact-name">Your Name <span class="req">*</span></label>
+                      <input type="text" id="ck-contact-name" name="contactName" required placeholder="e.g. Tanya & Rohan">
+                    </div>
+                    <div class="checkout-field">
+                      <label for="ck-email">Email Address <span class="req">*</span></label>
+                      <input type="email" id="ck-email" name="contactEmail" required placeholder="e.g. tanya@email.com">
+                    </div>
+                    <div class="checkout-field">
+                      <label for="ck-phone">WhatsApp / Phone <span class="req">*</span></label>
+                      <input type="tel" id="ck-phone" name="contactPhone" required placeholder="e.g. +91 98765 43210">
+                    </div>
+                    <div class="checkout-field">
+                      <label for="ck-guests">Estimated Guest Count</label>
+                      <input type="number" id="ck-guests" name="guests" min="5" value="100">
+                    </div>
+                  </div>
+
+                  <div class="checkout-actions">
+                    <button type="button" class="btn btn-secondary" id="ck-back-to-step1">← Back</button>
+                    <button type="button" class="btn btn-gold" id="ck-to-payment">Continue to Payment →</button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- ===== CHECKOUT STEP 3: Payment Page ===== -->
+              <div class="checkout-step" id="checkout-step-3">
+                <!-- Progress Indicator -->
+                <div class="checkout-progress">
+                  <div class="checkout-progress-step completed"><span>1</span><small>Choose</small></div>
+                  <div class="checkout-progress-line completed"></div>
+                  <div class="checkout-progress-step completed"><span>2</span><small>Details</small></div>
+                  <div class="checkout-progress-line completed"></div>
+                  <div class="checkout-progress-step active"><span>3</span><small>Payment</small></div>
+                  <div class="checkout-progress-line"></div>
+                  <div class="checkout-progress-step"><span>4</span><small>Confirm</small></div>
+                </div>
+
+                <h2 class="checkout-heading">Payment</h2>
+                <p class="checkout-subtitle">Review your order and complete payment.</p>
+
+                <!-- Order Summary Card -->
+                <div class="payment-summary-card">
+                  <div class="payment-summary-header">Order Summary</div>
+                  <div class="payment-summary-row">
+                    <span>Design Template</span>
+                    <span id="pay-design-name">Aventureros</span>
+                  </div>
+                  <div class="payment-summary-row">
+                    <span>Layout Plan</span>
+                    <span id="pay-plan-name">Custom Domain</span>
+                  </div>
+                  <div class="payment-summary-row">
+                    <span>Couple</span>
+                    <span id="pay-couple">Tanya & Rohan</span>
+                  </div>
+                  <div class="payment-summary-row">
+                    <span>Wedding Date</span>
+                    <span id="pay-date">—</span>
+                  </div>
+                  <div class="payment-summary-row total">
+                    <span>Total Amount</span>
+                    <strong id="pay-total">₹1,999</strong>
+                  </div>
+                </div>
+
+                <!-- Payment Method Selection -->
+                <div class="payment-methods">
+                  <div class="payment-method-label">Choose Payment Method</div>
+                  <div class="payment-method-options">
+                    <label class="payment-method-option selected">
+                      <input type="radio" name="paymentMethod" value="upi" checked>
+                      <div class="payment-method-card">
+                        <span class="payment-method-icon">📱</span>
+                        <span>UPI / Google Pay</span>
+                      </div>
+                    </label>
+                    <label class="payment-method-option">
+                      <input type="radio" name="paymentMethod" value="card">
+                      <div class="payment-method-card">
+                        <span class="payment-method-icon">💳</span>
+                        <span>Card Payment</span>
+                      </div>
+                    </label>
+                    <label class="payment-method-option">
+                      <input type="radio" name="paymentMethod" value="netbanking">
+                      <div class="payment-method-card">
+                        <span class="payment-method-icon">🏦</span>
+                        <span>Net Banking</span>
+                      </div>
+                    </label>
+                    <label class="payment-method-option">
+                      <input type="radio" name="paymentMethod" value="whatsapp">
+                      <div class="payment-method-card">
+                        <span class="payment-method-icon">💬</span>
+                        <span>Pay via WhatsApp</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="checkout-actions">
+                  <button type="button" class="btn btn-secondary" id="ck-back-to-step2">← Back</button>
+                  <button type="button" class="btn btn-gold" id="ck-pay-now" style="font-size: 16px;">Pay Now →</button>
+                </div>
+
+                <p class="payment-secure-note">🔒 Your payment is 100% secure. SSL encrypted.</p>
+              </div>
+
+              <!-- ===== CHECKOUT STEP 4: Confirmation Page ===== -->
+              <div class="checkout-step" id="checkout-step-4">
+                <!-- Progress Indicator -->
+                <div class="checkout-progress">
+                  <div class="checkout-progress-step completed"><span>✓</span><small>Choose</small></div>
+                  <div class="checkout-progress-line completed"></div>
+                  <div class="checkout-progress-step completed"><span>✓</span><small>Details</small></div>
+                  <div class="checkout-progress-line completed"></div>
+                  <div class="checkout-progress-step completed"><span>✓</span><small>Payment</small></div>
+                  <div class="checkout-progress-line completed"></div>
+                  <div class="checkout-progress-step completed"><span>✓</span><small>Confirm</small></div>
+                </div>
+
+                <div class="confirmation-box">
+                  <div class="confirmation-icon">✅</div>
+                  <h2 class="confirmation-title">Order Confirmed!</h2>
+                  <p class="confirmation-message">Thank you for your order. Our design team will start working on your personalized invitation right away.</p>
+                  
+                  <div class="confirmation-details">
+                    <div class="confirmation-row">
+                      <span>Order ID</span>
+                      <strong id="conf-order-id">KC-2026-001</strong>
+                    </div>
+                    <div class="confirmation-row">
+                      <span>Design</span>
+                      <strong id="conf-design">Aventureros</strong>
+                    </div>
+                    <div class="confirmation-row">
+                      <span>Plan</span>
+                      <strong id="conf-plan">Custom Domain</strong>
+                    </div>
+                    <div class="confirmation-row">
+                      <span>Amount Paid</span>
+                      <strong id="conf-amount">₹1,999</strong>
+                    </div>
+                    <div class="confirmation-row">
+                      <span>Couple</span>
+                      <strong id="conf-couple">Tanya & Rohan</strong>
+                    </div>
+                    <div class="confirmation-row">
+                      <span>Expected Delivery</span>
+                      <strong id="conf-delivery">Within 48 hours</strong>
+                    </div>
+                  </div>
+
+                  <p class="confirmation-next-steps">📩 A confirmation email has been sent. Our designer will reach out on WhatsApp within 24 hours to start personalizing your invite.</p>
+
+                  <div class="confirmation-actions">
+                    <a href="#designs-hub" class="btn btn-secondary">Browse More Designs</a>
+                    <button class="btn btn-gold" id="conf-whatsapp-btn">💬 Chat on WhatsApp</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            
+            <!-- Right Phone Previewer Frame -->
+            <div class="preview-frame-container">
+              <div class="visual-backdrop">
+                <div class="visual-backdrop-inner"></div>
+              </div>
+              <div class="phone-mockup">
+                <div class="phone-screen">
+                  <iframe src="" id="detail-phone-iframe" title="Wedding Template Live Preview"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </main>
+
+    <!-- Guided Multi-Step Form Wizard Modal -->
+    <dialog id="wizard-dialog">
+      <div class="wizard-container">
+        
+        <div class="wizard-header">
+          <h2 id="wizard-form-title" data-i18n="wizTitle">Custom Order Details</h2>
+          <button class="close-btn" id="wizard-close-btn" aria-label="Close dialog">&times;</button>
+        </div>
+        
+        <div class="wizard-progress">
+          <div class="wizard-progress-bar" id="wizard-progress-bar"></div>
+        </div>
+        
+        <form class="wizard-content" id="wizard-form" onsubmit="return false;">
+          
+          <!-- Step 1: Base Configuration -->
+          <div class="wizard-step active" data-step="1">
+            <h3 data-i18n="wizStep1Header">1. Selection & Package</h3>
+            <div class="form-grid">
+              
+              <div class="form-group">
+                <label for="wiz-package" data-i18n="labelPlan">Target Plan</label>
+                <select id="wiz-package" name="package" required>
+                  <option value="Simple">Simple — ₹999</option>
+                  <option value="CustomDomain" selected>Custom Domain — ₹1,999</option>
+                  <option value="ScratchGallery">Scratch + Photo Gallery — ₹2,999</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="wiz-base-style" data-i18n="labelBase">Invitation Base Style</label>
+                <select id="wiz-base-style" name="baseStyle" required>
+                  <!-- Populated dynamically via JS -->
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="wiz-currency" data-i18n="labelCurrency">Preferred Currency</label>
+                <select id="wiz-currency" name="currency">
+                  <option value="INR">INR (₹) / Indian Rupees</option>
+                  <option value="EUR">EUR (€) / Euros</option>
+                  <option value="USD">USD ($) / US Dollars</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="wiz-guest-count" data-i18n="labelGuests">Estimated Guest Count</label>
+                <input type="number" id="wiz-guest-count" name="guests" min="5" value="100">
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Step 2: Couple & Wedding Event Details -->
+          <div class="wizard-step" data-step="2">
+            <h3 data-i18n="wizStep2Header">2. Wedding Event details</h3>
+            <div class="form-grid">
+              
+              <div class="form-group">
+                <label for="wiz-bride" data-i18n="labelBride">Bride's Name</label>
+                <input type="text" id="wiz-bride" name="brideName" required placeholder="e.g. Sofia">
+              </div>
+              
+              <div class="form-group">
+                <label for="wiz-groom" data-i18n="labelGroom">Groom's Name</label>
+                <input type="text" id="wiz-groom" name="groomName" required placeholder="e.g. Marc">
+              </div>
+              
+              <div class="form-group">
+                <label for="wiz-date" data-i18n="labelDate">Wedding Date</label>
+                <input type="date" id="wiz-date" name="weddingDate" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="wiz-venue" data-i18n="labelVenue">Wedding Venue</label>
+                <input type="text" id="wiz-venue" name="venue" required placeholder="e.g. Finca Mas Solers, Barcelona">
+              </div>
+              
+              <div class="form-group wide">
+                <label for="wiz-notes" data-i18n="labelNotes">Custom Requests, Timeline, or Music Track</label>
+                <textarea id="wiz-notes" name="notes" rows="3" placeholder="Tell us about the music track you liked, ceremonies timeline, dress code parameters, etc."></textarea>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Step 3: Contact & Premium Upgrades -->
+          <div class="wizard-step" data-step="3">
+            <h3 data-i18n="wizStep3Header">3. Upgrades & Contact</h3>
+            <div class="form-grid">
+              
+              <div class="form-group">
+                <label for="wiz-name" data-i18n="labelContactName">Your Contact Name</label>
+                <input type="text" id="wiz-name" name="contactName" required placeholder="e.g. Marc & Sofia">
+              </div>
+              
+              <div class="form-group">
+                <label for="wiz-email" data-i18n="labelContactEmail">Email Address</label>
+                <input type="email" id="wiz-email" name="contactEmail" required placeholder="e.g. love@domain.com">
+              </div>
+              
+              <div class="form-group">
+                <label for="wiz-phone" data-i18n="labelContactPhone">WhatsApp / Phone Number</label>
+                <input type="tel" id="wiz-phone" name="contactPhone" required placeholder="e.g. +34 600 000 000">
+              </div>
+              
+              <div class="form-group wide" style="margin-top: 10px;">
+                <label data-i18n="labelUpgrades">Premium Upgrades (Included in Total):</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px;">
+                  <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; text-transform: none; font-size: 13px; cursor: pointer;">
+                    <input type="checkbox" name="addon_domain" id="wiz-addon-domain"> <span data-i18n="addonDomain">Custom Domain</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; text-transform: none; font-size: 13px; cursor: pointer;">
+                    <input type="checkbox" name="addon_intro" id="wiz-addon-intro"> <span data-i18n="addonIntro">Animated Intro</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; text-transform: none; font-size: 13px; cursor: pointer;">
+                    <input type="checkbox" name="addon_map" id="wiz-addon-map"> <span data-i18n="addonMap">Illustrated Map</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; text-transform: none; font-size: 13px; cursor: pointer;">
+                    <input type="checkbox" name="addon_pers" id="wiz-addon-pers"> <span data-i18n="addonPers">Name Personalization</span>
+                  </label>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Step 4: Summary Breakdown & Send -->
+          <div class="wizard-step" data-step="4">
+            <h3 data-i18n="wizStep4Header">4. Order Summary</h3>
+            
+            <div class="wizard-summary-card">
+              <div class="wizard-summary-row">
+                <span data-i18n="summaryBrideGroom">Couple Details:</span>
+                <span id="summary-names">Sofia & Marc</span>
+              </div>
+              <div class="wizard-summary-row">
+                <span data-i18n="summaryDate">Date & Venue:</span>
+                <span id="summary-date-venue">October 15, 2026 at Barcelona</span>
+              </div>
+              <div class="wizard-summary-row">
+                <span data-i18n="summaryBasePlan">Layout Base Plan:</span>
+                <span id="summary-package">Premium</span>
+              </div>
+              <div class="wizard-summary-row">
+                <span data-i18n="summaryBaseStyle">Design Style:</span>
+                <span id="summary-style">Bloom</span>
+              </div>
+              <div class="wizard-summary-row" id="summary-addons-row">
+                <span data-i18n="summaryAddons">Addons Selected:</span>
+                <span id="summary-addons" style="text-align: right; font-size: 12px; color: var(--text-secondary);">None</span>
+              </div>
+              <div class="wizard-summary-row" style="border-top: 1px solid var(--border-color); padding-top: 12px;">
+                <span data-i18n="summaryTotal">Estimated Total:</span>
+                <strong id="summary-total-price">₹8,999</strong>
+              </div>
+            </div>
+            
+            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px;" data-i18n="summaryNotice">Your order request will be securely saved locally. We will generate a structured WhatsApp message to submit directly to our design atelier for immediate personal drafting.</p>
+          </div>
+          
+        </form>
+        
+        <div class="wizard-footer">
+          <button class="btn btn-secondary" id="wiz-prev-btn" style="display: none;" data-i18n="wizBtnPrev">Previous</button>
+          <button class="btn btn-primary" id="wiz-next-btn" data-i18n="wizBtnNext">Next Step</button>
+          <button class="btn btn-gold" id="wiz-submit-btn" style="display: none;" data-i18n="wizBtnSubmit">Order via WhatsApp</button>
+        </div>
+        
+      </div>
+    </dialog>
+
+    <!-- Luxury Footer Section -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-col" style="grid-column: span 2;">
+          <a class="brand" href="#home" style="margin-bottom: 8px;">
+            <div class="brand-logo" style="border-color: #FFFFFF; color: #FFFFFF;">K</div>
+            <div class="brand-text">
+              <strong style="color: #FFFFFF;">invite.kimiclaw.in</strong>
+              <small style="color: #A29A90;">Premium Digital Invitations</small>
+            </div>
+          </a>
+          <p style="color: #A29A90; font-size: 14px; line-height: 1.6; max-width: 320px;" data-i18n="footerTagline">Bespoke luxury wedding invitation websites crafted by professional designers. Fully interactive, mobile-optimized, and built to amaze your guests.</p>
+        </div>
+        
+        <div class="footer-col">
+          <h4 data-i18n="footerProducts">Solutions</h4>
+          <div class="footer-links">
+            <a href="#designs" class="footer-link" data-i18n="footerLinkDemos">Design Catalog</a>
+            <a href="#pricing" class="footer-link" data-i18n="footerLinkPricing">Package Pricing</a>
+            <a href="#playground" class="footer-link" data-i18n="footerLinkFeatures">Features Sandbox</a>
+            <a href="#consultation" class="footer-link" data-i18n="footerLinkCustom">Custom Masterpiece</a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4 data-i18n="footerSupport">Our Studio</h4>
+          <div class="footer-links">
+            <span class="footer-link" data-i18n="footerContactHours">Mon - Sat: 9:00 - 19:00</span>
+            <span class="footer-link">hello@invite.kimiclaw.in</span>
+            <span class="footer-link">+34 600 000 000</span>
+            <span class="footer-link">Barcelona / Barcelona-Madrid Studio</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <span id="footer-copyright">&copy; 2026 invite.kimiclaw.in. All rights reserved. Handcrafted by design professionals.</span>
+        <div style="display: flex; gap: 16px;">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Absolute Visual Watermark -->
+    <div class="watermark" aria-hidden="true">
+      <span>invite.kimiclaw.in</span>
+    </div>
+
+    <!-- Local logic script -->
+    <script src="app.js?v=1.0.1"></script>
+  </body>
+</html>
