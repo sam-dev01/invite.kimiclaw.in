@@ -52,6 +52,7 @@ html {
   /* Prevent font scale inflation on iOS landscape */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -60,6 +61,7 @@ body {
   color: var(--text-primary);
   transition: background-color 0.4s ease, color 0.4s ease;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Typography Utility */

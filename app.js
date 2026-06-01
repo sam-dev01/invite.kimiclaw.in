@@ -1366,23 +1366,31 @@ function populateConfirmation() {
 
 // Event Listeners Binding
 function bindEvents() {
-  
-  // Mobile Hamburger Toggle
+  // Mobile Hamburger Menu
   const hamburgerBtn = document.querySelector("#hamburger-btn");
   const navMenu = document.querySelector("#nav-menu");
+  
   if (hamburgerBtn && navMenu) {
     hamburgerBtn.addEventListener("click", () => {
       const isOpen = hamburgerBtn.classList.toggle("open");
       navMenu.classList.toggle("open", isOpen);
       hamburgerBtn.setAttribute("aria-expanded", isOpen);
+      
+      // Lock body scroll when menu is open
+      if (isOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
     });
-    
-    // Close mobile menu when clicking nav links
-    navMenu.querySelectorAll("a").forEach(link => {
+
+    // Close menu when a link is clicked
+    document.querySelectorAll(".nav-link").forEach(link => {
       link.addEventListener("click", () => {
         hamburgerBtn.classList.remove("open");
         navMenu.classList.remove("open");
         hamburgerBtn.setAttribute("aria-expanded", false);
+        document.body.style.overflow = "";
       });
     });
   }
