@@ -1,0 +1,19 @@
+{
+  "name": "dolcevita-demo",
+  "sourceUrl": "https://dolcevita-demo.local.test",
+  "mirroredAt": "2026-05-31T12:11:35.226Z",
+  "assetsDownloaded": 55,
+  "errors": [
+    "https://dolcevita-demo.local.test/assets/window.location.href :: fetch failed",
+    "https://dolcevita-demo.local.test/assets/x.protocol+c :: 404 Not Found",
+    "https://dolcevita-demo.local.test/assets/));function%20jL(e)%7Bconst%20t=e[0];if(e.length===1)return!0;for(let%20n=0;n%3Ce.length;n++)if(e[n]!==t)return!0%7Dfunction%20NL(e,t,n,r)%7Bconst%20s=e[0];if(s===null)return!1;if(t===%22display%22||t===%22visibility :: 404 Not Found",
+    "https://dolcevita-demo.local.test/assets/this.workerUrl :: 404 Not Found",
+    "https://dolcevita-demo.local.test/assets/n.url+i.url :: 404 Not Found",
+    "https://dolcevita-demo.local.test/assets/new%20URL(window.location.href :: 404 Not Found",
+    "https://dolcevita-demo.local.test/assets/realtime/v1%22,i),this.realtimeUrl.protocol=this.realtimeUrl.protocol.replace(%22http%22,%22ws :: 404 Not Found",
+    "https://dolcevita-demo.local.test/assets/auth/v1%22,i),this.storageUrl=new%20URL(%22storage/v1%22,i),this.functionsUrl=new%20URL(%22functions/v1%22,i);const%20o=%60sb-$%7Bi.hostname.split(%22. :: 404 Not Found",
+    "https://dolcevita-demo.local.test/assets/rest/v1%22,i).href,%7Bheaders:this.headers,schema:l.db.schema,fetch:this.fetch%7D),this.storage=new%20e5(this.storageUrl.href,this.headers,this.fetch,n==null?void%200:n.storage),l.accessToken||this._listenForAuthEvents()}get%20functions(){return%20new%20XF(this.functionsUrl.href,{headers:this.headers,customFetch:this.fetch})}from(e){return%20this.rest.from(e)}schema(e){return%20this.rest.schema(e)}rpc(e,t={},n={head:!1,get:!1,count:void%200}){return%20this.rest.rpc(e,t,n)}channel(e,t={config:{}}){return%20this.realtime.channel(e,t)}getChannels(){return%20this.realtime.getChannels()}removeChannel(e){return%20this.realtime.removeChannel(e)}removeAllChannels(){return%20this.realtime.removeAllChannels()}async%20_getAccessToken(){var%20e=this,t,n;if(e.accessToken)return%20await%20e.accessToken();const{data:r}=await%20e.auth.getSession();return(t=(n=r.session)===null||n===void%200?void%200:n.access_token)!==null&&t!==void%200?t:e.supabaseKey}_initSupabaseAuthClient({autoRefreshToken:e,persistSession:t,detectSessionInUrl:n,storage:r,userStorage:s,storageKey:i,flowType:o,lock:a,debug:l,throwOnError:c},d,h){const%20f={Authorization:`Bearer%20${this.supabaseKey}`,apikey:`${this.supabaseKey}`};return%20new%20S3({url:this.authUrl.href,headers:Ve(Ve({},f),d),storageKey:i,autoRefreshToken:e,persistSession:t,detectSessionInUrl:n,storage:r,userStorage:s,flowType:o,lock:a,debug:l,throwOnError:c,fetch:h,hasCustomAuthorizationHeader:Object.keys(this.headers).some(p=%3Ep.toLowerCase()===%22authorization :: 404 Not Found"
+  ]
+}
+
+
