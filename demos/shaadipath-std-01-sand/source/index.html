@@ -1,0 +1,1319 @@
+﻿<!DOCTYPE html>
+<html lang="en"><head>
+<script>window.__STD_CONFIG__ = {"title":"Save the Date","coupleName":"Tanya \u0026 Rohan","date":"12 December 2026","venue":"The Grand Palace, New Delhi","city":"New Delhi, India","location":"New Delhi, India","ctaText":"Save to Google Calendar","calendarUrl":""};</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#0a4a56">
+<title>Tanya &amp; Rohan — Save the Date</title>
+
+<!-- Resources referenced from JSX strings; lifted so the bundler can inline them -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="assets/css2-9751792b9a.css" rel="stylesheet">
+<style>/* latin-ext */
+
+</style>
+<style>/* Save the Date — Pichwai-inspired premium mobile */
+
+:root {
+  --ivory: #fbf4e3;
+  --ivory-soft: #f6ecd6;
+  --paper: #f3e8cf;
+  --peacock: #0f6473;
+  --peacock-deep: #0a4a56;
+  --peacock-ink: #08323b;
+  --gold: #b8904a;
+  --gold-soft: #d4ad6a;
+  --coral: #cf7762;
+  --lotus: #e6a89a;
+  --teal-overlay: rgba(15, 100, 115, 0.06);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100svh;
+  background: #0a0a0a;
+  color: var(--peacock-ink);
+  font-family: 'Jost', system-ui, sans-serif;
+  overscroll-behavior: none;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* prevent scroll while scratching */
+body.scratching {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* ============ INTRO ============ */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 1100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.intro.fade-out { opacity: 0; pointer-events: none; }
+
+.intro video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: max(env(safe-area-inset-bottom), 14vh);
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.35) 100%);
+  transition: opacity 600ms ease;
+}
+.intro-overlay.hidden { opacity: 0; }
+
+.tap-to-begin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: var(--gold-soft);
+  text-align: center;
+  animation: breathe 2400ms ease-in-out infinite;
+}
+.tap-to-begin .ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.85;
+}
+.tap-to-begin .ornament .line {
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15,100,115,0.75), transparent);
+}
+.tap-to-begin .ornament .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--peacock);
+  box-shadow: 0 0 8px rgba(15,100,115,0.55);
+}
+.tap-to-begin .label {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(16px, 4.4vw, 20px);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  padding-left: 0.42em;
+  color: var(--gold-soft);
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.85; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* ============ CARD ============ */
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  background-image: url("assets/std-01-sand-e339dd1b50.binassets/save-the-date/savethedate_bg.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top) + 28px) 20px calc(env(safe-area-inset-bottom) + 32px);
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 1200ms ease, transform 1600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card.in { opacity: 1; transform: scale(1); }
+
+/* subtle ivory wash for readability where needed */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 38%, rgba(251, 244, 227, 0.55) 0%, rgba(251, 244, 227, 0) 75%);
+  pointer-events: none;
+}
+
+.card > * { position: relative; z-index: 1; }
+
+/* header */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: rise 1100ms 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.eyebrow .rule {
+  width: clamp(26px, 8vw, 40px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.eyebrow .diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.title {
+  margin: 14px 0 0;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(14px, 4vw, 17px);
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: var(--peacock-deep);
+  padding-left: 0.48em;
+  text-align: center;
+  opacity: 0;
+  animation: rise 1100ms 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.couple {
+  margin: 6px 0 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(38px, 11.5vw, 56px);
+  line-height: 1.05;
+  color: var(--peacock-deep);
+  text-align: center;
+  text-wrap: balance;
+  opacity: 0;
+  animation: rise 1200ms 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.couple .amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+  padding: 0 0.05em;
+}
+
+/* frame */
+.frame-wrap {
+  position: relative;
+  width: min(86vw, 420px);
+  aspect-ratio: 1122 / 1402;
+  margin: clamp(10px, 2.5vh, 22px) auto 0;
+  opacity: 0;
+  animation: rise 1400ms 640ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.frame-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 3;
+  filter: drop-shadow(0 12px 26px rgba(10, 50, 59, 0.18));
+}
+
+/* inner oval — coords from alpha trim: 25.6%-74.2% x, 27%-79.3% y */
+.inner {
+  position: absolute;
+  left: 25.6%;
+  top: 27.0%;
+  width: 48.6%;
+  height: 52.3%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* oval clip so any glow/canvas sits inside the oval */
+  border-radius: 50%;
+}
+
+.reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  padding: 6% 10%;
+  color: var(--peacock-deep);
+  z-index: 1;
+}
+
+.reveal .preamble {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(9px, 2.4vw, 11px);
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: var(--peacock);
+  opacity: 0.78;
+}
+.reveal .day {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(38px, 12vw, 56px);
+  line-height: 1;
+  color: var(--peacock-deep);
+  margin: 2px 0 0;
+}
+.reveal .month-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.reveal .month-row .bar {
+  width: clamp(18px, 5vw, 26px);
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+.reveal .month {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(11px, 3.2vw, 14px);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--peacock);
+  padding-left: 0.32em;
+}
+.reveal .sep {
+  margin: clamp(8px, 2vw, 12px) 0 clamp(6px, 1.6vw, 10px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold);
+  font-size: 10px;
+}
+.reveal .sep::before, .reveal .sep::after {
+  content: "";
+  width: clamp(14px, 4vw, 22px);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+.reveal .venue {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(13px, 3.6vw, 16px);
+  letter-spacing: 0.04em;
+  color: var(--peacock-deep);
+  line-height: 1.15;
+}
+.reveal .city {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: clamp(9px, 2.4vw, 11px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--peacock);
+  opacity: 0.72;
+  margin-top: 3px;
+}
+
+/* scratch canvas sits above reveal */
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  touch-action: none;
+  cursor: grab;
+  transition: opacity 700ms ease;
+  /* oval mask so sand is constrained inside oval */
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 98%, transparent 100%);
+          mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 98%, transparent 100%);
+}
+.scratch-canvas.gone { opacity: 0; pointer-events: none; }
+.scratch-canvas:active { cursor: grabbing; }
+
+/* particle layer — extends beyond the oval so grains can fly outside */
+.particle-canvas {
+  position: absolute;
+  top: -22%;
+  left: -22%;
+  width: 144%;
+  height: 144%;
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 700ms ease;
+}
+.particle-canvas.gone { opacity: 0; }
+
+/* hint over the sand — calligraphic invitation */
+.scratch-hint {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+.scratch-hint.hidden { opacity: 0; }
+.scratch-hint .inscription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(251, 244, 227, 0.92);
+  text-shadow: 0 1px 8px rgba(8, 50, 59, 0.55);
+  animation: breathe-hint 3200ms ease-in-out infinite;
+}
+.scratch-hint .flourish {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.85;
+}
+.scratch-hint .flourish .line {
+  width: clamp(20px, 6vw, 32px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 173, 106, 0.85), transparent);
+}
+.scratch-hint .flourish .glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  color: rgba(212, 173, 106, 0.95);
+  line-height: 1;
+}
+.scratch-hint .text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(15px, 4vw, 18px);
+  letter-spacing: 0.06em;
+  color: rgba(251, 244, 227, 0.98);
+}
+@keyframes breathe-hint {
+  0%, 100% { opacity: 0.78; transform: translateY(0); }
+  50%      { opacity: 1;    transform: translateY(-2px); }
+}
+
+/* glow after reveal */
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse at center,
+    rgba(212, 173, 106, 0.55) 0%,
+    rgba(212, 173, 106, 0.18) 30%,
+    transparent 65%);
+  transition: opacity 900ms ease;
+}
+.glow.on { opacity: 1; animation: glowPulse 3600ms ease-in-out infinite; }
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.55; }
+}
+
+/* sparkles */
+.sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.sparkle {
+  position: absolute;
+  width: 6px; height: 6px;
+  background: radial-gradient(circle, #fff 0%, rgba(212,173,106,0.9) 30%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: spark 2200ms ease-out forwards;
+}
+@keyframes spark {
+  0% { opacity: 0; transform: scale(0.3); }
+  30% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* fallback */
+.fallback-btn {
+  position: absolute;
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(15, 100, 115, 0.9);
+  color: #fbf4e3;
+  border: 1px solid rgba(212,173,106,0.6);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding-left: calc(18px + 0.3em);
+}
+
+/* below frame */
+.formal {
+  margin-top: clamp(18px, 4vh, 28px);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(13px, 3.6vw, 15px);
+  letter-spacing: 0.04em;
+  color: var(--peacock-deep);
+  opacity: 0;
+  animation: rise 1100ms 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  text-align: center;
+}
+.formal .tilde {
+  color: var(--gold);
+  margin: 0 8px;
+  letter-spacing: 0;
+}
+
+/* cta */
+.cta-wrap {
+  margin-top: clamp(24px, 5vh, 38px);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #126b7a 0%, #0a4a56 100%);
+  color: var(--ivory);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(9px, 2.4vw, 11px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding-left: calc(16px + 0.24em);
+  border: 1px solid rgba(212, 173, 106, 0.55);
+  box-shadow:
+    0 6px 16px rgba(10, 50, 59, 0.26),
+    inset 0 0 0 1px rgba(251, 244, 227, 0.08);
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transition: opacity 800ms ease, transform 900ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
+  pointer-events: none;
+}
+.cta.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.cta:active { transform: translateY(0) scale(0.98); }
+.cta .gicon {
+  display: inline-block;
+  width: 12px; height: 12px;
+}
+.cta:hover {
+  box-shadow:
+    0 10px 26px rgba(10, 50, 59, 0.32),
+    inset 0 0 0 1px rgba(251, 244, 227, 0.15);
+}
+
+@keyframes rise {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Reveal text entrance — elements are invisible until full scratch ── */
+.reveal .preamble,
+.reveal .day,
+.reveal .month-row,
+.reveal .sep,
+.reveal .venue,
+.reveal .city {
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+/* Staggered cinematic entrance when reveal completes */
+.reveal.show .preamble { animation: rtPreamble  900ms  0ms  cubic-bezier(0.16,1,0.3,1) both; }
+.reveal.show .day      { animation: rtDay       1200ms 90ms cubic-bezier(0.16,1,0.3,1) both; }
+.reveal.show .month-row{ animation: rtSlice     860ms  310ms cubic-bezier(0.16,1,0.3,1) both; }
+.reveal.show .sep      { animation: rtSep       680ms  470ms ease                       both; }
+.reveal.show .venue    { animation: rtRise      900ms  590ms cubic-bezier(0.16,1,0.3,1) both; }
+.reveal.show .city     { animation: rtCity      800ms  750ms cubic-bezier(0.16,1,0.3,1) both; }
+
+/* preamble — letter-tracking expands as it rises */
+@keyframes rtPreamble {
+  from { opacity: 0; transform: translateY(10px); letter-spacing: 0.36em; }
+  to   { opacity: 0.78; transform: translateY(0); letter-spacing: 0.18em; }
+}
+
+/* day — cinematic focus-pull: blurry + oversized → sharp + settled */
+@keyframes rtDay {
+  0%   { opacity: 0; filter: blur(18px); transform: scale(1.18) translateY(8px); }
+  60%  { opacity: 1; filter: blur(0);    transform: scale(1.03) translateY(0); }
+  82%  { transform: scale(0.99); }
+  100% { opacity: 1; filter: blur(0);    transform: scale(1); }
+}
+
+/* month row — slices open from the center outward */
+@keyframes rtSlice {
+  from { opacity: 0; clip-path: inset(0 50% 0 50%); transform: translateY(4px); }
+  to   { opacity: 1; clip-path: inset(0 0% 0 0%);   transform: translateY(0); }
+}
+
+/* separator — expands from center with a tiny overshoot */
+@keyframes rtSep {
+  from { opacity: 0; transform: scaleX(0); }
+  78%  { transform: scaleX(1.1); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+/* venue — gentle rise */
+@keyframes rtRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* city — tracking expands while rising */
+@keyframes rtCity {
+  from { opacity: 0; transform: translateY(8px); letter-spacing: 0.06em; }
+  to   { opacity: 0.72; transform: translateY(0); letter-spacing: 0.22em; }
+}
+
+/* tablet & up — keep mobile-first but cap width */
+@media (min-width: 520px) {
+  .card { padding-top: calc(env(safe-area-inset-top) + 44px); }
+}
+</style>
+
+<script>
+window.__resources = { frameImg: "assets/std-01-sand-e339dd1b50.binassets/save-the-date/frame.png", sandImg: "assets/std-01-sand-e339dd1b50.binassets/save-the-date/sand.png", introVideo: "assets/std-01-sand-e339dd1b50.binassets/save-the-date/intro.mp4" };
+</script><meta property="og:title" content="Tanya &amp; Rohan — Save the Date">
+<meta property="og:description" content="Tanya &amp; Rohan are getting married on 12 December 2026 at The Grand Palace, New Delhi. Save the date!">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tanya &amp; Rohan — Save the Date">
+<meta name="twitter:description" content="Tanya &amp; Rohan are getting married on 12 December 2026 at The Grand Palace, New Delhi. Save the date!">
+<meta property="og:site_name" content="ShaadiPath">
+</head>
+<body>
+<div id="root"></div>
+
+<script src="assets/react.min-4fb76f0e71.js"></script>
+<script src="assets/react-dom.min-658d62b6f1.js"></script>
+<script src="assets/babel.min-ff73584b5d.js"></script>
+<script type="text/babel" data-presets="react">
+/* global React, ReactDOM */
+const { useState, useEffect, useRef, useCallback } = React;
+
+// inner oval ratios from frame.png alpha trim
+const INNER = { x: 0.256, y: 0.270, w: 0.486, h: 0.523 };
+
+function GoogleIcon() {
+  return (
+    <svg className="gicon" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#fbf4e3" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"/>
+      <circle cx="12" cy="15" r="2.4" fill="#d4ad6a"/>
+    </svg>
+  );
+}
+
+function Sparkles({ on }) {
+  if (!on) return null;
+  const pts = [
+    { x: 22, y: 30, d: 0 },
+    { x: 78, y: 22, d: 220 },
+    { x: 84, y: 70, d: 440 },
+    { x: 18, y: 74, d: 680 },
+    { x: 50, y: 12, d: 900 },
+    { x: 50, y: 88, d: 1100 },
+    { x: 64, y: 48, d: 1300 },
+    { x: 32, y: 52, d: 1500 },
+  ];
+  return (
+    <div className="sparkles">
+      {pts.map((p, i) => (
+        <span
+          key={i}
+          className="sparkle"
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            animationDelay: `${p.d}ms`,
+            animationIterationCount: 'infinite',
+            animationDirection: 'alternate',
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// Palette is sampled directly from the loaded sand image so grains match
+// the real texture (deep peacock with rare gold flecks).
+const FALLBACK_SAND = ['#0a3f4a', '#0e5765', '#0a4956', '#072d36'];
+
+function ScratchCanvas({ sandUrl, onComplete }) {
+  const canvasRef = useRef(null);
+  const particleCanvasRef = useRef(null);
+  const particlesRef = useRef([]);
+  const paletteRef = useRef(FALLBACK_SAND);
+  const rafRef = useRef(null);
+  const lastTRef = useRef(0);
+  const drawingRef = useRef(false);
+  const lastPtRef = useRef(null);
+  const lastCheckRef = useRef(0);
+  const sandImgRef = useRef(null);
+  const completedRef = useRef(false);
+  const [hintHidden, setHintHidden] = useState(false);
+  const [gone, setGone] = useState(false);
+  const [supported, setSupported] = useState(true);
+
+  // initial draw
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !canvas.getContext) { setSupported(false); return; }
+    const ctx = canvas.getContext('2d');
+    if (!ctx) { setSupported(false); return; }
+
+    const img = new Image();
+    img.onload = () => {
+      sandImgRef.current = img;
+      // sample real grain colors from the sand image for the scatter particles
+      try {
+        const SW = 96, SH = 96;
+        const off = document.createElement('canvas');
+        off.width = SW; off.height = SH;
+        const octx = off.getContext('2d');
+        octx.drawImage(img, 0, 0, SW, SH);
+        const data = octx.getImageData(0, 0, SW, SH).data;
+        const samples = [];
+        for (let i = 0; i < 220; i++) {
+          const x = (Math.random() * SW) | 0;
+          const y = (Math.random() * SH) | 0;
+          const o = (y * SW + x) * 4;
+          const r = data[o], g = data[o + 1], b = data[o + 2], a = data[o + 3];
+          if (a < 200) continue;                  // skip transparent edge
+          if (r + g + b > 720) continue;          // skip near-white halos
+          samples.push(`rgb(${r},${g},${b})`);
+        }
+        if (samples.length > 30) paletteRef.current = samples;
+      } catch (_) { /* CORS fallback */ }
+      resize();
+    };
+    img.onerror = () => setSupported(false);
+    img.src = sandUrl;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.max(1, Math.round(rect.width * dpr));
+      canvas.height = Math.max(1, Math.round(rect.height * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (sandImgRef.current) {
+        ctx.globalCompositeOperation = 'source-over';
+        // Lay down a solid teal underlay so the entire oval is opaque even where
+        // the sand PNG has transparent edges, then draw the sand texture scaled
+        // up to cover the canvas fully (crops out the PNG's transparent border).
+        ctx.fillStyle = '#0f6473';
+        ctx.fillRect(0, 0, rect.width, rect.height);
+        const scale = 1.22;
+        const dw = rect.width * scale;
+        const dh = rect.height * scale;
+        const dx = (rect.width - dw) / 2;
+        const dy = (rect.height - dh) / 2;
+        ctx.drawImage(sandImgRef.current, dx, dy, dw, dh);
+      }
+    }
+
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+    return () => ro.disconnect();
+  }, [sandUrl]);
+
+  // Particle canvas sizing
+  useEffect(() => {
+    const pc = particleCanvasRef.current;
+    if (!pc) return;
+    const pctx = pc.getContext('2d');
+    function resizeP() {
+      const rect = pc.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      pc.width = Math.max(1, Math.round(rect.width * dpr));
+      pc.height = Math.max(1, Math.round(rect.height * dpr));
+      pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeP();
+    const ro = new ResizeObserver(resizeP);
+    ro.observe(pc);
+    return () => { ro.disconnect(); if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, []);
+
+  // Particle tick loop
+  const ensureLoop = () => {
+    if (rafRef.current != null) return;
+    lastTRef.current = performance.now();
+    const step = (t) => {
+      const pc = particleCanvasRef.current;
+      if (!pc) { rafRef.current = null; return; }
+      const pctx = pc.getContext('2d');
+      const rect = pc.getBoundingClientRect();
+      const dt = Math.min(0.05, (t - lastTRef.current) / 1000);
+      lastTRef.current = t;
+      pctx.clearRect(0, 0, rect.width, rect.height);
+      const parts = particlesRef.current;
+      const next = [];
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        p.vy += 620 * dt;            // gravity (sand falls fast)
+        p.vx *= (1 - 1.2 * dt);      // strong air drag for fine grain
+        p.vy *= (1 - 0.4 * dt);
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        p.life -= dt;
+        if (p.life > 0 && p.y < rect.height + 8) {
+          const a = Math.max(0, p.life / p.maxLife) * (p.alpha || 0.8);
+          pctx.globalAlpha = a;
+          pctx.fillStyle = p.color;
+          pctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
+          next.push(p);
+        }
+      }
+      pctx.globalAlpha = 1;
+      particlesRef.current = next;
+      if (next.length > 0) {
+        rafRef.current = requestAnimationFrame(step);
+      } else {
+        rafRef.current = null;
+      }
+    };
+    rafRef.current = requestAnimationFrame(step);
+  };
+
+  // Convert scratch-canvas coords to particle-canvas coords (particle canvas is
+  // wider via inset: -22% so grains can scatter outside the oval).
+  const PAD = 0.22;
+  const spawnParticles = (x, y, count, dx, dy) => {
+    const scratch = canvasRef.current;
+    if (!scratch) return;
+    const rect = scratch.getBoundingClientRect();
+    const offX = rect.width * PAD;
+    const offY = rect.height * PAD;
+    const px = x + offX;
+    const py = y + offY;
+    const speed = Math.hypot(dx, dy);
+    const dirX = speed > 0.01 ? dx / speed : (Math.random() * 2 - 1);
+    const dirY = speed > 0.01 ? dy / speed : -1;
+    const palette = paletteRef.current;
+    const parts = particlesRef.current;
+    for (let i = 0; i < count; i++) {
+      // direction: along stroke with spread; gentle outward arc, not a fountain
+      const spread = (Math.random() - 0.5) * 1.6;
+      const cs = Math.cos(spread), sn = Math.sin(spread);
+      const vx0 = dirX * cs - dirY * sn;
+      const vy0 = dirX * sn + dirY * cs;
+      const power = 40 + Math.random() * 110 + Math.min(140, speed * 1.8);
+      parts.push({
+        x: px + (Math.random() - 0.5) * 8,
+        y: py + (Math.random() - 0.5) * 8,
+        vx: vx0 * power + (Math.random() - 0.5) * 30,
+        vy: vy0 * power - 12 - Math.random() * 32, // tiny upward nudge, mostly gravity
+        rot: 0,
+        vr: 0,
+        size: 0.45 + Math.random() * 0.95,         // fine grain
+        color: palette[(Math.random() * palette.length) | 0],
+        alpha: 0.55 + Math.random() * 0.35,
+        life: 0.55 + Math.random() * 0.7,
+        maxLife: 1,
+      });
+      parts[parts.length - 1].maxLife = parts[parts.length - 1].life;
+    }
+    // cap particles
+    if (parts.length > 800) parts.splice(0, parts.length - 800);
+    ensureLoop();
+  };
+
+  const getPos = (e) => {
+    const canvas = canvasRef.current;
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+  };
+
+  const eraseAt = (x, y) => {
+    const ctx = canvasRef.current.getContext('2d');
+    const r = Math.max(22, Math.min(28, canvasRef.current.getBoundingClientRect().width * 0.085));
+    ctx.globalCompositeOperation = 'destination-out';
+    // soft circular brush
+    const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+    grad.addColorStop(0, 'rgba(0,0,0,1)');
+    grad.addColorStop(0.6, 'rgba(0,0,0,0.85)');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  };
+
+  const eraseLine = (a, b) => {
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const dist = Math.hypot(dx, dy);
+    const r = Math.max(22, Math.min(28, canvasRef.current.getBoundingClientRect().width * 0.085));
+    const step = Math.max(2, r * 0.35);
+    const steps = Math.max(1, Math.floor(dist / step));
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      eraseAt(a.x + dx * t, a.y + dy * t);
+    }
+    // sand scatter â€” count proportional to stroke length (dense grain cloud)
+    const n = Math.min(28, Math.max(6, Math.round(dist / 2.2)));
+    spawnParticles(b.x, b.y, n, dx, dy);
+  };
+
+  const checkPercent = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return 0;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width, h = canvas.height;
+    // sample at low resolution for perf
+    const sw = 32, sh = 32;
+    const off = document.createElement('canvas');
+    off.width = sw; off.height = sh;
+    const octx = off.getContext('2d');
+    octx.drawImage(canvas, 0, 0, sw, sh);
+    const data = octx.getImageData(0, 0, sw, sh).data;
+    // only count pixels inside the oval mask
+    let total = 0, cleared = 0;
+    const cx = sw / 2, cy = sh / 2, rx = sw / 2, ry = sh / 2;
+    for (let y = 0; y < sh; y++) {
+      for (let x = 0; x < sw; x++) {
+        const nx = (x - cx) / rx, ny = (y - cy) / ry;
+        if (nx * nx + ny * ny > 1) continue;
+        total++;
+        const a = data[(y * sw + x) * 4 + 3];
+        if (a < 32) cleared++;
+      }
+    }
+    return total ? cleared / total : 0;
+  };
+
+  const finish = useCallback(() => {
+    if (completedRef.current) return;
+    completedRef.current = true;
+    // clear remaining via fade then full clear
+    setGone(true);
+    setTimeout(() => {
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      onComplete && onComplete();
+    }, 650);
+  }, [onComplete]);
+
+  const onPointerDown = (e) => {
+    if (completedRef.current) return;
+    e.preventDefault();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drawingRef.current = true;
+    setHintHidden(true);
+    document.body.classList.add('scratching');
+    const p = getPos(e);
+    lastPtRef.current = p;
+    eraseAt(p.x, p.y);
+    // initial puff of grains
+    spawnParticles(p.x, p.y, 20, 0, -1);
+  };
+
+  const onPointerMove = (e) => {
+    if (!drawingRef.current || completedRef.current) return;
+    e.preventDefault();
+    const p = getPos(e);
+    const last = lastPtRef.current || p;
+    eraseLine(last, p);
+    lastPtRef.current = p;
+
+    // throttle percent check
+    const now = performance.now();
+    if (now - lastCheckRef.current > 300) {
+      lastCheckRef.current = now;
+      const pct = checkPercent();
+      if (pct >= 0.5) finish();
+    }
+  };
+
+  const onPointerUp = (e) => {
+    drawingRef.current = false;
+    lastPtRef.current = null;
+    document.body.classList.remove('scratching');
+    try { e.currentTarget.releasePointerCapture(e.pointerId); } catch (_) {}
+    // one more check on lift
+    if (!completedRef.current) {
+      const pct = checkPercent();
+      if (pct >= 0.5) finish();
+    }
+  };
+
+  if (!supported) {
+    return (
+      <button
+        className="fallback-btn"
+        onClick={() => { setGone(true); setTimeout(() => onComplete && onComplete(), 400); }}
+      >Tap to Reveal</button>
+    );
+  }
+
+  return (
+    <React.Fragment>
+      <canvas
+        ref={canvasRef}
+        className={`scratch-canvas ${gone ? 'gone' : ''}`}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+      />
+      <canvas ref={particleCanvasRef} className={`particle-canvas ${gone ? 'gone' : ''}`} />
+      <div className={`scratch-hint ${hintHidden || gone ? 'hidden' : ''}`}>
+        <div className="inscription">
+          <div className="flourish">
+            <span className="line" />
+            <span className="glyph">âœ¦</span>
+            <span className="line" />
+          </div>
+          <div className="text">gently scratch to reveal</div>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+
+function SaveTheDate({
+  coupleName = 'Chitra & Prateek',
+  date = '14 June 2026',
+  venue = 'The Westin Sohna',
+  city = 'Gurgaon, Haryana',
+  calendarUrl = 'assets/render-62d8b1ff52.bin',
+  ctaText = 'Save to Google Calendar',
+  showVenue = true,
+  showCity = true,
+  showCta = true,
+  onComplete,
+}) {
+  // phase: 'intro' | 'fading' | 'card'
+  const _gallery = !!(window.__STD_GALLERY_MODE__);
+  const [phase, setPhase] = useState(_gallery ? 'card' : 'intro');
+  const [tapped, setTapped] = useState(false);
+  const [cardIn, setCardIn] = useState(_gallery);
+  const [revealed, setRevealed] = useState(false);
+  const videoRef = useRef(null);
+
+  // parse date for display
+  const dateParts = (() => {
+    const m = /^(\d+)\s+(\w+)\s+(\d{4})$/.exec(date.trim());
+    if (m) return { day: m[1].padStart(2, '0'), month: m[2], year: m[3] };
+    return { day: '14', month: 'June', year: '2026' };
+  })();
+
+  // split couple name
+  const coupleParts = (() => {
+    const m = /^(.+?)\s*&\s*(.+)$/.exec(coupleName);
+    return m ? { a: m[1], b: m[2] } : { a: coupleName, b: '' };
+  })();
+
+  const handleIntroTap = () => {
+    if (tapped) return;
+    setTapped(true);
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true; // allow autoplay
+    v.play().catch(() => {
+      // if play fails, just transition
+      setPhase('fading');
+      setTimeout(() => setPhase('card'), 1100);
+    });
+  };
+
+  const handleVideoEnded = () => {
+    setPhase('fading');
+    setTimeout(() => {
+      setPhase('card');
+      // trigger card animation on next frame
+      requestAnimationFrame(() => requestAnimationFrame(() => setCardIn(true)));
+    }, 1100);
+  };
+
+  // seek to first frame once the browser has decoded data — currentTime=0.001 forces the frame to paint
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const showFirstFrame = () => { v.currentTime = 0.001; };
+    if (v.readyState >= 2) showFirstFrame();
+    else v.addEventListener('loadeddata', showFirstFrame, { once: true });
+    return () => v.removeEventListener('loadeddata', showFirstFrame);
+  }, []);
+
+  // when entering card, trigger entrance
+  useEffect(() => {
+    if (phase === 'card') {
+      const t = setTimeout(() => setCardIn(true), 30);
+      return () => clearTimeout(t);
+    }
+  }, [phase]);
+
+  const onReveal = () => {
+    setRevealed(true);
+    onComplete && onComplete();
+  };
+
+  return (
+    <div className="stage">
+      {/* Intro */}
+      {phase !== 'card' && (
+        <div
+          className={`intro ${phase === 'fading' ? 'fade-out' : ''}`}
+          onClick={handleIntroTap}
+        >
+          <video
+            ref={videoRef}
+            src={window.__resources.introVideo}
+            poster="assets/poster-d2510ef9c5.png"
+            playsInline
+            preload="auto"
+            muted
+            onEnded={handleVideoEnded}
+          />
+          <div className={`intro-overlay ${tapped ? 'hidden' : ''}`}>
+            <div className="tap-to-begin">
+              <div className="ornament">
+                <span className="line" />
+                <span className="dot" />
+                <span className="line" />
+              </div>
+              <div className="label">Tap to Begin</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Card */}
+      {(phase === 'card' || phase === 'fading') && (
+        <div className={`card ${cardIn ? 'in' : ''}`}>
+          <div className="eyebrow">
+            <span className="rule" />
+            <span className="diamond" />
+            <span className="rule" />
+          </div>
+          <h1 className="title">Save the Date</h1>
+          <div className="couple">
+            <span>{coupleParts.a}</span>
+            <span className="amp"> &amp; </span>
+            <span>{coupleParts.b}</span>
+          </div>
+
+          <div className="frame-wrap">
+            <div className="inner">
+              <div className={`glow ${revealed ? 'on' : ''}`} />
+              <div className={`reveal ${revealed ? 'show' : ''}`} aria-hidden={!revealed}>
+                <div className="preamble">on the</div>
+                <div className="day">{dateParts.day}</div>
+                <div className="month-row">
+                  <span className="bar" />
+                  <span className="month">{dateParts.month} {dateParts.year}</span>
+                  <span className="bar" />
+                </div>
+                <div className="sep" />
+                {showVenue && <div className="venue">{venue}</div>}
+                {showCity && <div className="city">{city}</div>}
+              </div>
+              <ScratchCanvas
+                sandUrl={window.__resources.sandImg}
+                onComplete={onReveal}
+              />
+              <Sparkles on={revealed} />
+            </div>
+            <img
+              src={window.__resources.frameImg}
+              alt=""
+              className="frame-img"
+              draggable="false"
+            />
+          </div>
+
+          <div className="formal">
+            Formal invitation
+            <span className="tilde">~</span>
+            to follow
+          </div>
+
+          {showCta && (
+            <div className="cta-wrap">
+              <a
+                className={`cta ${revealed ? 'show' : ''}`}
+                href={calendarUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-hidden={!revealed}
+                tabIndex={revealed ? 0 : -1}
+              >
+                <GoogleIcon />
+                <span>{ctaText}</span>
+              </a>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+const _cfg = window.__STD_CONFIG__ || {};
+root.render(
+  <SaveTheDate
+    coupleName={_cfg.coupleName || 'Chitra & Prateek'}
+    date={_cfg.date || '14 June 2026'}
+    venue={_cfg.venue || 'The Westin Sohna'}
+    city={_cfg.city || 'Gurgaon, Haryana'}
+    calendarUrl={_cfg.calendarUrl || ''}
+    ctaText={_cfg.ctaText || 'Save to Google Calendar'}
+    showVenue={_cfg.showVenue !== false}
+    showCity={_cfg.showCity !== false}
+    showCta={_cfg.showCta !== false}
+  />
+);
+
+</script>
+
+
+<style>
+#stdMusicBtn {
+  position: fixed;
+  right: 14px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.55);
+  background: rgba(10,10,10,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fbf4e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 200ms ease, background 200ms ease;
+}
+#stdMusicBtn:active { transform: scale(0.92); }
+#stdMusicBtn svg { width: 18px; height: 18px; }
+#stdMusicBtn .std-music-bar {
+  display: inline-block;
+  width: 2px;
+  height: 12px;
+  background: currentColor;
+  margin: 0 1px;
+  border-radius: 1px;
+  animation: stdMusicBars 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+#stdMusicBtn .std-music-bar:nth-child(2) { animation-delay: 0.18s; }
+#stdMusicBtn .std-music-bar:nth-child(3) { animation-delay: 0.36s; }
+#stdMusicBtn.is-paused .std-music-bar { animation-play-state: paused; transform: scaleY(0.5); }
+@keyframes stdMusicBars {
+  0%, 100% { transform: scaleY(0.45); }
+  50%      { transform: scaleY(1); }
+}
+</style>
+<audio id="stdBgAudio" src="assets/std_demo_music-cfc265684d.mp3" loop preload="auto" playsinline crossorigin="anonymous"></audio>
+<button id="stdMusicBtn" class="is-paused" aria-label="Toggle music">
+  <span class="std-music-bar"></span><span class="std-music-bar"></span><span class="std-music-bar"></span>
+</button>
+<script>
+(function () {
+  var audio = document.getElementById('stdBgAudio');
+  var btn   = document.getElementById('stdMusicBtn');
+  if (!audio || !btn) return;
+  audio.volume = 0.55;
+  var started = false;
+
+  function play() {
+    var p = audio.play();
+    if (p && typeof p.then === 'function') {
+      p.then(function () { btn.classList.remove('is-paused'); started = true; })
+       .catch(function () { btn.classList.add('is-paused'); });
+    } else {
+      btn.classList.remove('is-paused');
+      started = true;
+    }
+  }
+  function pause() {
+    audio.pause();
+    btn.classList.add('is-paused');
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (audio.paused) play(); else pause();
+  });
+
+  function firstTap() {
+    if (started) return;
+    play();
+    document.removeEventListener('pointerdown', firstTap, true);
+    document.removeEventListener('touchstart',  firstTap, true);
+    document.removeEventListener('click',       firstTap, true);
+  }
+  document.addEventListener('pointerdown', firstTap, true);
+  document.addEventListener('touchstart',  firstTap, true);
+  document.addEventListener('click',       firstTap, true);
+})();
+</script>
+</body></html>
