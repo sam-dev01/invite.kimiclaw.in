@@ -1092,6 +1092,8 @@ a, button, [role="button"], input, select, textarea, label {
   justify-content: center;
   align-items: center;
   position: relative;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* Pricing Grid */
