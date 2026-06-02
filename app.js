@@ -1546,20 +1546,86 @@ function bindEvents() {
 
   if (ckPayNow) {
     ckPayNow.addEventListener("click", () => {
-      // Simulate payment processing
-      ckPayNow.disabled = true;
-      ckPayNow.textContent = "Processing...";
+      const paymentMethod = document.querySelector("input[name='paymentMethod']:checked")?.value || "upi";
       
-      setTimeout(() => {
-        // Save order
-        saveCheckoutOrder();
-        // Populate confirmation
-        populateConfirmation();
-        showCheckoutStep(4);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (paymentMethod === "whatsapp") {
+        // Bypass Razorpay, manual invoicing
+        ckPayNow.disabled = true;
+        ckPayNow.textContent = "Processing Request...";
+        setTimeout(() => {
+          saveCheckoutOrder();
+          populateConfirmation();
+          showCheckoutStep(4);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          ckPayNow.disabled = false;
+          ckPayNow.textContent = "Pay Now →";
+        }, 1000);
+        return;
+      }
+      
+      // Initialize Razorpay
+      if (typeof Razorpay === "undefined") {
+        alert("Payment gateway is currently unavailable. Please check your connection.");
+        return;
+      }
+      
+      ckPayNow.disabled = true;
+      ckPayNow.textContent = "Connecting to Secure Gateway...";
+      
+      const planKey = document.querySelector("#detail-plan-selector").value;
+      const currency = state.currentCurrency;
+      const table = pricingTable[currency];
+      const total = table[planKey] || 999;
+      
+      const bride = document.querySelector("#ck-bride").value || "";
+      const groom = document.querySelector("#ck-groom").value || "";
+      const email = document.querySelector("#ck-email").value || "";
+      const phone = document.querySelector("#ck-phone").value || "";
+      const contactName = document.querySelector("#ck-contact-name").value || `${bride} & ${groom}`;
+      
+      const rzpOptions = {
+        key: "rzp_live_SwqTC3My87u3Hc",
+        amount: total * 100, // Subunits
+        currency: currency,
+        name: "invite.kimiclaw.in",
+        description: `Premium Layout: ${planKey}`,
+        image: "https://invite.kimiclaw.in/assets/palace_backdrop.png",
+        prefill: {
+          name: contactName,
+          email: email,
+          contact: phone
+        },
+        theme: { color: "#C5A26B" },
+        handler: function (response) {
+          // Success
+          const paymentId = response.razorpay_payment_id;
+          
+          // Save order to localStorage
+          saveCheckoutOrder();
+          
+          // Append Payment ID to the success screen
+          populateConfirmation();
+          
+          const confirmSubtitle = document.querySelector("#conf-subtitle");
+          if (confirmSubtitle) {
+            confirmSubtitle.innerHTML = `Your order has been saved successfully.<br><strong style="color:var(--accent-gold);">Payment ID: ${paymentId}</strong>`;
+          }
+          
+          showCheckoutStep(4);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          
+          ckPayNow.disabled = false;
+          ckPayNow.textContent = "Pay Now →";
+        }
+      };
+      
+      const rzpInstance = new Razorpay(rzpOptions);
+      rzpInstance.on("payment.failed", function (response) {
         ckPayNow.disabled = false;
         ckPayNow.textContent = "Pay Now →";
-      }, 1800);
+        alert(state.currentLang === "en" ? "Payment failed or was cancelled." : "El pago ha fallado o ha sido cancelado.");
+      });
+      rzpInstance.open();
     });
   }
 
