@@ -648,29 +648,29 @@
             <h3 data-i18n="wizStep2Header">2. Wedding Event details</h3>
             <div class="form-grid">
               
-              <div class="form-group">
+              <div class="form-group floating">
+                <input type="text" id="wiz-bride" name="brideName" required placeholder=" ">
                 <label for="wiz-bride" data-i18n="labelBride">Bride's Name</label>
-                <input type="text" id="wiz-bride" name="brideName" required placeholder="e.g. Sofia">
               </div>
               
-              <div class="form-group">
+              <div class="form-group floating">
+                <input type="text" id="wiz-groom" name="groomName" required placeholder=" ">
                 <label for="wiz-groom" data-i18n="labelGroom">Groom's Name</label>
-                <input type="text" id="wiz-groom" name="groomName" required placeholder="e.g. Marc">
               </div>
               
-              <div class="form-group">
-                <label for="wiz-date" data-i18n="labelDate">Wedding Date</label>
+              <div class="form-group floating">
                 <input type="date" id="wiz-date" name="weddingDate" required>
+                <label for="wiz-date" data-i18n="labelDate">Wedding Date</label>
               </div>
               
-              <div class="form-group">
+              <div class="form-group floating">
+                <input type="text" id="wiz-venue" name="venue" required placeholder=" ">
                 <label for="wiz-venue" data-i18n="labelVenue">Wedding Venue</label>
-                <input type="text" id="wiz-venue" name="venue" required placeholder="e.g. Finca Mas Solers, Barcelona">
               </div>
               
-              <div class="form-group wide">
+              <div class="form-group wide floating">
+                <textarea id="wiz-notes" name="notes" rows="3" placeholder=" "></textarea>
                 <label for="wiz-notes" data-i18n="labelNotes">Custom Requests, Timeline, or Music Track</label>
-                <textarea id="wiz-notes" name="notes" rows="3" placeholder="Tell us about the music track you liked, ceremonies timeline, dress code parameters, etc."></textarea>
               </div>
               
             </div>
@@ -681,19 +681,19 @@
             <h3 data-i18n="wizStep3Header">3. Upgrades & Contact</h3>
             <div class="form-grid">
               
-              <div class="form-group">
+              <div class="form-group floating">
+                <input type="text" id="wiz-name" name="contactName" required placeholder=" ">
                 <label for="wiz-name" data-i18n="labelContactName">Your Contact Name</label>
-                <input type="text" id="wiz-name" name="contactName" required placeholder="e.g. Marc & Sofia">
               </div>
               
-              <div class="form-group">
+              <div class="form-group floating">
+                <input type="email" id="wiz-email" name="contactEmail" required placeholder=" ">
                 <label for="wiz-email" data-i18n="labelContactEmail">Email Address</label>
-                <input type="email" id="wiz-email" name="contactEmail" required placeholder="e.g. love@domain.com">
               </div>
               
-              <div class="form-group">
+              <div class="form-group floating">
+                <input type="tel" id="wiz-phone" name="contactPhone" required placeholder=" ">
                 <label for="wiz-phone" data-i18n="labelContactPhone">WhatsApp / Phone Number</label>
-                <input type="tel" id="wiz-phone" name="contactPhone" required placeholder="e.g. +34 600 000 000">
               </div>
               
               <div class="form-group wide" style="margin-top: 10px;">

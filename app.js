@@ -1366,6 +1366,21 @@ function populateConfirmation() {
 
 // Event Listeners Binding
 function bindEvents() {
+  // Floating Label Logic
+  document.querySelectorAll(".form-group.floating input, .form-group.floating textarea").forEach(input => {
+    // Initial check
+    if (input.value.trim() !== "") {
+      input.closest(".form-group.floating").classList.add("has-val");
+    }
+    input.addEventListener("input", () => {
+      if (input.value.trim() !== "") {
+        input.closest(".form-group.floating").classList.add("has-val");
+      } else {
+        input.closest(".form-group.floating").classList.remove("has-val");
+      }
+    });
+  });
+
   // Mobile Hamburger Menu
   const hamburgerBtn = document.querySelector("#hamburger-btn");
   const navMenu = document.querySelector("#nav-menu");
