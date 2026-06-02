@@ -1400,11 +1400,25 @@ function bindEvents() {
   // Language Switcher
   if (langBtn) {
     langBtn.addEventListener("click", () => {
-      state.currentLang = state.currentLang === "en" ? "es" : "en";
-      translateUI();
-      renderCatalog();
-      renderHubCatalog();
-      renderSandboxFeature();
+      const welcomeScreen = document.querySelector("#welcome-screen");
+      if (welcomeScreen) {
+        // Pre-fill with current state
+        const langSelect = document.querySelector("#welcome-lang");
+        const currencySelect = document.querySelector("#welcome-currency");
+        if (langSelect) langSelect.value = state.currentLang;
+        if (currencySelect) currencySelect.value = state.currentCurrency;
+        
+        // Show the modal
+        welcomeScreen.classList.remove("hidden");
+        welcomeScreen.style.display = "flex";
+        document.body.style.overflow = "hidden";
+        
+        // Update button text for better UX when opened from header
+        const continueBtn = document.querySelector("#welcome-continue-btn");
+        if (continueBtn) {
+          continueBtn.textContent = "Save Preferences";
+        }
+      }
     });
   }
   
