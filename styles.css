@@ -1750,8 +1750,16 @@ footer {
   }
   
   .sandbox-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
     gap: 32px;
+  }
+  
+  .sandbox-simulator {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   
   .sandbox-tabs {

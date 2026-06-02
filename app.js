@@ -1848,7 +1848,10 @@ window.addEventListener("hashchange", () => {
 });
 
 // Initialization
+let isInitialized = false;
 function init() {
+  if (isInitialized) return;
+  isInitialized = true;
   checkWelcomeScreen();
   updatePricingDisplays();
   populateWizardBaseStyles();
