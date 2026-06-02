@@ -1309,31 +1309,20 @@ function showCheckoutStep(stepNum) {
 function populatePaymentSummary() {
   const designTitle = document.querySelector("#detail-title").textContent;
   const planKey = document.querySelector("#detail-plan-selector").value;
-  const bride = document.querySelector("#ck-bride").value || "";
-  const groom = document.querySelector("#ck-groom").value || "";
-  const dateVal = document.querySelector("#ck-date").value || "—";
   const currency = state.currentCurrency;
   const table = pricingTable[currency];
   const total = table[planKey] || 999;
 
   document.querySelector("#pay-design-name").textContent = designTitle;
   document.querySelector("#pay-plan-name").textContent = planLabel(planKey, currency);
-  document.querySelector("#pay-couple").textContent = `${bride} & ${groom}`;
-  document.querySelector("#pay-date").textContent = dateVal;
   document.querySelector("#pay-total").textContent = `${table.symbol}${total.toLocaleString()}`;
 }
 
 function saveCheckoutOrder() {
   const data = {
-    brideName: document.querySelector("#ck-bride").value,
-    groomName: document.querySelector("#ck-groom").value,
-    weddingDate: document.querySelector("#ck-date").value,
-    venue: document.querySelector("#ck-venue").value,
-    notes: document.querySelector("#ck-notes").value,
     contactName: document.querySelector("#ck-contact-name").value,
     contactEmail: document.querySelector("#ck-email").value,
     contactPhone: document.querySelector("#ck-phone").value,
-    guests: document.querySelector("#ck-guests").value,
     design: document.querySelector("#detail-title").textContent,
     plan: document.querySelector("#detail-plan-selector").value,
     paymentMethod: document.querySelector("input[name='paymentMethod']:checked")?.value || "upi",
@@ -1348,8 +1337,6 @@ function saveCheckoutOrder() {
 function populateConfirmation() {
   const designTitle = document.querySelector("#detail-title").textContent;
   const planKey = document.querySelector("#detail-plan-selector").value;
-  const bride = document.querySelector("#ck-bride").value || "";
-  const groom = document.querySelector("#ck-groom").value || "";
   const currency = state.currentCurrency;
   const table = pricingTable[currency];
   const total = table[planKey] || 999;
@@ -1361,7 +1348,6 @@ function populateConfirmation() {
   document.querySelector("#conf-design").textContent = designTitle;
   document.querySelector("#conf-plan").textContent = planLabel(planKey, currency);
   document.querySelector("#conf-amount").textContent = `${table.symbol}${total.toLocaleString()}`;
-  document.querySelector("#conf-couple").textContent = `${bride} & ${groom}`;
   document.querySelector("#conf-delivery").textContent = "Within 48 hours";
 }
 
@@ -1577,11 +1563,9 @@ function bindEvents() {
       const table = pricingTable[currency];
       const total = table[planKey] || 999;
       
-      const bride = document.querySelector("#ck-bride").value || "";
-      const groom = document.querySelector("#ck-groom").value || "";
       const email = document.querySelector("#ck-email").value || "";
       const phone = document.querySelector("#ck-phone").value || "";
-      const contactName = document.querySelector("#ck-contact-name").value || `${bride} & ${groom}`;
+      const contactName = document.querySelector("#ck-contact-name").value || "Customer";
       
       const rzpOptions = {
         key: "rzp_live_SwqTC3My87u3Hc",
@@ -1631,10 +1615,8 @@ function bindEvents() {
 
   if (confWhatsappBtn) {
     confWhatsappBtn.addEventListener("click", () => {
-      const bride = document.querySelector("#ck-bride").value || "";
-      const groom = document.querySelector("#ck-groom").value || "";
       const designTitle = document.querySelector("#detail-title").textContent;
-      const text = `Hi! I just placed an order for "${designTitle}" wedding invitation for ${bride} & ${groom}. Looking forward to the design!`;
+      const text = `Hi! I just placed an order for the "${designTitle}" wedding invitation. Looking forward to the design!`;
       const whatsappUrl = `https://api.whatsapp.com/send?phone=34600000000&text=${whatsappUrlEncode(text)}`;
       window.open(whatsappUrl, "_blank");
     });
