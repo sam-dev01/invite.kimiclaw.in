@@ -814,6 +814,7 @@ const pricingTable = {
 // Application State
 let state = {
   currentLang: "en",
+  currentCurrency: "USD",
   theme: "light",
   selectedPlan: "Premium",
   selectedAddons: new Set(),
@@ -1239,7 +1240,7 @@ function updateWizardStep() {
 }
 
 // Helper: convert raw plan key to human-readable label with price
-function planLabel(planKey, currency = "INR") {
+function planLabel(planKey, currency = state.currentCurrency) {
   const table = pricingTable[currency] || pricingTable["INR"];
   const sym = table.symbol;
   const labels = {
@@ -1262,7 +1263,7 @@ function compileWizardSummary() {
   const venue = formData.get("venue") || "";
   const basePlan = formData.get("package") || "CustomDomain";
   const baseStyle = formData.get("baseStyle") || "Bloom";
-  const currency = formData.get("currency") || "INR";
+  const currency = formData.get("currency") || state.currentCurrency;
 
   document.querySelector("#summary-names").textContent = `${bride} & ${groom}`;
   document.querySelector("#summary-date-venue").textContent = `${dateVal} at ${venue}`;
@@ -1311,7 +1312,7 @@ function populatePaymentSummary() {
   const bride = document.querySelector("#ck-bride").value || "";
   const groom = document.querySelector("#ck-groom").value || "";
   const dateVal = document.querySelector("#ck-date").value || "—";
-  const currency = "INR";
+  const currency = state.currentCurrency;
   const table = pricingTable[currency];
   const total = table[planKey] || 999;
 
@@ -1349,7 +1350,7 @@ function populateConfirmation() {
   const planKey = document.querySelector("#detail-plan-selector").value;
   const bride = document.querySelector("#ck-bride").value || "";
   const groom = document.querySelector("#ck-groom").value || "";
-  const currency = "INR";
+  const currency = state.currentCurrency;
   const table = pricingTable[currency];
   const total = table[planKey] || 999;
   
@@ -1725,6 +1726,61 @@ function whatsappUrlEncode(str) {
     });
 }
 
+// Welcome Screen Logic
+function checkWelcomeScreen() {
+  const welcomeScreen = document.querySelector("#welcome-screen");
+  if (!welcomeScreen) return;
+
+  const savedLang = localStorage.getItem("userPrefLang");
+  const savedCurrency = localStorage.getItem("userPrefCurrency");
+
+  if (savedLang && savedCurrency) {
+    state.currentLang = savedLang;
+    state.currentCurrency = savedCurrency;
+    welcomeScreen.style.display = "none";
+    document.body.style.overflow = "";
+  } else {
+    welcomeScreen.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  const continueBtn = document.querySelector("#welcome-continue-btn");
+  if (continueBtn) {
+    continueBtn.addEventListener("click", () => {
+      const langSelect = document.querySelector("#welcome-lang").value;
+      const currencySelect = document.querySelector("#welcome-currency").value;
+
+      state.currentLang = langSelect;
+      state.currentCurrency = currencySelect;
+
+      localStorage.setItem("userPrefLang", langSelect);
+      localStorage.setItem("userPrefCurrency", currencySelect);
+
+      welcomeScreen.classList.add("hidden");
+      setTimeout(() => welcomeScreen.style.display = "none", 500); // Wait for transition
+      document.body.style.overflow = "";
+
+      // Re-render UI with new preferences
+      translateUI();
+      renderCatalog();
+      renderHubCatalog();
+      renderSandboxFeature();
+      
+      // Update Detail View Dynamic Pricing if open
+      const detailPlanSelector = document.querySelector("#detail-plan-selector");
+      if (detailPlanSelector) {
+        const planKey = detailPlanSelector.value;
+        const sym = pricingTable[state.currentCurrency].symbol;
+        const total = pricingTable[state.currentCurrency][planKey] || 999;
+        const detailPrice = document.querySelector("#detail-price");
+        const detailCurrencySuffix = document.querySelector("#detail-currency-suffix");
+        if(detailPrice) detailPrice.textContent = `${sym}${total.toLocaleString()}`;
+        if(detailCurrencySuffix) detailCurrencySuffix.textContent = state.currentCurrency;
+      }
+    });
+  }
+}
+
 // Router Event triggers
 window.addEventListener("hashchange", () => {
   handleRoute();
@@ -1732,6 +1788,7 @@ window.addEventListener("hashchange", () => {
 
 // Initialization
 function init() {
+  checkWelcomeScreen();
   populateWizardBaseStyles();
   translateUI();
   renderCatalog();
