@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="application/json" id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/photo1-440172ed05.jpg","assets/photo2-2f971e6f22.jpg","assets/photo3-33243c7880.png","assets/photo4-02ec9fd501.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We have saved a seat for you — at our table, across every timezone, and in our hearts. Come celebrate with us as we begin this beautiful new chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"assets/render-9041edc121.bin\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261212%0ADTEND:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
+<script>window.__WEDDING_CONFIG__ = JSON.parse(document.getElementById('wedding-config').textContent);</script>
+<script>
+</script>
+<script>
+(function() {
+  var bride = 'Tanya';
+  var groom = 'Rohan';
+  var date  = '12 December 2026';
+  function updatePreloader() {
+    // Names in preloader
+    var n1 = document.querySelector('.pl-n1');
+    var n2 = document.querySelector('.pl-n2');
+    if (n1) n1.textContent = bride;
+    if (n2) n2.textContent = groom;
+    // Names in hero copy
+    var hb = document.querySelector('.hc-bride');
+    var hg = document.querySelector('.hc-groom');
+    if (hb) hb.textContent = bride;
+    if (hg) hg.textContent = groom;
+    // Fallback: replace any leaf text still reading the placeholder names
+    document.querySelectorAll('*').forEach(function(el) {
+      if (el.children.length === 0 && el.textContent.trim() === 'Priya') el.textContent = bride;
+      if (el.children.length === 0 && el.textContent.trim() === 'Arjun') el.textContent = groom;
+    });
+    // Date injection
+    if (date) {
+      var found = false;
+      document.querySelectorAll('*').forEach(function(el) {
+        if (el.children.length === 0) {
+          var txt = el.textContent.trim();
+          if (
+            txt === '14 February 2025' || txt === '14 FEBRUARY 2025' ||
+            el.classList.contains('pre-date') ||
+            el.classList.contains('preloader-date') ||
+            el.classList.contains('pl-date')
+          ) {
+            el.textContent = date;
+            found = true;
+          }
+        }
+      });
+      // No existing date element found — insert one after .pl-names
+      if (!found) {
+        var container = document.querySelector('.pl-names') || document.querySelector('.pl-content');
+        if (container && !container.querySelector('.pl-date-injected')) {
+          var dateEl = document.createElement('span');
+          dateEl.className = 'pl-date-injected';
+          dateEl.textContent = date;
+          dateEl.style.cssText = 'display:block;font-family:"DM Sans",sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,152,90,0.75);margin-top:10px;';
+          container.appendChild(dateEl);
+        }
+      }
+    }
+  }
+  updatePreloader();
+  document.addEventListener('DOMContentLoaded', updatePreloader);
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title id="page-title">Aanya &amp; Rohan · 14.02.2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- T08 FONTS: Cormorant Upright (display) + Nunito Sans (body) + Raleway (accent/Futura fallback) -->
+<link href="assets/css2-64c69bda44.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/style-0ed68e2aaa.css">
+<script>
+  // Injected by invite.kimiclaw.in â do not remove
+  if (typeof window.__WEDDING_CONFIG__ !== 'undefined' && window.__WEDDING_CONFIG__) {
+    var WEDDING_CONFIG = window.__WEDDING_CONFIG__;
+  }
+</script>
+</head>
+<body>
+
+<div class="c-ring" id="cRing"></div>
+<div class="c-dot"  id="cDot"></div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="none">
+  <source src="assets/Template_08-7ce62419f2.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">🔔</button>
+
+<!-- PRELOADER — navy → dusty blue → warm silver → champagne -->
+<div id="preloader" class="preloader">
+  <div class="pl-bg"></div>
+  <div class="pl-content">
+    <div class="pl-line-wrap"><div class="pl-line" id="plLine"></div></div>
+    <div class="pl-names" id="plNames">
+      <span class="pl-n1">Aanya</span>
+      <span class="pl-weds">weds</span>
+      <span class="pl-n2">Rohan</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HERO SCROLL SCENE
+     LAYER STACK (bottom → top):
+     z:0  .hero-sky        — dusty blue→steel→silver→champagne gradient
+     z:1  .hero-particles  — silver/champagne/dusty-blue motes drift upward
+     z:4  .hl-couple       — champagne/silver ghost silhouette (inside arch)
+     z:5  .hl-palace       — hybrid Mughal-Euro arch (scroll-zooms 1.0→1.45)
+     z:8  .hero-floats     — white lotus ornaments + fine-line botanicals
+     z:9  .hero-copy       — names (word-reveal, navy on champagne)
+
+     JS: arch → scale 1.0→1.45 (standard)
+         couple → scale 1.0→1.20 + opacity fade (recession into arch depth)
+══════════════════════════════════════════════ -->
+<div id="heroWrap" class="hero-wrap">
+  <div id="heroPin" class="hero-pin">
+
+    <!-- Sky: dusty blue zenith → steel blue → warm silver → champagne horizon -->
+    <div class="hero-sky"></div>
+
+    <!-- CSS ambient particles — silver / champagne / dusty blue architectural motes -->
+    <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+
+    <!-- Ghost couple silhouette z:4 — editorial, barely-there -->
+    <img id="l4" class="hl hl-couple" src="assets/Hero_20Couple-6c0b68cf49.png" alt="">
+
+    <!-- Hybrid Mughal-European arch z:5 — the most architecturally ambiguous hero -->
+    <img id="l3" class="hl hl-palace" src="assets/Herp_20Palace-ff9314a77f.png" alt="">
+
+    <!-- Floating white lotuses + fine-line cypress botanicals -->
+    <div class="hero-floats" aria-hidden="true">
+      <img class="fl diya-l" src="assets/Element_201-e25b038a1f.png" alt="">
+      <img class="fl diya-r" src="assets/Element_201-e25b038a1f.png" alt="">
+      <img class="fl fall-l" src="assets/Element_204-499f905420.png" alt="">
+      <img class="fl fall-r" src="assets/Element_205-1f3c1ef266.png" alt="">
+    </div>
+
+    <div id="petalHero" class="petal-canvas"></div>
+
+    <!-- NAMES — word-reveal animation — Cormorant Upright on champagne sky -->
+    <div id="heroCopy" class="hero-copy">
+      <h1 class="hc-bride"><span>Aanya</span></h1>
+      <span class="hc-weds">weds</span>
+      <h1 class="hc-groom"><span>Rohan</span></h1>
+      <div id="heroCountdown" class="hc-countdown"></div>
+    </div>
+
+    <div class="scroll-nudge" id="scrollNudge">
+      <span>Scroll</span>
+      <div class="sn-line"><div class="sn-dot"></div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ARCH BRIDGE — CSS CROSSFADE ONLY
+     T08 is the ONLY template with NO physical bridge element.
+     Pure gradient transition: dusty blue → silver → champagne.
+     The restraint IS the architectural statement.
+     A single warm-silver hairline draws across on intersection.
+══════════════════════════════════════════════ -->
+<div class="arch-bridge" id="archBridge" aria-hidden="true">
+  <div class="arch-bridge-line" id="archBridgeLine"></div>
+</div>
+
+<!-- INVITATION -->
+<section id="invite" class="s-invite">
+  <img class="bg-fill invite-silver-bg" src="assets/Background_206-61536fca76.png" alt="">
+  <img class="invite-couple-bg" src="assets/Hero_20Couple-6c0b68cf49.png" alt="" aria-hidden="true">
+
+  <!-- Mughal jali geometric border — replaces garland toran entirely -->
+  <div class="toran" id="toranEl">
+    <img src="assets/Background_204-4e96754236.jpg" alt="" class="toran-img">
+  </div>
+
+  <img class="fl-moon"   src="assets/Element_203-33479a0452.png" alt="" aria-hidden="true">
+  <img class="fl-leaf-l" src="assets/Element_204-499f905420.png" alt="" aria-hidden="true">
+  <img class="fl-leaf-r" src="assets/Element_205-1f3c1ef266.png" alt="" aria-hidden="true">
+
+  <div class="container">
+    <div class="invite-card scroll-in">
+
+      <!-- Architectural corner ornaments — warm silver hairlines -->
+      <div class="card-tl">
+        <svg viewBox="0 0 52 52" width="46">
+          <path d="M6,46 Q24,-6 48,14" fill="none" stroke="#C0B090" stroke-width=".7" opacity=".28"/>
+          <line x1="4"  y1="30" x2="20" y2="30" stroke="#C0B090" stroke-width=".5" opacity=".22"/>
+          <line x1="4"  y1="34" x2="16" y2="34" stroke="#C0B090" stroke-width=".4" opacity=".18"/>
+        </svg>
+      </div>
+      <div class="card-tr">
+        <svg viewBox="0 0 52 52" width="46">
+          <path d="M46,46 Q28,-6 4,14" fill="none" stroke="#C0B090" stroke-width=".7" opacity=".28"/>
+          <line x1="48" y1="30" x2="32" y2="30" stroke="#C0B090" stroke-width=".5" opacity=".22"/>
+          <line x1="48" y1="34" x2="36" y2="34" stroke="#C0B090" stroke-width=".4" opacity=".18"/>
+        </svg>
+      </div>
+
+      <!-- 16-petal white lotus — universal auspicious motif, ganeshaPulse animation -->
+      <div class="i-ganesha">
+        <img src="assets/Element_206-a602c38fc8.png" alt="Lotus" class="i-ganesha-img">
+      </div>
+
+      <!-- Warm silver Mughal ornamental rule — diamond at centre -->
+      <div class="i-rule">
+        <svg viewBox="0 0 300 10" width="100%" style="max-width:300px">
+          <line x1="0"   y1="5" x2="110" y2="5" stroke="#C0B090" stroke-width=".6" opacity=".32"/>
+          <rect x="128"  y="2" width="6"  height="6" fill="#C0B090" opacity=".48" transform="rotate(45 131 5)"/>
+          <line x1="152" y1="5" x2="300" y2="5" stroke="#C0B090" stroke-width=".6" opacity=".32"/>
+        </svg>
+      </div>
+
+      <p class="i-bless">With the blessings of the divine<br>and the love of our families</p>
+      <p class="i-label">Together we joyfully invite you to celebrate</p>
+
+      <div class="i-names">
+        <span class="i-bride">Aanya</span>
+        <span class="i-amp">&amp;</span>
+        <span class="i-groom">Rohan</span>
+      </div>
+
+      <div class="i-rule">
+        <svg viewBox="0 0 300 10" width="100%" style="max-width:300px">
+          <line x1="0"   y1="5" x2="110" y2="5" stroke="#C0B090" stroke-width=".6" opacity=".32"/>
+          <rect x="128"  y="2" width="6"  height="6" fill="#C0B090" opacity=".48" transform="rotate(45 131 5)"/>
+          <line x1="152" y1="5" x2="300" y2="5" stroke="#C0B090" stroke-width=".6" opacity=".32"/>
+        </svg>
+      </div>
+
+      <div class="i-fam" id="iFam">
+        <div class="fam-side">
+          <div class="fam-gp" id="iFamGpBride" style="display:none"></div>
+          <div class="fam-parents"><em>Daughter of</em><br><span id="iBrideParents">Mr. &amp; Mrs. Sharma</span></div>
+        </div>
+        <div class="fam-dot">◈</div>
+        <div class="fam-side">
+          <div class="fam-gp" id="iFamGpGroom" style="display:none"></div>
+          <div class="fam-parents"><em>Son of</em><br><span id="iGroomParents">Mr. &amp; Mrs. Kapoor</span></div>
+        </div>
+      </div>
+      <p class="i-close">On the following auspicious occasions</p>
+    </div>
+  </div>
+  <div id="petalInvite" class="petal-canvas"></div>
+</section>
+
+<!-- Wave — champagne into events -->
+<div class="wdiv">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none">
+    <path d="M0,24 C360,48 720,0 1080,24 C1260,36 1440,12 1440,24 L1440,48 L0,48Z" fill="#E8E0D0"/>
+  </svg>
+</div>
+
+<!-- EVENTS -->
+<section id="events" class="s-events">
+  <img class="bg-fill" src="assets/Background_203-4f7475efc1.jpg" alt="">
+  <div class="ev-paper-veil"></div>
+  <img class="fl-leaf-l" src="assets/Element_204-499f905420.png" alt="" aria-hidden="true">
+  <img class="fl-leaf-r" src="assets/Element_205-1f3c1ef266.png" alt="" aria-hidden="true">
+
+  <div class="container">
+    <div class="s-head scroll-in">
+      <span class="sh-eye">The Celebrations</span>
+      <h2 class="sh-h">Our <em>Events</em></h2>
+    </div>
+
+    <!-- Jali geometric underline — silver + steel-blue diamonds — draws on entry -->
+    <div class="sh-line-wrap" id="evLinewrap">
+      <svg class="sh-line-svg" viewBox="0 0 320 14" width="320" height="14">
+        <path class="sh-leaf-path" d="M10,7 L310,7"  fill="none" stroke="#C0B090" stroke-width="1.5" opacity=".42"/>
+        <path class="sh-leaf-path" d="M10,11 L310,11" fill="none" stroke="#C0B090" stroke-width=".6" opacity=".24"/>
+        <rect x="75"  y="4" width="6" height="6" fill="#6A80A0" opacity=".50" transform="rotate(45 78 7)"/>
+        <rect x="155" y="4" width="7" height="7" fill="#C0B090" opacity=".62" transform="rotate(45 158.5 7.5)"/>
+        <rect x="235" y="4" width="6" height="6" fill="#6A80A0" opacity=".50" transform="rotate(45 238 7)"/>
+      </svg>
+    </div>
+
+    <div class="ev-journey-wrap" aria-hidden="true">
+      <svg class="ev-journey-svg" id="evJourneySvg" preserveAspectRatio="none">
+        <path class="ej-track" id="ejTrack" fill="none"/>
+        <path class="ej-drawn" id="ejDrawn" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="ev-float-stage" id="evStage">
+
+      <article class="ev-node ev-row1 scroll-in" style="--sd:.05s" data-idx="0">
+        <div class="ev-icon-wrap"><img src="assets/icon-mehendi-eb16941f67.png" alt="Mehendi" class="ev-icon"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Mehendi</span><span class="ev-date">12 Feb · 4:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Garden Terrace</p><p class="ev-desc">Henna, heritage and the afternoon light of a garden in bloom.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+      </article>
+
+      <article class="ev-node ev-row1 scroll-in" style="--sd:.15s" data-idx="1">
+        <div class="ev-icon-wrap"><img src="assets/icon-haldi-739bd1aaa7.png" alt="Haldi" class="ev-icon"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Haldi</span><span class="ev-date">13 Feb · 10:00 AM</span></div>
+        <div class="ev-detail"><p class="ev-venue">Family Courtyard</p><p class="ev-desc">Turmeric, laughter and the warmth of those who matter most.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+      </article>
+
+      <article class="ev-node ev-row1 scroll-in" style="--sd:.25s" data-idx="2">
+        <div class="ev-icon-wrap"><img src="assets/icon-cocktail-199c255966.png" alt="Cocktail" class="ev-icon"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Cocktail</span><span class="ev-date">13 Feb · 7:30 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Rooftop</p><p class="ev-desc">Champagne, conversation and a city skyline at dusk.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+      </article>
+
+      <article class="ev-node ev-row2 scroll-in" style="--sd:.10s" data-idx="3">
+        <div class="ev-icon-wrap"><img src="assets/icon-sagan-315b57b0ee.png" alt="Sagan" class="ev-icon"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Sagan</span><span class="ev-date">13 Feb · 5:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Drawing Room</p><p class="ev-desc">An intimate ceremony of family blessings before forever.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+      </article>
+
+      <article class="ev-node ev-row2 ev-node--hero scroll-in" style="--sd:.20s" data-idx="4">
+        <div class="ev-icon-wrap"><img src="assets/icon-shaadi-df54463aa2.png" alt="Shaadi" class="ev-icon"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Shaadi</span><span class="ev-date">14 Feb · 10:00 AM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Grand Lawn</p><p class="ev-desc">Seven vows, one lifetime beginning under an open sky.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+      </article>
+
+      <article class="ev-node ev-row2 scroll-in" style="--sd:.30s" data-idx="5">
+        <div class="ev-icon-wrap"><img src="assets/icon-reception-2adacf4259.png" alt="Reception" class="ev-icon"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Reception</span><span class="ev-date">14 Feb · 7:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Grand Ballroom</p><p class="ev-desc">Dance, dine and celebrate as the evening unfolds in splendour.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+      </article>
+
+    </div>
+  </div>
+  <div id="petalEvents" class="petal-canvas"></div>
+</section>
+
+<!-- Sparse botanical divider — silver cypress + lotus bud -->
+<div class="leaf-div">
+  <img src="assets/divider-leaves-6b51288095.png" alt="" class="divider-img" aria-hidden="true">
+</div>
+
+<!-- STORY — dusty blue curtain reveal + Taj Mahal silhouette backdrop -->
+<!-- NOTE: T08 has NO bride/groom characters. Taj silhouette replaces them entirely. -->
+<section id="story" class="s-story">
+  <div class="st-paper-bg"></div>
+  <!-- Taj Mahal JPG as full story background (very low opacity) -->
+  <img class="st-taj-bg" src="assets/Firefly_Flux_Minimal_20paper-cut_20art_20illustration_20of_20the_20Taj_20Mahal_2-cb2d7de350.jpg" alt="" aria-hidden="true">
+
+  <div class="st-stage" id="stStage">
+
+    <div class="st-reveal" id="stReveal">
+
+      <!-- Spinning Mughal geometric mandala -->
+      <div class="st-mandala" aria-hidden="true">
+        <svg viewBox="0 0 320 320" width="300" height="300">
+          <circle cx="160" cy="160" r="138" fill="none" stroke="rgba(74,96,128,.10)"   stroke-width="1.2"/>
+          <circle cx="160" cy="160" r="106" fill="none" stroke="rgba(192,176,144,.08)" stroke-width=".9"/>
+          <circle cx="160" cy="160" r="72"  fill="none" stroke="rgba(74,96,128,.07)"   stroke-width=".7"/>
+          <circle cx="160" cy="160" r="40"  fill="none" stroke="rgba(192,176,144,.09)" stroke-width=".7"/>
+          <g opacity=".12">
+            <ellipse cx="160" cy="34" rx="6" ry="20" fill="#4A6080" transform="rotate(0   160 160)"/>
+            <ellipse cx="160" cy="34" rx="6" ry="20" fill="#C0B090" transform="rotate(45  160 160)"/>
+            <ellipse cx="160" cy="34" rx="6" ry="20" fill="#4A6080" transform="rotate(90  160 160)"/>
+            <ellipse cx="160" cy="34" rx="6" ry="20" fill="#C0B090" transform="rotate(135 160 160)"/>
+            <ellipse cx="160" cy="34" rx="6" ry="20" fill="#4A6080" transform="rotate(180 160 160)"/>
+            <ellipse cx="160" cy="34" rx="6" ry="20" fill="#C0B090" transform="rotate(225 160 160)"/>
+            <ellipse cx="160" cy="34" rx="6" ry="20" fill="#4A6080" transform="rotate(270 160 160)"/>
+            <ellipse cx="160" cy="34" rx="6" ry="20" fill="#C0B090" transform="rotate(315 160 160)"/>
+          </g>
+          <!-- Mughal jali octagon at centre -->
+          <rect x="154" y="154" width="12" height="12" fill="rgba(192,176,144,.18)" transform="rotate(45 160 160)"/>
+          <rect x="157" y="157" width="6"  height="6"  fill="rgba(74,96,128,.12)"   transform="rotate(0 160 160)"/>
+        </svg>
+      </div>
+
+      <div class="st-rv-inner">
+        <div class="st-rv-header" id="stRvHeader">
+          <span class="sh-eye">Our Journey</span>
+          <h2 class="sh-h">Meet the <em>Couple</em></h2>
+        </div>
+        <div class="st-rv-names" id="stRvNames">
+          <span class="st-rv-bride" id="stRvBride">Aanya</span>
+          <span class="st-rv-amp">&amp;</span>
+          <span class="st-rv-groom" id="stRvGroom">Rohan</span>
+        </div>
+        <p class="st-rv-verse" id="stRvVerse">Two worlds, one chai stop in Bombay, a lifetime of quiet mornings.</p>
+        <div class="st-rv-tags" id="stRvTags">
+          <span class="st-rv-tag">London &amp; Mumbai</span>
+          <span class="st-rv-tag">Biryani romantics</span>
+          <span class="st-rv-tag">Midnight flights</span>
+          <span class="st-rv-tag">Forever &amp; always</span>
+        </div>
+      </div>
+      <div class="st-petals" id="stPetals"></div>
+    </div>
+
+    <!-- ⭐ TAJ MAHAL SILHOUETTE — transparent PNG — replaces all character figurines -->
+    <div class="st-arch-wrap" id="stArchWrap">
+      <img class="st-arch-img"
+           src="assets/Firefly_Remove_20background_20269115-171ce634ef.png"
+           alt="" aria-hidden="true"
+           onerror="this.style.display='none'">
+    </div>
+
+    <!-- Dusty blue curtains — CSS panels, 2 flat pleats, silver trim edge -->
+    <div class="st-curtains" id="stCurtains">
+      <div class="st-curt st-curt-l" id="stCurtL">
+        <div class="st-curt-panel">
+          <div class="st-curt-pleat st-curt-pleat-1"></div>
+          <div class="st-curt-pleat st-curt-pleat-2"></div>
+          <div class="st-curt-silver-trim"></div>
+        </div>
+        <div class="st-curt-shadow st-curt-shadow-l"></div>
+      </div>
+      <div class="st-curt st-curt-r" id="stCurtR">
+        <div class="st-curt-panel st-curt-panel-r">
+          <div class="st-curt-pleat st-curt-pleat-1"></div>
+          <div class="st-curt-pleat st-curt-pleat-2"></div>
+          <div class="st-curt-silver-trim st-curt-silver-trim-r"></div>
+        </div>
+        <div class="st-curt-shadow st-curt-shadow-r"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Jali geometric strip divider — warm silver diamonds -->
+<div class="diya-div">
+  <img src="assets/divider-diyas-86a542ee38.png" alt="" class="divider-img" aria-hidden="true">
+</div>
+
+<!-- GALLERY -->
+<section id="gallery" class="s-gallery">
+  <img class="bg-fill" src="assets/Background_206-61536fca76.png" alt="">
+  <div class="container">
+    <div class="s-head scroll-in">
+      <span class="sh-eye">Moments</span>
+      <h2 class="sh-h">Our <em>Gallery</em></h2>
+    </div>
+    <div class="sh-line-wrap" id="galLinewrap">
+      <svg class="sh-line-svg" viewBox="0 0 320 14" width="320" height="14">
+        <path class="sh-leaf-path" d="M10,7 L310,7"  fill="none" stroke="#C0B090" stroke-width="1.5" opacity=".42"/>
+        <path class="sh-leaf-path" d="M10,11 L310,11" fill="none" stroke="#C0B090" stroke-width=".6" opacity=".24"/>
+        <rect x="75"  y="4" width="6" height="6" fill="#6A80A0" opacity=".50" transform="rotate(45 78 7)"/>
+        <rect x="155" y="4" width="7" height="7" fill="#C0B090" opacity=".62" transform="rotate(45 158.5 7.5)"/>
+        <rect x="235" y="4" width="6" height="6" fill="#6A80A0" opacity=".50" transform="rotate(45 238 7)"/>
+      </svg>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item gal-tall scroll-in" style="--sd:0s">
+        <div class="gal-ph"><span class="gal-m">A&amp;R</span><span class="gal-s">Your photo</span></div>
+      </div>
+      <div class="gal-item scroll-in" style="--sd:.10s">
+        <div class="gal-ph"><span class="gal-m">A&amp;R</span><span class="gal-s">Your photo</span></div>
+      </div>
+      <div class="gal-item scroll-in" style="--sd:.20s">
+        <div class="gal-ph"><span class="gal-m">A&amp;R</span><span class="gal-s">Your photo</span></div>
+      </div>
+      <div class="gal-item scroll-in" style="--sd:.30s">
+        <div class="gal-ph"><span class="gal-m">A&amp;R</span><span class="gal-s">Your photo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THINGS TO KNOW -->
+<section id="things" class="s-things">
+  <img class="bg-fill things-sky" src="assets/Hero_20background-200fbc97b7.jpg" alt="">
+  <div class="things-veil"></div>
+  <div id="petalThings" class="petal-canvas"></div>
+  <div class="container">
+    <div class="s-head scroll-in">
+      <span class="sh-eye sh-eye--lt">Good to Know</span>
+      <h2 class="sh-h sh-h--lt">Things to <em>Know</em></h2>
+    </div>
+    <div class="sh-line-wrap" id="thingsLinewrap">
+      <svg class="sh-line-svg" viewBox="0 0 320 14" width="320" height="14">
+        <path class="sh-leaf-path" d="M10,7 L310,7"  fill="none" stroke="#C0B090" stroke-width="1.5" opacity=".55"/>
+        <path class="sh-leaf-path" d="M10,11 L310,11" fill="none" stroke="#C0B090" stroke-width=".6" opacity=".30"/>
+        <rect x="75"  y="4" width="6" height="6" fill="#6A80A0" opacity=".58" transform="rotate(45 78 7)"/>
+        <rect x="155" y="4" width="7" height="7" fill="#C0B090" opacity=".70" transform="rotate(45 158.5 7.5)"/>
+        <rect x="235" y="4" width="6" height="6" fill="#6A80A0" opacity=".58" transform="rotate(45 238 7)"/>
+      </svg>
+    </div>
+    <div class="tt-row">
+      <div class="tt scroll-in" style="--sd:0s">
+        <svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="#C0B090" stroke-width="1.2" stroke-linecap="round">
+          <line x1="7" y1="12" x2="25" y2="12"/><line x1="7" y1="20" x2="25" y2="20"/>
+          <line x1="13" y1="6" x2="11" y2="26"/><line x1="21" y1="6" x2="19" y2="26"/>
+        </svg>
+        <span class="tt-l">Hashtag</span><p class="tt-v" id="ttkHashtag">#AanyaWedsRohan</p>
+      </div>
+      <div class="tt scroll-in" style="--sd:.10s">
+        <svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="#C0B090" stroke-width="1.2" stroke-linecap="round">
+          <path d="M16 7a3 3 0 0 1 3 3"/><path d="M5 23 L16 11 L27 23 Q28 25 26 26 L6 26 Q4 25 5 23Z"/>
+        </svg>
+        <span class="tt-l">Dress Code</span><p class="tt-v">Champagne &amp; Blue</p>
+      </div>
+      <div class="tt scroll-in" style="--sd:.20s">
+        <svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="#C0B090" stroke-width="1.2" stroke-linecap="round">
+          <path d="M16 3a10 10 0 0 1 10 10c0 9-10 18-10 18S6 22 6 13A10 10 0 0 1 16 3z"/><circle cx="16" cy="13" r="3.5"/>
+        </svg>
+        <span class="tt-l">Venue</span><p class="tt-v" id="ttkVenue">The Grand Palace<br>Mumbai</p>
+      </div>
+      <div class="tt scroll-in" style="--sd:.30s">
+        <svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="#C0B090" stroke-width="1.2" stroke-linecap="round">
+          <circle cx="16" cy="16" r="12"/><path d="M16 10v6l4 3"/>
+        </svg>
+        <span class="tt-l">Parking</span><p class="tt-v">Available<br>on-site</p>
+      </div>
+    </div>
+    <div class="tt-ig scroll-in"><span>Follow our story</span><a href="#">#AanyaWedsRohan</a></div>
+  </div>
+</section>
+
+<!-- Wave up into RSVP — warm white -->
+<div class="wdiv wdiv--up">
+  <svg viewBox="0 0 1440 55" preserveAspectRatio="none">
+    <path d="M0,33 C360,0 720,55 1080,33 C1260,16 1440,50 1440,33 L1440,55 L0,55Z" fill="#F8F5EE"/>
+  </svg>
+</div>
+
+<!-- RSVP -->
+<section id="rsvp" class="s-rsvp">
+  <div class="rsvp-paper-veil"></div>
+
+  <!-- Architectural petal scatter — very restrained, dusty blue + silver -->
+  <div class="rsvp-florals" aria-hidden="true">
+    <svg class="rsvp-fl rsvp-fl--tl" viewBox="0 0 180 180" fill="none">
+      <ellipse cx="60"  cy="90"  rx="14" ry="36" fill="#4A6080" opacity=".05" transform="rotate(-30 60 90)"/>
+      <ellipse cx="90"  cy="55"  rx="11" ry="30" fill="#C0B090" opacity=".04" transform="rotate(20 90 55)"/>
+      <path d="M80,80 L88,70 L96,80 L88,90Z" fill="#C0B090" opacity=".07"/>
+    </svg>
+    <svg class="rsvp-fl rsvp-fl--br" viewBox="0 0 180 180" fill="none">
+      <ellipse cx="60"  cy="90"  rx="14" ry="36" fill="#4A6080" opacity=".05" transform="rotate(-30 60 90)"/>
+      <ellipse cx="90"  cy="55"  rx="11" ry="30" fill="#C0B090" opacity=".04" transform="rotate(20 90 55)"/>
+      <path d="M80,80 L88,70 L96,80 L88,90Z" fill="#C0B090" opacity=".07"/>
+    </svg>
+    <svg class="rsvp-fl rsvp-fl--tr" viewBox="0 0 120 120" fill="none">
+      <ellipse cx="40" cy="60" rx="8" ry="22" fill="#4A6080" opacity=".05" transform="rotate(15 40 60)"/>
+    </svg>
+    <svg class="rsvp-fl rsvp-fl--bl" viewBox="0 0 120 120" fill="none">
+      <ellipse cx="40" cy="60" rx="8" ry="22" fill="#4A6080" opacity=".05" transform="rotate(15 40 60)"/>
+    </svg>
+  </div>
+
+  <!-- White lotus ornaments — slowest swing in library (6.0s) -->
+  <img class="s-diya-l" src="assets/Element_201-e25b038a1f.png" alt="" aria-hidden="true">
+  <img class="s-diya-r" src="assets/Element_201-e25b038a1f.png" alt="" aria-hidden="true">
+
+  <!-- Mughal jali border at top of RSVP — same as invite, different sway phase -->
+  <div class="rsvp-toran" aria-hidden="true">
+    <img src="assets/Background_204-4e96754236.jpg" alt="" class="toran-img rsvp-toran-img">
+  </div>
+  <div id="petalRsvp" class="petal-canvas"></div>
+
+  <div class="container rsvp-body">
+
+    <!-- Warm silver Mughal rule with diamond centre -->
+    <div class="rsvp-rule scroll-in">
+      <svg viewBox="0 0 400 12" width="100%" style="max-width:400px">
+        <line x1="0"   y1="6" x2="168" y2="6" stroke="#C0B090" stroke-width=".7" opacity=".30"/>
+        <rect x="186"  y="3" width="6"  height="6" fill="#C0B090" opacity=".48" transform="rotate(45 189 6)"/>
+        <line x1="210" y1="6" x2="400" y2="6" stroke="#C0B090" stroke-width=".7" opacity=".30"/>
+      </svg>
+    </div>
+
+    <span class="rsvp-eye scroll-in" style="--sd:.05s">Join the Celebration</span>
+
+    <h2 class="rsvp-heading scroll-in" id="rsvpHeading" style="--sd:.12s">
+      Will you <em>join us?</em>
+    </h2>
+
+    <p class="rsvp-sub scroll-in" id="rsvpSub" style="--sd:.22s">
+      We have saved a seat for you — at our table, across every timezone, and in our hearts.<br>
+      Come celebrate with us as we begin this beautiful new chapter together.
+    </p>
+
+    <div class="rsvp-cta-wrap scroll-in" style="--sd:.34s">
+      <a id="rsvpWaBtn" class="rsvp-wa-btn"
+         href="assets/919999999999-f1ec887d69.bin"
+         target="_blank" rel="noopener noreferrer" aria-label="RSVP via WhatsApp">
+        <span class="rsvp-wa-shimmer"></span>
+        <span class="rsvp-wa-inner">
+          <svg class="rsvp-wa-icon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.121 1.527 5.855L0 24l6.306-1.506A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.37l-.359-.214-3.737.892.93-3.63-.235-.373A9.818 9.818 0 1112 21.818z"/>
+          </svg>
+          Yes, I'll be there ◈
+        </span>
+      </a>
+    </div>
+
+    <p class="rsvp-ps scroll-in" style="--sd:.44s">You will be redirected to WhatsApp to confirm your attendance.</p>
+
+    <div class="rsvp-rule scroll-in" style="--sd:.5s">
+      <svg viewBox="0 0 400 12" width="100%" style="max-width:400px">
+        <line x1="0"   y1="6" x2="168" y2="6" stroke="#C0B090" stroke-width=".7" opacity=".30"/>
+        <rect x="186"  y="3" width="6"  height="6" fill="#C0B090" opacity=".48" transform="rotate(45 189 6)"/>
+        <line x1="210" y1="6" x2="400" y2="6" stroke="#C0B090" stroke-width=".7" opacity=".30"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER — deep navy slate + warm silver names + Mughal arch SVG icon -->
+<footer class="footer">
+  <!-- Minimal Mughal horseshoe arch with lotus finial — warm silver -->
+  <svg class="ft-lotus" viewBox="0 0 70 64" width="62" aria-hidden="true">
+    <path d="M14,58 L14,30 Q14,10 35,10 Q56,10 56,30 L56,58"
+          fill="none" stroke="#C0B090" stroke-width="1.4" opacity=".38"/>
+    <!-- Keystone diamond -->
+    <rect x="31.5" y="7" width="7" height="7" fill="none" stroke="#C0B090"
+          stroke-width=".8" opacity=".42" transform="rotate(45 35 10.5)"/>
+    <!-- Lotus finial -->
+    <circle cx="35" cy="5.5" r="3.5" fill="none" stroke="#C0B090" stroke-width=".7" opacity=".38"/>
+    <circle cx="35" cy="5.5" r="1.2" fill="#C0B090" opacity=".45"/>
+    <!-- Column base lines -->
+    <line x1="8"  y1="58" x2="62" y2="58" stroke="#C0B090" stroke-width="1.2" opacity=".30"/>
+    <line x1="6"  y1="62" x2="64" y2="62" stroke="#C0B090" stroke-width=".5"  opacity=".18"/>
+  </svg>
+  <div class="ft-names">Aanya &amp; Rohan</div>
+  <div class="ft-rule"></div>
+  <p class="ft-date">14 February 2025 · The Grand Palace, Mumbai</p>
+  <p class="ft-credit">Crafted with love on <a href="#" target="_blank" rel="noopener">invite.kimiclaw.in</a></p>
+</footer>
+
+<script src="assets/script-427fea2e6d.js"></script>
+
+<!-- ═══════════════════════════════════════
+     SHAADIPATH CONFIG LOADER — T08
+     NRI Destination Grace
+═══════════════════════════════════════ -->
+<script>
+(function applyWeddingConfig(){
+  'use strict';
+  const C=(typeof WEDDING_CONFIG!=='undefined')?WEDDING_CONFIG:null;
+  if(!C){initMusic();return;}
+  const{couple,invite,events,story,gallery,thingsToKnow,rsvp}=C;
+  function fmt(d){try{return new Date(d+'T00:00').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});}catch(e){return d||'';}}
+  function fmtT(t){if(!t)return'';const[h,m]=t.split(':');const hr=parseInt(h);return(hr%12||12)+':'+(m||'00')+' '+(hr<12?'AM':'PM');}
+  function el(id){return document.getElementById(id);}
+
+  /* 1. TITLE + HERO */
+  const dShort=couple.date?new Date(couple.date+'T00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'2-digit',year:'numeric'}):'';
+  document.title=couple.bride+' & '+couple.groom+' · '+dShort;
+  const heroCopy=el('heroCopy');
+  if(heroCopy){const bEl=heroCopy.querySelector('.hc-bride span'),gEl=heroCopy.querySelector('.hc-groom span');if(bEl)bEl.textContent=couple.bride;if(gEl)gEl.textContent=couple.groom;}
+  const pn1=document.querySelector('.pl-n1'),pn2=document.querySelector('.pl-n2');
+  if(pn1)pn1.textContent=couple.bride;if(pn2)pn2.textContent=couple.groom;
+
+  /* 2. INVITATION */
+  const blessEl=document.querySelector('.i-bless');
+  if(blessEl&&invite&&invite.blessing)blessEl.innerHTML=invite.blessing.replace(/\n/g,'<br>');
+  const ib=document.querySelector('.i-bride'),ig2=document.querySelector('.i-groom');
+  if(ib)ib.textContent=couple.bride;if(ig2)ig2.textContent=couple.groom;
+  if(invite){
+    const bF=[invite.brideFather,invite.brideMother].filter(Boolean).join(' & ')||'Mr. & Mrs. Sharma';
+    const gF=[invite.groomFather,invite.groomMother].filter(Boolean).join(' & ')||'Mr. & Mrs. Kapoor';
+    const bPar=el('iBrideParents'),gPar=el('iGroomParents');
+    if(bPar)bPar.textContent=bF;if(gPar)gPar.textContent=gF;
+    if(invite.showGrandparents){
+      const bgp=[invite.brideGF,invite.brideGM].filter(Boolean).join(' & ');
+      const ggp=[invite.groomGF,invite.groomGM].filter(Boolean).join(' & ');
+      const bgpEl=el('iFamGpBride'),ggpEl=el('iFamGpGroom');
+      if(bgpEl&&bgp){bgpEl.innerHTML='<em>Blessed by</em><br>'+bgp;bgpEl.style.display='block';}
+      if(ggpEl&&ggp){ggpEl.innerHTML='<em>Blessed by</em><br>'+ggp;ggpEl.style.display='block';}
+    }
+  }
+
+  /* 3. EVENTS */
+  const evStage=el('evStage');
+  if(evStage&&events&&events.length){
+    const half=Math.ceil(events.length/2);
+    const maxCols=half;
+    evStage.dataset.evCount=events.length;
+    evStage.style.setProperty('--ev-cols',maxCols);
+    const row2Len=events.length-half;
+    evStage.innerHTML=events.map((ev,idx)=>{
+      const isRow2=idx>=half;
+      const row=isRow2?'ev-row2':'ev-row1';
+      const hero=ev.id==='shaadi'||ev.id==='pheras'?'ev-node--hero':'';
+      const sd=(idx*.1).toFixed(2);
+      const dStr=ev.date?new Date(ev.date+'T00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'';
+      const tStr=fmtT(ev.time);
+      const dateLabel=[dStr,tStr].filter(Boolean).join(' · ');
+      const mapsLink=ev.mapsLink?`<a href="${ev.mapsLink}" target="_blank" class="ev-cta">📍 Open in Google Maps</a>`:'';
+      let colStyle='';
+      if(isRow2&&row2Len<maxCols){const r2i=idx-half;const col=row2Len===1?'1/-1':`${Math.round(r2i*(maxCols-1)/(row2Len-1))+1}`;colStyle=`grid-column:${col};`;}
+      return`<article class="ev-node ${row} ${hero} scroll-in" style="--sd:${sd}s;${colStyle}" data-idx="${idx}">
+        <div class="ev-icon-wrap"><img src="${ev.icon}" alt="${ev.name}" class="ev-icon" onerror="this.style.display='none'"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">${ev.name}</span><span class="ev-date">${dateLabel}</span></div>
+        <div class="ev-detail">${ev.venue?`<p class="ev-venue">${ev.venue}</p>`:''}${ev.desc?`<p class="ev-desc">${ev.desc}</p>`:''}${mapsLink}</div>
+      </article>`;
+    }).join('');
+    setTimeout(()=>{evStage.querySelectorAll('.scroll-in').forEach(function(n){n.classList.add('vis');});if(typeof initEventsAutoOpen==='function')initEventsAutoOpen();if(typeof window._evJourneyLayout==='function')window._evJourneyLayout();},120);
+  }
+
+  /* 4. STORY */
+  if(invite&&invite.show===false){const is=el('invite');if(is)is.style.display='none';}
+  if(story&&story.show===false){const ss=el('story');if(ss)ss.style.display='none';}
+  else{
+    const setText=(id,txt)=>{const e=el(id);if(e&&txt)e.textContent=txt;};
+    setText('stRvBride',couple.bride);setText('stRvGroom',couple.groom);
+    const tagEl=el('stRvTags');
+    if(story&&story.storyMode==='story'&&story.storyText){const ve=el('stRvVerse');if(ve)ve.textContent=story.storyText;if(tagEl)tagEl.style.display='none';}
+    else if(tagEl&&story&&story.tags&&story.tags.length)tagEl.innerHTML=story.tags.map(t=>`<span class="st-rv-tag">${t}</span>`).join('');
+    const htag=(story&&story.customHashtag)||couple.hashtag||'';
+    if(htag)document.querySelectorAll('.tt-ig a').forEach(a=>a.textContent=htag);
+  }
+
+  /* 5. GALLERY */
+  const galSec=el('gallery');
+  if(galSec){
+    if(!gallery||!gallery.show||gallery.layout==='skip'){galSec.style.display='none';}
+    else if(gallery.photos&&gallery.photos.length){
+      const gg=galSec.querySelector('.gal-grid');
+      if(gg){
+        const n=parseInt(gallery.layout)||4;
+        if(n<4) gg.style.gridTemplateColumns='repeat('+n+',1fr)';
+        gg.innerHTML=Array.from({length:n},(_,i)=>{
+          const p=gallery.photos[i];
+          return p?`<div class="gal-item ${i===0&&n===4?'gal-tall':''}"><img src="${p}" style="width:100%;height:100%;object-fit:cover" alt=""></div>`:`<div class="gal-item ${i===0&&n===4?'gal-tall':''}"><div class="gal-ph"><span class="gal-m">A&R</span></div></div>`;
+        }).join('');
+      }
+    }
+  }
+
+  /* 6. THINGS TO KNOW */
+  const thingsSec=el('things');
+  if(C.showThingsToKnow===false){if(thingsSec)thingsSec.style.display='none';}
+  else if(thingsToKnow&&thingsToKnow.length){
+    const ttRow=document.querySelector('.tt-row');
+    const firstIc=ttRow&&ttRow.querySelector('.tt-ic');
+    const iconStroke=firstIc?firstIc.getAttribute('stroke'):'#C4985A';
+    const custIc='<svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="'+iconStroke+'" stroke-width="1.3" stroke-linecap="round"><circle cx="16" cy="16" r="11"/><line x1="16" y1="13" x2="16" y2="20"/><circle cx="16" cy="10" r="1" fill="'+iconStroke+'"/></svg>';
+    const htag=(story&&story.customHashtag)||couple.hashtag||'';
+    const matchedIds=new Set();
+    document.querySelectorAll('.tt').forEach(function(card){
+      const lEl=card.querySelector('.tt-l'),vEl=card.querySelector('.tt-v');
+      if(!lEl||!vEl)return;
+      const lbl=lEl.textContent.toLowerCase().trim();
+      const m=thingsToKnow.find(function(t){return t.label&&(t.label.toLowerCase().includes(lbl)||lbl.includes(t.label.toLowerCase()));});
+      if(m){vEl.textContent=m.id==='hashtag'&&htag?htag:m.value;matchedIds.add(m.id);card.style.display='';}
+      else{card.style.display='none';}
+    });
+    if(ttRow){thingsToKnow.forEach(function(item,i){
+      if(matchedIds.has(item.id)||!item.label)return;
+      const div=document.createElement('div');
+      div.className='tt scroll-in vis';
+      div.setAttribute('style','--sd:'+(0.1*i).toFixed(1)+'s');
+      div.innerHTML=custIc+'<span class="tt-l">'+item.label+'</span><p class="tt-v">'+item.value+'</p>';
+      ttRow.appendChild(div);
+    });}
+    const igA=document.querySelector('.tt-ig a');
+    if(igA)igA.textContent=htag||igA.textContent;
+  }else if(thingsSec){thingsSec.style.display='none';}
+
+  /* 7. RSVP */
+  const rsvpSec=el('rsvp');
+  if(rsvpSec&&rsvp){
+    const hEl=el('rsvpHeading');
+    if(hEl&&rsvp.heading)hEl.innerHTML=rsvp.heading.replace(/(join us[?!.]?)/i,'<em>$1</em>');
+    const subEl=el('rsvpSub');
+    if(subEl&&rsvp.subtext)subEl.innerHTML=rsvp.subtext.replace(/\n/g,'<br>');
+    const waBtn=el('rsvpWaBtn');
+    if(waBtn){
+      if(rsvp.mode==='form'){
+        if(!rsvp.form_url){ waBtn.style.display='none'; }
+        else{ waBtn.href=rsvp.form_url; waBtn.setAttribute('target','_blank'); waBtn.setAttribute('rel','noopener noreferrer'); }
+      } else {
+        const phone=((couple.whatsapp||rsvp.whatsapp||'').replace(/\D/g,''));
+        const full=phone.startsWith('91')?phone:'91'+phone;
+        const msg=encodeURIComponent('Hi '+couple.bride+' & '+couple.groom+'! I would love to join your celebration!');
+        waBtn.href='https://wa.me/'+full+'?text='+msg;
+      }
+    }
+    const btnInner=rsvpSec.querySelector('.rsvp-wa-inner');
+    if(btnInner){
+      if(rsvp.mode==='form'&&rsvp.form_url){const ic=btnInner.querySelector('svg');if(ic) ic.style.display='none';btnInner.textContent=rsvp.button_text||'Fill RSVP Form';}
+      else if(rsvp.mode!=='form'&&rsvp.btnText){const ic=btnInner.querySelector('svg');btnInner.textContent=rsvp.btnText;if(ic)btnInner.prepend(ic);}
+    }
+  }
+
+  /* 8. FOOTER */
+  const ftN=document.querySelector('.ft-names');if(ftN)ftN.textContent=couple.bride+' & '+couple.groom;
+  const ftD=document.querySelector('.ft-date');if(ftD)ftD.textContent=fmt(couple.date)+(couple.venue?' · '+couple.venue:'');
+
+  initMusic();
+  console.log('invite.kimiclaw.in T08: Config applied ◈');
+})();
+if(typeof WEDDING_CONFIG==='undefined')initMusic();
+
+/* BACKGROUND MUSIC */
+function initMusic(){
+  if(window.__GALLERY_MODE__)return;
+  const audio=document.getElementById('bgMusic'),btn=document.getElementById('musicBtn');
+  if(!audio||!btn)return;
+  if(typeof WEDDING_CONFIG!=='undefined'&&WEDDING_CONFIG.music&&WEDDING_CONFIG.music.src){audio.src=WEDDING_CONFIG.music.src;audio.load();audio.onerror=function(){audio.onerror=null;audio.src='';audio.load();};}
+  const iconOn=document.getElementById('musicIconOn'),iconOff=document.getElementById('musicIconOff'),lbl=document.getElementById('musicLabel');
+  let playing=false;
+  function setUI(p){playing=p;if(iconOn)iconOn.style.display=p?'':'none';if(iconOff)iconOff.style.display=p?'none':'';if(lbl)lbl.textContent=p?'Mute':'Play';btn.classList.toggle('playing',p);btn.textContent=p?'🔔':'🔕';}
+  window.toggleMusic=function(){if(playing){audio.pause();setUI(false);}else{audio.play().then(()=>setUI(true)).catch(()=>setUI(false));}};
+  function tryAutoplay(){audio.volume=0.38;audio.play().then(()=>setUI(true)).catch(()=>{setUI(false);function onFirst(){audio.play().then(()=>setUI(true)).catch(()=>{});document.removeEventListener('scroll',onFirst);document.removeEventListener('click',onFirst);document.removeEventListener('touchstart',onFirst);}document.addEventListener('scroll',onFirst,{once:true,passive:true});document.addEventListener('click',onFirst,{once:true});document.addEventListener('touchstart',onFirst,{once:true,passive:true});});}
+  setTimeout(tryAutoplay,600);
+}
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var cfg = window.__WEDDING_CONFIG__;
+  if (!cfg || !cfg.calendarUrls) return;
+
+  // Read template's primary color from CSS variables
+  var style = getComputedStyle(document.documentElement);
+  var primaryBg = (style.getPropertyValue('--primary') ||
+                   style.getPropertyValue('--gold') ||
+                   style.getPropertyValue('--deep') ||
+                   '#3D1E2E').trim();
+  var primaryText = (style.getPropertyValue('--ivory') || '#FAF3E8').trim();
+
+  var section = document.createElement('div');
+  section.style.cssText = 'text-align:center;padding:40px 20px;';
+
+  section.innerHTML =
+    '<div style="font-size:0.55rem;letter-spacing:0.22em;' +
+    'text-transform:uppercase;color:rgba(0,0,0,0.35);' +
+    'margin-bottom:20px;font-family:inherit;">Save the date</div>' +
+    '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
+    '<a href="' + cfg.calendarUrls.google + '" target="_blank" rel="noopener" ' +
+    'style="display:inline-block;padding:12px 24px;' +
+    'background:transparent;' +
+    'border:1px solid ' + primaryBg + ';' +
+    'color:' + primaryBg + ';' +
+    'font-size:0.58rem;letter-spacing:0.16em;' +
+    'text-transform:uppercase;text-decoration:none;' +
+    'font-family:inherit;">Google Calendar</a>' +
+    '<a href="' + cfg.calendarUrls.apple + '" download="wedding.ics" ' +
+    'style="display:inline-block;padding:12px 24px;' +
+    'background:' + primaryBg + ';' +
+    'color:' + primaryText + ';' +
+    'font-size:0.58rem;letter-spacing:0.16em;' +
+    'text-transform:uppercase;text-decoration:none;' +
+    'font-family:inherit;">Apple / iCal</a>' +
+    '</div>';
+
+  var rsvp = document.getElementById('rsvp') ||
+             document.querySelector('[id*="rsvp"]') ||
+             document.querySelector('[class*="rsvp"]');
+  if (rsvp && rsvp.parentNode) {
+    rsvp.parentNode.insertBefore(section, rsvp.nextSibling);
+  } else {
+    document.body.appendChild(section);
+  }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var cfg = window.__WEDDING_CONFIG__;
+  if (!cfg || !cfg.invite || cfg.invite.parentsOrder !== 'groom_first') return;
+  var bEl = document.getElementById('iBrideParents');
+  var gEl = document.getElementById('iGroomParents');
+  if (bEl) { var em = bEl.closest('.fam-parents') && bEl.closest('.fam-parents').querySelector('em'); if (em) em.textContent = 'Son of'; }
+  if (gEl) { var em2 = gEl.closest('.fam-parents') && gEl.closest('.fam-parents').querySelector('em'); if (em2) em2.textContent = 'Daughter of'; }
+});
+</script>
+</body>
+</html>
