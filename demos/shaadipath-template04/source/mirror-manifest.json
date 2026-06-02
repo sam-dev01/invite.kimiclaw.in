@@ -1,0 +1,15 @@
+{
+  "sourceUrl": "#",
+  "mirroredAt": "2026-05-31T06:39:39.156Z",
+  "assetsDownloaded": 51,
+  "errors": [
+    "https://pub-1cc0f6e993214be9a36badeeb631f4b6.r2.dev/templates/template04/ :: 404 Not Found",
+    "https://fonts.googleapis.com/ :: 404 Not Found",
+    "https://fonts.gstatic.com/ :: 404 Not Found",
+    "https://pub-1cc0f6e993214be9a36badeeb631f4b6.r2.dev/templates/template04/assets/backgrounds/Background%206.png :: fetch failed",
+    "https://wa.me/ :: 400 Bad Request",
+    "# :: 401 Unauthorized",
+    "# :: 401 Unauthorized",
+    "# :: 401 Unauthorized"
+  ]
+}
