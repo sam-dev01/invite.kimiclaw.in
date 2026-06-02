@@ -1,0 +1,15 @@
+{
+  "sourceUrl": "#",
+  "mirroredAt": "2026-05-31T06:43:20.509Z",
+  "assetsDownloaded": 53,
+  "errors": [
+    "https://pub-1cc0f6e993214be9a36badeeb631f4b6.r2.dev/templates/template10/ :: 404 Not Found",
+    "https://fonts.googleapis.com/ :: 404 Not Found",
+    "https://fonts.gstatic.com/ :: 404 Not Found",
+    "https://pub-1cc0f6e993214be9a36badeeb631f4b6.r2.dev/templates/template10/assets/Meet%20the%20couple/Meet_the_couple_bg.webp :: 404 Not Found",
+    "https://pub-1cc0f6e993214be9a36badeeb631f4b6.r2.dev/templates/template10/assets/gallery/Gallery_Bg.webp :: 404 Not Found",
+    "https://wa.me/XXXXXXXXXXXX?text=Yes%2C%20I%27ll%20be%20there :: 400 Bad Request",
+    "# :: 404 Not Found",
+    "# :: 404 Not Found"
+  ]
+}
