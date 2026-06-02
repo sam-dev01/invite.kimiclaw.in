@@ -1,0 +1,14 @@
+{
+  "sourceUrl": "#",
+  "mirroredAt": "2026-05-31T06:38:18.826Z",
+  "assetsDownloaded": 54,
+  "errors": [
+    "https://pub-1cc0f6e993214be9a36badeeb631f4b6.r2.dev/templates/template02/ :: 404 Not Found",
+    "https://fonts.googleapis.com/ :: 404 Not Found",
+    "https://fonts.gstatic.com/ :: 404 Not Found",
+    "https://wa.me/ :: 400 Bad Request",
+    "# :: 401 Unauthorized",
+    "# :: 401 Unauthorized",
+    "# :: 401 Unauthorized"
+  ]
+}
