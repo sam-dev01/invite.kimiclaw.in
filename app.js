@@ -598,11 +598,11 @@ const i18n = {
     summaryBaseStyle: "Design Style:",
     summaryAddons: "Addons Selected:",
     summaryTotal: "Estimated Total:",
-    summaryNotice: "Your order request will be securely saved locally. We will generate a structured WhatsApp message to submit directly to our design atelier for immediate personal drafting.",
+    summaryNotice: "The order request will be saved locally. You will now be redirected to complete your payment securely via Razorpay.",
     wizBtnPrev: "Previous",
     wizBtnNext: "Next Step",
-    wizBtnSubmit: "Order via WhatsApp",
-    viewAllDesignsBtn: "View All 38 Designs",
+    wizBtnSubmit: "Pay & Complete Order",
+    viewAllDesignsBtn: "View all 38 designs",
     
     footerTagline: "Bespoke luxury wedding invitation websites crafted by professional designers. Fully interactive, mobile-optimized, and built to amaze your guests.",
     footerProducts: "Solutions",
@@ -748,10 +748,10 @@ const i18n = {
     summaryBaseStyle: "Estilo Base:",
     summaryAddons: "Extras Seleccionados:",
     summaryTotal: "Total Estimado:",
-    summaryNotice: "La solicitud de pedido se guardará localmente. Generaremos un mensaje de WhatsApp estructurado para enviar a nuestro atelier de diseño y comenzar el borrador personalizado de inmediato.",
+    summaryNotice: "La solicitud de pedido se guardará localmente. Ahora serás redirigido para completar tu pago de forma segura mediante Razorpay.",
     wizBtnPrev: "Anterior",
     wizBtnNext: "Siguiente Paso",
-    wizBtnSubmit: "Pedir por WhatsApp",
+    wizBtnSubmit: "Pagar y Completar Pedido",
     viewAllDesignsBtn: "Ver los 38 diseños",
     
     footerTagline: "Sitios web de invitación de boda premium hechos a mano por diseñadores profesionales. Interactivos, optimizados para móvil y creados para fascinar a todos.",
@@ -1659,34 +1659,69 @@ function bindEvents() {
       const selectedDesign = demos.find(d => d.title === data.baseStyle);
       const displayStyle = selectedDesign ? `${data.baseStyle} (#${selectedDesign.code})` : data.baseStyle;
 
-      const whatsappText = `*NEW DIGITAL INVITATION ORDER - invite.kimiclaw.in*` + lineBreak + lineBreak +
-        `*Couple:* ${data.brideName} & ${data.groomName}` + lineBreak +
-        `*Wedding Date:* ${data.weddingDate}` + lineBreak +
-        `*Venue:* ${data.venue}` + lineBreak + lineBreak +
-        `*Order Details:*` + lineBreak +
-        `- Layout Plan: ${planLabel(data.package, currency)}` + lineBreak +
-        `- Base Design: ${displayStyle}` + lineBreak +
-        `- Guest Count: ${data.guests}` + lineBreak +
-        `- Currency: ${currency}` + lineBreak +
-        `- Add-ons: ${data.addon_domain ? "Custom Domain, " : ""}${data.addon_intro ? "Animated Intro, " : ""}${data.addon_map ? "Illustrated Map, " : ""}${data.addon_pers ? "Name Personalization" : "None"}` + lineBreak + lineBreak +
-        `*Estimated Total:* *${symbol}${total.toLocaleString()}*` + lineBreak + lineBreak +
-        `*Contact:*` + lineBreak +
-        `- Name: ${data.contactName}` + lineBreak +
-        `- Email: ${data.contactEmail}` + lineBreak +
-        `- WhatsApp: ${data.contactPhone}` + lineBreak + lineBreak +
-        `*Notes:* ${data.notes || "None"}`;
-        
-      const whatsappUrl = `https://api.whatsapp.com/send?phone=34600000000&text=${whatsappUrlEncode(whatsappText)}`;
-      
-      wizardDialog.close();
-      
-      // Notify and redirect
-      alert(state.currentLang === "en" 
-        ? "Order saved successfully! We are redirecting you to WhatsApp to submit your request directly to our studio." 
-        : "¡Pedido guardado con éxito! Te estamos redirigiendo a WhatsApp para enviar vuestra solicitud directamente a nuestro estudio."
-      );
-      
-      window.open(whatsappUrl, "_blank");
+      // Configure Razorpay integration
+      if (typeof Razorpay !== "undefined") {
+        const rzpOptions = {
+          key: "rzp_live_SwqTC3My87u3Hc",
+          amount: total * 100, // Amount is in subunits
+          currency: currency,
+          name: "invite.kimiclaw.in",
+          description: "Premium Wedding Invitation",
+          image: "https://invite.kimiclaw.in/assets/palace_backdrop.png",
+          prefill: {
+            name: data.contactName || (data.brideName + " & " + data.groomName),
+            email: data.contactEmail,
+            contact: data.contactPhone
+          },
+          theme: { color: "#C5A26B" },
+          handler: function (response) {
+            // Payment success handler
+            const paymentId = response.razorpay_payment_id;
+            
+            const whatsappText = `*NEW DIGITAL INVITATION ORDER - invite.kimiclaw.in*` + lineBreak + lineBreak +
+              `*✅ PAYMENT CONFIRMED (Razorpay)*` + lineBreak +
+              `*Payment ID:* ${paymentId}` + lineBreak + lineBreak +
+              `*Couple:* ${data.brideName} & ${data.groomName}` + lineBreak +
+              `*Wedding Date:* ${data.weddingDate}` + lineBreak +
+              `*Venue:* ${data.venue}` + lineBreak + lineBreak +
+              `*Order Details:*` + lineBreak +
+              `- Layout Plan: ${planLabel(data.package, currency)}` + lineBreak +
+              `- Base Design: ${displayStyle}` + lineBreak +
+              `- Guest Count: ${data.guests}` + lineBreak +
+              `- Currency: ${currency}` + lineBreak +
+              `- Add-ons: ${data.addon_domain ? "Custom Domain, " : ""}${data.addon_intro ? "Animated Intro, " : ""}${data.addon_map ? "Illustrated Map, " : ""}${data.addon_pers ? "Name Personalization" : "None"}` + lineBreak + lineBreak +
+              `*Total Paid:* *${symbol}${total.toLocaleString()}*` + lineBreak + lineBreak +
+              `*Contact:*` + lineBreak +
+              `- Name: ${data.contactName}` + lineBreak +
+              `- Email: ${data.contactEmail}` + lineBreak +
+              `- WhatsApp: ${data.contactPhone}` + lineBreak + lineBreak +
+              `*Notes:* ${data.notes || "None"}`;
+              
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=34600000000&text=${whatsappUrlEncode(whatsappText)}`;
+            
+            wizardDialog.close();
+            
+            alert(state.currentLang === "en" 
+              ? "Payment successful! We are redirecting you to WhatsApp to finalize your order details." 
+              : "¡Pago realizado con éxito! Te estamos redirigiendo a WhatsApp para enviar los detalles finales."
+            );
+            
+            window.open(whatsappUrl, "_blank");
+          }
+        };
+
+        const rzpInstance = new Razorpay(rzpOptions);
+        rzpInstance.on("payment.failed", function (response) {
+          console.error("Payment Failed", response.error);
+          alert(state.currentLang === "en" 
+            ? "Payment failed or was cancelled. Please try again." 
+            : "El pago ha fallado o ha sido cancelado. Por favor, inténtalo de nuevo."
+          );
+        });
+        rzpInstance.open();
+      } else {
+        alert("Payment gateway is currently unavailable. Please check your internet connection and disable ad blockers.");
+      }
     });
   }
   
@@ -1762,6 +1797,7 @@ function checkWelcomeScreen() {
 
       // Re-render UI with new preferences
       translateUI();
+      updatePricingDisplays();
       renderCatalog();
       renderHubCatalog();
       renderSandboxFeature();
@@ -1781,6 +1817,31 @@ function checkWelcomeScreen() {
   }
 }
 
+// Update all hardcoded pricing displays across the app
+function updatePricingDisplays() {
+  const currency = state.currentCurrency;
+  const table = pricingTable[currency] || pricingTable["INR"];
+  const sym = table.symbol;
+  
+  // 1. Update Detail View Options
+  const detailPlanSelector = document.querySelector("#detail-plan-selector");
+  if (detailPlanSelector) {
+    const options = detailPlanSelector.options;
+    for(let i = 0; i < options.length; i++) {
+      const val = options[i].value;
+      if(val === "Simple") options[i].text = `Simple — ${sym}${(table.Simple || 999).toLocaleString()}`;
+      if(val === "CustomDomain") options[i].text = `Custom Domain — ${sym}${(table.CustomDomain || 1999).toLocaleString()}`;
+      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery — ${sym}${(table.ScratchGallery || 2999).toLocaleString()}`;
+    }
+  }
+
+  // 2. Update Wizard Currency Dropdown (if it exists) to match state
+  const wizCurrency = document.querySelector("#wiz-currency");
+  if (wizCurrency) {
+    wizCurrency.value = currency;
+  }
+}
+
 // Router Event triggers
 window.addEventListener("hashchange", () => {
   handleRoute();
@@ -1789,6 +1850,7 @@ window.addEventListener("hashchange", () => {
 // Initialization
 function init() {
   checkWelcomeScreen();
+  updatePricingDisplays();
   populateWizardBaseStyles();
   translateUI();
   renderCatalog();
