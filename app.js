@@ -1897,7 +1897,25 @@ function updatePricingDisplays() {
     }
   }
 
-  // 2. Update Wizard Currency Dropdown (if it exists) to match state
+  // 2. Update Wizard Package Dropdown
+  const wizPackage = document.querySelector("#wiz-package");
+  if (wizPackage) {
+    const options = wizPackage.options;
+    for(let i = 0; i < options.length; i++) {
+      const val = options[i].value;
+      if(val === "Simple") options[i].text = `Simple — ${sym}${(table.Simple || 999).toLocaleString()}`;
+      if(val === "CustomDomain") options[i].text = `Custom Domain — ${sym}${(table.CustomDomain || 1999).toLocaleString()}`;
+      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery — ${sym}${(table.ScratchGallery || 2999).toLocaleString()}`;
+    }
+  }
+
+  // 3. Update Pricing Grid Cards
+  const priceCardEssential = document.querySelector("#price-card-essential");
+  const priceCardPremium = document.querySelector("#price-card-premium");
+  if (priceCardEssential) priceCardEssential.textContent = `${sym}${(table.Essential || 4999).toLocaleString()}`;
+  if (priceCardPremium) priceCardPremium.textContent = `${sym}${(table.Premium || 8999).toLocaleString()}`;
+
+  // 4. Update Wizard Currency Dropdown (if it exists) to match state
   const wizCurrency = document.querySelector("#wiz-currency");
   if (wizCurrency) {
     wizCurrency.value = currency;
