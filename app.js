@@ -1170,8 +1170,20 @@ function handleRoute() {
     window.scrollTo(0,0);
     renderHubCatalog();
   } else if (hash.startsWith("design/")) {
-    const designId = hash.split("/")[1];
-    const design = demos.find(d => d.id === designId);
+    // Decode URI and normalize: spaces → hyphens
+    const rawId = decodeURIComponent(hash.split("/")[1] || "");
+    const designId = rawId.replace(/\s+/g, "-").toLowerCase();
+    
+    // Find by id first, then fallback to title slug
+    let design = demos.find(d => d.id === designId);
+    if (!design) {
+      // Fuzzy: match by title converted to slug
+      design = demos.find(d => d.title.toLowerCase().replace(/\s+/g, "-") === designId);
+    }
+    if (!design) {
+      // Last resort: partial match
+      design = demos.find(d => d.id.includes(designId) || designId.includes(d.id));
+    }
     
     if (design) {
       // Toggle views
@@ -1180,25 +1192,31 @@ function handleRoute() {
       detailView.style.display = "block";
       window.scrollTo(0,0);
       
-      // Load Details Content
-      document.querySelector("#detail-tag").textContent = design.tag;
-      document.querySelector("#detail-title").textContent = design.title;
+      // Load Details Content (null-safe)
+      const detailTag = document.querySelector("#detail-tag");
+      const detailTitle = document.querySelector("#detail-title");
+      const detailDesc = document.querySelector("#detail-desc");
+      const detailFeatures = document.querySelector("#detail-features");
       const detailCode = document.querySelector("#detail-code");
-      if (detailCode) detailCode.textContent = `#${design.code}`;
-      document.querySelector("#detail-desc").textContent = design.description;
-      document.querySelector("#detail-features").innerHTML = design.features.map(f => `<li>${f}</li>`).join("");
-      
       const iframe = document.querySelector("#detail-phone-iframe");
-      iframe.src = design.url;
-      
       const liveBtn = document.querySelector("#detail-demo-btn");
+      
+      if (detailTag) detailTag.textContent = design.tag;
+      if (detailTitle) detailTitle.textContent = design.title;
+      if (detailCode) detailCode.textContent = `#${design.code}`;
+      if (detailDesc) detailDesc.textContent = design.description;
+      if (detailFeatures) detailFeatures.innerHTML = design.features.map(f => `<li>${f}</li>`).join("");
+      if (iframe) iframe.src = design.url;
       if (liveBtn) liveBtn.href = design.url;
       
-      // Wizard preloaded style
-      wizBaseStyleSelector.value = design.title;
+      // Wizard preloaded style (null-safe)
+      if (wizBaseStyleSelector) wizBaseStyleSelector.value = design.title;
       
       // Reset checkout to step 1
       showCheckoutStep(1);
+    } else {
+      // Design not found, go home
+      location.hash = "home";
     }
   } else {
     // Show main page
@@ -1307,24 +1325,31 @@ function showCheckoutStep(stepNum) {
 }
 
 function populatePaymentSummary() {
-  const designTitle = document.querySelector("#detail-title").textContent;
-  const planKey = document.querySelector("#detail-plan-selector").value;
+  const detailTitle = document.querySelector("#detail-title");
+  const planSelector = document.querySelector("#detail-plan-selector");
+  if (!detailTitle || !planSelector) return;
+  
+  const designTitle = detailTitle.textContent;
+  const planKey = planSelector.value;
   const currency = state.currentCurrency;
-  const table = pricingTable[currency];
+  const table = pricingTable[currency] || pricingTable["INR"];
   const total = table[planKey] || 999;
 
-  document.querySelector("#pay-design-name").textContent = designTitle;
-  document.querySelector("#pay-plan-name").textContent = planLabel(planKey, currency);
-  document.querySelector("#pay-total").textContent = `${table.symbol}${total.toLocaleString()}`;
+  const payDesign = document.querySelector("#pay-design-name");
+  const payPlan = document.querySelector("#pay-plan-name");
+  const payTotal = document.querySelector("#pay-total");
+  if (payDesign) payDesign.textContent = designTitle;
+  if (payPlan) payPlan.textContent = planLabel(planKey, currency);
+  if (payTotal) payTotal.textContent = `${table.symbol}${total.toLocaleString()}`;
 }
 
 function saveCheckoutOrder() {
   const data = {
-    contactName: document.querySelector("#ck-contact-name").value,
-    contactEmail: document.querySelector("#ck-email").value,
-    contactPhone: document.querySelector("#ck-phone").value,
-    design: document.querySelector("#detail-title").textContent,
-    plan: document.querySelector("#detail-plan-selector").value,
+    contactName: document.querySelector("#ck-contact-name")?.value || "",
+    contactEmail: document.querySelector("#ck-email")?.value || "",
+    contactPhone: document.querySelector("#ck-phone")?.value || "",
+    design: document.querySelector("#detail-title")?.textContent || "",
+    plan: document.querySelector("#detail-plan-selector")?.value || "CustomDomain",
     paymentMethod: document.querySelector("input[name='paymentMethod']:checked")?.value || "upi",
     createdAt: new Date().toISOString()
   };
@@ -1335,20 +1360,26 @@ function saveCheckoutOrder() {
 }
 
 function populateConfirmation() {
-  const designTitle = document.querySelector("#detail-title").textContent;
-  const planKey = document.querySelector("#detail-plan-selector").value;
+  const planSelector = document.querySelector("#detail-plan-selector");
+  const designTitle = document.querySelector("#detail-title")?.textContent || "";
+  const planKey = planSelector?.value || "CustomDomain";
   const currency = state.currentCurrency;
-  const table = pricingTable[currency];
+  const table = pricingTable[currency] || pricingTable["INR"];
   const total = table[planKey] || 999;
   
-  // Generate unique order ID
   const orderId = `KC-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9000) + 1000)}`;
   
-  document.querySelector("#conf-order-id").textContent = orderId;
-  document.querySelector("#conf-design").textContent = designTitle;
-  document.querySelector("#conf-plan").textContent = planLabel(planKey, currency);
-  document.querySelector("#conf-amount").textContent = `${table.symbol}${total.toLocaleString()}`;
-  document.querySelector("#conf-delivery").textContent = "Within 48 hours";
+  const confOrderId = document.querySelector("#conf-order-id");
+  const confDesign = document.querySelector("#conf-design");
+  const confPlan = document.querySelector("#conf-plan");
+  const confAmount = document.querySelector("#conf-amount");
+  const confDelivery = document.querySelector("#conf-delivery");
+  
+  if (confOrderId) confOrderId.textContent = orderId;
+  if (confDesign) confDesign.textContent = designTitle;
+  if (confPlan) confPlan.textContent = planLabel(planKey, currency);
+  if (confAmount) confAmount.textContent = `${table.symbol}${total.toLocaleString()}`;
+  if (confDelivery) confDelivery.textContent = "Within 48 hours";
 }
 
 // Event Listeners Binding
