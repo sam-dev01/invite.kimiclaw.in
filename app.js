@@ -857,10 +857,11 @@ function populateWizardBaseStyles() {
 
 // Global UI Translation
 function translateUI() {
-  const dictionary = i18n[state.currentLang];
+  const lang = (state.currentLang && i18n[state.currentLang]) ? state.currentLang : "en";
+  const dictionary = i18n[lang];
   document.querySelectorAll("[data-i18n]").forEach(element => {
     const key = element.dataset.i18n;
-    if (dictionary[key]) {
+    if (dictionary && dictionary[key]) {
       element.innerHTML = dictionary[key];
     }
   });
@@ -949,10 +950,11 @@ function renderHubCatalog() {
 }
 
 function translateLocalUI(container) {
-  const dictionary = i18n[state.currentLang];
+  const lang = (state.currentLang && i18n[state.currentLang]) ? state.currentLang : "en";
+  const dictionary = i18n[lang];
   container.querySelectorAll("[data-i18n]").forEach(element => {
     const key = element.dataset.i18n;
-    if (dictionary[key]) {
+    if (dictionary && dictionary[key]) {
       element.innerHTML = dictionary[key];
     }
   });
@@ -1257,18 +1259,16 @@ function updateWizardStep() {
   }
 }
 
-// Helper: convert raw plan key to human-readable label with price
+// Helper: convert raw plan key to human-readable label
 function planLabel(planKey, currency = state.currentCurrency) {
-  const table = pricingTable[currency] || pricingTable["INR"];
-  const sym = table.symbol;
   const labels = {
-    Simple:        `Simple \u2014 ${sym}${(table.Simple || 999).toLocaleString()}`,
-    CustomDomain:  `Custom Domain \u2014 ${sym}${(table.CustomDomain || 1999).toLocaleString()}`,
-    ScratchGallery:`Scratch + Photo Gallery \u2014 ${sym}${(table.ScratchGallery || 2999).toLocaleString()}`,
+    Simple:        `Simple`,
+    CustomDomain:  `Custom Domain`,
+    ScratchGallery:`Scratch + Photo Gallery`,
     // Keep legacy keys readable too
-    Essential:   `Essential \u2014 ${sym}${(table.Essential || 4999).toLocaleString()}`,
-    Premium:     `Premium \u2014 ${sym}${(table.Premium || 8999).toLocaleString()}`,
-    Excellence:  `Excellence \u2014 ${sym}${(table.Excellence || 14999).toLocaleString()}`,
+    Essential:   `Essential`,
+    Premium:     `Premium`,
+    Excellence:  `Excellence`,
   };
   return labels[planKey] || planKey;
 }
@@ -1577,84 +1577,17 @@ function bindEvents() {
 
   if (ckPayNow) {
     ckPayNow.addEventListener("click", () => {
-      const paymentMethod = document.querySelector("input[name='paymentMethod']:checked")?.value || "upi";
-      
-      if (paymentMethod === "whatsapp") {
-        // Bypass Razorpay, manual invoicing
-        ckPayNow.disabled = true;
-        ckPayNow.textContent = "Processing Request...";
-        setTimeout(() => {
-          saveCheckoutOrder();
-          populateConfirmation();
-          showCheckoutStep(4);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          ckPayNow.disabled = false;
-          ckPayNow.textContent = "Pay Now →";
-        }, 1000);
-        return;
-      }
-      
-      // Initialize Razorpay
-      if (typeof Razorpay === "undefined") {
-        alert("Payment gateway is currently unavailable. Please check your connection.");
-        return;
-      }
-      
       ckPayNow.disabled = true;
-      ckPayNow.textContent = "Connecting to Secure Gateway...";
+      ckPayNow.textContent = "Processing Order...";
       
-      const planKey = document.querySelector("#detail-plan-selector").value;
-      const currency = state.currentCurrency;
-      const table = pricingTable[currency];
-      const total = table[planKey] || 999;
-      
-      const email = document.querySelector("#ck-email").value || "";
-      const phone = document.querySelector("#ck-phone").value || "";
-      const contactName = document.querySelector("#ck-contact-name").value || "Customer";
-      
-      const rzpOptions = {
-        key: "rzp_live_SwqTC3My87u3Hc",
-        amount: total * 100, // Subunits
-        currency: currency,
-        name: "invite.kimiclaw.in",
-        description: `Premium Layout: ${planKey}`,
-        image: "https://invite.kimiclaw.in/assets/palace_backdrop.png",
-        prefill: {
-          name: contactName,
-          email: email,
-          contact: phone
-        },
-        theme: { color: "#C5A26B" },
-        handler: function (response) {
-          // Success
-          const paymentId = response.razorpay_payment_id;
-          
-          // Save order to localStorage
-          saveCheckoutOrder();
-          
-          // Append Payment ID to the success screen
-          populateConfirmation();
-          
-          const confirmSubtitle = document.querySelector("#conf-subtitle");
-          if (confirmSubtitle) {
-            confirmSubtitle.innerHTML = `Your order has been saved successfully.<br><strong style="color:var(--accent-gold);">Payment ID: ${paymentId}</strong>`;
-          }
-          
-          showCheckoutStep(4);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          
-          ckPayNow.disabled = false;
-          ckPayNow.textContent = "Pay Now →";
-        }
-      };
-      
-      const rzpInstance = new Razorpay(rzpOptions);
-      rzpInstance.on("payment.failed", function (response) {
+      setTimeout(() => {
+        saveCheckoutOrder();
+        populateConfirmation();
+        showCheckoutStep(4);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         ckPayNow.disabled = false;
-        ckPayNow.textContent = "Pay Now →";
-        alert(state.currentLang === "en" ? "Payment failed or was cancelled." : "El pago ha fallado o ha sido cancelado.");
-      });
-      rzpInstance.open();
+        ckPayNow.textContent = "Confirm Order →";
+      }, 1000);
     });
   }
 
@@ -1740,81 +1673,34 @@ function bindEvents() {
       // Build beautiful WhatsApp text message link
       const lineBreak = "%0A";
       const currency = data.currency || "INR";
-      const symbol = pricingTable[currency].symbol;
-      
-      // Calculate active total
-      let total = pricingTable[currency][data.package];
-      if (data.addon_domain) total += pricingTable[currency].domain;
-      if (data.addon_intro) total += pricingTable[currency].intro;
-      if (data.addon_map) total += pricingTable[currency].map;
-      if (data.addon_pers) total += pricingTable[currency].personalization;
-      
       const selectedDesign = demos.find(d => d.title === data.baseStyle);
       const displayStyle = selectedDesign ? `${data.baseStyle} (#${selectedDesign.code})` : data.baseStyle;
 
-      // Configure Razorpay integration
-      if (typeof Razorpay !== "undefined") {
-        const rzpOptions = {
-          key: "rzp_live_SwqTC3My87u3Hc",
-          amount: total * 100, // Amount is in subunits
-          currency: currency,
-          name: "invite.kimiclaw.in",
-          description: "Premium Wedding Invitation",
-          image: "https://invite.kimiclaw.in/assets/palace_backdrop.png",
-          prefill: {
-            name: data.contactName || (data.brideName + " & " + data.groomName),
-            email: data.contactEmail,
-            contact: data.contactPhone
-          },
-          theme: { color: "#C5A26B" },
-          handler: function (response) {
-            // Payment success handler
-            const paymentId = response.razorpay_payment_id;
-            
-            const whatsappText = `*NEW DIGITAL INVITATION ORDER - invite.kimiclaw.in*` + lineBreak + lineBreak +
-              `*✅ PAYMENT CONFIRMED (Razorpay)*` + lineBreak +
-              `*Payment ID:* ${paymentId}` + lineBreak + lineBreak +
-              `*Couple:* ${data.brideName} & ${data.groomName}` + lineBreak +
-              `*Wedding Date:* ${data.weddingDate}` + lineBreak +
-              `*Venue:* ${data.venue}` + lineBreak + lineBreak +
-              `*Order Details:*` + lineBreak +
-              `- Layout Plan: ${planLabel(data.package, currency)}` + lineBreak +
-              `- Base Design: ${displayStyle}` + lineBreak +
-              `- Guest Count: ${data.guests}` + lineBreak +
-              `- Currency: ${currency}` + lineBreak +
-              `- Add-ons: ${data.addon_domain ? "Custom Domain, " : ""}${data.addon_intro ? "Animated Intro, " : ""}${data.addon_map ? "Illustrated Map, " : ""}${data.addon_pers ? "Name Personalization" : "None"}` + lineBreak + lineBreak +
-              `*Total Paid:* *${symbol}${total.toLocaleString()}*` + lineBreak + lineBreak +
-              `*Contact:*` + lineBreak +
-              `- Name: ${data.contactName}` + lineBreak +
-              `- Email: ${data.contactEmail}` + lineBreak +
-              `- WhatsApp: ${data.contactPhone}` + lineBreak + lineBreak +
-              `*Notes:* ${data.notes || "None"}`;
-              
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=34600000000&text=${whatsappUrlEncode(whatsappText)}`;
-            
-            wizardDialog.close();
-            
-            alert(state.currentLang === "en" 
-              ? "Payment successful! We are redirecting you to WhatsApp to finalize your order details." 
-              : "¡Pago realizado con éxito! Te estamos redirigiendo a WhatsApp para enviar los detalles finales."
-            );
-            
-            window.open(whatsappUrl, "_blank");
-          }
-        };
-
-        const rzpInstance = new Razorpay(rzpOptions);
-        rzpInstance.on("payment.failed", function (response) {
-          console.error("Payment Failed", response.error);
-          alert(state.currentLang === "en" 
-            ? "Payment failed or was cancelled. Please try again." 
-            : "El pago ha fallado o ha sido cancelado. Por favor, inténtalo de nuevo."
-          );
-        });
-        rzpInstance.open();
-      } else {
-        alert("Payment gateway is currently unavailable. Please check your internet connection and disable ad blockers.");
-      }
+      const whatsappText = `*NEW DIGITAL INVITATION ORDER - invite.kimiclaw.in*` + lineBreak + lineBreak +
+        `*Couple:* ${data.brideName} & ${data.groomName}` + lineBreak +
+        `*Wedding Date:* ${data.weddingDate}` + lineBreak +
+        `*Venue:* ${data.venue}` + lineBreak + lineBreak +
+        `*Order Details:*` + lineBreak +
+        `- Layout Plan: ${planLabel(data.package, currency)}` + lineBreak +
+        `- Base Design: ${displayStyle}` + lineBreak +
+        `- Guest Count: ${data.guests}` + lineBreak +
+        `- Add-ons: ${data.addon_domain ? "Custom Domain, " : ""}${data.addon_intro ? "Animated Intro, " : ""}${data.addon_map ? "Illustrated Map, " : ""}${data.addon_pers ? "Name Personalization" : "None"}` + lineBreak + lineBreak +
+        `*Contact:*` + lineBreak +
+        `- Name: ${data.contactName}` + lineBreak +
+        `- Email: ${data.contactEmail}` + lineBreak +
+        `- WhatsApp: ${data.contactPhone}` + lineBreak + lineBreak +
+        `*Notes:* ${data.notes || "None"}`;
+        
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=34600000000&text=${whatsappUrlEncode(whatsappText)}`;
+      
+      wizardDialog.close();
+      
+      alert(state.currentLang === "en" 
+        ? "Order registered successfully! We are redirecting you to WhatsApp to finalize details." 
+        : "¡Pedido registrado con éxito! Te estamos redirigiendo a WhatsApp para enviar los detalles."
+      );
+      
+      window.open(whatsappUrl, "_blank");
     });
   }
   
@@ -1922,9 +1808,9 @@ function updatePricingDisplays() {
     const options = detailPlanSelector.options;
     for(let i = 0; i < options.length; i++) {
       const val = options[i].value;
-      if(val === "Simple") options[i].text = `Simple — ${sym}${(table.Simple || 999).toLocaleString()}`;
-      if(val === "CustomDomain") options[i].text = `Custom Domain — ${sym}${(table.CustomDomain || 1999).toLocaleString()}`;
-      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery — ${sym}${(table.ScratchGallery || 2999).toLocaleString()}`;
+      if(val === "Simple") options[i].text = `Simple`;
+      if(val === "CustomDomain") options[i].text = `Custom Domain`;
+      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery`;
     }
   }
 
@@ -1934,9 +1820,9 @@ function updatePricingDisplays() {
     const options = wizPackage.options;
     for(let i = 0; i < options.length; i++) {
       const val = options[i].value;
-      if(val === "Simple") options[i].text = `Simple — ${sym}${(table.Simple || 999).toLocaleString()}`;
-      if(val === "CustomDomain") options[i].text = `Custom Domain — ${sym}${(table.CustomDomain || 1999).toLocaleString()}`;
-      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery — ${sym}${(table.ScratchGallery || 2999).toLocaleString()}`;
+      if(val === "Simple") options[i].text = `Simple`;
+      if(val === "CustomDomain") options[i].text = `Custom Domain`;
+      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery`;
     }
   }
 

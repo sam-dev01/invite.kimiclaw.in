@@ -95,7 +95,6 @@
           <a href="#how-it-works" class="nav-link" data-i18n="navHowItWorks">How it works</a>
           <a href="#playground" class="nav-link" data-i18n="navPlayground">Features</a>
           <a href="#designs-hub" class="nav-link" data-i18n="navDesigns">Designs</a>
-          <a href="#pricing" class="nav-link" data-i18n="navPricing">Pricing</a>
         </div>
         <div class="nav-actions">
           <button class="icon-btn" id="lang-btn" aria-label="Region Settings" title="Change Language & Currency">🌐</button>
@@ -255,8 +254,8 @@
           </div>
         </section>
 
-        <!-- Pricing Section with Dynamic Calculator -->
-        <section class="section" id="pricing">
+        <!-- Pricing Section with Dynamic Calculator (Hidden) -->
+        <section class="section" id="pricing" style="display: none;">
           <div class="section-header">
             <p class="eyebrow" data-i18n="priceEyebrow">Pricing Plans</p>
             <h2 data-i18n="priceTitle">Tailored packages for premium needs.</h2>
@@ -387,16 +386,16 @@
                 <div class="calc-section" style="margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 20px;">
                   <span class="calc-section-label" data-i18n="detailPlanLabel">Choose Layout Base Plan</span>
                   <select id="detail-plan-selector" style="font-family: var(--font-sans); width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 14px; font-weight: 600; margin-bottom: 20px;">
-                    <option value="Simple">Simple — ₹999</option>
-                    <option value="CustomDomain" selected>Custom Domain — ₹1,999</option>
-                    <option value="ScratchGallery">Scratch + Photo Gallery — ₹2,999</option>
+                    <option value="Simple">Simple</option>
+                    <option value="CustomDomain" selected>Custom Domain</option>
+                    <option value="ScratchGallery">Scratch + Photo Gallery</option>
                   </select>
                 </div>
                 
-                <div class="detail-actions" style="flex-wrap: wrap; gap: 12px;">
-                  <button class="btn btn-gold" id="detail-buy-btn" style="flex: 1 1 100%; font-size: 17px; padding: 16px 24px;">&#x1F6CD;&#xFE0F; Buy Now</button>
-                  <a id="detail-demo-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1 1 100%; font-size: 15px; padding: 14px 24px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
-                    <span>&#x1F440;</span> Live Preview
+                <div class="detail-actions" style="display: flex; gap: 12px; margin-top: 20px; width: 100%;">
+                  <button class="btn btn-gold" id="detail-buy-btn" style="flex: 1; font-size: 15px; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 8px;">🛍️ Buy Now</button>
+                  <a id="detail-demo-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1; font-size: 15px; padding: 14px 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
+                    👀 Live Preview
                   </a>
                 </div>
               </div>
@@ -440,7 +439,7 @@
 
                   <div class="checkout-actions">
                     <button type="button" class="btn btn-secondary" id="ck-back-to-step1">← Back</button>
-                    <button type="button" class="btn btn-gold" id="ck-to-payment">Continue to Payment →</button>
+                    <button type="button" class="btn btn-gold" id="ck-to-payment">Continue →</button>
                   </div>
                 </form>
               </div>
@@ -453,94 +452,94 @@
                   <div class="checkout-progress-line completed"></div>
                   <div class="checkout-progress-step completed"><span>2</span><small>Details</small></div>
                   <div class="checkout-progress-line completed"></div>
-                  <div class="checkout-progress-step active"><span>3</span><small>Payment</small></div>
+                  <div class="checkout-progress-step active"><span>3</span><small>Confirm</small></div>
                   <div class="checkout-progress-line"></div>
                   <div class="checkout-progress-step"><span>4</span><small>Confirm</small></div>
                 </div>
 
-                <h2 class="checkout-heading">Payment</h2>
-                <p class="checkout-subtitle">Review your order and complete payment securely.</p>
-
-                <!-- Order Summary Card - Premium -->
-                <div class="payment-summary-card">
-                  <div class="payment-summary-header">
-                    <span>&#x1F4CB; Order Summary</span>
-                    <span style="font-size:11px; opacity:0.8; font-weight:400; letter-spacing:0;">Review before paying</span>
-                  </div>
-                  <div class="payment-summary-row">
-                    <span>&#x1F3A8; Design Template</span>
-                    <span id="pay-design-name" style="font-weight:700;">Aventureros</span>
-                  </div>
-                  <div class="payment-summary-row">
-                    <span>&#x1F4E6; Layout Plan</span>
-                    <span id="pay-plan-name">Custom Domain</span>
-                  </div>
-                  <div class="payment-summary-row total">
-                    <span style="font-size:15px; font-weight:700;">Total Amount</span>
-                    <strong id="pay-total">&#x20B9;1,999</strong>
-                  </div>
-                </div>
-
-                <!-- Payment Method Selection -->
-                <div class="payment-methods">
-                  <div class="payment-method-label">&#x1F4B3; Choose Payment Method</div>
-                  <div class="payment-method-options">
-                    <label class="payment-method-option selected">
-                      <input type="radio" name="paymentMethod" value="upi" checked>
-                      <div class="payment-method-card">
-                        <span class="payment-method-icon">&#x1F4F1;</span>
-                        <div>
-                          <div style="font-weight:600;">UPI / GPay</div>
-                          <div style="font-size:11px; opacity:0.7;">Instant</div>
-                        </div>
-                      </div>
-                    </label>
-                    <label class="payment-method-option">
-                      <input type="radio" name="paymentMethod" value="card">
-                      <div class="payment-method-card">
-                        <span class="payment-method-icon">&#x1F4B3;</span>
-                        <div>
-                          <div style="font-weight:600;">Card</div>
-                          <div style="font-size:11px; opacity:0.7;">Visa / Mastercard</div>
-                        </div>
-                      </div>
-                    </label>
-                    <label class="payment-method-option">
-                      <input type="radio" name="paymentMethod" value="netbanking">
-                      <div class="payment-method-card">
-                        <span class="payment-method-icon">&#x1F3E6;</span>
-                        <div>
-                          <div style="font-weight:600;">Net Banking</div>
-                          <div style="font-size:11px; opacity:0.7;">All banks</div>
-                        </div>
-                      </div>
-                    </label>
-                    <label class="payment-method-option">
-                      <input type="radio" name="paymentMethod" value="whatsapp">
-                      <div class="payment-method-card">
-                        <span class="payment-method-icon">&#x1F4AC;</span>
-                        <div>
-                          <div style="font-weight:600;">WhatsApp</div>
-                          <div style="font-size:11px; opacity:0.7;">Manual invoice</div>
-                        </div>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-
-                <!-- Security badge -->
-                <div style="display:flex; align-items:center; gap:10px; background: rgba(34,197,94,0.07); border:1px solid rgba(34,197,94,0.2); border-radius:10px; padding:12px 16px; margin-bottom:20px;">
-                  <span style="font-size:20px;">&#x1F512;</span>
-                  <div>
-                    <div style="font-size:12px; font-weight:700; color:#16a34a;">100% Secure Payment</div>
-                    <div style="font-size:11px; color:var(--text-secondary);">256-bit SSL encryption &bull; Powered by Razorpay</div>
-                  </div>
-                </div>
-
-                <div class="checkout-actions">
-                  <button type="button" class="btn btn-secondary" id="ck-back-to-step2">← Back</button>
-                  <button type="button" class="btn btn-gold" id="ck-pay-now" style="font-size:16px; flex:1;">&#x1F510; Pay Now →</button>
-                </div>
+                 <h2 class="checkout-heading">Order Summary</h2>
+                 <p class="checkout-subtitle">Review your invitation order details before confirming.</p>
+ 
+                 <!-- Order Summary Card - Premium -->
+                 <div class="payment-summary-card">
+                   <div class="payment-summary-header">
+                     <span>📋 Order Summary</span>
+                     <span style="font-size:11px; opacity:0.8; font-weight:400; letter-spacing:0;">Review details before confirming</span>
+                   </div>
+                   <div class="payment-summary-row">
+                     <span>🎨 Design Template</span>
+                     <span id="pay-design-name" style="font-weight:700;">Aventureros</span>
+                   </div>
+                   <div class="payment-summary-row">
+                     <span>📦 Layout Plan</span>
+                     <span id="pay-plan-name">Custom Domain</span>
+                   </div>
+                   <div class="payment-summary-row total" style="display: none;">
+                     <span style="font-size:15px; font-weight:700;">Total Amount</span>
+                     <strong id="pay-total">₹1,999</strong>
+                   </div>
+                 </div>
+ 
+                 <!-- Payment Method Selection (Hidden) -->
+                 <div class="payment-methods" style="display: none;">
+                   <div class="payment-method-label">Choose Payment Method</div>
+                   <div class="payment-method-options">
+                     <label class="payment-method-option selected">
+                       <input type="radio" name="paymentMethod" value="upi" checked>
+                       <div class="payment-method-card">
+                         <span class="payment-method-icon">📱</span>
+                         <div>
+                           <div style="font-weight:600;">UPI / GPay</div>
+                           <div style="font-size:11px; opacity:0.7;">Instant</div>
+                         </div>
+                       </div>
+                     </label>
+                     <label class="payment-method-option">
+                       <input type="radio" name="paymentMethod" value="card">
+                       <div class="payment-method-card">
+                         <span class="payment-method-icon">💳</span>
+                         <div>
+                           <div style="font-weight:600;">Card</div>
+                           <div style="font-size:11px; opacity:0.7;">Visa / Mastercard</div>
+                         </div>
+                       </div>
+                     </label>
+                     <label class="payment-method-option">
+                       <input type="radio" name="paymentMethod" value="netbanking">
+                       <div class="payment-method-card">
+                         <span class="payment-method-icon">🏦</span>
+                         <div>
+                           <div style="font-weight:600;">Net Banking</div>
+                           <div style="font-size:11px; opacity:0.7;">All banks</div>
+                         </div>
+                       </div>
+                     </label>
+                     <label class="payment-method-option">
+                       <input type="radio" name="paymentMethod" value="whatsapp">
+                       <div class="payment-method-card">
+                         <span class="payment-method-icon">💬</span>
+                         <div>
+                           <div style="font-weight:600;">WhatsApp</div>
+                           <div style="font-size:11px; opacity:0.7;">Manual invoice</div>
+                         </div>
+                       </div>
+                     </label>
+                   </div>
+                 </div>
+ 
+                 <!-- Security badge (Hidden) -->
+                 <div style="display: none; align-items:center; gap:10px; background: rgba(34,197,94,0.07); border:1px solid rgba(34,197,94,0.2); border-radius:10px; padding:12px 16px; margin-bottom:20px;">
+                   <span style="font-size:20px;">🔒</span>
+                   <div>
+                     <div style="font-size:12px; font-weight:700; color:#16a34a;">100% Secure Payment</div>
+                     <div style="font-size:11px; color:var(--text-secondary);">256-bit SSL encryption &bull; Powered by Razorpay</div>
+                   </div>
+                 </div>
+ 
+                 <div class="checkout-actions">
+                   <button type="button" class="btn btn-secondary" id="ck-back-to-step2">← Back</button>
+                   <button type="button" class="btn btn-gold" id="ck-pay-now" style="font-size:16px; flex:1;">Confirm Order →</button>
+                 </div>
               </div>
 
               <!-- ===== CHECKOUT STEP 4: Confirmation Page ===== -->
@@ -574,7 +573,7 @@
                       <span>Plan</span>
                       <strong id="conf-plan">Custom Domain</strong>
                     </div>
-                    <div class="confirmation-row">
+                    <div class="confirmation-row" style="display: none;">
                       <span>Amount Paid</span>
                       <strong id="conf-amount">₹1,999</strong>
                     </div>
@@ -635,9 +634,9 @@
               <div class="form-group">
                 <label for="wiz-package" data-i18n="labelPlan">Target Plan</label>
                 <select id="wiz-package" name="package" required>
-                  <option value="Simple">Simple — ₹999</option>
-                  <option value="CustomDomain" selected>Custom Domain — ₹1,999</option>
-                  <option value="ScratchGallery">Scratch + Photo Gallery — ₹2,999</option>
+                  <option value="Simple">Simple</option>
+                  <option value="CustomDomain" selected>Custom Domain</option>
+                  <option value="ScratchGallery">Scratch + Photo Gallery</option>
                 </select>
               </div>
               
@@ -764,7 +763,7 @@
                 <span data-i18n="summaryAddons">Addons Selected:</span>
                 <span id="summary-addons" style="text-align: right; font-size: 12px; color: var(--text-secondary);">None</span>
               </div>
-              <div class="wizard-summary-row" style="border-top: 1px solid var(--border-color); padding-top: 12px;">
+              <div class="wizard-summary-row" style="border-top: 1px solid var(--border-color); padding-top: 12px; display: none;">
                 <span data-i18n="summaryTotal">Estimated Total:</span>
                 <strong id="summary-total-price">₹8,999</strong>
               </div>
@@ -802,7 +801,6 @@
           <h4 data-i18n="footerProducts">Solutions</h4>
           <div class="footer-links">
             <a href="#designs" class="footer-link" data-i18n="footerLinkDemos">Design Catalog</a>
-            <a href="#pricing" class="footer-link" data-i18n="footerLinkPricing">Package Pricing</a>
             <a href="#playground" class="footer-link" data-i18n="footerLinkFeatures">Features Sandbox</a>
             <a href="#consultation" class="footer-link" data-i18n="footerLinkCustom">Custom Masterpiece</a>
           </div>
