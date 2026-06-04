@@ -2392,6 +2392,9 @@ footer {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .payment-summary-row {
@@ -2423,9 +2426,10 @@ footer {
 }
 
 .payment-summary-row.total strong {
-  font-size: 22px;
+  font-size: 26px;
   font-family: var(--font-serif);
   color: var(--accent-gold);
+  letter-spacing: -0.5px;
 }
 
 /* Payment Methods */

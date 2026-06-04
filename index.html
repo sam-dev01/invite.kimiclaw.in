@@ -456,66 +456,88 @@
                 </div>
 
                 <h2 class="checkout-heading">Payment</h2>
-                <p class="checkout-subtitle">Review your order and complete payment.</p>
+                <p class="checkout-subtitle">Review your order and complete payment securely.</p>
 
-                <!-- Order Summary Card -->
+                <!-- Order Summary Card - Premium -->
                 <div class="payment-summary-card">
-                  <div class="payment-summary-header">Order Summary</div>
-                  <div class="payment-summary-row">
-                    <span>Design Template</span>
-                    <span id="pay-design-name">Aventureros</span>
+                  <div class="payment-summary-header">
+                    <span>&#x1F4CB; Order Summary</span>
+                    <span style="font-size:11px; opacity:0.8; font-weight:400; letter-spacing:0;">Review before paying</span>
                   </div>
                   <div class="payment-summary-row">
-                    <span>Layout Plan</span>
+                    <span>&#x1F3A8; Design Template</span>
+                    <span id="pay-design-name" style="font-weight:700;">Aventureros</span>
+                  </div>
+                  <div class="payment-summary-row">
+                    <span>&#x1F4E6; Layout Plan</span>
                     <span id="pay-plan-name">Custom Domain</span>
                   </div>
                   <div class="payment-summary-row total">
-                    <span>Total Amount</span>
-                    <strong id="pay-total">₹1,999</strong>
+                    <span style="font-size:15px; font-weight:700;">Total Amount</span>
+                    <strong id="pay-total">&#x20B9;1,999</strong>
                   </div>
                 </div>
 
                 <!-- Payment Method Selection -->
                 <div class="payment-methods">
-                  <div class="payment-method-label">Choose Payment Method</div>
+                  <div class="payment-method-label">&#x1F4B3; Choose Payment Method</div>
                   <div class="payment-method-options">
                     <label class="payment-method-option selected">
                       <input type="radio" name="paymentMethod" value="upi" checked>
                       <div class="payment-method-card">
-                        <span class="payment-method-icon">📱</span>
-                        <span>UPI / Google Pay</span>
+                        <span class="payment-method-icon">&#x1F4F1;</span>
+                        <div>
+                          <div style="font-weight:600;">UPI / GPay</div>
+                          <div style="font-size:11px; opacity:0.7;">Instant</div>
+                        </div>
                       </div>
                     </label>
                     <label class="payment-method-option">
                       <input type="radio" name="paymentMethod" value="card">
                       <div class="payment-method-card">
-                        <span class="payment-method-icon">💳</span>
-                        <span>Card Payment</span>
+                        <span class="payment-method-icon">&#x1F4B3;</span>
+                        <div>
+                          <div style="font-weight:600;">Card</div>
+                          <div style="font-size:11px; opacity:0.7;">Visa / Mastercard</div>
+                        </div>
                       </div>
                     </label>
                     <label class="payment-method-option">
                       <input type="radio" name="paymentMethod" value="netbanking">
                       <div class="payment-method-card">
-                        <span class="payment-method-icon">🏦</span>
-                        <span>Net Banking</span>
+                        <span class="payment-method-icon">&#x1F3E6;</span>
+                        <div>
+                          <div style="font-weight:600;">Net Banking</div>
+                          <div style="font-size:11px; opacity:0.7;">All banks</div>
+                        </div>
                       </div>
                     </label>
                     <label class="payment-method-option">
                       <input type="radio" name="paymentMethod" value="whatsapp">
                       <div class="payment-method-card">
-                        <span class="payment-method-icon">💬</span>
-                        <span>Pay via WhatsApp</span>
+                        <span class="payment-method-icon">&#x1F4AC;</span>
+                        <div>
+                          <div style="font-weight:600;">WhatsApp</div>
+                          <div style="font-size:11px; opacity:0.7;">Manual invoice</div>
+                        </div>
                       </div>
                     </label>
                   </div>
                 </div>
 
-                <div class="checkout-actions">
-                  <button type="button" class="btn btn-secondary" id="ck-back-to-step2">← Back</button>
-                  <button type="button" class="btn btn-gold" id="ck-pay-now" style="font-size: 16px;">Pay Now →</button>
+                <!-- Security badge -->
+                <div style="display:flex; align-items:center; gap:10px; background: rgba(34,197,94,0.07); border:1px solid rgba(34,197,94,0.2); border-radius:10px; padding:12px 16px; margin-bottom:20px;">
+                  <span style="font-size:20px;">&#x1F512;</span>
+                  <div>
+                    <div style="font-size:12px; font-weight:700; color:#16a34a;">100% Secure Payment</div>
+                    <div style="font-size:11px; color:var(--text-secondary);">256-bit SSL encryption &bull; Powered by Razorpay</div>
+                  </div>
                 </div>
 
-                <p class="payment-secure-note">🔒 Your payment is 100% secure. SSL encrypted.</p>
+                <div class="checkout-actions">
+                  <button type="button" class="btn btn-secondary" id="ck-back-to-step2">← Back</button>
+                  <button type="button" class="btn btn-gold" id="ck-pay-now" style="font-size:16px; flex:1;">&#x1F510; Pay Now →</button>
+                </div>
               </div>
 
               <!-- ===== CHECKOUT STEP 4: Confirmation Page ===== -->
