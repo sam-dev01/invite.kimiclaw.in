@@ -20,7 +20,7 @@ const demos = [
     tier: "Premium",
     categories: ["bestsellers", "modern"],
     url: "demos/aventureros-demo/source/index.html",
-    previewImg: "assets/media__1780062043451.png",
+    previewImg: "demos/aventureros-demo/preview.png",
     description: "A cinematic boarding-pass travel style template with custom schedules, flight itinerary visual markers, countdowns, and music.",
     features: ["Unique airline ticket style header", "Travel stamp micro-animations", "Google Maps location links", "Floating media music controller", "Mobile-first booking request form"]
   },
@@ -32,7 +32,7 @@ const demos = [
     tier: "Luxury",
     categories: ["bestsellers", "classical"],
     url: "demos/maison-doree/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/accommodation-archway-rgzoR4rb.png",
+    previewImg: "demos/maison-doree/preview.png",
     description: "An extravagant gold-laden wedding suite with elegant high-fashion serif lettering, detailed hotel stay guides, and itinerary notes.",
     features: ["Brushed gold frames & scrollwork", "Premium hotel recommendations grid", "Elegant typography & fine line borders", "Ambient playlist music widget", "Integrated gift registry information"]
   },
@@ -44,7 +44,7 @@ const demos = [
     tier: "Luxury",
     categories: ["classical", "excellence"],
     url: "demos/teatro/source/index.html",
-    previewImg: "assets/gate-final-preview.png",
+    previewImg: "demos/teatro/preview.png",
     description: "A theatrical masterpiece featuring a custom animated stage curtain reveal on load, and vintage stageplay editorial design.",
     features: ["Interactive animated velvet curtain intro", "Retro theater playbill visual aesthetic", "Sophisticated schedule timeline cards", "WhatsApp response form", "Luxury golden typographic styling"]
   },
@@ -56,7 +56,7 @@ const demos = [
     tier: "Premium",
     categories: ["classical"],
     url: "demos/nautical-template/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/transport-car-B1HQctzX.png",
+    previewImg: "demos/nautical-template/preview.png",
     description: "A clean oceanfront layout featuring soft blue color palettes, nautical typography details, and dress code cards.",
     features: ["Seaside visual styling & anchors", "Interactive wedding day timeline", "Beach dress code guidelines card", "Integrated photo grid slider", "Direct location mapping"]
   },
@@ -68,7 +68,7 @@ const demos = [
     tier: "Premium",
     categories: ["classical"],
     url: "demos/rosas-template/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/rsvp-portrait-mMZuOcbA.png",
+    previewImg: "demos/rosas-template/preview.png",
     description: "Soft pink rose watercolor visual systems with built-in intro video headers, elegant timeline markers, and gift list notes.",
     features: ["Elegant rose illustrations", "Video intro opening frame", "Wedding countdown clock", "Gift notes section", "Interactive guest response forms"]
   },
@@ -92,7 +92,7 @@ const demos = [
     tag: "Classic Gold",
     categories: ["classical"],
     url: "demos/majestic-template/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-10-BJ_0Yhoj.jpg",
+    previewImg: "demos/majestic-template/preview.png",
     description: "Clean classical layouts with gold leaf details, structured event schedule blocks, and instant RSVP replies.",
     features: ["Brushed gold framing layout", "Clean timeline icons", "Gift registry note widget", "WhatsApp RSVP links", "Elegant mobile photo grid"]
   },
@@ -140,7 +140,7 @@ const demos = [
     tier: "Excellence",
     categories: ["bestsellers", "excellence"],
     url: "demos/excellence-demo/source/index.html",
-    previewImg: "assets/palace_backdrop.png",
+    previewImg: "demos/excellence-demo/preview.png",
     description: "A completely bespoke digital layout including dynamic hand-drawn watercolor venue illustration overlays and custom intro motion.",
     features: ["Hand-drawn custom venue painting overlay", "Premium cinematic opening screen", "Dynamic guest name personalization", "Accommodations booking modules", "Dual RSVP option (WhatsApp & Form)"]
   },
@@ -152,7 +152,7 @@ const demos = [
     tier: "Luxury",
     categories: ["excellence"],
     url: "demos/excellence-template/source/index.html",
-    previewImg: "assets/wedding_gate.png",
+    previewImg: "demos/excellence-template/preview.png",
     description: "High-end creative templates using beautiful hand-lettered gold headers, luxury fonts, and unlimited photo gallery.",
     features: ["Hand-lettered golden calligraphy details", "Immersive media players", "Accommodation booking blocks", "Interactive wedding day timeline", "VIP Priority support"]
   },
@@ -769,8 +769,8 @@ const i18n = {
 const pricingTable = {
   INR: {
     // Layout base plans
-    Simple: 999,
-    CustomDomain: 1999,
+    Simple: 499,
+    CustomDomain: 1499,
     ScratchGallery: 2999,
     // Legacy plan keys (kept for calculator section)
     Essential: 4999,
@@ -884,15 +884,28 @@ function translateUI() {
   }
 }
 
-// Render dynamic card function helper
+// Render dynamic card function helper — phone mockup thumbnail with static image inside
 function buildCardHtml(demo) {
-  const styleAttr = demo.previewImg ? `style="background-image: url('${demo.previewImg}'); background-size: cover; background-position: center;"` : "";
+  // Phone mockup with live iframe inside
+  let thumbContent = '';
+  if (demo.url) {
+    thumbContent = `
+      <div class="card-phone">
+        <div class="card-phone-screen">
+          <iframe src="${demo.url}" title="${demo.title} preview" loading="lazy"></iframe>
+        </div>
+      </div>
+    `;
+  } else {
+    thumbContent = `<div class="design-thumb-icon">${demo.title}</div>`;
+  }
+
   return `
     <div class="design-card">
       <span class="design-tag">${demo.tag}</span>
       <span class="design-code-badge">#${demo.code}</span>
-      <div class="design-thumb" ${styleAttr}>
-        ${!demo.previewImg ? `<div class="design-thumb-icon">${demo.title}</div>` : ""}
+      <div class="design-thumb">
+        ${thumbContent}
       </div>
       <div class="design-info">
         <h3>${demo.title} <span style="font-family: var(--font-sans); font-weight: normal; color: var(--text-secondary); font-size: 14px; margin-left: 6px;">#${demo.code}</span></h3>
@@ -1579,15 +1592,59 @@ function bindEvents() {
     ckPayNow.addEventListener("click", () => {
       ckPayNow.disabled = true;
       ckPayNow.textContent = "Processing Order...";
-      
-      setTimeout(() => {
-        saveCheckoutOrder();
-        populateConfirmation();
-        showCheckoutStep(4);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      const planSelector = document.querySelector("#detail-plan-selector");
+      const designTitle = document.querySelector("#detail-title")?.textContent || "Custom Design";
+      const planKey = planSelector?.value || "CustomDomain";
+      const currency = state.currentCurrency || "INR";
+      const table = pricingTable[currency] || pricingTable["INR"];
+      const amount = table[planKey] || 999;
+
+      const options = {
+        key: "rzp_live_SwqTC3My87u3Hc", // Live Razorpay Key
+        amount: amount * 100, // Amount in subunits (paise/cents)
+        currency: currency,
+        name: "invite.kimiclaw.in",
+        description: `Order: ${designTitle} (${planLabel(planKey, currency)})`,
+        handler: function (response) {
+          // Payment Succeeded
+          saveCheckoutOrder();
+          populateConfirmation();
+          showCheckoutStep(4);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          ckPayNow.disabled = false;
+          ckPayNow.textContent = "Confirm Order →";
+        },
+        prefill: {
+          name: document.querySelector("#ck-contact-name")?.value || "",
+          email: document.querySelector("#ck-email")?.value || "",
+          contact: document.querySelector("#ck-phone")?.value || ""
+        },
+        theme: {
+          color: "#0f0e0c"
+        },
+        modal: {
+          ondismiss: function() {
+            ckPayNow.disabled = false;
+            ckPayNow.textContent = "Confirm Order →";
+          }
+        }
+      };
+
+      try {
+        const rzp = new window.Razorpay(options);
+        rzp.on('payment.failed', function (response){
+          alert("Payment failed: " + response.error.description);
+          ckPayNow.disabled = false;
+          ckPayNow.textContent = "Confirm Order →";
+        });
+        rzp.open();
+      } catch (err) {
+        console.error("Razorpay SDK not loaded", err);
+        alert("Payment gateway is temporarily unavailable.");
         ckPayNow.disabled = false;
         ckPayNow.textContent = "Confirm Order →";
-      }, 1000);
+      }
     });
   }
 
@@ -1808,9 +1865,9 @@ function updatePricingDisplays() {
     const options = detailPlanSelector.options;
     for(let i = 0; i < options.length; i++) {
       const val = options[i].value;
-      if(val === "Simple") options[i].text = `Simple`;
-      if(val === "CustomDomain") options[i].text = `Custom Domain`;
-      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery`;
+      if(val === "Simple") options[i].text = `Simple - ${sym}${(table.Simple || 499).toLocaleString()}`;
+      if(val === "CustomDomain") options[i].text = `Custom Domain - ${sym}${(table.CustomDomain || 1499).toLocaleString()}`;
+      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery - ${sym}${(table.ScratchGallery || 2999).toLocaleString()}`;
     }
   }
 
@@ -1820,9 +1877,9 @@ function updatePricingDisplays() {
     const options = wizPackage.options;
     for(let i = 0; i < options.length; i++) {
       const val = options[i].value;
-      if(val === "Simple") options[i].text = `Simple`;
-      if(val === "CustomDomain") options[i].text = `Custom Domain`;
-      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery`;
+      if(val === "Simple") options[i].text = `Simple - ${sym}${(table.Simple || 499).toLocaleString()}`;
+      if(val === "CustomDomain") options[i].text = `Custom Domain - ${sym}${(table.CustomDomain || 1499).toLocaleString()}`;
+      if(val === "ScratchGallery") options[i].text = `Scratch + Photo Gallery - ${sym}${(table.ScratchGallery || 2999).toLocaleString()}`;
     }
   }
 

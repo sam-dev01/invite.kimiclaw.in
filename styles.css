@@ -856,8 +856,8 @@ a, button, [role="button"], input, select, textarea, label {
 
 .design-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -880,34 +880,179 @@ a, button, [role="button"], input, select, textarea, label {
   box-shadow: var(--shadow-md);
 }
 
+/* ── Phone Mockup Thumbnail ── */
 .design-thumb {
-  height: 200px;
+  height: 320px;
   position: relative;
   overflow: hidden;
-  background-color: var(--bg-secondary);
+  background: linear-gradient(160deg, #f5ede0 0%, #ede0cc 50%, #e8d5b7 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px 0 12px;
 }
 
-.design-thumb::after {
+[data-theme="dark"] .design-thumb {
+  background: linear-gradient(160deg, #1f1c18 0%, #28231c 50%, #1a1610 100%);
+}
+
+/* Subtle radial glow behind phone */
+.design-thumb::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(197,162,107,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* The phone frame inside card */
+.card-phone {
+  position: relative;
+  width: 118px;
+  height: 250px;
+  background: #0d0d0d;
+  border-radius: 22px;
+  border: 6px solid #1a1a1a;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 20px 48px rgba(0,0,0,0.45),
+    0 4px 12px rgba(0,0,0,0.3);
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 2;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+/* Notch */
+.card-phone::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 10px;
+  background: #0d0d0d;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  z-index: 10;
+}
+
+/* Home bar */
+.card-phone::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 3px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* The iframe inside phone */
+.card-phone-screen {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(94, 114, 95, 0.1), rgba(197, 162, 107, 0.2));
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-phone-screen iframe {
+  width: 375px;
+  height: 812px;
+  border: none;
+  transform: scale(0.282);
+  transform-origin: top left;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+}
+
+/* Second phone (offset/shadow phone peeking from left-behind) */
+.card-phone-secondary {
+  position: absolute;
+  left: calc(50% - 108px);
+  top: 40px;
+  width: 95px;
+  height: 200px;
+  background: #111;
+  border-radius: 18px;
+  border: 5px solid #1c1c1c;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0.6;
+  filter: brightness(0.65);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.card-phone-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 8px;
+  background: #0d0d0d;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  z-index: 5;
+}
+
+.card-phone-secondary-screen {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 13px;
+  position: relative;
+}
+
+.card-phone-secondary-screen iframe {
+  width: 375px;
+  height: 812px;
+  border: none;
+  transform: scale(0.238);
+  transform-origin: top left;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Fallback for static-image thumbs */
+.design-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  position: absolute;
+  inset: 0;
 }
 
 .design-thumb-icon {
   font-family: var(--font-serif);
-  font-size: 72px;
+  font-size: 60px;
   color: rgba(31, 29, 26, 0.1);
   font-style: italic;
   font-weight: 300;
   text-transform: capitalize;
   user-select: none;
+  z-index: 1;
 }
 
 [data-theme="dark"] .design-thumb-icon {
@@ -999,6 +1144,22 @@ a, button, [role="button"], input, select, textarea, label {
 .design-card:hover .design-link {
   color: var(--accent-gold);
   gap: 8px;
+}
+
+/* Lift phone on card hover */
+.design-card:hover .card-phone {
+  transform: translateY(-6px) scale(1.03);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12),
+    0 28px 60px rgba(0,0,0,0.55),
+    0 8px 16px rgba(0,0,0,0.35);
+}
+
+.design-card:hover .card-phone-secondary {
+  opacity: 0.8;
+  transform: translateY(-3px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
 }
 
 /* Detail Mode Container */
