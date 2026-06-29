@@ -198,12 +198,12 @@ body.pl-active .hl-palace.in{opacity:1}
 }
 
 /* Entry visibility */
-.hero-copy>*{opacity:1;transform:none;transition:opacity .9s var(--royal),transform .9s var(--royal)}
-body.pl-active .hero-copy>*{opacity:0;transform:translateY(16px)}
-body.pl-active .hero-copy.in .hc-bride    {opacity:1;transform:none;transition-delay:.18s}
-body.pl-active .hero-copy.in .hc-weds     {opacity:1;transform:none;transition-delay:.32s}
-body.pl-active .hero-copy.in .hc-groom    {opacity:1;transform:none;transition-delay:.48s}
-body.pl-active .hero-copy.in .hc-countdown{opacity:1;transform:none;transition-delay:.62s}
+.hero-copy>*{opacity:1;transform:translate3d(0, 0, 0);will-change:opacity,transform;transition:opacity .9s var(--royal),transform .9s var(--royal)}
+body.pl-active .hero-copy>*{opacity:0;transform:translate3d(0, 16px, 0)}
+body.pl-active .hero-copy.in .hc-bride    {opacity:1;transform:translate3d(0, 0, 0);transition-delay:.18s}
+body.pl-active .hero-copy.in .hc-weds     {opacity:1;transform:translate3d(0, 0, 0);transition-delay:.32s}
+body.pl-active .hero-copy.in .hc-groom    {opacity:1;transform:translate3d(0, 0, 0);transition-delay:.48s}
+body.pl-active .hero-copy.in .hc-countdown{opacity:1;transform:translate3d(0, 0, 0);transition-delay:.62s}
 
 /* Mobile — raised slightly to fit countdown row */
 @media(max-width:600px){
@@ -351,11 +351,12 @@ section{position:relative;overflow:hidden;padding:100px 0}
 .sh-h--lt em{color:var(--gold)}
 .scroll-in{
   opacity:0;
-  transform:translateY(28px);
+  transform:translate3d(0, 28px, 0);
+  will-change:opacity,transform;
   transition:opacity .75s var(--royal),transform .75s var(--spring);
   transition-delay:var(--sd,0s);
 }
-.scroll-in.vis{opacity:1;transform:translateY(0)}
+.scroll-in.vis{opacity:1;transform:translate3d(0, 0, 0)}
 /* Safety: if body.pl-active is removed without vis being added, show content */
 body:not(.pl-active) .scroll-in:not(.vis){
   /* Still animated by IO, but won't be forever invisible */
@@ -439,6 +440,7 @@ body:not(.pl-active) .scroll-in:not(.vis){
   padding:52px 44px;text-align:center;
   position:relative;
   z-index:2;
+  will-change:transform;
   transition:transform .65s var(--jelly),box-shadow .65s var(--jelly);
 }
 /* Desktop hover tilt only */
@@ -476,17 +478,19 @@ body:not(.pl-active) .scroll-in:not(.vis){
 .i-label{font-size:.58rem;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;opacity:1}
 .i-names{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 16px;flex-wrap:wrap}
 .i-bride,.i-groom{font-family:var(--ff-d);font-style:italic;font-weight:500;font-size:clamp(2rem,6vw,3.4rem);color:var(--deep);
-  opacity:0;transform:translateY(30px) scale(0.88);
+  opacity:0;transform:translate3d(0, 30px, 0) scale(0.88);
+  will-change:opacity,transform;
   transition:opacity .9s var(--royal), transform .9s var(--spring);
 }
 .i-amp{font-family:var(--ff-s);font-style:italic;font-size:1.6rem;color:var(--gold);
   opacity:0;transform:scale(0.6);
+  will-change:opacity,transform;
   transition:opacity .7s var(--royal) .3s, transform .7s var(--spring) .3s;
 }
 /* Trigger when card scrolls into view */
-.invite-card.vis .i-bride{opacity:1;transform:translateY(0) scale(1);transition-delay:.1s}
+.invite-card.vis .i-bride{opacity:1;transform:translate3d(0, 0, 0) scale(1);transition-delay:.1s}
 .invite-card.vis .i-amp  {opacity:1;transform:scale(1);transition-delay:.32s}
-.invite-card.vis .i-groom{opacity:1;transform:translateY(0) scale(1);transition-delay:.52s}
+.invite-card.vis .i-groom{opacity:1;transform:translate3d(0, 0, 0) scale(1);transition-delay:.52s}
 .i-fam{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:16px 0;font-family:var(--ff-b);font-weight:300;font-size:.78rem;line-height:1.9;color:#7A5840}
 .i-fam em{font-style:italic;color:var(--deep);display:block;font-size:.88rem}
 .fam-dot{color:var(--gold);align-self:center;font-size:.7rem}

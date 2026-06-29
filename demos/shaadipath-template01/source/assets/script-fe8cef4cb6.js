@@ -211,7 +211,7 @@ class Petals {
     this.el    = document.getElementById(id);
     this.max   = opts.max  || 8;
     this.rate  = opts.rate || 1000;
-    this.src   = 'assets/elements/Element 2.png';
+    this.src   = 'assets/Element_204-03d5916c5b.png';
     this.active= false;
     this.pool  = new Set();
     this._iv   = null;
@@ -635,7 +635,7 @@ function burstPetals(fromEl){
   const r   = fromEl.getBoundingClientRect();
   const cx  = r.left + r.width  / 2;
   const cy  = r.top  + r.height / 2;
-  const src = 'assets/elements/Element 2.png';
+  const src = 'assets/Element_204-03d5916c5b.png';
 
   for(let i = 0; i < 18; i++){
     const el  = document.createElement('div');

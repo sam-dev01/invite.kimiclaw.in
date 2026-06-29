@@ -505,13 +505,8 @@ section{position:relative;overflow:hidden;padding:100px 0}
 /* ═══ LUXURY ANIMATION 6: SILK FADE scroll-in ═══
    Slower than T01's .8s — T03 uses 1.2s editorial pace
 ════════════════════════════════════════════════ */
-.scroll-in{
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity .9s var(--editorial),transform .75s var(--spring);
-  transition-delay:var(--sd,0s);
-}
-.scroll-in.vis{opacity:1;transform:translateY(0)}
+.scroll-in{opacity:0;transform:translate3d(0, 30px, 0);will-change:opacity,transform;transition:opacity .9s var(--editorial),transform .75s var(--spring);transition-delay:var(--sd,0s);}
+.scroll-in.vis{opacity:1;transform:translate3d(0, 0, 0)}
 body:not(.pl-active) .scroll-in:not(.vis){animation:scrollInFallback .01s 5s forwards}
 @keyframes scrollInFallback{to{opacity:1;transform:none}}
 

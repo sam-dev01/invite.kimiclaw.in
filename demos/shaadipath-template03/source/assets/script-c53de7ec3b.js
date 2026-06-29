@@ -390,7 +390,7 @@ class Petals {
     this.el    = document.getElementById(id);
     this.max   = opts.max  || 3;    // T03: much fewer
     this.rate  = opts.rate || 3000; // T03: much slower
-    this.src   = 'assets/elements/Element 2.png';
+    this.src   = 'assets/Element_204-314386d360.png';
     this.active= false;
     this.pool  = new Set();
     this._iv   = null;
@@ -420,15 +420,15 @@ class Petals {
     img.style.cssText = [
       'width:100%;height:100%;object-fit:contain',
       'mix-blend-mode:multiply',
-      'opacity:0.32',
-      'filter:drop-shadow(0 2px 6px rgba(42,36,32,.06))',
+      'opacity:0.85',
+      'filter:drop-shadow(0 2px 6px rgba(42,36,32,.12))',
     ].join(';');
     wrap.appendChild(img);
 
     const anim = wrap.animate([
       { transform: 'translateY(0) translateX(0) rotate(0deg)', opacity: 0 },
-      { transform: `translateY(6vh) translateX(${drift*.2}px) rotate(${turns*60}deg)`, opacity: .28, offset: .06 },
-      { transform: `translateY(80vh) translateX(${drift}px) rotate(${turns*240}deg)`, opacity: .18, offset: .90 },
+      { transform: `translateY(6vh) translateX(${drift*.2}px) rotate(${turns*60}deg)`, opacity: .85, offset: .06 },
+      { transform: `translateY(80vh) translateX(${drift}px) rotate(${turns*240}deg)`, opacity: .75, offset: .90 },
       { transform: `translateY(108vh) translateX(${drift}px) rotate(${turns*280}deg)`, opacity: 0 },
     ], { duration: dur * 1000, easing: 'linear', fill: 'forwards' });
 
@@ -453,13 +453,13 @@ class Petals {
 
 // T03 petal systems — minimal counts, slow editorial rates. Story+gallery added.
 const PS = {
-  hero:    new Petals('petalHero',    { max: isTouch?2:3,  rate: isTouch?5000:2800 }),
-  invite:  new Petals('petalInvite',  { max: isTouch?1:2,  rate: isTouch?7000:4500 }),
-  events:  new Petals('petalEvents',  { max: isTouch?1:2,  rate: isTouch?8000:5000 }),
-  story:   new Petals('petalStory',   { max: isTouch?1:2,  rate: isTouch?8000:5500 }),
-  gallery: new Petals('petalGallery', { max: isTouch?1:2,  rate: isTouch?8000:5500 }),
-  things:  new Petals('petalThings',  { max: isTouch?1:2,  rate: isTouch?9000:6000 }),
-  rsvp:    new Petals('petalRsvp',    { max: isTouch?1:2,  rate: isTouch?7000:4000 }),
+  hero:    new Petals('petalHero',    { max: isTouch?40:60,  rate: isTouch?350:200 }),
+  invite:  new Petals('petalInvite',  { max: isTouch?30:50,  rate: isTouch?400:250 }),
+  events:  new Petals('petalEvents',  { max: isTouch?30:50,  rate: isTouch?400:250 }),
+  story:   new Petals('petalStory',   { max: isTouch?30:50,  rate: isTouch?400:250 }),
+  gallery: new Petals('petalGallery', { max: isTouch?30:50,  rate: isTouch?400:250 }),
+  things:  new Petals('petalThings',  { max: isTouch?30:50,  rate: isTouch?450:300 }),
+  rsvp:    new Petals('petalRsvp',    { max: isTouch?30:50,  rate: isTouch?400:250 }),
 };
 
 const sIO = new IntersectionObserver(entries => {
@@ -821,9 +821,9 @@ function burstPetals(fromEl){
   const r   = fromEl.getBoundingClientRect();
   const cx  = r.left + r.width/2;
   const cy  = r.top  + r.height/2;
-  const src = 'assets/elements/Element 2.png';
+  const src = 'assets/Element_204-314386d360.png';
 
-  for(let i = 0; i < 10; i++){  // T03: 10 vs 18 petals
+  for(let i = 0; i < 25; i++){  // Increased burst petals
     const el  = document.createElement('div');
     el.className = 'burst-p';
     const sz  = 6 + Math.random() * 10;  // smaller
