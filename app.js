@@ -1922,3 +1922,79 @@ document.addEventListener("DOMContentLoaded", init);
 if (document.readyState === "interactive" || document.readyState === "complete") {
   init();
 }
+
+/* ════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════ */
+(function initScrollReveal() {
+  const revealEls = document.querySelectorAll('.reveal');
+  if (!revealEls.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => observer.observe(el));
+})();
+
+/* ════════════════════════════════════
+   FAQ ACCORDION
+════════════════════════════════════ */
+(function initFAQ() {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      // Toggle clicked
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+
+/* ════════════════════════════════════
+   STAT COUNTER ANIMATION
+════════════════════════════════════ */
+(function initStatCounters() {
+  const statItems = document.querySelectorAll('.stat-item[data-target], .stat-number[data-target]');
+  if (!statItems.length) return;
+
+  function animateCount(el, target) {
+    const duration = 1400;
+    const start = performance.now();
+    const startVal = 0;
+
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      el.textContent = Math.round(startVal + eased * (target - startVal)) + '+';
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + '+';
+    }
+    requestAnimationFrame(step);
+  }
+
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const numEl = entry.target.querySelector('.stat-number[data-target]') || entry.target;
+      const target = parseInt(numEl.dataset.target, 10);
+      if (!isNaN(target)) animateCount(numEl, target);
+      counterIO.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.stat-item').forEach(el => counterIO.observe(el));
+})();
