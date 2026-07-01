@@ -1405,3 +1405,6 @@ section{ padding:80px 0; }
 .ev-desc{font-size:0.89rem}
 @media(min-width:1024px){.ev-name{font-size:1.42rem}}
 @media(max-width:480px){.ev-name{font-size:1.18rem}.ev-date{font-size:0.60rem}.ev-desc{font-size:0.86rem}}
+
+/* Anti-flicker for iOS/Android */
+.scroll-in, .petal-canvas, .hero-curtain-l, .hero-curtain-r, .st-char-img, .ev-node, .gal-item, .pl-mandala, .sn-icon { -webkit-backface-visibility: hidden; backface-visibility: hidden; -webkit-transform: translateZ(0); transform: translateZ(0); }

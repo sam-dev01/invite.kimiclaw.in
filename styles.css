@@ -3300,13 +3300,13 @@ footer {
 }
 
 @keyframes waPulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 0; transform: scale(1.15); }
+  0%, 100% { opacity: 0.7; transform: scale(1) translateZ(0); }
+  50% { opacity: 0; transform: scale(1.15) translateZ(0); }
 }
 
 @keyframes waEntrance {
-  from { opacity: 0; transform: translateY(24px) scale(0.9); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(24px) scale(0.9) translateZ(0); }
+  to   { opacity: 1; transform: translateY(0) scale(1) translateZ(0); }
 }
 
 @media (max-width: 480px) {
@@ -3320,13 +3320,15 @@ footer {
 ════════════════════════════════════════════ */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(28px) translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) translateZ(0);
 }
 
 .reveal-delay-1 { transition-delay: 0.1s; }
