@@ -103,7 +103,7 @@ a{text-decoration:none;color:inherit}
 
 /* ═══ HERO SCROLL SCENE ═══ */
 .hero-wrap{position:relative;height:220vh}
-@media(max-width:767px){.hero-wrap{height:200vh}}
+@media(max-width:767px){.hero-wrap{height:200vh;touch-action:pan-y;overflow-x:hidden}}
 @media(min-width:1400px){.hero-wrap{height:250vh}}
 @media(prefers-reduced-motion:reduce){.hero-wrap{height:100svh}}
 
@@ -331,6 +331,7 @@ body.pl-active .hero-copy.in .hc-countdown{opacity:1;transform:translate3d(0, 0,
   position:absolute;
   inset:0;
   width:100%;
+  max-width:100%;  /* prevent horizontal overflow on mobile */
   /* Extend height so confetti falls onto Ganesha below */
   height:200%;
   pointer-events:none;
