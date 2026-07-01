@@ -884,21 +884,21 @@ function translateUI() {
   }
 }
 
-// Render dynamic card function helper — phone mockup thumbnail with static image inside
+function getThumbSrc(demo) {
+  return `assets/thumbs/${demo.id}.webp`;
+}
+
+// Render dynamic card helper with static thumbnails; live previews load on detail pages.
 function buildCardHtml(demo) {
-  // Phone mockup with live iframe inside
-  let thumbContent = '';
-  if (demo.url) {
-    thumbContent = `
+  const thumbContent = demo.previewImg
+    ? `
       <div class="card-phone">
         <div class="card-phone-screen">
-          <iframe src="${demo.url}" title="${demo.title} preview" loading="lazy"></iframe>
+          <img class="design-thumb-img" src="${getThumbSrc(demo)}" alt="${demo.title} preview" width="236" height="500" loading="lazy" decoding="async">
         </div>
       </div>
-    `;
-  } else {
-    thumbContent = `<div class="design-thumb-icon">${demo.title}</div>`;
-  }
+    `
+    : `<div class="design-thumb-icon">${demo.title}</div>`;
 
   return `
     <div class="design-card">
@@ -1844,7 +1844,7 @@ function checkWelcomeScreen() {
       translateUI();
       updatePricingDisplays();
       renderCatalog();
-      renderHubCatalog();
+      if (designsHubView && designsHubView.style.display !== "none") renderHubCatalog();
       renderSandboxFeature();
       
       // Update Detail View Dynamic Pricing if open
@@ -1920,7 +1920,6 @@ function init() {
   populateWizardBaseStyles();
   translateUI();
   renderCatalog();
-  renderHubCatalog();
   renderSandboxFeature();
   bindEvents();
   handleRoute();
@@ -1938,6 +1937,11 @@ if (document.readyState === "interactive" || document.readyState === "complete")
 (function initScrollReveal() {
   const revealEls = document.querySelectorAll('.reveal');
   if (!revealEls.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(el => el.classList.add('visible'));
+    return;
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1994,6 +1998,8 @@ if (document.readyState === "interactive" || document.readyState === "complete")
     }
     requestAnimationFrame(step);
   }
+
+  if (!('IntersectionObserver' in window)) return;
 
   const counterIO = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
