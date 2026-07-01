@@ -1805,14 +1805,23 @@ function checkWelcomeScreen() {
   const savedLang = localStorage.getItem("userPrefLang");
   const savedCurrency = localStorage.getItem("userPrefCurrency");
 
+  // Default if not saved
   if (savedLang && savedCurrency) {
     state.currentLang = savedLang;
     state.currentCurrency = savedCurrency;
-    welcomeScreen.style.display = "none";
-    document.body.style.overflow = "";
-  } else {
-    welcomeScreen.style.display = "flex";
-    document.body.style.overflow = "hidden";
+  }
+
+  welcomeScreen.style.display = "none";
+  document.body.style.overflow = "";
+
+  // Bind the lang-btn in the topbar to open this modal
+  const langBtn = document.querySelector("#lang-btn");
+  if (langBtn) {
+    langBtn.addEventListener("click", () => {
+      welcomeScreen.style.display = "flex";
+      welcomeScreen.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    });
   }
 
   const continueBtn = document.querySelector("#welcome-continue-btn");
