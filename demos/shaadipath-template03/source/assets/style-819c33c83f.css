@@ -141,9 +141,9 @@ a{text-decoration:none;color:inherit}
 #nav,#nav.sc,.mobile-menu{display:none!important}
 
 /* ═══ HERO SCROLL SCENE ═══ */
-.hero-wrap{position:relative;height:240vh}
-@media(max-width:767px){.hero-wrap{height:210vh}}
-@media(min-width:1400px){.hero-wrap{height:270vh}}
+.hero-wrap{position:relative;height:240svh}
+@media(max-width:767px){.hero-wrap{height:210svh}}
+@media(min-width:1400px){.hero-wrap{height:270svh}}
 @media(prefers-reduced-motion:reduce){.hero-wrap{height:100svh}}
 
 .hero-pin{
@@ -169,10 +169,10 @@ a{text-decoration:none;color:inherit}
   animation:hpFloat var(--dur,12s) var(--del,0s) ease-in-out infinite;
 }
 @keyframes hpFloat{
-  0%   {opacity:0;transform:translateY(100vh) translateX(0)}
+  0%   {opacity:0;transform:translateY(100svh) translateX(0)}
   8%   {opacity:.4}
   85%  {opacity:.25}
-  100% {opacity:0;transform:translateY(-10vh) translateX(var(--dx,20px))}
+  100% {opacity:0;transform:translateY(-10svh) translateX(var(--dx,20px))}
 }
 
 /* T03 has no hero-moon CSS element — removed */
@@ -235,7 +235,7 @@ body.pl-active .hl-palace.in{opacity:1}
 .hc-countdown{
   display:flex;align-items:center;justify-content:center;
   gap:clamp(6px,2vw,18px);
-  margin-top:clamp(6px,1vh,12px);
+  margin-top:clamp(6px,1svh,12px);
   pointer-events:none;flex-wrap:nowrap;
   width:100%;
 }
@@ -405,9 +405,9 @@ body.pl-active .hl-couple.in{opacity:1}
 @keyframes fallLeaf{
   0% {transform:translateY(-70px) rotate(-12deg);opacity:0}
   6% {opacity:.4}
-  40% {transform:translateY(28vh) rotate(6deg) translateX(10px);opacity:.4}
-  75% {transform:translateY(62vh) rotate(-6deg) translateX(-8px);opacity:.25}
-  100%{transform:translateY(102vh) rotate(4deg) translateX(6px);opacity:0}
+  40% {transform:translateY(28svh) rotate(6deg) translateX(10px);opacity:.4}
+  75% {transform:translateY(62svh) rotate(-6deg) translateX(-8px);opacity:.25}
+  100%{transform:translateY(102svh) rotate(4deg) translateX(6px);opacity:0}
 }
 @keyframes leafL{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 @keyframes leafR{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-6deg)}}
@@ -838,7 +838,7 @@ body:not(.pl-active) .scroll-in:not(.vis){animation:scrollInFallback .01s 5s for
   mix-blend-mode: multiply;
   filter: drop-shadow(0 6px 18px rgba(42,36,32,.10));
   /* Set a matching max-height so they appear equal on screen */
-  max-height: clamp(250px, 40vh, 400px); 
+  max-height: clamp(250px, 40svh, 400px); 
 }
 .st-bride .st-char-img{animation:stIdleFloat 7s ease-in-out infinite}
 .st-groom .st-char-img{animation:stIdleFloat 7.8s ease-in-out infinite 1.4s}
@@ -855,8 +855,8 @@ body:not(.pl-active) .scroll-in:not(.vis){animation:scrollInFallback .01s 5s for
 @media(max-width:600px){
   .st-bride{left:0;transform-origin:right bottom;width:clamp(120px,35vw,180px)}
   .st-groom{right:0;width:clamp(90px,24vw,145px)}
-  .st-groom .st-char-img{height:auto!important;max-height:clamp(80px,18vh,105px)!important}
-  .st-bride .st-char-img{height:auto!important;max-height:clamp(70px,15vh,90px)!important}
+  .st-groom .st-char-img{height:auto!important;max-height:clamp(80px,18svh,105px)!important}
+  .st-bride .st-char-img{height:auto!important;max-height:clamp(70px,15svh,90px)!important}
 }
 
 /* ═══ GALLERY ═══ */
@@ -1034,7 +1034,7 @@ section{padding:80px 0}
   .invite-card{padding:28px 16px}.i-names{gap:6px}
   .tt-row{grid-template-columns:1fr 1fr;gap:10px}.tt{padding:20px 10px}
   .ev-float-stage{gap:48px;padding:12px 0 24px}.ev-node{padding:6px 8px 12px}.ev-name{font-size:.94rem}.ev-date{font-size:.48rem}.ev-desc{font-size:.70rem}
-  .st-stage{height:336px}.st-char{width:clamp(155px,43vw,230px)}.st-groom{right:0;width:clamp(105px,29vw,140px)}.st-groom .st-char-img{height:auto!important;max-height:clamp(70px,16vh,92px)!important}.st-bride .st-char-img{height:auto!important;max-height:clamp(60px,13vh,80px)!important}
+  .st-stage{height:336px}.st-char{width:clamp(155px,43vw,230px)}.st-groom{right:0;width:clamp(105px,29vw,140px)}.st-groom .st-char-img{height:auto!important;max-height:clamp(70px,16svh,92px)!important}.st-bride .st-char-img{height:auto!important;max-height:clamp(60px,13svh,80px)!important}
   .rsvp-heading{font-size:clamp(1.9rem,7vw,2.6rem)}.rsvp-sub{font-size:.84rem}.rsvp-wa-inner{padding:15px 22px;font-size:.58rem;letter-spacing:.18em}
   .ft-names{font-size:1.5rem}
 }
