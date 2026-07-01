@@ -51,8 +51,8 @@
   --shadow-gold:0 4px 20px rgba(200,150,10,0.25);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--ff-b);background:var(--cream);color:var(--deep);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%}
+body{font-family:var(--ff-b);background:var(--cream);color:var(--deep);overflow-x:hidden;width:100%;position:relative;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 
