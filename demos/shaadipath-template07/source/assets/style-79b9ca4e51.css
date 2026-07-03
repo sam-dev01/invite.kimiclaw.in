@@ -1,4 +1,4 @@
-/* ════════════════════════════════════════════════════════════
+﻿/* ════════════════════════════════════════════════════════════
    TEMPLATE 07 — PUNJABI VIBRANT BLOCKBUSTER
    ShaadiPath Wedding Website Builder
    (Updated with master changes)
@@ -1048,7 +1048,7 @@ section{position:relative;overflow:hidden;padding:100px 0}
 .s-diya-r{position:absolute;right:3%;top:20%;width:clamp(42px,6vw,78px);filter:drop-shadow(0 0 20px rgba(240,168,0,.80));animation:swingR 2.0s ease-in-out infinite 1.0s;z-index:1;mix-blend-mode:multiply}
 .rsvp-toran{position:absolute;top:0;left:0;right:0;height:140px;overflow:hidden;z-index:2;pointer-events:none}
 .rsvp-toran .toran-img{animation:toranSway 9s ease-in-out infinite 4.5s}
-.rsvp-body{position:relative;z-index:1;text-align:center}
+.rsvp-body{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .rsvp-rule{display:flex;justify-content:center;margin-bottom:14px}
 .rsvp-eye{display:block;font-weight:300;font-size:.54rem;letter-spacing:.40em;text-transform:uppercase;color:var(--rose);margin-bottom:12px;position:relative;z-index:1}
 .rsvp-heading{font-family:var(--ff-d);font-weight:400;font-size:clamp(2.2rem,5vw,4rem);color:var(--deep);line-height:1.1;margin-bottom:16px;position:relative;z-index:1}

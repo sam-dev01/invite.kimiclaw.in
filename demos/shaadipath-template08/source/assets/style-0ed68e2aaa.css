@@ -1,4 +1,4 @@
-/* ════════════════════════════════════════════════════════════
+﻿/* ════════════════════════════════════════════════════════════
    TEMPLATE 08 — NRI DESTINATION GRACE
    ShaadiPath Wedding Website Builder
 
@@ -761,7 +761,7 @@ section{position:relative;overflow:hidden;padding:100px 0}
 .s-diya-r{position:absolute;right:4%;top:22%;width:clamp(36px,4.5vw,62px);filter:drop-shadow(0 4px 12px rgba(192,176,144,.30));animation:swingR 6.0s ease-in-out infinite 3.0s;z-index:1;mix-blend-mode:multiply;opacity:.66}
 .rsvp-toran{position:absolute;top:0;left:0;right:0;height:110px;overflow:hidden;z-index:2;pointer-events:none}
 .rsvp-toran-img{animation:toranSway 12s ease-in-out infinite 6s}
-.rsvp-body{position:relative;z-index:1;text-align:center}
+.rsvp-body{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .rsvp-rule{display:flex;justify-content:center;margin-bottom:14px}
 .rsvp-eye{display:block;font-weight:200;font-size:.52rem;letter-spacing:.42em;text-transform:uppercase;color:var(--rose);margin-bottom:12px;position:relative;z-index:1}
 .rsvp-heading{font-family:var(--ff-d);font-weight:500;font-size:clamp(2.2rem,5vw,3.8rem);color:var(--deep);line-height:1.12;margin-bottom:16px;position:relative;z-index:1}
