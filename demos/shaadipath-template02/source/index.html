@@ -572,7 +572,8 @@
 
       <!-- Mandala — gold on dark -->
       <div class="st-mandala" aria-hidden="true">
-        <svg viewBox="0 0 320 320" width="320" height="320">
+        <svg viewBox="0 0 320 320" width="400" height="400">
+          <circle cx="160" cy="160" r="152" fill="none" stroke="rgba(200,134,10,.05)" stroke-width="0.6"/>
           <circle cx="160" cy="160" r="130" fill="none" stroke="rgba(200,134,10,.12)" stroke-width="1"/>
           <circle cx="160" cy="160" r="100" fill="none" stroke="rgba(200,134,10,.09)" stroke-width="0.8"/>
           <circle cx="160" cy="160" r="70"  fill="none" stroke="rgba(200,134,10,.07)" stroke-width="0.6"/>
@@ -586,7 +587,19 @@
             <ellipse cx="160" cy="60"  rx="10" ry="28" fill="#C8860A" transform="rotate(270 160 160)"/>
             <ellipse cx="160" cy="60"  rx="10" ry="28" fill="#C8860A" transform="rotate(315 160 160)"/>
           </g>
+          <!-- Inner petal ring — offset 22.5° -->
+          <g opacity=".16">
+            <ellipse cx="160" cy="100" rx="6" ry="16" fill="#C8860A" transform="rotate(22.5  160 160)"/>
+            <ellipse cx="160" cy="100" rx="6" ry="16" fill="#C8860A" transform="rotate(67.5  160 160)"/>
+            <ellipse cx="160" cy="100" rx="6" ry="16" fill="#C8860A" transform="rotate(112.5 160 160)"/>
+            <ellipse cx="160" cy="100" rx="6" ry="16" fill="#C8860A" transform="rotate(157.5 160 160)"/>
+            <ellipse cx="160" cy="100" rx="6" ry="16" fill="#C8860A" transform="rotate(202.5 160 160)"/>
+            <ellipse cx="160" cy="100" rx="6" ry="16" fill="#C8860A" transform="rotate(247.5 160 160)"/>
+            <ellipse cx="160" cy="100" rx="6" ry="16" fill="#C8860A" transform="rotate(292.5 160 160)"/>
+            <ellipse cx="160" cy="100" rx="6" ry="16" fill="#C8860A" transform="rotate(337.5 160 160)"/>
+          </g>
           <circle cx="160" cy="160" r="18" fill="rgba(200,134,10,.08)"/>
+          <circle cx="160" cy="160" r="5"  fill="rgba(200,134,10,.22)"/>
         </svg>
       </div>
 
@@ -656,6 +669,15 @@
   </div>
 </section>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lb-img-wrap"><img id="lbImg" src="" alt=""></div>
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+  <button class="lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
 <!-- THINGS TO KNOW — deep midnight sky section -->
 <section id="things" class="s-things">
   <img class="bg-fill things-sky" src="assets/Hero_20background-282e3f0b2a.jpg" alt="">
@@ -678,7 +700,13 @@
       </div>
       <div class="tt scroll-in" style="--sd:0.2s">
         <svg class="tt-ic" viewBox="0 0 32 32" width="38" height="38" fill="none" stroke="#C8860A" stroke-width="1.3" stroke-linecap="round"><path d="M16 3a10 10 0 0 1 10 10c0 9-10 18-10 18S6 22 6 13A10 10 0 0 1 16 3z"/><circle cx="16" cy="13" r="3.5"/></svg>
-        <span class="tt-l" data-ttk="venue">Venue</span><p class="tt-v" id="ttkVenue">Umaid Bhawan<br>Jodhpur</p>
+        <span class="tt-l" data-ttk="venue">Venue</span>
+        <p class="tt-v" id="ttkVenue">Umaid Bhawan<br>Jodhpur</p>
+        <a class="tt-maps" id="ttkVenueMaps"
+           href="https://maps.google.com/?q=Umaid+Bhawan+Palace+Jodhpur"
+           target="_blank" rel="noopener noreferrer">
+          📍 Get Directions
+        </a>
       </div>
       <div class="tt scroll-in" style="--sd:0.3s">
         <svg class="tt-ic" viewBox="0 0 32 32" width="38" height="38" fill="none" stroke="#C8860A" stroke-width="1.3" stroke-linecap="round"><circle cx="16" cy="16" r="12"/><path d="M16 10v6l4 3"/></svg>
@@ -752,6 +780,27 @@
       Come celebrate with us as we begin this new chapter together.
     </p>
 
+    <form class="rsvp-form scroll-in" id="rsvpDetailsForm" style="--sd:.28s">
+      <div class="rsvp-row">
+        <div class="rsvp-field">
+          <label for="rsvpName">Your Name</label>
+          <input type="text" id="rsvpName" name="name" placeholder="e.g. Aditi Sharma" required>
+        </div>
+        <div class="rsvp-field">
+          <label for="rsvpGuests">Guests</label>
+          <input type="number" id="rsvpGuests" name="guests" min="1" max="10" value="1" required>
+        </div>
+      </div>
+      <div class="rsvp-field">
+        <label for="rsvpAttending">Will you attend?</label>
+        <select id="rsvpAttending" name="attending">
+          <option value="Yes, joyfully!">Yes, joyfully! 🎉</option>
+          <option value="Not sure yet">Not sure yet</option>
+          <option value="Sorry, can't make it">Sorry, can't make it</option>
+        </select>
+      </div>
+    </form>
+
     <div class="rsvp-cta-wrap scroll-in" style="--sd:.34s">
       <a
         id="rsvpWaBtn"
@@ -776,6 +825,10 @@
       You'll be redirected to WhatsApp to confirm your attendance.
     </p>
 
+    <div class="scroll-in" style="--sd:.48s">
+      <button type="button" class="dl-card-btn" id="dlCardBtn">⬇ Download Invite Card</button>
+    </div>
+
     <!-- Gold rule below -->
     <div class="rsvp-rule scroll-in" style="--sd:.5s">
       <svg viewBox="0 0 400 12" width="100%" style="max-width:400px">
@@ -794,7 +847,7 @@
   <svg class="ft-lotus" viewBox="0 0 80 40" width="70" aria-hidden="true"><ellipse cx="40" cy="34" rx="7" ry="11" fill="#C8860A" opacity="0.22" transform="rotate(-40 40 34)"/><ellipse cx="40" cy="34" rx="7" ry="11" fill="#C8860A" opacity="0.22" transform="rotate(-20 40 34)"/><ellipse cx="40" cy="34" rx="7" ry="11" fill="#C8860A" opacity="0.22" transform="rotate(0 40 34)"/><ellipse cx="40" cy="34" rx="7" ry="11" fill="#C8860A" opacity="0.22" transform="rotate(20 40 34)"/><ellipse cx="40" cy="34" rx="7" ry="11" fill="#C8860A" opacity="0.22" transform="rotate(40 40 34)"/><circle cx="40" cy="34" r="5" fill="#C8860A" opacity="0.48"/></svg>
   <div class="ft-names">Priya &amp; Arjun</div>
   <div class="ft-rule"></div>
-  <p class="ft-date">12 December 2026 · Umaid Bhawan Palace, Jodhpur</p>
+  <p class="ft-date" id="ftDate">12 December 2026 · <a id="ftVenueLink" href="https://maps.google.com/?q=Umaid+Bhawan+Palace+Jodhpur" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(200,134,10,.40);padding-bottom:1px;transition:border-color .2s">Umaid Bhawan Palace, Jodhpur</a></p>
   <p class="ft-credit">Crafted with love on <a href="#" target="_blank" rel="noopener">invite.kimiclaw.in</a></p>
 </footer>
 
@@ -915,14 +968,14 @@
     else if(gallery.photos&&gallery.photos.length){
       const gg=galSec.querySelector('.gal-grid');
       if(gg){
-        const n=parseInt(gallery.layout)||4;
-        if(n<4) gg.style.gridTemplateColumns='repeat('+n+',1fr)';
-        gg.innerHTML=Array.from({length:n},(_,i)=>{
-          const p=gallery.photos[i];
-          return p
-            ? `<div class="gal-item ${i===0&&n===4?'gal-tall':''}"><img src="${p}" style="width:100%;height:100%;object-fit:cover" alt=""></div>`
-            : `<div class="gal-item ${i===0&&n===4?'gal-tall':''}"><div class="gal-ph"><span class="gal-m">P&A</span></div></div>`;
-        }).join('');
+        const photos=gallery.photos;
+        const cols=parseInt(gallery.layout)||4;
+        gg.style.gridTemplateColumns='repeat('+Math.min(cols,4)+',1fr)';
+        window.__GALLERY_PHOTOS__=photos;
+        gg.innerHTML=photos.map((p,i)=>
+          `<div class="gal-item ${i===0?'gal-tall':''}" data-gal-idx="${i}"><img src="${p}" style="width:100%;height:100%;object-fit:cover" alt="" loading="lazy"></div>`
+        ).join('');
+        if(typeof initLightbox==='function') initLightbox();
       }
     }
   }
@@ -987,7 +1040,21 @@
   const ftN=document.querySelector('.ft-names');
   if(ftN) ftN.textContent=couple.bride+' & '+couple.groom;
   const ftD=document.querySelector('.ft-date');
-  if(ftD) ftD.textContent=fmt(couple.date)+(couple.venue?' · '+couple.venue:'');
+  const mapsUrl=couple.mapsUrl||(couple.venue?'https://maps.google.com/?q='+encodeURIComponent(couple.venue):'');
+  if(ftD){
+    if(mapsUrl&&couple.venue){
+      ftD.innerHTML=fmt(couple.date)+' · <a id="ftVenueLink" href="'+mapsUrl+'" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(200,134,10,.40);padding-bottom:1px;transition:border-color .2s ease">'+couple.venue+'</a>';
+    } else {
+      ftD.textContent=fmt(couple.date)+(couple.venue?' · '+couple.venue:'');
+    }
+  }
+  /* Wire venue maps link in Things to Know */
+  const venueMapsEl=document.getElementById('ttkVenueMaps');
+  if(venueMapsEl){
+    if(mapsUrl){venueMapsEl.href=mapsUrl;venueMapsEl.style.display='';}
+    else if(couple.venue){venueMapsEl.href='https://maps.google.com/?q='+encodeURIComponent(couple.venue);venueMapsEl.style.display='';}
+    else{venueMapsEl.style.display='none';}
+  }
 
   initMusic();
   console.log('invite.kimiclaw.in T02: Config applied for '+couple.bride+' & '+couple.groom+' ✦');
@@ -1098,14 +1165,191 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var cfg = window.__WEDDING_CONFIG__;
-  if (!cfg || !cfg.invite || cfg.invite.parentsOrder !== 'groom_first') return;
+(function(){
   var bEl = document.getElementById('iBrideParents');
   var gEl = document.getElementById('iGroomParents');
-  if (bEl) { var em = bEl.closest('.fam-parents') && bEl.closest('.fam-parents').querySelector('em'); if (em) em.textContent = 'Son of'; }
-  if (gEl) { var em2 = gEl.closest('.fam-parents') && gEl.closest('.fam-parents').querySelector('em'); if (em2) em2.textContent = 'Daughter of'; }
+  var cfg2 = window.__WEDDING_CONFIG__;
+  if (cfg2 && cfg2.invite && cfg2.invite.parentsOrder === 'groom_first') {
+    if (bEl) { var em = bEl.closest('.fam-parents') && bEl.closest('.fam-parents').querySelector('em'); if (em) em.textContent = 'Son of'; }
+    if (gEl) { var em2 = gEl.closest('.fam-parents') && gEl.closest('.fam-parents').querySelector('em'); if (em2) em2.textContent = 'Daughter of'; }
+  }
+})();
+</script>
+
+<!-- ══ LIGHTBOX GALLERY ══ -->
+<script>
+function initLightbox(){
+  const photos = window.__GALLERY_PHOTOS__ || Array.from(document.querySelectorAll('.gal-item img')).map(i=>i.src);
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCounter = document.getElementById('lbCounter');
+  if(!lb || !lbImg || !photos.length) return;
+  let idx = 0;
+  function show(i){
+    idx = (i + photos.length) % photos.length;
+    lbImg.src = photos[idx];
+    lbCounter.textContent = (idx+1) + ' / ' + photos.length;
+  }
+  function open(i){ show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('scroll-locked'); }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('scroll-locked'); }
+  document.querySelectorAll('.gal-item[data-gal-idx]').forEach(function(item){
+    item.addEventListener('click', function(){ open(parseInt(item.dataset.galIdx,10)||0); });
+  });
+  const closeBtn = document.getElementById('lbClose');
+  const prevBtn  = document.getElementById('lbPrev');
+  const nextBtn  = document.getElementById('lbNext');
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  if(prevBtn)  prevBtn.addEventListener('click', function(){ show(idx-1); });
+  if(nextBtn)  nextBtn.addEventListener('click', function(){ show(idx+1); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowLeft') show(idx-1);
+    if(e.key==='ArrowRight') show(idx+1);
+  });
+}
+// Static (non-config) fallback gallery also gets lightbox if it has real images
+document.addEventListener('DOMContentLoaded', function(){
+  if(!window.__GALLERY_PHOTOS__){
+    const imgs = document.querySelectorAll('.gal-item img');
+    if(imgs.length){
+      window.__GALLERY_PHOTOS__ = Array.from(imgs).map(i=>i.src);
+      imgs.forEach(function(img,i){ img.closest('.gal-item').dataset.galIdx = i; });
+      initLightbox();
+    }
+  }
 });
+</script>
+
+<!-- ══ RSVP CAPTURE (name / attending / guest count + optional webhook) ══ -->
+<script>
+(function(){
+  const waBtn = document.getElementById('rsvpWaBtn');
+  const form  = document.getElementById('rsvpDetailsForm');
+  if(!waBtn || !form) return;
+
+  waBtn.addEventListener('click', function(e){
+    // If required fields aren't filled, let the browser show native validation and stop.
+    if(!form.checkValidity()){
+      e.preventDefault();
+      form.reportValidity();
+      return;
+    }
+    const name      = document.getElementById('rsvpName').value.trim();
+    const guests    = document.getElementById('rsvpGuests').value;
+    const attending = document.getElementById('rsvpAttending').value;
+    const cfg = window.__WEDDING_CONFIG__ || {};
+    const couple = cfg.couple || {};
+
+    // Rebuild the WhatsApp message with captured details
+    const msg = `Hi ${couple.bride||''} & ${couple.groom||''}! RSVP from ${name}. Attending: ${attending}. Guests: ${guests}.`;
+    const phoneDigits = ((couple.whatsapp||(cfg.rsvp&&cfg.rsvp.whatsapp)||'').replace(/\D/g,''));
+    const fullPhone = phoneDigits.startsWith('91') ? phoneDigits : ('91'+phoneDigits);
+    waBtn.href = 'https://wa.me/' + fullPhone + '?text=' + encodeURIComponent(msg);
+
+    // Optional: POST to a webhook (e.g. Google Apps Script / Formspree) if configured,
+    // so the couple gets a saved guest list even if the guest never opens WhatsApp.
+    const webhookUrl = cfg.rsvp && cfg.rsvp.webhookUrl;
+    if(webhookUrl){
+      try{
+        fetch(webhookUrl, {
+          method:'POST',
+          mode:'no-cors',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ name, guests, attending, timestamp: new Date().toISOString() })
+        }).catch(function(){ /* silent — guest still proceeds to WhatsApp regardless */ });
+      }catch(err){ /* ignore — never block the RSVP flow on a webhook failure */ }
+    }
+    // Let the click continue and open WhatsApp with the updated href.
+  });
+})();
+</script>
+
+<!-- ══ DOWNLOADABLE INVITE CARD (canvas, no external libraries) ══ -->
+<script>
+(function(){
+  const btn = document.getElementById('dlCardBtn');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    const cfg = window.__WEDDING_CONFIG__ || {};
+    const couple = cfg.couple || {};
+    const bride = couple.bride || 'Bride';
+    const groom = couple.groom || 'Groom';
+    const dateStr = couple.date ? new Date(couple.date+'T00:00').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) : '';
+    const venue = couple.venue || '';
+
+    const W = 1080, H = 1350;
+    const canvas = document.createElement('canvas');
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    // Background — midnight navy gradient matching the site palette
+    const bg = ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'#0D1B3E'); bg.addColorStop(0.55,'#1A2C5B'); bg.addColorStop(1,'#0A1228');
+    ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+
+    // Gold border frame
+    ctx.strokeStyle = 'rgba(200,134,10,0.55)';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(40,40,W-80,H-80);
+    ctx.strokeStyle = 'rgba(200,134,10,0.25)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(56,56,W-112,H-112);
+
+    ctx.textAlign = 'center';
+
+    // Eyebrow
+    ctx.fillStyle = 'rgba(200,134,10,0.85)';
+    ctx.font = '300 24px Georgia, serif';
+    ctx.fillText('T O G E T H E R   W I T H   F A M I L Y', W/2, 260);
+
+    // Names
+    ctx.fillStyle = '#F0E0B0';
+    ctx.font = '400 90px Georgia, serif';
+    ctx.fillText(bride, W/2, 420);
+    ctx.fillStyle = '#C8860A';
+    ctx.font = 'italic 300 42px Georgia, serif';
+    ctx.fillText('weds', W/2, 490);
+    ctx.fillStyle = '#F0E0B0';
+    ctx.font = '400 90px Georgia, serif';
+    ctx.fillText(groom, W/2, 600);
+
+    // Divider
+    ctx.strokeStyle = 'rgba(200,134,10,0.5)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(W/2-120,660); ctx.lineTo(W/2+120,660); ctx.stroke();
+
+    // Date
+    if(dateStr){
+      ctx.fillStyle = '#F0E0B0';
+      ctx.font = '300 40px Georgia, serif';
+      ctx.fillText(dateStr, W/2, 760);
+    }
+    // Venue
+    if(venue){
+      ctx.fillStyle = 'rgba(240,224,176,0.75)';
+      ctx.font = 'italic 300 30px Georgia, serif';
+      ctx.fillText(venue, W/2, 820);
+    }
+
+    // Footer mark
+    ctx.fillStyle = 'rgba(200,134,10,0.4)';
+    ctx.font = '300 20px Georgia, serif';
+    ctx.fillText('✦ ✦ ✦', W/2, H-100);
+
+    canvas.toBlob(function(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = (bride+'-'+groom+'-invite').replace(/\s+/g,'_') + '.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+    }, 'image/png');
+  });
+})();
 </script>
 </body>
 </html>
