@@ -1,3 +1,3 @@
 # template02
 
-Live preview: https://www.shaadipath.com/api/preview/guest?template=template02
+Open locally: source/index.html (or use open-live-preview.url)

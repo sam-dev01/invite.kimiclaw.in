@@ -70,24 +70,212 @@ function revealHero(){
   if(copy)    copy.classList.add('in');
 }
 
-function runPreloader(){
-  const pl = document.getElementById('preloader');
-  if(!pl){
+function initScratch() {
+  const gate        = document.getElementById('scratchGate');
+  const canvas      = document.getElementById('scratchCanvas');
+  const hint        = document.getElementById('scratchHint');
+  const progressBar = document.getElementById('sgProgress');
+  const progressLbl = document.getElementById('sgProgressLabel');
+  const unlocked    = document.getElementById('sgUnlocked');
+  if (!gate || !canvas){
     revealHero();
     return;
   }
-  // Step 1: draw gold line
-  setTimeout(() => pl.classList.add('li'), 300);
-  // Step 2: names appear
-  setTimeout(() => pl.classList.add('ni'), 700);
-  // Step 3: fade out preloader, reveal hero
-  setTimeout(() => {
-    pl.classList.add('away');
+
+  // Lock scroll
+  document.body.classList.add('scroll-locked');
+
+  const ctx = canvas.getContext('2d');
+  const THRESHOLD = 55;   // % needed to unlock
+  let isDrawing   = false;
+  let hasStarted  = false;
+  let isDone      = false;
+
+  /* Size canvas to wrapper */
+  function sizeCanvas() {
+    const wrap = canvas.parentElement;
+    canvas.width  = wrap.offsetWidth;
+    canvas.height = wrap.offsetHeight;
+    drawScratchLayer();
+  }
+
+  /* Fill canvas with the gold foil scratch surface */
+  function drawScratchLayer() {
+    const w = canvas.width, h = canvas.height;
+
+    // Gold foil gradient background
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0,   '#C8860A');
+    grad.addColorStop(0.3, '#E8C86A');
+    grad.addColorStop(0.5, '#F5DFA0');
+    grad.addColorStop(0.7, '#D4A832');
+    grad.addColorStop(1,   '#B8922A');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Subtle texture dots
+    for (let i = 0; i < 280; i++) {
+      ctx.beginPath();
+      ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1.2 + .3, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,' + (Math.random() * .06 + .02) + ')';
+      ctx.fill();
+    }
+
+    // Centre instruction text
+    ctx.font = 'bold 14px Jost, sans-serif';
+    ctx.fillStyle = 'rgba(15,32,68,.45)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('✦  SCRATCH TO REVEAL  ✦', w / 2, h / 2);
+  }
+
+  /* Erase under finger/pointer using destination-out */
+  function scratch(x, y) {
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    const radius = Math.min(canvas.width, canvas.height) * 0.115; // adaptive brush
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,0,0,1)';
+    ctx.fill();
+    ctx.globalCompositeOperation = 'source-over';
+
+    updateProgress();
+  }
+
+  /* Sample pixel transparency to calculate % scratched */
+  function getScratched() {
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const pixels    = imageData.data;
+    let transparent = 0;
+    // Sample every 4th pixel for performance
+    for (let i = 3; i < pixels.length; i += 16) {
+      if (pixels[i] < 128) transparent++;
+    }
+    const total = pixels.length / 16;
+    return Math.round((transparent / total) * 100);
+  }
+
+  function updateProgress() {
+    if (isDone) return;
+    const pct = getScratched();
+    const display = Math.min(pct, 100);
+    progressBar.style.width = display + '%';
+    progressLbl.textContent = display + '% revealed';
+
+    if (pct >= THRESHOLD) {
+      onUnlocked();
+    }
+  }
+
+  function onUnlocked() {
+    if (isDone) return;
+    isDone = true;
+
+    // Fade out rest of canvas completely
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = 'rgba(0,0,0,1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.globalCompositeOperation = 'source-over';
+
+    progressBar.style.width = '100%';
+    progressLbl.textContent = '100% revealed ✦';
+
+    // Show unlock CTA
+    unlocked.classList.add('show');
+
+    // Unlock scroll after short delay
     setTimeout(() => {
-      pl.style.display = 'none';
+      document.body.classList.remove('scroll-locked');
       revealHero();
-    }, 500);
-  }, 1600);
+    }, 600);
+
+    // Dismiss gate when user clicks/taps or presses key
+    function dismiss() {
+      gate.classList.add('dismissed');
+      gate.removeEventListener('click', dismiss);
+    }
+    gate.addEventListener('click', dismiss);
+    document.addEventListener('keydown', dismiss, { once: true });
+
+    // Auto-dismiss after 3s
+    setTimeout(dismiss, 3000);
+  }
+
+  /* ── EVENT HELPERS ────────────────────────────────── */
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width  / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const src = e.touches ? e.touches[0] : e;
+    return {
+      x: (src.clientX - rect.left)  * scaleX,
+      y: (src.clientY - rect.top)   * scaleY
+    };
+  }
+
+  function onStart(e) {
+    e.preventDefault();
+    isDrawing = true;
+    if (!hasStarted) {
+      hasStarted = true;
+      hint.classList.add('hidden');
+    }
+    const pos = getPos(e);
+    scratch(pos.x, pos.y);
+  }
+
+  function onMove(e) {
+    e.preventDefault();
+    if (!isDrawing || isDone) return;
+    const pos = getPos(e);
+    scratch(pos.x, pos.y);
+  }
+
+  function onEnd() { isDrawing = false; }
+
+  /* Mouse */
+  canvas.addEventListener('mousedown',  onStart, { passive: false });
+  canvas.addEventListener('mousemove',  onMove,  { passive: false });
+  canvas.addEventListener('mouseup',   onEnd);
+  canvas.addEventListener('mouseleave', onEnd);
+
+  /* Touch */
+  canvas.addEventListener('touchstart', onStart, { passive: false });
+  canvas.addEventListener('touchmove',  onMove,  { passive: false });
+  canvas.addEventListener('touchend',   onEnd);
+
+  /* Block scroll while gate is up */
+  gate.addEventListener('wheel',      e => e.preventDefault(), { passive: false });
+  gate.addEventListener('touchmove',  e => e.preventDefault(), { passive: false });
+
+  /* Init */
+  sizeCanvas();
+  window.addEventListener('resize', sizeCanvas);
+}
+
+/* ── SCROLL ANIMATIONS (AOS-like) ───────────── */
+function initScrollAnim() {
+  const elements = document.querySelectorAll('[data-aos]');
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.aosDelay || 0;
+        setTimeout(() => {
+          entry.target.classList.add('aos-in');
+          if (entry.target.dataset.aosOnce !== 'false') {
+            observer.unobserve(entry.target);
+          }
+        }, Number(delay));
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  elements.forEach(el => observer.observe(el));
 }
 
 // Add pl-active to body so CSS hides elements during preload
@@ -95,17 +283,21 @@ document.body.classList.add('pl-active');
 
 // Run when page is fully loaded; if already loaded, run immediately
 if(document.readyState === 'complete'){
-  runPreloader();
+  initScratch();
+  initScrollAnim();
 } else {
-  window.addEventListener('load', runPreloader);
+  window.addEventListener('load', () => {
+    initScratch();
+    initScrollAnim();
+  });
 }
 
 // Safety net: if load never fires within 4s, reveal everything
 setTimeout(() => {
-  if(document.body.classList.contains('pl-active')){
+  if(document.body.classList.contains('pl-active') && !document.body.classList.contains('scroll-locked')){
     revealHero();
-    const pl = document.getElementById('preloader');
-    if(pl) pl.style.display = 'none';
+    const gate = document.getElementById('scratchGate');
+    if(gate) gate.style.display = 'none';
   }
 }, 4000);
 

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="application/json" id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/photo1-440172ed05.jpg","assets/photo2-2f971e6f22.jpg","assets/photo3-33243c7880.png","assets/photo4-02ec9fd501.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We've saved a seat for you — at our table, in our hearts, and under the royal sky. Come celebrate with us as we begin this new chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"https://calendar.google.com/calendar/render?action=TEMPLATE\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261212%0ADTEND:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
+<script type="application/json" id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"919243400679","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/photo1-440172ed05.jpg","assets/photo2-2f971e6f22.jpg","assets/photo3-33243c7880.png","assets/photo4-02ec9fd501.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We've saved a seat for you — at our table, in our hearts, and under the royal sky. Come celebrate with us as we begin this new chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"https://calendar.google.com/calendar/render?action=TEMPLATE\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261212%0ADTEND:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
 <script>window.__WEDDING_CONFIG__ = JSON.parse(document.getElementById('wedding-config').textContent);</script>
 <script>
 </script>
 <script>
 (function() {
-  var bride = 'Tanya';
-  var groom = 'Rohan';
-  var date  = '12 December 2026';
+  var cfg = window.__WEDDING_CONFIG__ || {};
+  var c = cfg.couple || {};
+  var bride = c.bride || 'Tanya';
+  var groom = c.groom || 'Rohan';
+  var date  = c.date ? new Date(c.date+'T00:00').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) : '12 December 2026';
   function updatePreloader() {
     // Names in preloader
     var n1 = document.querySelector('.pl-n1');
@@ -89,34 +91,91 @@
 <audio id="bgMusic" loop preload="none">
   <source src="assets/Template_02-2101943539.mp3" type="audio/mpeg">
 </audio>
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">🔔</button>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">🔕</button>
 
-<!-- PRELOADER — gold mandala trace on midnight navy -->
-<div id="preloader" class="preloader">
-  <div class="pl-bg"></div>
-  <div class="pl-content">
-    <div class="pl-mandala-wrap" aria-hidden="true">
-      <svg class="pl-mandala" viewBox="0 0 120 120" width="86" height="86">
-        <circle class="pl-m-ring pl-m-r1" cx="60" cy="60" r="52" fill="none" stroke="#C8860A" stroke-width="0.9"/>
-        <circle class="pl-m-ring pl-m-r2" cx="60" cy="60" r="38" fill="none" stroke="#C8860A" stroke-width="0.7"/>
-        <circle class="pl-m-ring pl-m-r3" cx="60" cy="60" r="22" fill="none" stroke="#C8860A" stroke-width="0.5"/>
-        <g class="pl-m-petals">
-          <ellipse cx="60" cy="18" rx="5" ry="13" fill="#C8860A" opacity="0.22" transform="rotate(0   60 60)"/>
-          <ellipse cx="60" cy="18" rx="5" ry="13" fill="#C8860A" opacity="0.22" transform="rotate(45  60 60)"/>
-          <ellipse cx="60" cy="18" rx="5" ry="13" fill="#C8860A" opacity="0.22" transform="rotate(90  60 60)"/>
-          <ellipse cx="60" cy="18" rx="5" ry="13" fill="#C8860A" opacity="0.22" transform="rotate(135 60 60)"/>
-          <ellipse cx="60" cy="18" rx="5" ry="13" fill="#C8860A" opacity="0.22" transform="rotate(180 60 60)"/>
-          <ellipse cx="60" cy="18" rx="5" ry="13" fill="#C8860A" opacity="0.22" transform="rotate(225 60 60)"/>
-          <ellipse cx="60" cy="18" rx="5" ry="13" fill="#C8860A" opacity="0.22" transform="rotate(270 60 60)"/>
-          <ellipse cx="60" cy="18" rx="5" ry="13" fill="#C8860A" opacity="0.22" transform="rotate(315 60 60)"/>
+<!-- ═══ SCRATCH GATE ══════════════════════════════════ -->
+<div id="scratchGate" class="scratch-gate">
+  <div class="sg-bg"></div>
+
+  <!-- Floating ornaments on gate -->
+  <img class="sg-diya sg-dl" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="sg-diya sg-dr" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vl" src="assets/Element_204-a00fdaed6d.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vr" src="assets/Element_205-7988a52991.png" alt="" aria-hidden="true">
+
+  <div class="sg-content">
+    <!-- Top mandala -->
+    <div class="sg-mandala" aria-hidden="true">
+      <svg viewBox="0 0 120 120" width="72" height="72">
+        <circle cx="60" cy="60" r="52" fill="none" stroke="#C8A84B" stroke-width="1" opacity=".5"/>
+        <circle cx="60" cy="60" r="38" fill="none" stroke="#C8A84B" stroke-width=".8" opacity=".35"/>
+        <g opacity=".18">
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="#C8A84B" transform="rotate(0 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="#C8A84B" transform="rotate(45 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="#C8A84B" transform="rotate(90 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="#C8A84B" transform="rotate(135 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="#C8A84B" transform="rotate(180 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="#C8A84B" transform="rotate(225 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="#C8A84B" transform="rotate(270 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="#C8A84B" transform="rotate(315 60 60)"/>
         </g>
-        <circle class="pl-m-dot" cx="60" cy="60" r="4" fill="#C8860A"/>
+        <circle cx="60" cy="60" r="6" fill="#C8A84B" opacity=".6"/>
       </svg>
     </div>
-    <div class="pl-names" id="plNames">
-      <span class="pl-n1">Priya</span>
-      <span class="pl-weds">weds</span>
-      <span class="pl-n2">Arjun</span>
+
+    <!-- Couple names above scratch -->
+    <p class="sg-eyebrow">A Royal Invitation</p>
+    <div class="sg-names">
+      <span class="sg-bride pl-n1">Priya</span>
+      <span class="sg-heart">♡</span>
+      <span class="sg-groom pl-n2">Arjun</span>
+    </div>
+    <p class="sg-hint">✦ Scratch to reveal the wedding date ✦</p>
+
+    <!-- THE SCRATCH CARD -->
+    <div class="scratch-card-wrap">
+      <!-- Hidden date underneath -->
+      <div class="scratch-reveal" id="scratchReveal" aria-label="Wedding date">
+        <div class="sr-top">
+          <div class="sr-line"></div>
+          <span class="sr-label">Wedding Date</span>
+          <div class="sr-line"></div>
+        </div>
+        <div class="sr-date pl-date">
+          <span class="sr-day">12</span>
+          <span class="sr-sep">·</span>
+          <span class="sr-month">December</span>
+          <span class="sr-sep">·</span>
+          <span class="sr-year">2026</span>
+        </div>
+        <p class="sr-venue">Umaid Bhawan · Jodhpur</p>
+        <div class="sr-stars" aria-hidden="true">✦ ✦ ✦</div>
+      </div>
+      <!-- Canvas scratch surface -->
+      <canvas id="scratchCanvas" class="scratch-canvas" aria-hidden="true"></canvas>
+      <!-- Scratch texture hint overlay -->
+      <div class="scratch-hint-overlay" id="scratchHint">
+        <div class="sho-icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="#C8A84B" stroke-width="1.5" width="36">
+            <path d="M12 28 C14 22 20 18 26 22 C28 24 28 28 24 30 C22 31 20 30 18 28"/>
+            <path d="M20 14 C20 14 16 18 14 22"/>
+            <circle cx="20" cy="10" r="3" fill="#C8A84B" opacity=".5"/>
+          </svg>
+        </div>
+        <span>Scratch here</span>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="sg-progress-wrap">
+      <div class="sg-progress-bar" id="sgProgress"></div>
+    </div>
+    <p class="sg-progress-label" id="sgProgressLabel">0% revealed</p>
+
+    <!-- Unlocked message (hidden until done) -->
+    <div class="sg-unlocked" id="sgUnlocked">
+      <p>🎊 Date revealed! Scroll to explore</p>
+      <div class="sg-unlock-arrow">↓</div>
     </div>
   </div>
 </div>
@@ -697,7 +756,7 @@
       <a
         id="rsvpWaBtn"
         class="rsvp-wa-btn"
-        href="https://wa.me/919999999999"
+        href="https://wa.me/919243400679"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="RSVP via WhatsApp"
@@ -966,6 +1025,7 @@ function initMusic(){
   };
 
   function tryAutoplay(){
+    setPlayingUI(false);
     audio.volume = 0.55;
     audio.play().then(()=>{ setPlayingUI(true); }).catch(()=>{
       setPlayingUI(false);
