@@ -482,26 +482,131 @@
   <!-- ═══ GALLERY ═══ -->
   <section id="gallery" class="s-gallery">
     <img class="bg-fill" src="assets/Background_206-6d4ac5dacb.jpg" alt="">
+    <div class="gal-orbs" aria-hidden="true">
+      <span class="gal-orb gal-orb--1"></span>
+      <span class="gal-orb gal-orb--2"></span>
+    </div>
     <div class="container">
       <div class="s-head scroll-in">
         <span class="sh-eye">Moments</span>
         <h2 class="sh-h">Our <em>Gallery</em></h2>
+        <p class="gal-sub">Glimpses of our beautiful journey together</p>
       </div>
-      <div class="gal-grid">
-        <div class="gal-item gal-tall scroll-in">
-          <div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div>
+
+      <!-- Masonry grid: 1 tall hero + 4 regular -->
+      <div class="gal-grid" role="list" aria-label="Photo gallery">
+
+        <!-- Card 1 — tall hero -->
+        <div class="gal-item gal-tall scroll-in" style="--sd:0s" role="listitem"
+             tabindex="0" aria-label="Open photo 1" data-gal-idx="0">
+          <div class="gal-ph">
+            <span class="gal-m">P&amp;A</span>
+            <span class="gal-s">Your photo</span>
+          </div>
+          <div class="gal-overlay" aria-hidden="true">
+            <div class="gal-overlay-inner">
+              <span class="gal-ov-tag">❤</span>
+              <p class="gal-ov-caption">First look &amp; forever after</p>
+            </div>
+          </div>
+          <div class="gal-frame" aria-hidden="true"></div>
         </div>
-        <div class="gal-item scroll-in">
-          <div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div>
+
+        <!-- Card 2 -->
+        <div class="gal-item scroll-in" style="--sd:.08s" role="listitem"
+             tabindex="0" aria-label="Open photo 2" data-gal-idx="1">
+          <div class="gal-ph">
+            <span class="gal-m">P&amp;A</span>
+            <span class="gal-s">Your photo</span>
+          </div>
+          <div class="gal-overlay" aria-hidden="true">
+            <div class="gal-overlay-inner">
+              <span class="gal-ov-tag">✦</span>
+              <p class="gal-ov-caption">Together is our favourite place</p>
+            </div>
+          </div>
+          <div class="gal-frame" aria-hidden="true"></div>
         </div>
-        <div class="gal-item scroll-in">
-          <div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div>
+
+        <!-- Card 3 -->
+        <div class="gal-item scroll-in" style="--sd:.16s" role="listitem"
+             tabindex="0" aria-label="Open photo 3" data-gal-idx="2">
+          <div class="gal-ph">
+            <span class="gal-m">P&amp;A</span>
+            <span class="gal-s">Your photo</span>
+          </div>
+          <div class="gal-overlay" aria-hidden="true">
+            <div class="gal-overlay-inner">
+              <span class="gal-ov-tag">☽</span>
+              <p class="gal-ov-caption">Moments that last a lifetime</p>
+            </div>
+          </div>
+          <div class="gal-frame" aria-hidden="true"></div>
         </div>
-        <div class="gal-item scroll-in">
-          <div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div>
+
+        <!-- Card 4 -->
+        <div class="gal-item scroll-in" style="--sd:.24s" role="listitem"
+             tabindex="0" aria-label="Open photo 4" data-gal-idx="3">
+          <div class="gal-ph">
+            <span class="gal-m">P&amp;A</span>
+            <span class="gal-s">Your photo</span>
+          </div>
+          <div class="gal-overlay" aria-hidden="true">
+            <div class="gal-overlay-inner">
+              <span class="gal-ov-tag">✿</span>
+              <p class="gal-ov-caption">In love &amp; in bloom</p>
+            </div>
+          </div>
+          <div class="gal-frame" aria-hidden="true"></div>
         </div>
+
+        <!-- Card 5 -->
+        <div class="gal-item scroll-in" style="--sd:.32s" role="listitem"
+             tabindex="0" aria-label="Open photo 5" data-gal-idx="4">
+          <div class="gal-ph">
+            <span class="gal-m">P&amp;A</span>
+            <span class="gal-s">Your photo</span>
+          </div>
+          <div class="gal-overlay" aria-hidden="true">
+            <div class="gal-overlay-inner">
+              <span class="gal-ov-tag">♡</span>
+              <p class="gal-ov-caption">Our story, our chapter</p>
+            </div>
+          </div>
+          <div class="gal-frame" aria-hidden="true"></div>
+        </div>
+
+      </div><!-- /.gal-grid -->
+    </div><!-- /.container -->
+
+    <!-- ── LIGHTBOX ── -->
+    <div id="galLightbox" class="gal-lb" role="dialog" aria-modal="true"
+         aria-label="Photo lightbox" hidden>
+      <button class="gal-lb-close" id="galLbClose" aria-label="Close lightbox">
+        <svg width="22" height="22" viewBox="0 0 22 22" stroke="currentColor" stroke-width="1.8" fill="none">
+          <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
+        </svg>
+      </button>
+      <button class="gal-lb-nav gal-lb-prev" id="galLbPrev" aria-label="Previous photo">
+        <svg width="20" height="20" viewBox="0 0 20 20" stroke="currentColor" stroke-width="1.8" fill="none">
+          <polyline points="13,4 7,10 13,16"/>
+        </svg>
+      </button>
+      <div class="gal-lb-stage">
+        <div class="gal-lb-ph" id="galLbPh">
+          <span class="gal-lb-ph-m" id="galLbName">P&amp;A</span>
+          <span class="gal-lb-ph-s">Your photo</span>
+        </div>
+        <div class="gal-lb-caption" id="galLbCaption" aria-live="polite"></div>
       </div>
+      <button class="gal-lb-nav gal-lb-next" id="galLbNext" aria-label="Next photo">
+        <svg width="20" height="20" viewBox="0 0 20 20" stroke="currentColor" stroke-width="1.8" fill="none">
+          <polyline points="7,4 13,10 7,16"/>
+        </svg>
+      </button>
+      <div class="gal-lb-dots" id="galLbDots" aria-hidden="true"></div>
     </div>
+
   </section>
 
   <!-- ═══ THINGS TO KNOW ═══ -->

@@ -887,3 +887,114 @@ function burstPetals(fromEl) {
     else if (built) startLoop();
   });
 })();
+
+/* ─────────────────────────────────────────
+   GALLERY LIGHTBOX
+   - Opens on click / Enter / Space
+   - Prev/Next buttons + keyboard arrows
+   - Swipe left/right on touch
+   - Dot indicators
+   - Escape to close
+───────────────────────────────────────── */
+(function initGalleryLightbox() {
+  const lb      = document.getElementById('galLightbox');
+  const lbClose = document.getElementById('galLbClose');
+  const lbPrev  = document.getElementById('galLbPrev');
+  const lbNext  = document.getElementById('galLbNext');
+  const lbCap   = document.getElementById('galLbCaption');
+  const lbDots  = document.getElementById('galLbDots');
+  if (!lb) return;
+
+  const items = Array.from(document.querySelectorAll('.gal-item[data-gal-idx]'));
+  const total = items.length;
+  let current = 0;
+
+  /* Build dot indicators */
+  items.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'gal-lb-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `Go to photo ${i + 1}`);
+    d.addEventListener('click', () => show(i));
+    lbDots.appendChild(d);
+  });
+
+  function getDots() { return Array.from(lbDots.querySelectorAll('.gal-lb-dot')); }
+
+  function show(idx) {
+    current = (idx + total) % total;
+    const item = items[current];
+
+    /* Update caption */
+    const cap = item.querySelector('.gal-ov-caption');
+    lbCap.textContent = cap ? cap.textContent : '';
+
+    /* Update dots */
+    getDots().forEach((d, i) => d.classList.toggle('active', i === current));
+
+    /* Show/hide nav if only 1 item */
+    lbPrev.style.display = lbNext.style.display = total <= 1 ? 'none' : '';
+  }
+
+  function open(idx) {
+    lb.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    show(idx);
+    /* Focus close button for keyboard users */
+    requestAnimationFrame(() => lbClose.focus());
+  }
+
+  function close() {
+    document.body.style.overflow = '';
+    /* Fade out then re-add hidden */
+    lb.setAttribute('hidden', '');
+    /* Return focus to the card that opened it */
+    if (items[current]) items[current].focus();
+  }
+
+  /* Open on card click */
+  items.forEach(item => {
+    item.addEventListener('click', () => open(+item.dataset.galIdx));
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(+item.dataset.galIdx); }
+    });
+
+    /* Touch: show overlay briefly on tap before lightbox opens */
+    if (isTouch) {
+      item.addEventListener('touchstart', () => {
+        item.querySelector('.gal-overlay')?.style.setProperty('opacity', '1');
+      }, { passive: true });
+      item.addEventListener('touchend', () => {
+        setTimeout(() => {
+          item.querySelector('.gal-overlay')?.style.setProperty('opacity', '');
+        }, 400);
+      });
+    }
+  });
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => show(current - 1));
+  lbNext.addEventListener('click', () => show(current + 1));
+
+  /* Dot clicks handled in build loop above */
+
+  /* Keyboard navigation */
+  lb.addEventListener('keydown', e => {
+    if (e.key === 'Escape')     { e.preventDefault(); close(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); show(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+  });
+
+  /* Click backdrop to close */
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+
+  /* Swipe support */
+  let swipeX = null;
+  lb.addEventListener('touchstart', e => { swipeX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    if (swipeX === null) return;
+    const dx = e.changedTouches[0].clientX - swipeX;
+    swipeX = null;
+    if (Math.abs(dx) < 40) return;
+    show(dx < 0 ? current + 1 : current - 1);
+  }, { passive: true });
+})();
