@@ -129,17 +129,36 @@ function initScratch() {
     ctx.fillText('✦  SCRATCH TO REVEAL  ✦', w / 2, h / 2);
   }
 
+  let lastX = null, lastY = null;
+  let lastProgressCheck = 0;
+
   /* Erase under finger/pointer using destination-out */
-  function scratch(x, y) {
+  function scratch(x, y, isStart) {
     ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = Math.min(canvas.width, canvas.height) * 0.23; // adaptive brush (2x radius)
+
     ctx.beginPath();
-    const radius = Math.min(canvas.width, canvas.height) * 0.115; // adaptive brush
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(0,0,0,1)';
-    ctx.fill();
+    if (isStart || lastX === null) {
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, y + 0.1); // Small tick to draw a round cap for a single tap
+    } else {
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(x, y);
+    }
+    ctx.stroke();
     ctx.globalCompositeOperation = 'source-over';
 
-    updateProgress();
+    lastX = x;
+    lastY = y;
+
+    // Throttle the expensive getImageData call to prevent lag
+    const now = performance.now();
+    if (now - lastProgressCheck > 100) {
+      lastProgressCheck = now;
+      requestAnimationFrame(updateProgress);
+    }
   }
 
   /* Sample pixel transparency to calculate % scratched */
@@ -221,17 +240,21 @@ function initScratch() {
       hint.classList.add('hidden');
     }
     const pos = getPos(e);
-    scratch(pos.x, pos.y);
+    scratch(pos.x, pos.y, true);
   }
 
   function onMove(e) {
     e.preventDefault();
     if (!isDrawing || isDone) return;
     const pos = getPos(e);
-    scratch(pos.x, pos.y);
+    scratch(pos.x, pos.y, false);
   }
 
-  function onEnd() { isDrawing = false; }
+  function onEnd() { 
+    isDrawing = false; 
+    lastX = null; 
+    lastY = null;
+  }
 
   /* Mouse */
   canvas.addEventListener('mousedown',  onStart, { passive: false });
