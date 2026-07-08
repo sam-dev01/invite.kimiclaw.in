@@ -2855,7 +2855,8 @@ body:not(.pl-active) .scroll-in:not(.vis) {
 
 /* ── WhatsApp CTA button ── */
 .rsvp-cta-wrap {
-  margin-bottom: 24px
+  margin-bottom: 24px;
+  text-align: center;
 }
 
 .rsvp-wa-btn {
