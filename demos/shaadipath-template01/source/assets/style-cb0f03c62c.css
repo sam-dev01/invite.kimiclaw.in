@@ -1595,3 +1595,12 @@ section{ padding:80px 0; }
   display: none !important;
 }
 
+body #heroWrap{
+	height: 700px;
+}
+
+/* Hero */
+#heroPin > div:not(#heroCopy, #scrollNudge){
+	min-height: 715px !important;
+}
+
