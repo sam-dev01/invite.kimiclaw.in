@@ -41,6 +41,39 @@
   contain-intrinsic-size: 0 600px;
 }
 
+/* ═══ PERFORMANCE — GPU compositor layers ═══
+   Promote scroll-driven & CSS-animated elements to their own
+   compositor layer. Browser can move them on the GPU thread
+   without touching the main thread, eliminating scroll jank. */
+#palace,
+#stCurtL,
+#stCurtR,
+#stBride,
+#stGroom,
+.eleph-l,
+.eleph-r,
+.gal-item,
+#heroMoon,
+.scroll-in {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* On mobile: drop backdrop-filter blur on sections below fold —
+   it's the single biggest source of scroll lag on midrange devices. */
+@media (pointer: coarse) {
+  .invite-card {
+    /* Reduce backdrop blur cost on touch devices */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  /* Disable filter transition on gallery icon wraps on touch */
+  .ev-icon-wrap {
+    transition: none;
+  }
+}
+
+
 /* ═══ RESET ═══ */
 *,
 *::before,
@@ -687,12 +720,14 @@ body.pl-active .hero-copy.in .hc-countdown {
 .eleph-l {
   align-self: flex-end;
   transform-origin: 50% 100%;
+  will-change: transform;
   animation: elephWalkL 3.2s ease-in-out infinite
 }
 
 .eleph-r {
   align-self: flex-end;
   transform-origin: 50% 100%;
+  will-change: transform;
   animation: elephWalkR 3.2s ease-in-out infinite .4s
 }
 
@@ -1038,7 +1073,7 @@ body:not(.pl-active) .scroll-in:not(.vis) {
   position: relative;
   z-index: 2;
   will-change: transform;
-  transition: transform .65s var(--jelly), box-shadow .65s var(--jelly);
+  transition: transform .65s var(--jelly);
 }
 
 @media(pointer:fine) {
@@ -1366,7 +1401,9 @@ body:not(.pl-active) .scroll-in:not(.vis) {
   justify-content: center;
   isolation: isolate;
   z-index: 2;
-  transition: transform .7s var(--silk), filter .7s var(--silk);
+  will-change: transform;
+  /* Remove filter from transition — animating filter causes layer rasterisation */
+  transition: transform .7s var(--silk);
 }
 
 /* Float animation — each node unique rhythm */

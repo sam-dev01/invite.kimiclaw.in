@@ -153,28 +153,33 @@ function driveHero() {
   const my = isTouch ? 0 : mouseY;
 
   if (heroMoon)
-    heroMoon.style.transform = `translateY(${(p * -28 + my * -5).toFixed(1)}px) translateX(${(mx * -3).toFixed(1)}px)`;
+    heroMoon.style.transform = `translate3d(${(mx * -3).toFixed(1)}px,${(p * -28 + my * -5).toFixed(1)}px,0)`;
 
   if (palaceEl) {
     const scale = 1.0 + p * 0.45;
     if (isTouch) {
+      /* On touch: skip filter — it's a separate compositor layer cost */
       setStyle(palaceEl, 'transform', `translateX(-50%) scale(${scale.toFixed(3)})`, 'palaceT');
     } else {
       const tiltX = mx * -14, tiltY = my * -9;
       setStyle(palaceEl, 'transform',
         `perspective(1400px) rotateX(${tiltY.toFixed(2)}deg) rotateY(${tiltX.toFixed(2)}deg) translateX(calc(-50% + ${(tiltX * 0.5).toFixed(1)}px)) scale(${scale.toFixed(3)})`,
         'palaceT');
+      /* Filter only on desktop where GPU has headroom */
+      setStyle(palaceEl, 'filter',
+        `drop-shadow(0 ${(20 + p * 30).toFixed(0)}px ${(50 + p * 40).toFixed(0)}px rgba(61,30,46,${(0.18 + p * 0.22).toFixed(2)}))`,
+        'palaceF');
     }
-    setStyle(palaceEl, 'filter',
-      `drop-shadow(0 ${(20 + p * 30).toFixed(0)}px ${(50 + p * 40).toFixed(0)}px rgba(61,30,46,${(0.18 + p * 0.22).toFixed(2)}))`,
-      'palaceF');
   }
 
   if (heroCopy) {
     const t = Math.max(0, Math.min(1, (p - 0.55) / 0.33));
     setStyle(heroCopy, 'opacity', (1 - t).toFixed(3), 'copyOp');
-    setStyle(heroCopy, 'transform', isTouch ? '' : `translateY(${(p * -32).toFixed(1)}px)`, 'copyT');
-    setStyle(heroCopy, 'filter', t > 0 ? `blur(${(t * 16).toFixed(1)}px)` : '', 'copyF');
+    if (!isTouch) {
+      setStyle(heroCopy, 'transform', `translateY(${(p * -32).toFixed(1)}px)`, 'copyT');
+      /* blur only on desktop — on mobile use opacity fade only */
+      setStyle(heroCopy, 'filter', t > 0 ? `blur(${(t * 16).toFixed(1)}px)` : '', 'copyF');
+    }
     setStyle(heroCopy, 'letterSpacing', t > 0 ? (t * 0.10).toFixed(3) + 'em' : '', 'copyLS');
   }
 
@@ -369,12 +374,17 @@ document.querySelectorAll('.scroll-in').forEach(el => rIO.observe(el));
     });
   }
 
+  let _jRaf = null;
   function onScroll() {
     if (!drawnEl._total) return;
-    const winH = window.innerHeight;
-    const rect = section.getBoundingClientRect();
-    const progress = Math.min(1, Math.max(0, (winH - rect.top) / (section.offsetHeight + winH)));
-    drawnEl.style.strokeDashoffset = (drawnEl._total * (1 - progress)).toFixed(1);
+    if (_jRaf) return; /* already scheduled — don't queue another */
+    _jRaf = requestAnimationFrame(() => {
+      _jRaf = null;
+      const winH = window.innerHeight;
+      const rect = section.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, (winH - rect.top) / (section.offsetHeight + winH)));
+      drawnEl.style.strokeDashoffset = (drawnEl._total * (1 - progress)).toFixed(1);
+    });
   }
 
   window._evJourneyLayout = layout;
@@ -509,15 +519,18 @@ initEventsAutoOpen();
     lastP = p;
 
     const eased = p < 1 ? 1 - Math.pow(1 - p, 3.2) : 1;
-    curtL.style.transform = `translateX(-${(eased * 100).toFixed(2)}%)`;
-    curtR.style.transform = `translateX(${(eased * 100).toFixed(2)}%)`;
-    curtL.style.filter = `drop-shadow(${(eased * 26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased * .40).toFixed(2)}))`;
-    curtR.style.filter = `drop-shadow(-${(eased * 26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased * .40).toFixed(2)}))`;
+    curtL.style.transform = `translate3d(-${(eased * 100).toFixed(2)}%,0,0)`;
+    curtR.style.transform = `translate3d(${(eased * 100).toFixed(2)}%,0,0)`;
+    /* Skip filter on touch — transform alone is GPU-composited and lag-free */
+    if (!isTouch) {
+      curtL.style.filter = `drop-shadow(${(eased * 26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased * .40).toFixed(2)}))`;
+      curtR.style.filter = `drop-shadow(-${(eased * 26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased * .40).toFixed(2)}))`;
+    }
 
     const charDrift = eased * 28;
     const charScale = 1 - eased * 0.04;
-    bride.style.transform = `translateX(-${charDrift.toFixed(1)}px) scale(${charScale.toFixed(3)})`;
-    groom.style.transform = `translateX(${charDrift.toFixed(1)}px) scale(${charScale.toFixed(3)})`;
+    bride.style.transform = `translate3d(-${charDrift.toFixed(1)}px,0,0) scale(${charScale.toFixed(3)})`;
+    groom.style.transform = `translate3d(${charDrift.toFixed(1)}px,0,0) scale(${charScale.toFixed(3)})`;
 
     if (eased >= 0.70 && !revealed) {
       revealed = true;
@@ -527,7 +540,12 @@ initEventsAutoOpen();
     }
   }
 
-  window.addEventListener('scroll', () => applyProgress(getCurtainProgress()), { passive: true });
+  /* rAF-throttled curtain scroll — never fires more than once per frame */
+  let _cRaf = null;
+  window.addEventListener('scroll', () => {
+    if (_cRaf) return;
+    _cRaf = requestAnimationFrame(() => { _cRaf = null; applyProgress(getCurtainProgress()); });
+  }, { passive: true });
 
   const io = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting && entries[0].intersectionRatio >= 0.22) {
