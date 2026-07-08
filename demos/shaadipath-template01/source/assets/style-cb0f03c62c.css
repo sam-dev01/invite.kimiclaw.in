@@ -1604,3 +1604,13 @@ body #heroWrap{
 	min-height: 715px !important;
 }
 
+/* Fix overlapping layout issues on wide screens */
+.hc-countdown {
+  flex-basis: 100% !important;
+  width: 100% !important;
+}
+
+.scroll-nudge, #scrollNudge {
+  display: none !important;
+}
+
