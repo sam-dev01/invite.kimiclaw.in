@@ -11,7 +11,6 @@ const isTouch = window.matchMedia('(pointer:coarse)').matches;
    movement — so it's never invisible on load.
 ───────────────────────────────────────── */
 (function initCursor(){
-  return; // Disabled custom cursor
   if(isTouch) return;
   const ring = document.getElementById('cRing');
   const dot  = document.getElementById('cDot');
@@ -72,8 +71,22 @@ function revealHero(){
 
 function runPreloader(){
   const pl = document.getElementById('preloader');
-  if(pl) pl.style.display = 'none';
-  revealHero();
+  if(!pl){
+    revealHero();
+    return;
+  }
+  // Step 1: draw gold line
+  setTimeout(() => pl.classList.add('li'), 300);
+  // Step 2: names appear
+  setTimeout(() => pl.classList.add('ni'), 700);
+  // Step 3: fade out preloader, reveal hero
+  setTimeout(() => {
+    pl.classList.add('away');
+    setTimeout(() => {
+      pl.style.display = 'none';
+      revealHero();
+    }, 500);
+  }, 1600);
 }
 
 // Add pl-active to body so CSS hides elements during preload
@@ -127,9 +140,9 @@ function driveHero(){
   const mx = isTouch ? 0 : mouseX;
   const my = isTouch ? 0 : mouseY;
 
-  // Moon: static
+  // Moon: gentle drift
   if(heroMoon)
-    heroMoon.style.transform = '';
+    heroMoon.style.transform = `translateY(${p * -28 + my * -5}px) translateX(${mx * -3}px)`;
 
   // Palace: 3D perspective tilt on mouse + scale on scroll (Change 06)
   if(palaceEl){
@@ -145,17 +158,26 @@ function driveHero(){
     palaceEl.style.filter    = `drop-shadow(0 ${(20 + p*30).toFixed(0)}px ${(50 + p*40).toFixed(0)}px rgba(61,30,46,${(0.18 + p*0.22).toFixed(2)}))`;
   }
 
-  // Names: static
+  // Names: stay visible until p=0.55, then dissolve by p=0.88
+  // At 220vh hero height: visible for ~121vh, dissolves over ~73vh = 3-4 scroll gestures
   if(heroCopy){
-    heroCopy.style.opacity = '1';
-    heroCopy.style.transform = '';
-    heroCopy.style.filter = '';
-    heroCopy.style.letterSpacing = '';
+    const dissolveStart = 0.55;
+    const dissolveEnd   = 0.88;
+    const dissolveRange = dissolveEnd - dissolveStart;
+    const t = Math.max(0, Math.min(1, (p - dissolveStart) / dissolveRange));
+    const op     = 1 - t;
+    const blurPx = t * 16;
+    const spread = t * 0.10;
+    heroCopy.style.opacity      = op.toFixed(3);
+    // On mobile: no translateY to avoid triggering layout reflow that causes shake
+    heroCopy.style.transform    = isTouch ? '' : `translateY(${p * -32}px)`;
+    heroCopy.style.filter       = t > 0 ? `blur(${blurPx.toFixed(1)}px)` : '';
+    heroCopy.style.letterSpacing = spread > 0 ? spread.toFixed(3) + 'em' : '';
   }
 
-  // Scroll nudge: hidden
+  // Scroll nudge fades immediately
   if(scrollNudge)
-    scrollNudge.style.opacity = '0';
+    scrollNudge.style.opacity = String(Math.max(0, 1 - p / 0.18));
 
   if(heroWrap && window.scrollY < heroWrap.offsetHeight)
     rafH = requestAnimationFrame(driveHero);
@@ -202,7 +224,6 @@ class Petals {
   }
 
   spawn(){
-    return; // Disabled falling petals spawn
     if(!this.el) return;
     // Evict oldest if at max
     if(this.pool.size >= this.max){
@@ -366,7 +387,7 @@ if(inviteCard) rIO.observe(inviteCard);
       if(drawnEl.getTotalLength){
         const total = drawnEl.getTotalLength();
         drawnEl.style.strokeDasharray  = total;
-        drawnEl.style.strokeDashoffset = 0; // Fully drawn immediately
+        drawnEl.style.strokeDashoffset = total;
         drawnEl._total = total;
       }
       onScroll();
@@ -381,7 +402,18 @@ if(inviteCard) rIO.observe(inviteCard);
   ── */
   function onScroll(){
     if(!drawnEl._total) return;
-    drawnEl.style.strokeDashoffset = 0; // Keep fully drawn
+    const winH    = window.innerHeight;
+    const rect    = section.getBoundingClientRect();
+    const secH    = section.offsetHeight;
+
+    // progress = 0 when section top hits viewport bottom
+    // progress = 1 when section bottom hits viewport top
+    // Total travel = secH + winH
+    const scrolled = winH - rect.top;          // how far section has entered viewport
+    const total    = secH + winH;              // full travel distance
+    const progress = Math.min(1, Math.max(0, scrolled / total));
+
+    drawnEl.style.strokeDashoffset = (drawnEl._total * (1 - progress)).toFixed(1);
   }
 
   // Expose layout globally so config loader can re-run after replacing evStage innerHTML
@@ -500,9 +532,29 @@ initEventsAutoOpen();
 
   /* ── Phase 1+2: Pull → tension → unlock scroll ── */
   function runSequence(){
+    if(sequenceDone) return;
     sequenceDone = true;
-    openEnabled = true;
-    applyProgress(1);
+
+    // Phase 1 — Pull
+    bride.classList.add('st-pull');
+    groom.classList.add('st-pull');
+
+    // Phase 2 — Tension (715ms)
+    setTimeout(() => {
+      bride.classList.remove('st-pull');
+      groom.classList.remove('st-pull');
+      bride.classList.add('st-tension');
+      groom.classList.add('st-tension');
+    }, 715);
+
+    // Phase 3 — Enable scroll-driven open (1235ms)
+    setTimeout(() => {
+      bride.classList.remove('st-tension');
+      groom.classList.remove('st-tension');
+      openEnabled = true;
+      // Apply current scroll progress immediately in case user already scrolled
+      applyProgress(getCurtainProgress());
+    }, 1235);
   }
 
   /* ── Scroll progress for curtain (0→1) ──
@@ -510,22 +562,38 @@ initEventsAutoOpen();
      Completes over 70vh of scroll travel.
   */
   function getCurtainProgress(){
-    return 1;
+    if(!openEnabled) return 0;
+    const rect  = section.getBoundingClientRect();
+    const start = window.innerHeight * 0.55;
+    const range = window.innerHeight * 0.91;   /* 30% slower: 0.70 → 0.91 */
+    return Math.min(1, Math.max(0, (start - rect.top) / range));
   }
 
   /* ── Apply curtain + character position for progress p ── */
   function applyProgress(p){
-    curtL.style.transform = `translateX(-100%)`;
-    curtR.style.transform = `translateX(100%)`;
-    curtL.style.filter = '';
-    curtR.style.filter = '';
+    if(Math.abs(p - lastP) < 0.002) return;
+    lastP = p;
 
-    bride.style.transform = `translateX(-28px) scale(0.96)`;
-    groom.style.transform = `translateX(28px) scale(0.96)`;
+    // Curtain slides — cubic overshoot for dramatic feel (Change 05)
+    const eased = p < 1 ? 1 - Math.pow(1 - p, 3.2) : 1;
+    curtL.style.transform = `translateX(-${(eased * 100).toFixed(2)}%)`;
+    curtR.style.transform = `translateX(${(eased  * 100).toFixed(2)}%)`;
+    // Shadow deepens as curtains part — physical weight (Change 05)
+    curtL.style.filter = `drop-shadow(${(eased*26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased*.40).toFixed(2)}))`;
+    curtR.style.filter = `drop-shadow(-${(eased*26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased*.40).toFixed(2)}))`;
 
-    if(!revealed){
+    // Characters follow curtain outward (drift + slight scale down as they "recede")
+    const charDrift = eased * 28;  // px outward
+    const charScale = 1 - eased * 0.04;
+    bride.style.transform = `translateX(-${charDrift.toFixed(1)}px) scale(${charScale.toFixed(3)})`;
+    groom.style.transform = `translateX(${charDrift.toFixed(1)}px)  scale(${charScale.toFixed(3)})`;
+
+    // Reveal content once curtain is 70% open
+    if(eased >= 0.70 && !revealed){
       revealed = true;
       reveal.classList.add('revealed');
+      let n = 0;
+      const iv = setInterval(() => { spawnPetal(); if(++n >= 28) clearInterval(iv); }, 160);
     }
   }
 
@@ -605,7 +673,6 @@ function burstPetals(fromEl){
    Re-attaches after config rebuilds evStage.
 ─────────────────────────────────────────── */
 (function initCardTilt(){
-  return; // Disabled 3D Card Tilt
   // Desktop: mousemove tilt
   function attachMouseTilt(el){
     if(el._tiltAttached) return;
@@ -717,7 +784,7 @@ function burstPetals(fromEl){
    - Particles that exit bottom are recycled to top
 ─────────────────────────────────────────── */
 (function initElephantConfetti(){
-  return; // Disabled elephant confetti
+
   const rainCanvas = document.getElementById('confettiRain');
   if(!rainCanvas) return;
   const bridge = document.getElementById('elephBridge');
