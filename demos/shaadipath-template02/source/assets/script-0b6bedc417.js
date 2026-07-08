@@ -206,7 +206,7 @@ function initScratch() {
     setTimeout(() => {
       document.body.classList.remove('scroll-locked');
       revealHero();
-    }, 600);
+    }, 200);
 
     // Dismiss gate when user clicks/taps or presses key
     function dismiss() {
@@ -216,8 +216,8 @@ function initScratch() {
     gate.addEventListener('click', dismiss);
     document.addEventListener('keydown', dismiss, { once: true });
 
-    // Auto-dismiss after 3s
-    setTimeout(dismiss, 3000);
+    // Auto-dismiss very quickly so it feels instant
+    setTimeout(dismiss, 400);
   }
 
   /* ── EVENT HELPERS ────────────────────────────────── */
