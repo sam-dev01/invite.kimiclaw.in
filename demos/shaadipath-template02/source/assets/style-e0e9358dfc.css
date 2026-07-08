@@ -1879,8 +1879,8 @@ section{ padding:50px 0; }
 
 /* ══ DOWNLOAD INVITE CARD BUTTON ══ */
 .dl-card-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  margin-top:16px;padding:12px 26px;border-radius:40px;
+  display:flex;width:max-content;margin:16px auto 0;align-items:center;gap:8px;
+  padding:12px 26px;border-radius:40px;
   background:transparent;border:1px solid rgba(160,24,48,.35);
   color:var(--rose);font-family:var(--ff-b);font-size:.62rem;font-weight:400;
   letter-spacing:.2em;text-transform:uppercase;cursor:pointer;
