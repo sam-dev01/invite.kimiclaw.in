@@ -11,6 +11,7 @@ const isTouch = window.matchMedia('(pointer:coarse)').matches;
    movement — so it's never invisible on load.
 ───────────────────────────────────────── */
 (function initCursor(){
+  return; // Disabled custom cursor
   if(isTouch) return;
   const ring = document.getElementById('cRing');
   const dot  = document.getElementById('cDot');
@@ -71,22 +72,8 @@ function revealHero(){
 
 function runPreloader(){
   const pl = document.getElementById('preloader');
-  if(!pl){
-    revealHero();
-    return;
-  }
-  // Step 1: draw gold line
-  setTimeout(() => pl.classList.add('li'), 300);
-  // Step 2: names appear
-  setTimeout(() => pl.classList.add('ni'), 700);
-  // Step 3: fade out preloader, reveal hero
-  setTimeout(() => {
-    pl.classList.add('away');
-    setTimeout(() => {
-      pl.style.display = 'none';
-      revealHero();
-    }, 500);
-  }, 1600);
+  if(pl) pl.style.display = 'none';
+  revealHero();
 }
 
 // Add pl-active to body so CSS hides elements during preload
@@ -135,6 +122,16 @@ function getHeroProgress(){
 }
 
 function driveHero(){
+  if(heroMoon) heroMoon.style.transform = '';
+  if(palaceEl) palaceEl.style.transform = 'translateX(-50%)';
+  if(heroCopy) {
+    heroCopy.style.opacity = '1';
+    heroCopy.style.transform = '';
+    heroCopy.style.filter = '';
+    heroCopy.style.letterSpacing = '';
+  }
+  if(scrollNudge) scrollNudge.style.opacity = '0';
+  return; // Disabled scroll-pinned hero parallax
   lerped += (raw - lerped) * 0.06;
   const p  = lerped;
   const mx = isTouch ? 0 : mouseX;
@@ -224,6 +221,7 @@ class Petals {
   }
 
   spawn(){
+    return; // Disabled falling petals spawn
     if(!this.el) return;
     // Evict oldest if at max
     if(this.pool.size >= this.max){
@@ -387,7 +385,7 @@ if(inviteCard) rIO.observe(inviteCard);
       if(drawnEl.getTotalLength){
         const total = drawnEl.getTotalLength();
         drawnEl.style.strokeDasharray  = total;
-        drawnEl.style.strokeDashoffset = total;
+        drawnEl.style.strokeDashoffset = 0; // Fully drawn immediately
         drawnEl._total = total;
       }
       onScroll();
@@ -402,18 +400,7 @@ if(inviteCard) rIO.observe(inviteCard);
   ── */
   function onScroll(){
     if(!drawnEl._total) return;
-    const winH    = window.innerHeight;
-    const rect    = section.getBoundingClientRect();
-    const secH    = section.offsetHeight;
-
-    // progress = 0 when section top hits viewport bottom
-    // progress = 1 when section bottom hits viewport top
-    // Total travel = secH + winH
-    const scrolled = winH - rect.top;          // how far section has entered viewport
-    const total    = secH + winH;              // full travel distance
-    const progress = Math.min(1, Math.max(0, scrolled / total));
-
-    drawnEl.style.strokeDashoffset = (drawnEl._total * (1 - progress)).toFixed(1);
+    drawnEl.style.strokeDashoffset = 0; // Keep fully drawn
   }
 
   // Expose layout globally so config loader can re-run after replacing evStage innerHTML
@@ -532,29 +519,9 @@ initEventsAutoOpen();
 
   /* ── Phase 1+2: Pull → tension → unlock scroll ── */
   function runSequence(){
-    if(sequenceDone) return;
     sequenceDone = true;
-
-    // Phase 1 — Pull
-    bride.classList.add('st-pull');
-    groom.classList.add('st-pull');
-
-    // Phase 2 — Tension (715ms)
-    setTimeout(() => {
-      bride.classList.remove('st-pull');
-      groom.classList.remove('st-pull');
-      bride.classList.add('st-tension');
-      groom.classList.add('st-tension');
-    }, 715);
-
-    // Phase 3 — Enable scroll-driven open (1235ms)
-    setTimeout(() => {
-      bride.classList.remove('st-tension');
-      groom.classList.remove('st-tension');
-      openEnabled = true;
-      // Apply current scroll progress immediately in case user already scrolled
-      applyProgress(getCurtainProgress());
-    }, 1235);
+    openEnabled = true;
+    applyProgress(1);
   }
 
   /* ── Scroll progress for curtain (0→1) ──
@@ -562,38 +529,22 @@ initEventsAutoOpen();
      Completes over 70vh of scroll travel.
   */
   function getCurtainProgress(){
-    if(!openEnabled) return 0;
-    const rect  = section.getBoundingClientRect();
-    const start = window.innerHeight * 0.55;
-    const range = window.innerHeight * 0.91;   /* 30% slower: 0.70 → 0.91 */
-    return Math.min(1, Math.max(0, (start - rect.top) / range));
+    return 1;
   }
 
   /* ── Apply curtain + character position for progress p ── */
   function applyProgress(p){
-    if(Math.abs(p - lastP) < 0.002) return;
-    lastP = p;
+    curtL.style.transform = `translateX(-100%)`;
+    curtR.style.transform = `translateX(100%)`;
+    curtL.style.filter = '';
+    curtR.style.filter = '';
 
-    // Curtain slides — cubic overshoot for dramatic feel (Change 05)
-    const eased = p < 1 ? 1 - Math.pow(1 - p, 3.2) : 1;
-    curtL.style.transform = `translateX(-${(eased * 100).toFixed(2)}%)`;
-    curtR.style.transform = `translateX(${(eased  * 100).toFixed(2)}%)`;
-    // Shadow deepens as curtains part — physical weight (Change 05)
-    curtL.style.filter = `drop-shadow(${(eased*26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased*.40).toFixed(2)}))`;
-    curtR.style.filter = `drop-shadow(-${(eased*26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased*.40).toFixed(2)}))`;
+    bride.style.transform = `translateX(-28px) scale(0.96)`;
+    groom.style.transform = `translateX(28px) scale(0.96)`;
 
-    // Characters follow curtain outward (drift + slight scale down as they "recede")
-    const charDrift = eased * 28;  // px outward
-    const charScale = 1 - eased * 0.04;
-    bride.style.transform = `translateX(-${charDrift.toFixed(1)}px) scale(${charScale.toFixed(3)})`;
-    groom.style.transform = `translateX(${charDrift.toFixed(1)}px)  scale(${charScale.toFixed(3)})`;
-
-    // Reveal content once curtain is 70% open
-    if(eased >= 0.70 && !revealed){
+    if(!revealed){
       revealed = true;
       reveal.classList.add('revealed');
-      let n = 0;
-      const iv = setInterval(() => { spawnPetal(); if(++n >= 28) clearInterval(iv); }, 160);
     }
   }
 
@@ -673,6 +624,7 @@ function burstPetals(fromEl){
    Re-attaches after config rebuilds evStage.
 ─────────────────────────────────────────── */
 (function initCardTilt(){
+  return; // Disabled 3D Card Tilt
   // Desktop: mousemove tilt
   function attachMouseTilt(el){
     if(el._tiltAttached) return;
@@ -784,7 +736,7 @@ function burstPetals(fromEl){
    - Particles that exit bottom are recycled to top
 ─────────────────────────────────────────── */
 (function initElephantConfetti(){
-
+  return; // Disabled elephant confetti
   const rainCanvas = document.getElementById('confettiRain');
   if(!rainCanvas) return;
   const bridge = document.getElementById('elephBridge');

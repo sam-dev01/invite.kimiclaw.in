@@ -1,4 +1,4 @@
-﻿/* ═══ TOKENS ═══ */
+/* ═══ TOKENS ═══ */
 /* deployment-touch: template01-css 2026-07-01T13:44:30+05:30 */
 :root{
   --rose:#C4748C;--blush:#F2D4C8;--gold:#C4985A;--ivory:#FAF3E8;
@@ -1547,3 +1547,51 @@ section{ padding:80px 0; }
 
 /* Anti-flicker for iOS/Android */
 .scroll-in, .petal-canvas, .hero-curtain-l, .hero-curtain-r, .st-char-img, .ev-node, .gal-item, .pl-mandala, .sn-icon { -webkit-backface-visibility: hidden; backface-visibility: hidden; -webkit-transform: translateZ(0); transform: translateZ(0); }
+
+/* ═══ DISABLE ALL ANIMATIONS AND TRANSITIONS (Custom Override) ═══ */
+*, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+.scroll-in {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+#preloader, .preloader {
+  display: none !important;
+}
+
+#cRing, #cDot, .c-ring, .c-dot {
+  display: none !important;
+}
+
+.petal-canvas, #stPetals, .confetti-canvas, .confetti-rain {
+  display: none !important;
+}
+
+#stReveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+.story-reveal.revealed {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+#stCurtL {
+  transform: translateX(-100%) !important;
+}
+#stCurtR {
+  transform: translateX(100%) !important;
+}
+
+.fl, .s-diya-l, .s-diya-r, .rangoli-orb, .fl-moon, .fl-leaf-l, .fl-leaf-r {
+  animation: none !important;
+}
+
+#scrollNudge {
+  display: none !important;
+}
+
