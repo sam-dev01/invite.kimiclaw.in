@@ -340,10 +340,14 @@ function driveHero(){
   // Palace: 3D perspective tilt on mouse + scale on scroll (Change 06)
   if(palaceEl){
     const scale = 1.0 + p * 0.45;
-    const tiltX = mx * -14;
-    const tiltY = my * -9;
-    palaceEl.style.transform = `perspective(1400px) rotateX(${tiltY}deg) rotateY(${tiltX}deg) translateX(calc(-50% + ${(tiltX*0.5).toFixed(1)}px)) scale(${scale})`;
-    palaceEl.style.filter    = `drop-shadow(0 ${(20+p*30).toFixed(0)}px ${(50+p*40).toFixed(0)}px rgba(0,0,0,${(0.28+p*0.22).toFixed(2)})) drop-shadow(0 4px 16px rgba(200,134,10,${(0.10+p*0.08).toFixed(2)}))`;
+    if(isTouch) {
+      palaceEl.style.transform = `translateX(-50%) scale(${scale})`;
+    } else {
+      const tiltX = mx * -14;
+      const tiltY = my * -9;
+      palaceEl.style.transform = `perspective(1400px) rotateX(${tiltY}deg) rotateY(${tiltX}deg) translateX(calc(-50% + ${(tiltX*0.5).toFixed(1)}px)) scale(${scale})`;
+      palaceEl.style.filter    = `drop-shadow(0 ${(20+p*30).toFixed(0)}px ${(50+p*40).toFixed(0)}px rgba(0,0,0,${(0.28+p*0.22).toFixed(2)})) drop-shadow(0 4px 16px rgba(200,134,10,${(0.10+p*0.08).toFixed(2)}))`;
+    }
   }
 
   // Names: stay fully visible until p=0.55, then dissolve with blur by p=0.88
@@ -353,8 +357,10 @@ function driveHero(){
     const t = Math.max(0, Math.min(1, (p - dissolveStart) / (dissolveEnd - dissolveStart)));
     heroCopy.style.opacity      = (1 - t).toFixed(3);
     heroCopy.style.transform    = `translateY(${p * -32}px)`;
-    heroCopy.style.filter       = t > 0 ? `blur(${(t*16).toFixed(1)}px)` : '';
-    heroCopy.style.letterSpacing = t > 0 ? (t*0.10).toFixed(3)+'em' : '';
+    if(!isTouch) {
+      heroCopy.style.filter       = t > 0 ? `blur(${(t*16).toFixed(1)}px)` : '';
+      heroCopy.style.letterSpacing = t > 0 ? (t*0.10).toFixed(3)+'em' : '';
+    }
   }
 
   // Scroll nudge fades immediately
@@ -583,8 +589,9 @@ if(inviteCard) rIO.observe(inviteCard);
   }
 
   /* ── Scroll progress: tracks user position THROUGH the section ── */
+  let rafJ = null;
   function onScroll(){
-    if(!drawnEl._total) return;
+    if(!drawnEl._total) { rafJ = null; return; }
     const winH    = window.innerHeight;
     const rect    = section.getBoundingClientRect();
     const secH    = section.offsetHeight;
@@ -592,6 +599,7 @@ if(inviteCard) rIO.observe(inviteCard);
     const total    = secH + winH;
     const progress = Math.min(1, Math.max(0, scrolled / total));
     drawnEl.style.strokeDashoffset = (drawnEl._total * (1 - progress)).toFixed(1);
+    rafJ = null;
   }
 
   window._evJourneyLayout = layout;
@@ -606,7 +614,7 @@ if(inviteCard) rIO.observe(inviteCard);
   visIO.observe(section);
 
   window.addEventListener('load',   layout);
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', () => { if(!rafJ) rafJ = requestAnimationFrame(onScroll); }, { passive: true });
 
   let rTO;
   window.addEventListener('resize', () => {
@@ -752,11 +760,13 @@ initEventsAutoOpen();
 
     // Curtain slides — cubic overshoot for dramatic feel (Change 05/T02)
     const eased = p < 1 ? 1 - Math.pow(1 - p, 3.2) : 1;
-    curtL.style.transform = `translateX(-${(eased * 100).toFixed(2)}%)`;
-    curtR.style.transform = `translateX(${(eased  * 100).toFixed(2)}%)`;
-    // Shadow grows on inner edges as curtains open — physical weight on dark stage
-    curtL.style.filter = `drop-shadow(${(eased*30).toFixed(1)}px 0 36px rgba(0,0,0,${(eased*.65).toFixed(2)}))`;
-    curtR.style.filter = `drop-shadow(-${(eased*30).toFixed(1)}px 0 36px rgba(0,0,0,${(eased*.65).toFixed(2)}))`;
+    curtL.style.transform = `translate3d(-${(eased * 100).toFixed(2)}%,0,0)`;
+    curtR.style.transform = `translate3d(${(eased  * 100).toFixed(2)}%,0,0)`;
+    if(!isTouch) {
+      // Shadow grows on inner edges as curtains open — physical weight on dark stage
+      curtL.style.filter = `drop-shadow(${(eased*30).toFixed(1)}px 0 36px rgba(0,0,0,${(eased*.65).toFixed(2)}))`;
+      curtR.style.filter = `drop-shadow(-${(eased*30).toFixed(1)}px 0 36px rgba(0,0,0,${(eased*.65).toFixed(2)}))`;
+    }
 
     // Characters follow curtain outward (drift + slight scale down as they "recede")
     const charDrift = eased * 28;  // px outward
@@ -774,8 +784,14 @@ initEventsAutoOpen();
   }
 
   /* ── Scroll listener ── */
+  let rafC = null;
   window.addEventListener('scroll', () => {
-    applyProgress(getCurtainProgress());
+    if(!rafC) {
+      rafC = requestAnimationFrame(() => {
+        applyProgress(getCurtainProgress());
+        rafC = null;
+      });
+    }
   }, { passive:true });
 
   /* ── IntersectionObserver fires the pull sequence ── */
@@ -1125,4 +1141,115 @@ function burstPetals(fromEl){
   }, { threshold: 0.1 });
   io.observe(bridge);
 
+})();
+
+/* ─────────────────────────────────────────
+   GALLERY LIGHTBOX
+   - Opens on click / Enter / Space
+   - Prev/Next buttons + keyboard arrows
+   - Swipe left/right on touch
+   - Dot indicators
+   - Escape to close
+───────────────────────────────────────── */
+(function initGalleryLightbox() {
+  const lb      = document.getElementById('galLightbox');
+  const lbClose = document.getElementById('galLbClose');
+  const lbPrev  = document.getElementById('galLbPrev');
+  const lbNext  = document.getElementById('galLbNext');
+  const lbCap   = document.getElementById('galLbCaption');
+  const lbDots  = document.getElementById('galLbDots');
+  if (!lb) return;
+
+  const items = Array.from(document.querySelectorAll('.gal-item[data-gal-idx]'));
+  const total = items.length;
+  let current = 0;
+
+  /* Build dot indicators */
+  items.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'gal-lb-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `Go to photo ${i + 1}`);
+    d.addEventListener('click', () => show(i));
+    lbDots.appendChild(d);
+  });
+
+  function getDots() { return Array.from(lbDots.querySelectorAll('.gal-lb-dot')); }
+
+  function show(idx) {
+    current = (idx + total) % total;
+    const item = items[current];
+
+    /* Update caption */
+    const cap = item.querySelector('.gal-ov-caption');
+    lbCap.textContent = cap ? cap.textContent : '';
+
+    /* Update dots */
+    getDots().forEach((d, i) => d.classList.toggle('active', i === current));
+
+    /* Show/hide nav if only 1 item */
+    lbPrev.style.display = lbNext.style.display = total <= 1 ? 'none' : '';
+  }
+
+  function open(idx) {
+    lb.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    show(idx);
+    /* Focus close button for keyboard users */
+    requestAnimationFrame(() => lbClose.focus());
+  }
+
+  function close() {
+    document.body.style.overflow = '';
+    /* Fade out then re-add hidden */
+    lb.setAttribute('hidden', '');
+    /* Return focus to the card that opened it */
+    if (items[current]) items[current].focus();
+  }
+
+  /* Open on card click */
+  items.forEach(item => {
+    item.addEventListener('click', () => open(+item.dataset.galIdx));
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(+item.dataset.galIdx); }
+    });
+
+    /* Touch: show overlay briefly on tap before lightbox opens */
+    if (isTouch) {
+      item.addEventListener('touchstart', () => {
+        item.querySelector('.gal-overlay')?.style.setProperty('opacity', '1');
+      }, { passive: true });
+      item.addEventListener('touchend', () => {
+        setTimeout(() => {
+          item.querySelector('.gal-overlay')?.style.setProperty('opacity', '');
+        }, 400);
+      });
+    }
+  });
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => show(current - 1));
+  lbNext.addEventListener('click', () => show(current + 1));
+
+  /* Dot clicks handled in build loop above */
+
+  /* Keyboard navigation */
+  lb.addEventListener('keydown', e => {
+    if (e.key === 'Escape')     { e.preventDefault(); close(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); show(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+  });
+
+  /* Click backdrop to close */
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+
+  /* Swipe support */
+  let swipeX = null;
+  lb.addEventListener('touchstart', e => { swipeX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    if (swipeX === null) return;
+    const dx = e.changedTouches[0].clientX - swipeX;
+    swipeX = null;
+    if (Math.abs(dx) < 40) return;
+    show(dx < 0 ? current + 1 : current - 1);
+  }, { passive: true });
 })();
