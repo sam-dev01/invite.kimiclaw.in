@@ -122,24 +122,14 @@ function getHeroProgress(){
 }
 
 function driveHero(){
-  if(heroMoon) heroMoon.style.transform = '';
-  if(palaceEl) palaceEl.style.transform = 'translateX(-50%)';
-  if(heroCopy) {
-    heroCopy.style.opacity = '1';
-    heroCopy.style.transform = '';
-    heroCopy.style.filter = '';
-    heroCopy.style.letterSpacing = '';
-  }
-  if(scrollNudge) scrollNudge.style.opacity = '0';
-  return; // Disabled scroll-pinned hero parallax
   lerped += (raw - lerped) * 0.06;
   const p  = lerped;
   const mx = isTouch ? 0 : mouseX;
   const my = isTouch ? 0 : mouseY;
 
-  // Moon: gentle drift
+  // Moon: static
   if(heroMoon)
-    heroMoon.style.transform = `translateY(${p * -28 + my * -5}px) translateX(${mx * -3}px)`;
+    heroMoon.style.transform = '';
 
   // Palace: 3D perspective tilt on mouse + scale on scroll (Change 06)
   if(palaceEl){
@@ -155,26 +145,17 @@ function driveHero(){
     palaceEl.style.filter    = `drop-shadow(0 ${(20 + p*30).toFixed(0)}px ${(50 + p*40).toFixed(0)}px rgba(61,30,46,${(0.18 + p*0.22).toFixed(2)}))`;
   }
 
-  // Names: stay visible until p=0.55, then dissolve by p=0.88
-  // At 220vh hero height: visible for ~121vh, dissolves over ~73vh = 3-4 scroll gestures
+  // Names: static
   if(heroCopy){
-    const dissolveStart = 0.55;
-    const dissolveEnd   = 0.88;
-    const dissolveRange = dissolveEnd - dissolveStart;
-    const t = Math.max(0, Math.min(1, (p - dissolveStart) / dissolveRange));
-    const op     = 1 - t;
-    const blurPx = t * 16;
-    const spread = t * 0.10;
-    heroCopy.style.opacity      = op.toFixed(3);
-    // On mobile: no translateY to avoid triggering layout reflow that causes shake
-    heroCopy.style.transform    = isTouch ? '' : `translateY(${p * -32}px)`;
-    heroCopy.style.filter       = t > 0 ? `blur(${blurPx.toFixed(1)}px)` : '';
-    heroCopy.style.letterSpacing = spread > 0 ? spread.toFixed(3) + 'em' : '';
+    heroCopy.style.opacity = '1';
+    heroCopy.style.transform = '';
+    heroCopy.style.filter = '';
+    heroCopy.style.letterSpacing = '';
   }
 
-  // Scroll nudge fades immediately
+  // Scroll nudge: hidden
   if(scrollNudge)
-    scrollNudge.style.opacity = String(Math.max(0, 1 - p / 0.18));
+    scrollNudge.style.opacity = '0';
 
   if(heroWrap && window.scrollY < heroWrap.offsetHeight)
     rafH = requestAnimationFrame(driveHero);
