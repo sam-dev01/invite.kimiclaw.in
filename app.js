@@ -1670,34 +1670,63 @@ function initReviews() {
     });
   }
 
+  function renderReviews() {
+    const savedReviews = JSON.parse(localStorage.getItem('kimiclawReviews') || '[]');
+    // Keep the default review if no others exist, or combine them
+    let html = `
+      <div class="review-item" style="background: var(--bg-secondary); padding: 15px; border-radius: var(--radius-sm); box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <strong style="font-size: 0.95rem; color: var(--text-primary);">Priya & Rahul</strong>
+          <span style="color: #f5b301; font-size: 0.9rem;">★★★★★</span>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">Absolutely loved this template! Our guests were amazed by the design and the WhatsApp RSVP made tracking so easy.</p>
+      </div>
+    `;
+    
+    savedReviews.forEach(rev => {
+      let starsHtml = '';
+      for (let i = 0; i < 5; i++) {
+        starsHtml += i < rev.rating ? '★' : '☆';
+      }
+      html = `
+        <div class="review-item" style="background: var(--bg-secondary); padding: 15px; border-radius: var(--radius-sm); box-shadow: 0 2px 8px rgba(0,0,0,0.02); animation: fadeUp 0.5s ease;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <strong style="font-size: 0.95rem; color: var(--text-primary);">${rev.name}</strong>
+            <span style="color: #f5b301; font-size: 0.9rem;">${starsHtml}</span>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">${rev.text}</p>
+        </div>
+      ` + html;
+    });
+    
+    reviewList.innerHTML = html;
+  }
+
+  // Initial render
+  renderReviews();
+
   reviewForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('review-name').value;
     const text = document.getElementById('review-text').value;
     const rating = parseInt(ratingInput.value, 10);
 
-    // Create a new review item
-    const newReview = document.createElement('div');
-    newReview.className = 'review-item';
-    newReview.style.cssText = 'background: var(--bg-secondary); padding: 15px; border-radius: var(--radius-sm); box-shadow: 0 2px 8px rgba(0,0,0,0.02); animation: fadeUp 0.5s ease;';
-    
-    let starsHtml = '';
-    for (let i = 0; i < 5; i++) {
-      starsHtml += i < rating ? '★' : '☆';
-    }
+    const savedReviews = JSON.parse(localStorage.getItem('kimiclawReviews') || '[]');
+    savedReviews.push({ name, text, rating, date: new Date().toISOString() });
+    localStorage.setItem('kimiclawReviews', JSON.stringify(savedReviews));
 
-    newReview.innerHTML = `
-      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-        <strong style="font-size: 0.95rem; color: var(--text-primary);">${name}</strong>
-        <span style="color: #f5b301; font-size: 0.9rem;">${starsHtml}</span>
-      </div>
-      <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">${text}</p>
-    `;
-
-    reviewList.insertBefore(newReview, reviewList.firstChild);
+    renderReviews();
 
     reviewForm.style.display = 'none';
     successMsg.style.display = 'block';
+    reviewForm.reset();
+    
+    // Hide success message after 3 seconds and allow toggling form again
+    setTimeout(() => {
+      successMsg.style.display = 'none';
+      toggleBtn.style.display = 'block';
+      toggleBtn.innerText = 'Write another review';
+    }, 3000);
   });
 }
 
