@@ -89,44 +89,99 @@
 <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">🔔</button>
 
 <!-- PRELOADER — mandala ring trace -->
-<div id="preloader" class="preloader">
-  <div class="pl-content">
-    <div class="pl-mandala-wrap">
-      <svg class="pl-mandala" viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
-        <!-- Ring 3 — outer -->
-        <circle class="pl-m-ring pl-m-r3" cx="60" cy="60" r="54" fill="none" stroke="#C8960A" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- Ring 2 — mid -->
-        <circle class="pl-m-ring pl-m-r2" cx="60" cy="60" r="40" fill="none" stroke="#4A1E6E" stroke-width="1.0" stroke-linecap="round"/>
-        <!-- Ring 1 — inner -->
-        <circle class="pl-m-ring pl-m-r1" cx="60" cy="60" r="26" fill="none" stroke="#C8960A" stroke-width="0.8" stroke-linecap="round"/>
-        <!-- 8 petals alternating gold/purple -->
-        <g class="pl-m-petals">
-          <ellipse cx="60" cy="14" rx="4" ry="9" fill="#C8960A" opacity=".55" transform="rotate(0   60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="9" fill="#4A1E6E" opacity=".50" transform="rotate(45  60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="9" fill="#C8960A" opacity=".55" transform="rotate(90  60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="9" fill="#4A1E6E" opacity=".50" transform="rotate(135 60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="9" fill="#C8960A" opacity=".55" transform="rotate(180 60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="9" fill="#4A1E6E" opacity=".50" transform="rotate(225 60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="9" fill="#C8960A" opacity=".55" transform="rotate(270 60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="9" fill="#4A1E6E" opacity=".50" transform="rotate(315 60 60)"/>
+<!-- ═══ SCRATCH GATE ══════════════════════════════════ -->
+<div id="scratchGate" class="scratch-gate">
+  <div class="sg-bg"></div>
+
+  <!-- Floating ornaments on gate -->
+  <img class="sg-diya sg-dl" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="sg-diya sg-dr" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vl" src="assets/Element_204-a00fdaed6d.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vr" src="assets/Element_205-7988a52991.png" alt="" aria-hidden="true">
+
+  <div class="sg-content">
+    <!-- Top mandala -->
+    <div class="sg-mandala" aria-hidden="true">
+      <svg viewBox="0 0 120 120" width="72" height="72" style="color: var(--gold);">
+        <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+        <circle cx="60" cy="60" r="38" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/>
+        <g opacity=".18">
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(0 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(45 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(90 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(135 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(180 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(225 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(270 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(315 60 60)"/>
         </g>
-        <!-- Centre dot -->
-        <circle class="pl-m-dot" cx="60" cy="60" r="4" fill="#C8960A" opacity=".80"/>
+        <circle cx="60" cy="60" r="6" fill="currentColor" opacity=".6"/>
       </svg>
     </div>
-    <div class="pl-names" id="plNames">
-      <span class="pl-n1">Priya</span>
-      <span class="pl-weds">weds</span>
-      <span class="pl-n2">Arjun</span>
+
+    <!-- Couple names above scratch -->
+    <p class="sg-eyebrow">A Royal Invitation</p>
+    <div class="sg-names">
+      <span class="sg-bride pl-n1">Priya</span>
+      <span class="sg-heart">♡</span>
+      <span class="sg-groom pl-n2">Arjun</span>
+    </div>
+    <p class="sg-hint">✦ Scratch to reveal the wedding date ✦</p>
+
+    <!-- THE SCRATCH CARD -->
+    <div class="scratch-card-wrap">
+      <!-- Hidden date underneath -->
+      <div class="scratch-reveal" id="scratchReveal" aria-label="Wedding date">
+        <div class="sr-top">
+          <div class="sr-line"></div>
+          <span class="sr-label">Wedding Date</span>
+          <div class="sr-line"></div>
+        </div>
+        <div class="sr-date pl-date">
+          <span class="sr-day">12</span>
+          <span class="sr-sep">·</span>
+          <span class="sr-month">December</span>
+          <span class="sr-sep">·</span>
+          <span class="sr-year">2026</span>
+        </div>
+        <p class="sr-venue">Umaid Bhawan · Jodhpur</p>
+        <div class="sr-stars" aria-hidden="true">✦ ✦ ✦</div>
+      </div>
+      <!-- Canvas scratch surface -->
+      <canvas id="scratchCanvas" class="scratch-canvas" aria-hidden="true"></canvas>
+      <!-- Scratch texture hint overlay -->
+      <div class="scratch-hint-overlay" id="scratchHint">
+        <div class="sho-icon">
+          <svg viewBox="0 0 24 24" width="32" fill="none" stroke="url(#goldGrad)" stroke-width="0.5">
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D4AF37" />
+                <stop offset="50%" stop-color="#FFF8DC" />
+                <stop offset="100%" stop-color="#D4AF37" />
+              </linearGradient>
+            </defs>
+            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#goldGrad)" opacity="0.8"/>
+          </svg>
+        </div>
+        <span>Scratch here</span>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="sg-progress-wrap">
+      <div class="sg-progress-bar" id="sgProgress"></div>
+    </div>
+    <p class="sg-progress-label" id="sgProgressLabel">0% revealed</p>
+
+    <!-- Unlocked message (hidden until done) -->
+    <div class="sg-unlocked" id="sgUnlocked">
+      <p>🎊 Date revealed! Scroll to explore</p>
+      <div class="sg-unlock-arrow">↓</div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     HERO — Layered parallax: background · subject(zoom) · foreground(shake)
-     Layer z-order: background(1) · particles(2) · subject(4) · foreground(5) · floats(8) · names(9)
-═══════════════════════════════════════════ -->
-<div id="heroWrap" class="hero-wrap">
+<!-- HERO SCROLL SCENE -->\n\n  <div id="heroWrap" class="hero-wrap">
   <div id="heroPin" class="hero-pin">
     <!-- Background: static, full bleed, stays fixed during scroll -->
     <div class="hero-bg-layer" id="heroBgLayer">

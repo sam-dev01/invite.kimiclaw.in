@@ -103,27 +103,33 @@ function initScratch() {
   function drawScratchLayer() {
     const w = canvas.width, h = canvas.height;
 
-    // Gold foil gradient background
+    // Premium gold foil gradient background (angled)
     const grad = ctx.createLinearGradient(0, 0, w, h);
-    grad.addColorStop(0,   '#C8860A');
-    grad.addColorStop(0.3, '#E8C86A');
-    grad.addColorStop(0.5, '#F5DFA0');
-    grad.addColorStop(0.7, '#D4A832');
-    grad.addColorStop(1,   '#B8922A');
+    grad.addColorStop(0,   '#B58428');
+    grad.addColorStop(0.3, '#F7D070');
+    grad.addColorStop(0.5, '#FFF7B0');
+    grad.addColorStop(0.7, '#D29B35');
+    grad.addColorStop(1,   '#A37119');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, w, h);
 
-    // Subtle texture dots
-    for (let i = 0; i < 280; i++) {
+    // Subtle metallic noise texture
+    for (let i = 0; i < 350; i++) {
       ctx.beginPath();
-      ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1.2 + .3, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0,0,0,' + (Math.random() * .06 + .02) + ')';
+      ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1.5 + 0.3, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,' + (Math.random() * 0.08 + 0.03) + ')';
+      ctx.fill();
+    }
+    for (let i = 0; i < 200; i++) {
+      ctx.beginPath();
+      ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1 + 0.2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + (Math.random() * 0.15 + 0.05) + ')';
       ctx.fill();
     }
 
     // Centre instruction text
     ctx.font = 'bold 14px Jost, sans-serif';
-    ctx.fillStyle = 'rgba(15,32,68,.45)';
+    ctx.fillStyle = 'rgba(15,32,68,.65)';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('✦  SCRATCH TO REVEAL  ✦', w / 2, h / 2);
@@ -594,6 +600,9 @@ if(inviteCard) rIO.observe(inviteCard);
   }
 
   /* ── Full layout pass — exposed globally so config loader can re-trigger ── */
+  let cachedSecTop = 0;
+  let cachedSecH = 0;
+
   function layout(){
     sizeSvg();
     requestAnimationFrame(() => {
@@ -607,6 +616,8 @@ if(inviteCard) rIO.observe(inviteCard);
         drawnEl.style.strokeDashoffset = total;
         drawnEl._total = total;
       }
+      cachedSecTop = section.getBoundingClientRect().top + window.scrollY;
+      cachedSecH = section.offsetHeight;
       onScroll();
     });
   }
@@ -616,10 +627,9 @@ if(inviteCard) rIO.observe(inviteCard);
   function onScroll(){
     if(!drawnEl._total) { rafJ = null; return; }
     const winH    = window.innerHeight;
-    const rect    = section.getBoundingClientRect();
-    const secH    = section.offsetHeight;
-    const scrolled = winH - rect.top;
-    const total    = secH + winH;
+    const currentTop = cachedSecTop - window.scrollY;
+    const scrolled = winH - currentTop;
+    const total    = cachedSecH + winH;
     const progress = Math.min(1, Math.max(0, scrolled / total));
     drawnEl.style.strokeDashoffset = (drawnEl._total * (1 - progress)).toFixed(1);
     rafJ = null;
@@ -656,30 +666,21 @@ if(inviteCard) rIO.observe(inviteCard);
    each node only opens when it reaches the trigger zone.
 ───────────────────────────────────────── */
 function initEventsAutoOpen(){
-  // Re-read nodes fresh every time (supports config-rebuilt DOM)
-  const nodes = Array.from(document.querySelectorAll('.ev-node'));
+  const nodes = Array.from(document.querySelectorAll('.ev-node:not(.ev-active)'));
   if(!nodes.length) return;
 
-  // Track which nodes are already revealed (never re-close)
-  const revealed = new Set();
-
-  function checkNodes(){
-    const triggerLine = window.innerHeight * 0.60;
-    nodes.forEach(node => {
-      if(revealed.has(node)) return;
-      const rect = node.getBoundingClientRect();
-      const nodeCentre = rect.top + rect.height / 2;
-      if(nodeCentre < triggerLine){
-        revealed.add(node);
-        requestAnimationFrame(() => node.classList.add('ev-active'));
-      }
-    });
+  if(!window._evAutoObserver) {
+    window._evAutoObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          requestAnimationFrame(() => entry.target.classList.add('ev-active'));
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -40% 0px" });
   }
 
-  window.addEventListener('scroll', checkNodes, { passive: true });
-  window.addEventListener('load', checkNodes);
-  // Also check immediately (page may already be scrolled)
-  checkNodes();
+  nodes.forEach(node => window._evAutoObserver.observe(node));
 }
 
 // Run on initial page load
@@ -768,12 +769,16 @@ initEventsAutoOpen();
      Starts once section centre crosses viewport bottom-40%.
      Completes over 70vh of scroll travel.
   */
+  let cachedSecTop = 0;
+  window.addEventListener('load', () => cachedSecTop = section.getBoundingClientRect().top + window.scrollY);
+
   function getCurtainProgress(){
     if(!openEnabled) return 0;
-    const rect  = section.getBoundingClientRect();
+    if(!cachedSecTop) cachedSecTop = section.getBoundingClientRect().top + window.scrollY;
+    const currentTop = cachedSecTop - window.scrollY;
     const start = window.innerHeight * 0.55;
     const range = window.innerHeight * 0.91;   /* 30% slower: 0.70 → 0.91 */
-    return Math.min(1, Math.max(0, (start - rect.top) / range));
+    return Math.min(1, Math.max(0, (start - currentTop) / range));
   }
 
   /* ── Apply curtain + character position for progress p ── */

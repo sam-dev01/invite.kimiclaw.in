@@ -63,6 +63,7 @@
 })();
 </script>
 <meta charset="UTF-8">
+<base href="/demos/shaadipath-template02/source/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title id="page-title">Priya &amp; Arjun · 12.12.2026</title>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -156,10 +157,15 @@
       <!-- Scratch texture hint overlay -->
       <div class="scratch-hint-overlay" id="scratchHint">
         <div class="sho-icon">
-          <svg viewBox="0 0 40 40" fill="none" stroke="#C8A84B" stroke-width="1.5" width="36">
-            <path d="M12 28 C14 22 20 18 26 22 C28 24 28 28 24 30 C22 31 20 30 18 28"/>
-            <path d="M20 14 C20 14 16 18 14 22"/>
-            <circle cx="20" cy="10" r="3" fill="#C8A84B" opacity=".5"/>
+          <svg viewBox="0 0 24 24" width="32" fill="none" stroke="url(#goldGrad)" stroke-width="0.5">
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D4AF37" />
+                <stop offset="50%" stop-color="#FFF8DC" />
+                <stop offset="100%" stop-color="#D4AF37" />
+              </linearGradient>
+            </defs>
+            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#goldGrad)" opacity="0.8"/>
           </svg>
         </div>
         <span>Scratch here</span>

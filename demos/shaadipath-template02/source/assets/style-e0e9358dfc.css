@@ -59,11 +59,18 @@
   padding: 1.5rem 1rem;
   width: 100%; max-width: 480px;
   text-align: center;
-  animation: fadeUp .9s ease .2s both;
+  animation: scaleFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes scaleFadeIn {
+  0% { opacity: 0; transform: scale(0.92) translateY(15px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 /* Spinning mandala */
-.sg-mandala { animation: rotateSlow 14s linear infinite; }
+.sg-mandala { 
+  display: flex; justify-content: center; width: 100%;
+  animation: rotateSlow 14s linear infinite; 
+}
 
 .sg-eyebrow {
   font-family: var(--ff-s);
@@ -95,7 +102,8 @@
   font-style: italic;
   color: rgba(200,168,75,.6);
   letter-spacing: .05em;
-  margin-top: -.3rem;
+  margin-top: 0.4rem;
+  margin-bottom: 24px;
 }
 
 /* ── THE SCRATCH CARD ───────────────────────────────── */
@@ -106,9 +114,10 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow:
-    0 0 0 1px rgba(200,168,75,.2),
-    0 8px 40px rgba(0,0,0,.5),
-    0 0 60px rgba(200,168,75,.06);
+    0 0 0 1px rgba(220,180,75,0.4),
+    0 15px 50px rgba(0,0,0,0.6),
+    0 0 60px rgba(212,175,55,0.25),
+    inset 0 2px 10px rgba(255,255,255,0.3);
   cursor: crosshair;
   flex-shrink: 0;
 }
@@ -180,25 +189,33 @@
 .scratch-hint-overlay span {
   font-family: var(--ff-s); font-size: .72rem;
   letter-spacing: .2em; text-transform: uppercase;
-  color: rgba(245,223,160,.7);
-  animation: pulse 1.8s ease-in-out infinite;
+  background: linear-gradient(90deg, #D4AF37, #FFF8DC, #D4AF37);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: foilShine 3s infinite linear;
 }
-@keyframes pulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+@keyframes foilShine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
 
 /* Progress bar */
 .sg-progress-wrap {
   width: min(340px, 88vw);
-  height: 4px;
-  background: rgba(200,168,75,.12);
-  border-radius: 4px;
+  height: 6px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(200,168,75,0.25);
+  border-radius: 6px;
   overflow: hidden;
 }
 .sg-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--rose), var(--gold));
-  border-radius: 4px;
-  transition: width .1s linear;
+  background: linear-gradient(90deg, #B58428, #F7D070, #D29B35);
+  border-radius: 6px;
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .sg-progress-label {
   font-family: var(--ff-s); font-size: .62rem;

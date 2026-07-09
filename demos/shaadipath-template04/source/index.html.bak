@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="application/json" id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/photo1-440172ed05.jpg","assets/photo2-2f971e6f22.jpg","assets/photo3-33243c7880.png","assets/photo4-02ec9fd501.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We've saved a seat for you — at our table, in our hearts, and under the open sky. Come celebrate with us as we begin this new chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"https://calendar.google.com/calendar/render?action=TEMPLATE\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261212%0ADTEND:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
+<script type="application/json" id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/photo1-440172ed05.jpg","assets/photo2-2f971e6f22.jpg","assets/photo3-33243c7880.png","assets/photo4-02ec9fd501.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We've saved a seat for you in our garden â€” at our table, in our hearts, under an open sky full of marigolds. Come celebrate with us as we begin this beautiful chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"assets/render-9041edc121.bin\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261212%0ADTEND:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
 <script>window.__WEDDING_CONFIG__ = JSON.parse(document.getElementById('wedding-config').textContent);</script>
 <script>
 </script>
@@ -43,7 +43,7 @@
           }
         }
       });
-      // No existing date element found — insert one after .pl-names
+      // No existing date element found â€” insert one after .pl-names
       if (!found) {
         var container = document.querySelector('.pl-names') || document.querySelector('.pl-content');
         if (container && !container.querySelector('.pl-date-injected')) {
@@ -62,18 +62,17 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title id="page-title">Priya &amp; Arjun · 12.12.2026</title>
+<title id="page-title">Priya &amp; Arjun Â· 12.12.2026</title>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-<link rel="preload" href="assets/Herp_20Palace-0fd0280865.png" as="image">
-<link rel="preload" href="assets/Hero_20Couple-c7dd6323b6.png" as="image">
+<link rel="preload" href="assets/Herp_20Palace-8e2f60f45c.png" as="image">
+<link rel="preload" href="assets/Background_206-4c48efac84.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- T03 FONTS: Cormorant Garamond (display+body) + Raleway (accent) -->
-<link href="assets/css2-f2d272c8c2.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/style-819c33c83f.css?v=2">
+<link href="assets/css2-ba092343ef.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/style-8e9e8e8668.css">
 <script>
-  // Injected by invite.kimiclaw.in â do not remove
+  // Injected by invite.kimiclaw.in Ã¢Â€Â” do not remove
   if (typeof window.__WEDDING_CONFIG__ !== 'undefined' && window.__WEDDING_CONFIG__) {
     var WEDDING_CONFIG = window.__WEDDING_CONFIG__;
   }
@@ -84,159 +83,172 @@
 <div class="c-ring" id="cRing"></div>
 <div class="c-dot"  id="cDot"></div>
 
-<!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop preload="none">
-  <source src="assets/Template_03-561b52526c.mp3" type="audio/mpeg">
+  <source src="assets/Template_04-48a0ee7b4e.mp3" type="audio/mpeg">
 </audio>
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">🔔</button>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">ðŸ””</button>
 
-<!-- PRELOADER — gold mandala trace on warm ivory -->
-<div id="preloader" class="preloader">
-  <div class="pl-bg"></div>
-  <div class="pl-content">
-    <div class="pl-mandala-wrap" aria-hidden="true">
-      <svg class="pl-mandala" viewBox="0 0 120 120" width="80" height="80">
-        <circle class="pl-m-ring pl-m-r1" cx="60" cy="60" r="52" fill="none" stroke="#C8A870" stroke-width="0.8"/>
-        <circle class="pl-m-ring pl-m-r2" cx="60" cy="60" r="38" fill="none" stroke="#C8A870" stroke-width="0.6"/>
-        <circle class="pl-m-ring pl-m-r3" cx="60" cy="60" r="22" fill="none" stroke="#C8A870" stroke-width="0.5"/>
-        <g class="pl-m-petals">
-          <ellipse cx="60" cy="18" rx="4.5" ry="11" fill="#C8A870" opacity="0.18" transform="rotate(0   60 60)"/>
-          <ellipse cx="60" cy="18" rx="4.5" ry="11" fill="#C8A870" opacity="0.18" transform="rotate(45  60 60)"/>
-          <ellipse cx="60" cy="18" rx="4.5" ry="11" fill="#C8A870" opacity="0.18" transform="rotate(90  60 60)"/>
-          <ellipse cx="60" cy="18" rx="4.5" ry="11" fill="#C8A870" opacity="0.18" transform="rotate(135 60 60)"/>
-          <ellipse cx="60" cy="18" rx="4.5" ry="11" fill="#C8A870" opacity="0.18" transform="rotate(180 60 60)"/>
-          <ellipse cx="60" cy="18" rx="4.5" ry="11" fill="#C8A870" opacity="0.18" transform="rotate(225 60 60)"/>
-          <ellipse cx="60" cy="18" rx="4.5" ry="11" fill="#C8A870" opacity="0.18" transform="rotate(270 60 60)"/>
-          <ellipse cx="60" cy="18" rx="4.5" ry="11" fill="#C8A870" opacity="0.18" transform="rotate(315 60 60)"/>
+<!-- PRELOADER â€” marigold mandala trace on warm garden gradient -->
+<!-- ═══ SCRATCH GATE ══════════════════════════════════ -->
+<div id="scratchGate" class="scratch-gate">
+  <div class="sg-bg"></div>
+
+  <!-- Floating ornaments on gate -->
+  <img class="sg-diya sg-dl" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="sg-diya sg-dr" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vl" src="assets/Element_204-a00fdaed6d.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vr" src="assets/Element_205-7988a52991.png" alt="" aria-hidden="true">
+
+  <div class="sg-content">
+    <!-- Top mandala -->
+    <div class="sg-mandala" aria-hidden="true">
+      <svg viewBox="0 0 120 120" width="72" height="72" style="color: var(--gold);">
+        <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+        <circle cx="60" cy="60" r="38" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/>
+        <g opacity=".18">
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(0 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(45 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(90 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(135 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(180 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(225 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(270 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(315 60 60)"/>
         </g>
-        <circle class="pl-m-dot" cx="60" cy="60" r="3.5" fill="#C8A870"/>
+        <circle cx="60" cy="60" r="6" fill="currentColor" opacity=".6"/>
       </svg>
     </div>
-    <div class="pl-names" id="plNames">
-      <span class="pl-n1">Priya</span>
-      <span class="pl-weds">weds</span>
-      <span class="pl-n2">Arjun</span>
+
+    <!-- Couple names above scratch -->
+    <p class="sg-eyebrow">A Royal Invitation</p>
+    <div class="sg-names">
+      <span class="sg-bride pl-n1">Priya</span>
+      <span class="sg-heart">♡</span>
+      <span class="sg-groom pl-n2">Arjun</span>
+    </div>
+    <p class="sg-hint">✦ Scratch to reveal the wedding date ✦</p>
+
+    <!-- THE SCRATCH CARD -->
+    <div class="scratch-card-wrap">
+      <!-- Hidden date underneath -->
+      <div class="scratch-reveal" id="scratchReveal" aria-label="Wedding date">
+        <div class="sr-top">
+          <div class="sr-line"></div>
+          <span class="sr-label">Wedding Date</span>
+          <div class="sr-line"></div>
+        </div>
+        <div class="sr-date pl-date">
+          <span class="sr-day">12</span>
+          <span class="sr-sep">·</span>
+          <span class="sr-month">December</span>
+          <span class="sr-sep">·</span>
+          <span class="sr-year">2026</span>
+        </div>
+        <p class="sr-venue">Umaid Bhawan · Jodhpur</p>
+        <div class="sr-stars" aria-hidden="true">✦ ✦ ✦</div>
+      </div>
+      <!-- Canvas scratch surface -->
+      <canvas id="scratchCanvas" class="scratch-canvas" aria-hidden="true"></canvas>
+      <!-- Scratch texture hint overlay -->
+      <div class="scratch-hint-overlay" id="scratchHint">
+        <div class="sho-icon">
+          <svg viewBox="0 0 24 24" width="32" fill="none" stroke="url(#goldGrad)" stroke-width="0.5">
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D4AF37" />
+                <stop offset="50%" stop-color="#FFF8DC" />
+                <stop offset="100%" stop-color="#D4AF37" />
+              </linearGradient>
+            </defs>
+            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#goldGrad)" opacity="0.8"/>
+          </svg>
+        </div>
+        <span>Scratch here</span>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="sg-progress-wrap">
+      <div class="sg-progress-bar" id="sgProgress"></div>
+    </div>
+    <p class="sg-progress-label" id="sgProgressLabel">0% revealed</p>
+
+    <!-- Unlocked message (hidden until done) -->
+    <div class="sg-unlocked" id="sgUnlocked">
+      <p>🎊 Date revealed! Scroll to explore</p>
+      <div class="sg-unlock-arrow">↓</div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     HERO SCROLL SCENE
-     LAYER STACK (bottom → top):
-     z:0  .hero-sky        — warm white/champagne gradient
-     z:1  .hero-particles  — CSS floating gold dust particles
-     z:3  .hl-couple       — couple silhouette (INSIDE arch opening)
-     z:5  .hl-palace       — arch (scroll-zooms at 1.0→1.45)
-     z:8  .hero-floats     — palm fronds (subtle, muted)
-     z:9  .hero-copy       — names (word-reveal animation)
-
-     JS gives arch and couple DIFFERENT zoom rates:
-       arch  → scale 1.0 → 1.45  (standard T01 rate)
-       couple → scale 1.0 → 1.20  (slower, creates depth)
-     The couple appears to recede into the arch as user scrolls.
-══════════════════════════════════════════════ -->
-<div id="heroWrap" class="hero-wrap">
+<!-- HERO SCROLL SCENE -->\n\n  <div id="heroWrap" class="hero-wrap">
   <div id="heroPin" class="hero-pin">
-
-    <!-- Sky gradient — warm white to champagne -->
     <div class="hero-sky"></div>
-
-    <!-- CSS ambient particles — luxury gold dust -->
     <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
 
-    <!-- COUPLE — z:4, inside arch opening, slower parallax -->
-    <img id="l4" class="hl hl-couple" src="assets/Hero_20Couple-c7dd6323b6.png" alt="">
+    <!-- Couple z:4 â€” inside mandap opening, slower parallax -->
+    <img id="l4" class="hl hl-couple" src="assets/Hero_20Couple-6aba1cc290.png" alt="">
+    <!-- Mandap z:5 â€” scroll-zoom 1.0â†’1.45 -->
+    <img id="l3" class="hl hl-palace" src="assets/Herp_20Palace-8e2f60f45c.png" alt="">
 
-    <!-- ARCH / PALACE — z:5, full width, scroll-zoom -->
-    <img id="l3" class="hl hl-palace" src="assets/Herp_20Palace-0fd0280865.png" alt="">
-
-    <!-- Floating botanicals — palm fronds, muted -->
     <div class="hero-floats" aria-hidden="true">
-      <img class="fl diya-l" src="assets/Element_201-b5134d0143.png" alt="">
-      <img class="fl diya-r" src="assets/Element_201-b5134d0143.png" alt="">
-      <img class="fl fall-l" src="assets/Element_204-314386d360.png" alt="">
-      <img class="fl fall-r" src="assets/Element_205-872a135b95.png" alt="">
+      <img class="fl diya-l" src="assets/Element_201-223daa35d5.png" alt="">
+      <img class="fl diya-r" src="assets/Element_201-223daa35d5.png" alt="">
+      <img class="fl fall-l" src="assets/Element_204-ee359125bd.png" alt="">
+      <img class="fl fall-r" src="assets/Element_205-504a8fbc54.png" alt="">
     </div>
-
     <div id="petalHero" class="petal-canvas"></div>
 
-    <!-- Subtle ambient orbs — gold dust on warm ivory -->
+    <!-- Rangoli orbs â€” marigold + coral atmospheric glow -->
     <div class="rangoli-orb" style="top:18%;left:8%;animation-delay:0s" aria-hidden="true"></div>
     <div class="rangoli-orb" style="top:55%;right:9%;animation-delay:6s" aria-hidden="true"></div>
 
-    <!-- NAMES — positioned above the arch on mobile, beside on desktop -->
     <div id="heroCopy" class="hero-copy">
       <h1 class="hc-bride"><span>Priya</span></h1>
       <span class="hc-weds">weds</span>
       <h1 class="hc-groom"><span>Arjun</span></h1>
-      <!-- Countdown — reads WEDDING_CONFIG.couple.date, falls back 12 Dec 2026 -->
+      <!-- Countdown â€” reads WEDDING_CONFIG.couple.date, falls back 12 Dec 2026 -->
       <div id="heroCountdown" class="hc-countdown" aria-label="Countdown to the wedding"></div>
     </div>
-
     <div class="scroll-nudge" id="scrollNudge">
       <span>Scroll</span>
       <div class="sn-line"><div class="sn-dot"></div></div>
     </div>
-
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     URN BRIDGE — Merlion Bridge
-     Two merlions flank the transition.
-     CSS breathe animation (6.5s, staggered).
-     Water splash arcs from each merlion's mouth toward centre.
-══════════════════════════════════════════════ -->
-<div class="urn-bridge" id="urnBridge" aria-hidden="true">
-
-  <!-- Water splash canvas — sits behind urns in z-order -->
-  <canvas id="waterCanvas" class="water-canvas"></canvas>
-
-  <!-- Left merlion -->
-  <div class="urn urn-l" id="urnL">
-    <img src="assets/Element_urn-bridge-a0d26fe156.png" alt=""
-         onerror="this.style.display='none'">
+<!-- PEACOCK BRIDGE â€” single centred peacock replaces two urns -->
+<div class="peacock-bridge" id="peacockBridge" aria-hidden="true">
+  <div class="pb-glow"></div>
+  <div class="pb-fan"  id="pbFan"></div>
+  <div class="pb-body" id="pbBody">
+    <img src="assets/Peacock-transparent-0d84165716.png" id="pbImg" alt="">
   </div>
-
-  <!-- Thin platinum centre line (drawn by JS on IntersectionObserver) -->
-  <div class="urn-bridge-line" id="urnBridgeLine"></div>
-
-  <!-- Right merlion (CSS mirror) -->
-  <div class="urn urn-r" id="urnR">
-    <img src="assets/Element_urn-bridge-a0d26fe156.png" alt=""
-         style="transform:scaleX(-1)"
-         onerror="this.style.display='none'">
-  </div>
-
 </div>
 
 <!-- INVITATION -->
 <section id="invite" class="s-invite">
-  <img class="bg-fill" src="assets/Background_206-44ddcc523c.jpg" alt="">
-  <img class="invite-couple-bg" src="assets/Hero_20Couple-c7dd6323b6.png" alt="" aria-hidden="true">
-  <!-- Geometric border strip replaces garland toran -->
-  <div class="toran"><img src="assets/Background_204-a4a77149c3.png" alt="" class="toran-img"></div>
-  <img class="fl-moon"   src="assets/Element_203-5a54b4968f.png" alt="" aria-hidden="true">
-  <img class="fl-leaf-l" src="assets/Element_204-314386d360.png" alt="" aria-hidden="true">
-  <img class="fl-leaf-r" src="assets/Element_205-872a135b95.png" alt="" aria-hidden="true">
+  <img class="bg-fill" src="assets/Background_206-4c48efac84.png" alt="" loading="lazy">
+  <img class="invite-couple-bg" src="assets/Hero_20Couple-6aba1cc290.png" alt="" aria-hidden="true" loading="lazy">
+  <div class="toran"><img src="assets/Background_204-64a4271d35.png" alt="" class="toran-img"></div>
+  <img class="fl-moon"   src="assets/Element_203-1945c2a6cd.png" alt="" aria-hidden="true">
+  <img class="fl-leaf-l" src="assets/Element_204-ee359125bd.png" alt="" aria-hidden="true">
+  <img class="fl-leaf-r" src="assets/Element_205-504a8fbc54.png" alt="" aria-hidden="true">
 
   <div class="container">
     <div class="invite-card scroll-in">
-      <!-- Corner ornaments — platinum -->
-      <div class="card-tl"><svg viewBox="0 0 50 50" width="44"><path d="M8,42 Q25,-5 45,12 Q58,28 32,40Z" fill="none" stroke="#C8A870" stroke-width="0.7" opacity="0.30"/></svg></div>
-      <div class="card-tr"><svg viewBox="0 0 50 50" width="44"><path d="M42,42 Q25,-5 5,12 Q-8,28 18,40Z" fill="none" stroke="#C8A870" stroke-width="0.7" opacity="0.30"/></svg></div>
+      <div class="card-tl"><svg viewBox="0 0 50 50" width="46"><path d="M6,44 Q24,-4 46,14 Q60,30 34,42Z" fill="none" stroke="#D4A060" stroke-width=".8" opacity=".30"/></svg></div>
+      <div class="card-tr"><svg viewBox="0 0 50 50" width="46"><path d="M44,44 Q26,-4 4,14 Q-10,30 16,42Z" fill="none" stroke="#D4A060" stroke-width=".8" opacity=".30"/></svg></div>
 
-      <!-- Lotus sacred motif (replaces Ganesha) -->
       <div class="i-ganesha">
-        <img src="assets/Element_206-c74a5cedab.png" alt="Lotus" class="i-ganesha-img">
+        <img src="assets/Element_206-11160b4607.png" alt="Ganesha" class="i-ganesha-img">
       </div>
 
-      <!-- Ornamental rule — platinum hairline -->
       <div class="i-rule">
-        <svg viewBox="0 0 280 6" width="100%" style="max-width:280px">
-          <line x1="0" y1="3" x2="118" y2="3" stroke="#C8A870" stroke-width="0.5" opacity="0.35"/>
-          <circle cx="140" cy="3" r="3" fill="none" stroke="#C8A870" stroke-width="0.6" opacity="0.55"/>
-          <line x1="162" y1="3" x2="280" y2="3" stroke="#C8A870" stroke-width="0.5" opacity="0.35"/>
+        <svg viewBox="0 0 300 8" width="100%" style="max-width:300px">
+          <line x1="0" y1="4" x2="126" y2="4" stroke="#D4A060" stroke-width=".7" opacity=".40"/>
+          <path d="M145,1 L152,4 L145,7 L138,4Z" fill="#D4A060" opacity=".60"/>
+          <line x1="162" y1="4" x2="300" y2="4" stroke="#D4A060" stroke-width=".7" opacity=".40"/>
         </svg>
       </div>
 
@@ -250,10 +262,10 @@
       </div>
 
       <div class="i-rule">
-        <svg viewBox="0 0 280 6" width="100%" style="max-width:280px">
-          <line x1="0" y1="3" x2="118" y2="3" stroke="#C8A870" stroke-width="0.5" opacity="0.35"/>
-          <circle cx="140" cy="3" r="3" fill="none" stroke="#C8A870" stroke-width="0.6" opacity="0.55"/>
-          <line x1="162" y1="3" x2="280" y2="3" stroke="#C8A870" stroke-width="0.5" opacity="0.35"/>
+        <svg viewBox="0 0 300 8" width="100%" style="max-width:300px">
+          <line x1="0" y1="4" x2="126" y2="4" stroke="#D4A060" stroke-width=".7" opacity=".40"/>
+          <path d="M145,1 L152,4 L145,7 L138,4Z" fill="#D4A060" opacity=".60"/>
+          <line x1="162" y1="4" x2="300" y2="4" stroke="#D4A060" stroke-width=".7" opacity=".40"/>
         </svg>
       </div>
 
@@ -262,7 +274,7 @@
           <div class="fam-gp" id="iFamGpBride" style="display:none"></div>
           <div class="fam-parents"><em>Daughter of</em><br><span id="iBrideParents">Mr. &amp; Mrs. Suresh Sharma</span></div>
         </div>
-        <div class="fam-dot">✦</div>
+        <div class="fam-dot">âœ¿</div>
         <div class="fam-side">
           <div class="fam-gp" id="iFamGpGroom" style="display:none"></div>
           <div class="fam-parents"><em>Son of</em><br><span id="iGroomParents">Mr. &amp; Mrs. Ramesh Kapoor</span></div>
@@ -274,28 +286,34 @@
   <div id="petalInvite" class="petal-canvas"></div>
 </section>
 
-<!-- Platinum hairline wave — invitation → events -->
+<!-- Wave â€” coral into events -->
 <div class="wdiv">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none">
-    <path d="M0,20 C360,40 720,0 1080,20 C1260,30 1440,10 1440,20 L1440,40 L0,40Z" fill="#F5F0E6"/>
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none">
+    <path d="M0,24 C360,48 720,0 1080,24 C1260,36 1440,12 1440,24 L1440,48 L0,48Z" fill="#F5EDD8"/>
   </svg>
 </div>
 
 <!-- EVENTS -->
 <section id="events" class="s-events">
-  <img class="bg-fill" src="assets/Background_203-8449d0f425.png" alt="">
+  <img class="bg-fill" src="assets/Background_203-c1198ef038.png" alt="" loading="lazy">
   <div class="ev-paper-veil"></div>
-  <img class="fl-leaf-l" src="assets/Element_204-314386d360.png" alt="" aria-hidden="true">
-  <img class="fl-leaf-r" src="assets/Element_205-872a135b95.png" alt="" aria-hidden="true">
-
+  <img class="fl-leaf-l" src="assets/Element_204-ee359125bd.png" alt="" aria-hidden="true">
+  <img class="fl-leaf-r" src="assets/Element_205-504a8fbc54.png" alt="" aria-hidden="true">
   <div class="container">
-    <!-- Section head with platinum line draw animation -->
     <div class="s-head scroll-in">
       <span class="sh-eye">The Celebrations</span>
       <h2 class="sh-h">Our <em>Events</em></h2>
     </div>
-    <!-- Platinum line draws under heading -->
-    <div class="sh-line-wrap"><div class="sh-line" id="evLine"></div></div>
+    <!-- 12 GARDEN UNDERLINE SVG -->
+    <div class="sh-line-wrap" id="evLinewrap">
+      <svg class="sh-line-svg" viewBox="0 0 320 18" width="320" height="18">
+        <path class="sh-leaf-path" d="M10,9 Q80,2 160,9 Q240,16 310,9" fill="none" stroke="#D4A060" stroke-width="1" opacity=".55"/>
+        <!-- Mini leaves along the path -->
+        <ellipse cx="80"  cy="5"  rx="6" ry="3" fill="#7A9E7E" opacity=".45" transform="rotate(-20 80 5)"/>
+        <ellipse cx="160" cy="9"  rx="5" ry="2.5" fill="#D4A060" opacity=".55"/>
+        <ellipse cx="240" cy="13" rx="6" ry="3" fill="#7A9E7E" opacity=".45" transform="rotate(20 240 13)"/>
+      </svg>
+    </div>
 
     <div class="ev-journey-wrap" aria-hidden="true">
       <svg class="ev-journey-svg" id="evJourneySvg" preserveAspectRatio="none">
@@ -305,107 +323,81 @@
     </div>
 
     <div class="ev-float-stage" id="evStage">
-
       <article class="ev-node ev-row1 scroll-in" style="--sd:.05s" data-idx="0">
-        <div class="ev-icon-wrap"><img src="assets/icon-mehendi-54ab57087c.png" alt="Mehendi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Mehendi</span><span class="ev-date">11 Dec · 2:00 PM</span></div>
-        <div class="ev-detail"><p class="ev-venue">Garden Pavilion</p><p class="ev-desc">Henna artistry, botanical scent, and afternoon light.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+        <div class="ev-icon-wrap"><img src="assets/icon-mehendi-475fb68de0.png" alt="Mehendi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Mehendi</span><span class="ev-date">11 Dec Â· 2:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">Garden Pavilion</p><p class="ev-desc">Henna, marigolds, folk music, and afternoon light.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
       </article>
-
       <article class="ev-node ev-row1 scroll-in" style="--sd:.15s" data-idx="1">
-        <div class="ev-icon-wrap"><img src="assets/icon-haldi-459cae5094.png" alt="Haldi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Haldi</span><span class="ev-date">11 Dec · 10:00 AM</span></div>
-        <div class="ev-detail"><p class="ev-venue">The Garden Room</p><p class="ev-desc">A golden morning, turmeric paste, and quiet laughter.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+        <div class="ev-icon-wrap"><img src="assets/icon-haldi-8cb1847f7a.png" alt="Haldi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Haldi</span><span class="ev-date">11 Dec Â· 10:00 AM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Garden Room</p><p class="ev-desc">Turmeric, saffron, laughter, and morning sunshine.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
       </article>
-
       <article class="ev-node ev-row1 scroll-in" style="--sd:.25s" data-idx="2">
-        <div class="ev-icon-wrap"><img src="assets/icon-cocktail-4bc322d78d.png" alt="Cocktail" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Cocktail</span><span class="ev-date">11 Dec · 7:30 PM</span></div>
-        <div class="ev-detail"><p class="ev-venue">The Terrace</p><p class="ev-desc">Champagne, conversation, and a city at dusk.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+        <div class="ev-icon-wrap"><img src="assets/icon-cocktail-d7616e042f.png" alt="Cocktail" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Cocktail</span><span class="ev-date">11 Dec Â· 7:30 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Terrace</p><p class="ev-desc">Garden cocktails under a canopy of string lights.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
       </article>
-
       <article class="ev-node ev-row2 scroll-in" style="--sd:.10s" data-idx="3">
-        <div class="ev-icon-wrap"><img src="assets/icon-sagan-9e1b2e2b4b.png" alt="Sagan" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Sagan</span><span class="ev-date">11 Dec · 5:00 PM</span></div>
-        <div class="ev-detail"><p class="ev-venue">Drawing Room</p><p class="ev-desc">Family blessings and an intimate ceremony before forever.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+        <div class="ev-icon-wrap"><img src="assets/icon-sagan-85ac80a9c3.png" alt="Sagan" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Sagan</span><span class="ev-date">11 Dec Â· 5:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">Drawing Room</p><p class="ev-desc">Family blessings before the big day begins.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
       </article>
-
       <article class="ev-node ev-row2 ev-node--hero scroll-in" style="--sd:.20s" data-idx="4">
-        <div class="ev-icon-wrap"><img src="assets/icon-shaadi-a7e35a6676.png" alt="Shaadi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Shaadi</span><span class="ev-date">12 Dec · 10:00 AM</span></div>
-        <div class="ev-detail"><p class="ev-venue">The Grand Hall</p><p class="ev-desc">Seven vows, one lifetime — the moment everything begins.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+        <div class="ev-icon-wrap"><img src="assets/icon-shaadi-e4b930708e.png" alt="Shaadi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Shaadi</span><span class="ev-date">12 Dec Â· 10:00 AM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Grand Mandap</p><p class="ev-desc">Seven vows, one lifetime â€” the moment that matters.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
       </article>
-
       <article class="ev-node ev-row2 scroll-in" style="--sd:.30s" data-idx="5">
-        <div class="ev-icon-wrap"><img src="assets/icon-reception-4021276e3d.png" alt="Reception" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Reception</span><span class="ev-date">12 Dec · 7:00 PM</span></div>
-        <div class="ev-detail"><p class="ev-venue">The Ballroom</p><p class="ev-desc">Dance, dine, and celebrate as the evening unfolds.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
+        <div class="ev-icon-wrap"><img src="assets/icon-reception-d6df8b24b7.png" alt="Reception" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
+        <div class="ev-label"><span class="ev-name">Reception</span><span class="ev-date">12 Dec Â· 7:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Garden Terrace</p><p class="ev-desc">Dance, dine, and celebrate as the stars come out.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
       </article>
-
     </div>
   </div>
   <div id="petalEvents" class="petal-canvas"></div>
 </section>
 
-<!-- Sparse eucalyptus branch divider — platinum on cream -->
+<!-- Botanical branch divider -->
 <div class="leaf-div">
-  <svg viewBox="0 0 800 48" width="100%" preserveAspectRatio="xMidYMid meet">
-    <path d="M400,24 Q280,6 160,18 Q80,28 0,22" fill="none" stroke="#B0A080" stroke-width="0.7" opacity="0.35"/>
-    <path d="M400,24 Q520,6 640,18 Q720,28 800,22" fill="none" stroke="#B0A080" stroke-width="0.7" opacity="0.35"/>
-    <!-- Minimal eucalyptus leaves -->
-    <ellipse cx="310" cy="14" rx="10" ry="5" fill="#B0A080" opacity="0.22" transform="rotate(-20 310 14)"/>
-    <ellipse cx="240" cy="19" rx="9" ry="4" fill="#B0A080" opacity="0.20" transform="rotate(-30 240 19)"/>
-    <ellipse cx="490" cy="14" rx="10" ry="5" fill="#B0A080" opacity="0.22" transform="rotate(20 490 14)"/>
-    <ellipse cx="560" cy="19" rx="9" ry="4" fill="#B0A080" opacity="0.20" transform="rotate(30 560 19)"/>
-    <!-- Centre lotus dot -->
-    <circle cx="400" cy="24" r="2.5" fill="none" stroke="#C8A870" stroke-width="0.6" opacity="0.45"/>
-    <circle cx="400" cy="24" r="1"   fill="#C8A870" opacity="0.45"/>
+  <svg viewBox="0 0 800 52" width="100%" preserveAspectRatio="xMidYMid meet">
+    <path d="M400,26 Q270,8 140,20 Q70,28 0,22" fill="none" stroke="#7A9E7E" stroke-width=".9" opacity=".45"/>
+    <path d="M400,26 Q530,8 660,20 Q730,28 800,22" fill="none" stroke="#7A9E7E" stroke-width=".9" opacity=".45"/>
+    <ellipse cx="300" cy="17" rx="12" ry="5" fill="#7A9E7E" opacity=".35" transform="rotate(-22 300 17)"/>
+    <ellipse cx="220" cy="21" rx="10" ry="4.5" fill="#7A9E7E" opacity=".30" transform="rotate(-32 220 21)"/>
+    <ellipse cx="500" cy="17" rx="12" ry="5" fill="#7A9E7E" opacity=".35" transform="rotate(22 500 17)"/>
+    <ellipse cx="580" cy="21" rx="10" ry="4.5" fill="#7A9E7E" opacity=".30" transform="rotate(32 580 21)"/>
+    <circle cx="400" cy="26" r="4" fill="#D4A060" opacity=".55"/>
+    <circle cx="400" cy="26" r="2" fill="#E8A0A0" opacity=".70"/>
   </svg>
 </div>
 
-<!-- STORY — champagne linen curtain reveal -->
+<!-- STORY â€” Garden curtain reveal -->
 <section id="story" class="s-story">
   <div class="st-paper-bg"></div>
-  <!-- Petal canvas for story section -->
-  <div id="petalStory" class="petal-canvas" style="z-index:8"></div>
-
   <div class="st-stage" id="stStage">
-
     <div class="st-reveal" id="stReveal">
-
-      <!-- Mandala — platinum/gold on warm white -->
+      <!-- Spinning mandala -->
       <div class="st-mandala" aria-hidden="true">
-        <svg viewBox="0 0 320 320" width="400" height="400">
-          <circle cx="160" cy="160" r="152" fill="none" stroke="rgba(200,168,112,.04)" stroke-width="0.6"/>
-          <circle cx="160" cy="160" r="130" fill="none" stroke="rgba(200,168,112,.08)" stroke-width="0.8"/>
-          <circle cx="160" cy="160" r="100" fill="none" stroke="rgba(200,168,112,.06)" stroke-width="0.6"/>
-          <circle cx="160" cy="160" r="70"  fill="none" stroke="rgba(200,168,112,.05)" stroke-width="0.5"/>
-          <g opacity=".09">
-            <ellipse cx="160" cy="60" rx="8" ry="22" fill="#C8A870" transform="rotate(0   160 160)"/>
-            <ellipse cx="160" cy="60" rx="8" ry="22" fill="#C8A870" transform="rotate(45  160 160)"/>
-            <ellipse cx="160" cy="60" rx="8" ry="22" fill="#C8A870" transform="rotate(90  160 160)"/>
-            <ellipse cx="160" cy="60" rx="8" ry="22" fill="#C8A870" transform="rotate(135 160 160)"/>
-            <ellipse cx="160" cy="60" rx="8" ry="22" fill="#C8A870" transform="rotate(180 160 160)"/>
-            <ellipse cx="160" cy="60" rx="8" ry="22" fill="#C8A870" transform="rotate(225 160 160)"/>
-            <ellipse cx="160" cy="60" rx="8" ry="22" fill="#C8A870" transform="rotate(270 160 160)"/>
-            <ellipse cx="160" cy="60" rx="8" ry="22" fill="#C8A870" transform="rotate(315 160 160)"/>
+        <svg viewBox="0 0 320 320" width="320" height="320">
+          <circle cx="160" cy="160" r="130" fill="none" stroke="rgba(122,158,126,.15)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="100" fill="none" stroke="rgba(212,160,96,.10)" stroke-width=".8"/>
+          <circle cx="160" cy="160" r="70" fill="none" stroke="rgba(122,158,126,.08)" stroke-width=".6"/>
+          <g opacity=".16">
+            <ellipse cx="160" cy="58" rx="10" ry="26" fill="#D4A060" transform="rotate(0 160 160)"/>
+            <ellipse cx="160" cy="58" rx="10" ry="26" fill="#C87060" transform="rotate(45 160 160)"/>
+            <ellipse cx="160" cy="58" rx="10" ry="26" fill="#D4A060" transform="rotate(90 160 160)"/>
+            <ellipse cx="160" cy="58" rx="10" ry="26" fill="#C87060" transform="rotate(135 160 160)"/>
+            <ellipse cx="160" cy="58" rx="10" ry="26" fill="#D4A060" transform="rotate(180 160 160)"/>
+            <ellipse cx="160" cy="58" rx="10" ry="26" fill="#C87060" transform="rotate(225 160 160)"/>
+            <ellipse cx="160" cy="58" rx="10" ry="26" fill="#D4A060" transform="rotate(270 160 160)"/>
+            <ellipse cx="160" cy="58" rx="10" ry="26" fill="#C87060" transform="rotate(315 160 160)"/>
           </g>
-          <!-- Inner petal ring — tighter, more opaque -->
-          <g opacity=".12">
-            <ellipse cx="160" cy="100" rx="5" ry="14" fill="#C8A870" transform="rotate(22.5  160 160)"/>
-            <ellipse cx="160" cy="100" rx="5" ry="14" fill="#C8A870" transform="rotate(67.5  160 160)"/>
-            <ellipse cx="160" cy="100" rx="5" ry="14" fill="#C8A870" transform="rotate(112.5 160 160)"/>
-            <ellipse cx="160" cy="100" rx="5" ry="14" fill="#C8A870" transform="rotate(157.5 160 160)"/>
-            <ellipse cx="160" cy="100" rx="5" ry="14" fill="#C8A870" transform="rotate(202.5 160 160)"/>
-            <ellipse cx="160" cy="100" rx="5" ry="14" fill="#C8A870" transform="rotate(247.5 160 160)"/>
-            <ellipse cx="160" cy="100" rx="5" ry="14" fill="#C8A870" transform="rotate(292.5 160 160)"/>
-            <ellipse cx="160" cy="100" rx="5" ry="14" fill="#C8A870" transform="rotate(337.5 160 160)"/>
-          </g>
-          <circle cx="160" cy="160" r="14" fill="rgba(200,168,112,.05)"/>
-          <circle cx="160" cy="160" r="4"  fill="rgba(200,168,112,.18)"/>
+          <!-- Marigold centre -->
+          <circle cx="160" cy="160" r="20" fill="rgba(212,160,96,.12)"/>
+          <circle cx="160" cy="160" r="8"  fill="rgba(200,112,96,.15)"/>
         </svg>
       </div>
-
       <div class="st-rv-inner">
         <div class="st-rv-header" id="stRvHeader">
           <span class="sh-eye">Our Journey</span>
@@ -416,11 +408,11 @@
           <span class="st-rv-amp">&amp;</span>
           <span class="st-rv-groom" id="stRvGroom">Arjun</span>
         </div>
-        <p class="st-rv-verse" id="stRvVerse">Two souls, one chai stall, a lifetime of mornings.</p>
+        <p class="st-rv-verse" id="stRvVerse">Two hearts, one garden, a lifetime of blooms.</p>
         <div class="st-rv-tags" id="stRvTags">
-          <span class="st-rv-tag">Hopeless romantics</span>
-          <span class="st-rv-tag">Chai addicts</span>
-          <span class="st-rv-tag">Jodhpur dreamers</span>
+          <span class="st-rv-tag">Garden dreamers</span>
+          <span class="st-rv-tag">Mehendi lovers</span>
+          <span class="st-rv-tag">Chai &amp; marigolds</span>
           <span class="st-rv-tag">Forever &amp; always</span>
         </div>
       </div>
@@ -428,63 +420,84 @@
     </div>
 
     <div class="st-char st-bride" id="stBride">
-      <img src="assets/Element_Bride-d2a29a088c.png" alt="Bride" class="st-char-img" loading="lazy">
+      <img src="assets/Element_Bride-91b01f63e6.png" alt="Bride" class="st-char-img" loading="lazy">
     </div>
     <div class="st-char st-groom" id="stGroom">
-      <img src="assets/Element_Groom-c5ff3405e1.png" alt="Groom" class="st-char-img" loading="lazy">
+      <img src="assets/Element_Groom-8b3541e1c7.png" alt="Groom" class="st-char-img" loading="lazy">
     </div>
 
-    <!-- Champagne linen curtains — minimal folds, gold ribbon edge -->
+    <!-- Sage green curtains with coral valance -->
     <div class="st-curtains" id="stCurtains">
       <div class="st-curt st-curt-l" id="stCurtL">
-        <img src="assets/Element_Curtain-0b6bb339b7.png" alt="" class="st-curt-img" loading="lazy">
+        <img src="assets/Element_Curtain-7edbd63c63.png" alt="" class="st-curt-img" loading="lazy">
         <div class="st-curt-shadow st-curt-shadow-l"></div>
       </div>
       <div class="st-curt st-curt-r" id="stCurtR">
-        <img src="assets/Element_Curtain-0b6bb339b7.png" alt="" class="st-curt-img st-curt-img-mirror" loading="lazy">
+        <img src="assets/Element_Curtain-7edbd63c63.png" alt="" class="st-curt-img" loading="lazy">
         <div class="st-curt-shadow st-curt-shadow-r"></div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- Platinum hairline diya divider — minimal -->
+<!-- Marigold diya divider -->
 <div class="diya-div">
-  <svg viewBox="0 0 600 44" width="100%" preserveAspectRatio="xMidYMid meet">
-    <path d="M0,14 Q150,6 300,14 Q450,22 600,14" fill="none" stroke="#B0A080" stroke-width="0.6" opacity="0.30"/>
-    <!-- Small ring motifs instead of diyas -->
-    <circle cx="80"  cy="14" r="4" fill="none" stroke="#C8A870" stroke-width="0.5" opacity="0.38"/>
-    <circle cx="180" cy="10" r="3" fill="none" stroke="#C8A870" stroke-width="0.5" opacity="0.32"/>
-    <circle cx="300" cy="14" r="5" fill="none" stroke="#C8A870" stroke-width="0.6" opacity="0.45"/>
-    <circle cx="300" cy="14" r="1.5" fill="#C8A870" opacity="0.40"/>
-    <circle cx="420" cy="10" r="3" fill="none" stroke="#C8A870" stroke-width="0.5" opacity="0.32"/>
-    <circle cx="520" cy="14" r="4" fill="none" stroke="#C8A870" stroke-width="0.5" opacity="0.38"/>
+  <svg viewBox="0 0 600 52" width="100%" preserveAspectRatio="xMidYMid meet">
+    <path d="M0,16 Q150,8 300,16 Q450,24 600,16" fill="none" stroke="#D4A060" stroke-width=".8" opacity=".38"/>
+    <!-- Marigold heads as divider nodes -->
+    <circle cx="80"  cy="16" r="5" fill="#E8A0A0" opacity=".55"/>
+    <circle cx="80"  cy="16" r="2.5" fill="#D4A060" opacity=".70"/>
+    <circle cx="180" cy="12" r="4" fill="#C87060" opacity=".50"/>
+    <circle cx="180" cy="12" r="2" fill="#D4A060" opacity=".65"/>
+    <circle cx="300" cy="16" r="7" fill="#D4A060" opacity=".50"/>
+    <circle cx="300" cy="16" r="3.5" fill="#C87060" opacity=".65"/>
+    <circle cx="420" cy="12" r="4" fill="#C87060" opacity=".50"/>
+    <circle cx="420" cy="12" r="2" fill="#D4A060" opacity=".65"/>
+    <circle cx="520" cy="16" r="5" fill="#E8A0A0" opacity=".55"/>
+    <circle cx="520" cy="16" r="2.5" fill="#D4A060" opacity=".70"/>
   </svg>
 </div>
 
 <!-- GALLERY -->
 <section id="gallery" class="s-gallery">
-  <img class="bg-fill" src="assets/Background_206-44ddcc523c.jpg" alt="" loading="lazy">
-  <div id="petalGallery" class="petal-canvas"></div>
+  <img class="bg-fill" src="assets/Background_206-4c48efac84.png" alt="" loading="lazy">
   <div class="container">
     <div class="s-head scroll-in">
       <span class="sh-eye">Moments</span>
       <h2 class="sh-h">Our <em>Gallery</em></h2>
     </div>
-    <div class="sh-line-wrap"><div class="sh-line" id="galLine"></div></div>
+    <div class="sh-line-wrap" id="galLinewrap">
+      <svg class="sh-line-svg" viewBox="0 0 320 18" width="320" height="18">
+        <path class="sh-leaf-path" d="M10,9 Q80,2 160,9 Q240,16 310,9" fill="none" stroke="#D4A060" stroke-width="1" opacity=".55"/>
+        <ellipse cx="80" cy="5" rx="6" ry="3" fill="#7A9E7E" opacity=".45" transform="rotate(-20 80 5)"/>
+        <ellipse cx="160" cy="9" rx="5" ry="2.5" fill="#D4A060" opacity=".55"/>
+        <ellipse cx="240" cy="13" rx="6" ry="3" fill="#7A9E7E" opacity=".45" transform="rotate(20 240 13)"/>
+      </svg>
+    </div>
     <div class="gal-grid">
-      <div class="gal-item gal-tall scroll-in" style="--sd:0s"><div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div></div>
-      <div class="gal-item scroll-in" style="--sd:0.1s"><div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div></div>
-      <div class="gal-item scroll-in" style="--sd:0.2s"><div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div></div>
-      <div class="gal-item scroll-in" style="--sd:0.3s"><div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div></div>
+      <div class="gal-item gal-tall scroll-in" style="--sd:0s">
+        <div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div>
+        <img class="gal-frame" src="assets/couple-photo-frame-842c49b6dd.png" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      </div>
+      <div class="gal-item scroll-in" style="--sd:.10s">
+        <div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div>
+        <img class="gal-frame" src="assets/couple-photo-frame-842c49b6dd.png" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      </div>
+      <div class="gal-item scroll-in" style="--sd:.20s">
+        <div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div>
+        <img class="gal-frame" src="assets/couple-photo-frame-842c49b6dd.png" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      </div>
+      <div class="gal-item scroll-in" style="--sd:.30s">
+        <div class="gal-ph"><span class="gal-m">P&amp;A</span><span class="gal-s">Your photo</span></div>
+        <img class="gal-frame" src="assets/couple-photo-frame-842c49b6dd.png" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      </div>
     </div>
   </div>
 </section>
 
 <!-- THINGS TO KNOW -->
 <section id="things" class="s-things">
-  <img class="bg-fill things-sky" src="assets/Hero_20background-d963f6445f.png" alt="">
+  <img class="bg-fill things-sky" src="assets/Hero_20background-a993fd172b.png" alt="" loading="lazy">
   <div class="things-veil"></div>
   <div id="petalThings" class="petal-canvas"></div>
   <div class="container">
@@ -492,29 +505,29 @@
       <span class="sh-eye sh-eye--lt">Good to Know</span>
       <h2 class="sh-h sh-h--lt">Things to <em>Know</em></h2>
     </div>
-    <div class="sh-line-wrap"><div class="sh-line" id="thingsLine"></div></div>
+    <div class="sh-line-wrap" id="thingsLinewrap">
+      <svg class="sh-line-svg" viewBox="0 0 320 18" width="320" height="18">
+        <path class="sh-leaf-path" d="M10,9 Q80,2 160,9 Q240,16 310,9" fill="none" stroke="#D4A060" stroke-width="1" opacity=".55"/>
+        <ellipse cx="80" cy="5" rx="6" ry="3" fill="#7A9E7E" opacity=".55" transform="rotate(-20 80 5)"/>
+        <ellipse cx="160" cy="9" rx="5" ry="2.5" fill="#D4A060" opacity=".65"/>
+        <ellipse cx="240" cy="13" rx="6" ry="3" fill="#7A9E7E" opacity=".55" transform="rotate(20 240 13)"/>
+      </svg>
+    </div>
     <div class="tt-row">
-      <!-- SVG icons — platinum/gold stroke on warm cards -->
       <div class="tt scroll-in" style="--sd:0s">
-        <svg class="tt-ic" viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#C8A870" stroke-width="1.2" stroke-linecap="round"><line x1="7" y1="12" x2="25" y2="12"/><line x1="7" y1="20" x2="25" y2="20"/><line x1="13" y1="6" x2="11" y2="26"/><line x1="21" y1="6" x2="19" y2="26"/></svg>
+        <svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="#D4A060" stroke-width="1.3" stroke-linecap="round"><line x1="7" y1="12" x2="25" y2="12"/><line x1="7" y1="20" x2="25" y2="20"/><line x1="13" y1="6" x2="11" y2="26"/><line x1="21" y1="6" x2="19" y2="26"/></svg>
         <span class="tt-l" data-ttk="hashtag">Hashtag</span><p class="tt-v" id="ttkHashtag">#PriyaWedsArjun</p>
       </div>
-      <div class="tt scroll-in" style="--sd:0.1s">
-        <svg class="tt-ic" viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#C8A870" stroke-width="1.2" stroke-linecap="round"><path d="M16 7a3 3 0 0 1 3 3"/><path d="M5 23 L16 11 L27 23 Q28 25 26 26 L6 26 Q4 25 5 23Z"/></svg>
-        <span class="tt-l">Dress Code</span><p class="tt-v">Ivory &amp; Champagne</p>
+      <div class="tt scroll-in" style="--sd:.10s">
+        <svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="#D4A060" stroke-width="1.3" stroke-linecap="round"><path d="M16 7a3 3 0 0 1 3 3"/><path d="M5 23 L16 11 L27 23 Q28 25 26 26 L6 26 Q4 25 5 23Z"/></svg>
+        <span class="tt-l">Dress Code</span><p class="tt-v">Garden Festive</p>
       </div>
-      <div class="tt scroll-in" style="--sd:0.2s">
-        <svg class="tt-ic" viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#C8A870" stroke-width="1.2" stroke-linecap="round"><path d="M16 3a10 10 0 0 1 10 10c0 9-10 18-10 18S6 22 6 13A10 10 0 0 1 16 3z"/><circle cx="16" cy="13" r="3.5"/></svg>
-        <span class="tt-l" data-ttk="venue">Venue</span>
-        <p class="tt-v" id="ttkVenue">Umaid Bhawan<br>Jodhpur</p>
-        <a class="tt-maps" id="ttkVenueMaps"
-           href="https://maps.google.com/?q=Umaid+Bhawan+Palace+Jodhpur"
-           target="_blank" rel="noopener noreferrer">
-          📍 Get Directions
-        </a>
+      <div class="tt scroll-in" style="--sd:.20s">
+        <svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="#D4A060" stroke-width="1.3" stroke-linecap="round"><path d="M16 3a10 10 0 0 1 10 10c0 9-10 18-10 18S6 22 6 13A10 10 0 0 1 16 3z"/><circle cx="16" cy="13" r="3.5"/></svg>
+        <span class="tt-l" data-ttk="venue">Venue</span><p class="tt-v" id="ttkVenue">Umaid Bhawan<br>Jodhpur</p>
       </div>
-      <div class="tt scroll-in" style="--sd:0.3s">
-        <svg class="tt-ic" viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#C8A870" stroke-width="1.2" stroke-linecap="round"><circle cx="16" cy="16" r="12"/><path d="M16 10v6l4 3"/></svg>
+      <div class="tt scroll-in" style="--sd:.30s">
+        <svg class="tt-ic" viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="#D4A060" stroke-width="1.3" stroke-linecap="round"><circle cx="16" cy="16" r="12"/><path d="M16 10v6l4 3"/></svg>
         <span class="tt-l">Parking</span><p class="tt-v">Available<br>on-site</p>
       </div>
     </div>
@@ -522,10 +535,10 @@
   </div>
 </section>
 
-<!-- Wave into RSVP — warm champagne -->
+<!-- Wave into RSVP -->
 <div class="wdiv wdiv--up">
   <svg viewBox="0 0 1440 55" preserveAspectRatio="none">
-    <path d="M0,33 C360,0 720,55 1080,33 C1260,16 1440,50 1440,33 L1440,55 L0,55Z" fill="#F8F4ED"/>
+    <path d="M0,33 C360,0 720,55 1080,33 C1260,16 1440,50 1440,33 L1440,55 L0,55Z" fill="#F0EAD2"/>
   </svg>
 </div>
 
@@ -650,29 +663,24 @@
   </div>
 </section>
 
-<!-- FOOTER — light champagne (T03 signature) -->
+<!-- FOOTER â€” deep earthy dark -->
 <footer class="footer">
-  <!-- Lotus in pale gold -->
-  <svg class="ft-lotus" viewBox="0 0 80 40" width="60" aria-hidden="true">
-    <ellipse cx="40" cy="34" rx="6" ry="10" fill="#C8A870" opacity="0.18" transform="rotate(-40 40 34)"/>
-    <ellipse cx="40" cy="34" rx="6" ry="10" fill="#C8A870" opacity="0.18" transform="rotate(-20 40 34)"/>
-    <ellipse cx="40" cy="34" rx="6" ry="10" fill="#C8A870" opacity="0.18" transform="rotate(0 40 34)"/>
-    <ellipse cx="40" cy="34" rx="6" ry="10" fill="#C8A870" opacity="0.18" transform="rotate(20 40 34)"/>
-    <ellipse cx="40" cy="34" rx="6" ry="10" fill="#C8A870" opacity="0.18" transform="rotate(40 40 34)"/>
-    <circle cx="40" cy="34" r="4" fill="#C8A870" opacity="0.35"/>
+  <svg class="ft-lotus" viewBox="0 0 80 40" width="66" aria-hidden="true">
+    <ellipse cx="40" cy="34" rx="7" ry="11" fill="#D4A060" opacity="0.22" transform="rotate(-40 40 34)"/>
+    <ellipse cx="40" cy="34" rx="7" ry="11" fill="#E8A0A0" opacity="0.20" transform="rotate(-20 40 34)"/>
+    <ellipse cx="40" cy="34" rx="7" ry="11" fill="#D4A060" opacity="0.22" transform="rotate(0 40 34)"/>
+    <ellipse cx="40" cy="34" rx="7" ry="11" fill="#E8A0A0" opacity="0.20" transform="rotate(20 40 34)"/>
+    <ellipse cx="40" cy="34" rx="7" ry="11" fill="#D4A060" opacity="0.22" transform="rotate(40 40 34)"/>
+    <circle cx="40" cy="34" r="5" fill="#D4A060" opacity="0.45"/>
   </svg>
   <div class="ft-names">Priya &amp; Arjun</div>
   <div class="ft-rule"></div>
-  <p class="ft-date" id="ftDate">12 December 2026 · <a id="ftVenueLink" href="https://maps.google.com/?q=Umaid+Bhawan+Palace+Jodhpur" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(200,168,112,.35);padding-bottom:1px;transition:border-color .2s">Umaid Bhawan Palace, Jodhpur</a></p>
+  <p class="ft-date">12 December 2026 Â· Umaid Bhawan Palace, Jodhpur</p>
   <p class="ft-credit">Crafted with love on <a href="#" target="_blank" rel="noopener">invite.kimiclaw.in</a></p>
 </footer>
 
-<script src="assets/script-c53de7ec3b.js?v=2"></script>
+<script src="assets/script-964d88d57c.js"></script>
 
-<!-- ═══════════════════════════════════
-     SHAADIPATH CONFIG LOADER — T03
-     Identical logic to T01/T02
-═══════════════════════════════════ -->
 <script>
 (function applyWeddingConfig(){
   'use strict';
@@ -683,10 +691,8 @@
   function fmtT(t){if(!t)return'';const[h,m]=t.split(':');const hr=parseInt(h);return(hr%12||12)+':'+(m||'00')+' '+(hr<12?'AM':'PM');}
   function el(id){return document.getElementById(id);}
   function setText(id,txt){const e=el(id);if(e&&txt)e.textContent=txt;}
-
-  /* 1. PAGE TITLE + HERO */
   const dShort=couple.date?new Date(couple.date+'T00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'2-digit',year:'numeric'}):'';
-  document.title=couple.bride+' & '+couple.groom+' · '+dShort;
+  document.title=couple.bride+' & '+couple.groom+' Â· '+dShort;
   const heroCopy=el('heroCopy');
   if(heroCopy){
     const bEl=heroCopy.querySelector('.hc-bride span'),gEl=heroCopy.querySelector('.hc-groom span');
@@ -696,8 +702,6 @@
   const pn1=document.querySelector('.pl-n1'),pn2=document.querySelector('.pl-n2');
   if(pn1)pn1.textContent=couple.bride;
   if(pn2)pn2.textContent=couple.groom;
-
-  /* 2. INVITATION */
   const blessEl=document.querySelector('.i-bless');
   if(blessEl&&invite&&invite.blessing)blessEl.innerHTML=invite.blessing.replace(/\n/g,'<br>');
   const ib=document.querySelector('.i-bride'),ig2=document.querySelector('.i-groom');
@@ -717,8 +721,6 @@
       if(ggpEl&&ggp){ggpEl.innerHTML='<em>Blessed by</em><br>'+ggp;ggpEl.style.display='block';}
     }
   }
-
-  /* 3. EVENTS */
   const evStage=el('evStage');
   if(evStage&&events&&events.length){
     const half=Math.ceil(events.length/2);
@@ -733,8 +735,8 @@
       const sd=(idx*.1).toFixed(2);
       const dStr=ev.date?new Date(ev.date+'T00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'';
       const tStr=fmtT(ev.time);
-      const dateLabel=[dStr,tStr].filter(Boolean).join(' · ');
-      const mapsLink=ev.mapsLink?`<a href="${ev.mapsLink}" target="_blank" class="ev-cta">📍 Open in Google Maps</a>`:'';
+      const dateLabel=[dStr,tStr].filter(Boolean).join(' Â· ');
+      const mapsLink=ev.mapsLink?`<a href="${ev.mapsLink}" target="_blank" class="ev-cta">ðŸ“ Open in Google Maps</a>`:'';
       let colStyle='';
       if(isRow2&&row2Len<maxCols){const r2i=idx-half;const col=row2Len===1?'1/-1':`${Math.round(r2i*(maxCols-1)/(row2Len-1))+1}`;colStyle=`grid-column:${col};`;}
       return`<article class="ev-node ${row} ${hero} scroll-in" style="--sd:${sd}s;${colStyle}" data-idx="${idx}">
@@ -743,26 +745,18 @@
         <div class="ev-detail">${ev.venue?`<p class="ev-venue">${ev.venue}</p>`:''}${ev.desc?`<p class="ev-desc">${ev.desc}</p>`:''}${mapsLink}</div>
       </article>`;
     }).join('');
-    setTimeout(()=>{
-      evStage.querySelectorAll('.scroll-in').forEach(function(n){n.classList.add('vis');});
-      if(typeof initEventsAutoOpen==='function')initEventsAutoOpen();
-      if(typeof window._evJourneyLayout==='function')window._evJourneyLayout();
-    },120);
+    setTimeout(()=>{evStage.querySelectorAll('.scroll-in').forEach(function(n){n.classList.add('vis');});if(typeof initEventsAutoOpen==='function')initEventsAutoOpen();if(typeof window._evJourneyLayout==='function')window._evJourneyLayout();},120);
   }
-
   if(invite&&invite.show===false){const is=el('invite');if(is)is.style.display='none';}
-  /* 4. STORY */
   if(story&&story.show===false){const ss=el('story');if(ss)ss.style.display='none';}
   else{
     setText('stRvBride',couple.bride);setText('stRvGroom',couple.groom);
     const tagEl=el('stRvTags');
-    if(story&&story.storyMode==='story'&&story.storyText){const ve=el('stRvVerse');if(ve)ve.textContent=story.storyText;if(tagEl)tagEl.style.display='none';}
+    if(story&&story.storyMode==='story'&&story.storyText){const ve=el('stRvVerse');if(ve){const safe=story.storyText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');ve.innerHTML=safe.replace(/\n/g,'<br>');}if(tagEl)tagEl.style.display='none';}
     else if(tagEl&&story&&story.tags&&story.tags.length)tagEl.innerHTML=story.tags.map(t=>`<span class="st-rv-tag">${t}</span>`).join('');
     const htag=(story&&story.customHashtag)||couple.hashtag||'';
     if(htag)document.querySelectorAll('.tt-ig a').forEach(a=>a.textContent=htag);
   }
-
-  /* 5. GALLERY */
   const galSec=el('gallery');
   if(galSec){
     if(!gallery||!gallery.show||gallery.layout==='skip'){galSec.style.display='none';}
@@ -773,13 +767,12 @@
         if(n<4) gg.style.gridTemplateColumns='repeat('+n+',1fr)';
         gg.innerHTML=Array.from({length:n},(_,i)=>{
           const p=gallery.photos[i];
-          return p?`<div class="gal-item ${i===0&&n===4?'gal-tall':''}"><img src="${p}" style="width:100%;height:100%;object-fit:cover" alt=""></div>`:`<div class="gal-item ${i===0&&n===4?'gal-tall':''}"><div class="gal-ph"><span class="gal-m">P&A</span></div></div>`;
+          const frame='<img class="gal-frame" src="assets/couple-photo-frame-842c49b6dd.png" alt="" aria-hidden="true" onerror="this.style.display=\'none\'">';
+          return p?`<div class="gal-item ${i===0&&n===4?'gal-tall':''}"><img src="${p}" style="width:100%;height:100%;object-fit:cover" alt="">${frame}</div>`:`<div class="gal-item ${i===0&&n===4?'gal-tall':''}"><div class="gal-ph"><span class="gal-m">P&A</span></div>${frame}</div>`;
         }).join('');
       }
     }
   }
-
-  /* 6. THINGS TO KNOW */
   const thingsSec=el('things');
   if(C.showThingsToKnow===false){if(thingsSec)thingsSec.style.display='none';}
   else if(thingsToKnow&&thingsToKnow.length){
@@ -808,8 +801,6 @@
     const igA=document.querySelector('.tt-ig a');
     if(igA)igA.textContent=htag||igA.textContent;
   }else if(thingsSec){thingsSec.style.display='none';}
-
-  /* 7. RSVP */
   const rsvpSec=el('rsvp');
   if(rsvpSec&&rsvp){
     const hEl=el('rsvpHeading');
@@ -834,34 +825,15 @@
       else if(rsvp.mode!=='form'&&rsvp.btnText){const ic=btnInner.querySelector('svg');btnInner.textContent=rsvp.btnText;if(ic)btnInner.prepend(ic);}
     }
   }
-
-  /* 8. FOOTER */
   const ftN=document.querySelector('.ft-names');
   if(ftN)ftN.textContent=couple.bride+' & '+couple.groom;
   const ftD=document.querySelector('.ft-date');
-  const mapsUrl=couple.mapsUrl||(couple.venue?'https://maps.google.com/?q='+encodeURIComponent(couple.venue):'');
-  if(ftD){
-    const venueText=fmt(couple.date)+(couple.venue?' · '+couple.venue:'');
-    if(mapsUrl&&couple.venue){
-      ftD.innerHTML=fmt(couple.date)+' · <a id="ftVenueLink" href="'+mapsUrl+'" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(200,168,112,.35);padding-bottom:1px;transition:border-color .2s ease">'+couple.venue+'</a>';
-    } else {
-      ftD.textContent=venueText;
-    }
-  }
-  /* Wire venue maps link in Things to Know */
-  const venueMapsEl=el('ttkVenueMaps');
-  if(venueMapsEl){
-    if(mapsUrl){venueMapsEl.href=mapsUrl;venueMapsEl.style.display='';}
-    else if(couple.venue){venueMapsEl.href='https://maps.google.com/?q='+encodeURIComponent(couple.venue);venueMapsEl.style.display='';}
-    else{venueMapsEl.style.display='none';}
-  }
-
+  if(ftD)ftD.textContent=fmt(couple.date)+(couple.venue?' Â· '+couple.venue:'');
   initMusic();
-  console.log('invite.kimiclaw.in T03: Config applied for '+couple.bride+' & '+couple.groom+' ✦');
+  console.log('invite.kimiclaw.in T04: Config applied âœ¿');
 })();
 if(typeof WEDDING_CONFIG==='undefined')initMusic();
 
-/* BACKGROUND MUSIC */
 function initMusic(){
   if(window.__GALLERY_MODE__)return;
   const audio=document.getElementById('bgMusic');
@@ -874,15 +846,12 @@ function initMusic(){
     playing=p;
     if(iconOn)iconOn.style.display=p?'none':'';
     if(iconOff)iconOff.style.display=p?'':'none';
-    if(lbl)lbl.textContent=p?'♪ Mute':'♪ Music';
-    btn.classList.toggle('playing',p);btn.textContent=p?'🔔':'🔕';
+    if(lbl)lbl.textContent=p?'â™ª Mute':'â™ª Music';
+    btn.classList.toggle('playing',p);btn.textContent=p?'ðŸ””':'ðŸ”•';
   }
-  window.toggleMusic=function(){
-    if(playing){audio.pause();setPlayingUI(false);}
-    else{audio.play().then(()=>setPlayingUI(true)).catch(()=>setPlayingUI(false));}
-  };
+  window.toggleMusic=function(){if(playing){audio.pause();setPlayingUI(false);}else{audio.play().then(()=>setPlayingUI(true)).catch(()=>setPlayingUI(false));}};
   function tryAutoplay(){
-    audio.volume=0.45;
+    audio.volume=0.55;
     audio.play().then(()=>setPlayingUI(true)).catch(()=>{
       setPlayingUI(false);
       function onFirst(){

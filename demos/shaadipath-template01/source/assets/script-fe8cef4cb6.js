@@ -77,30 +77,202 @@ function revealHero() {
   if (copy) copy.classList.add('in');
 }
 
-function runPreloader() {
-  const pl = document.getElementById('preloader');
-  if (!pl) { revealHero(); return; }
-  setTimeout(() => pl.classList.add('li'), 300);   // gold rings draw
-  setTimeout(() => pl.classList.add('ni'), 700);   // names appear
-  setTimeout(() => {                               // fade out, reveal hero
-    pl.classList.add('away');
-    setTimeout(() => { pl.style.display = 'none'; revealHero(); }, 500);
-  }, 1600);
+function initScratch() {
+  const gate        = document.getElementById('scratchGate');
+  const canvas      = document.getElementById('scratchCanvas');
+  const hint        = document.getElementById('scratchHint');
+  const progressBar = document.getElementById('sgProgress');
+  const progressLbl = document.getElementById('sgProgressLabel');
+  const unlocked    = document.getElementById('sgUnlocked');
+  if (!gate || !canvas){
+    revealHero();
+    return;
+  }
+
+  // Lock scroll
+  document.body.classList.add('scroll-locked');
+
+  const ctx = canvas.getContext('2d');
+  const THRESHOLD = 55;   // % needed to unlock
+  let isDrawing   = false;
+  let hasStarted  = false;
+  let isDone      = false;
+
+  /* Size canvas to wrapper */
+  function sizeCanvas() {
+    const wrap = canvas.parentElement;
+    canvas.width  = wrap.offsetWidth;
+    canvas.height = wrap.offsetHeight;
+    drawScratchLayer();
+  }
+
+  /* Fill canvas with the gold foil scratch surface */
+  function drawScratchLayer() {
+    const w = canvas.width, h = canvas.height;
+
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0,   '#B58428');
+    grad.addColorStop(0.3, '#F7D070');
+    grad.addColorStop(0.5, '#FFF7B0');
+    grad.addColorStop(0.7, '#D29B35');
+    grad.addColorStop(1,   '#A37119');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    for (let i = 0; i < 350; i++) {
+      ctx.beginPath();
+      ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1.5 + 0.3, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,' + (Math.random() * 0.08 + 0.03) + ')';
+      ctx.fill();
+    }
+    for (let i = 0; i < 200; i++) {
+      ctx.beginPath();
+      ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1 + 0.2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + (Math.random() * 0.15 + 0.05) + ')';
+      ctx.fill();
+    }
+
+    ctx.font = 'bold 14px Jost, sans-serif';
+    ctx.fillStyle = 'rgba(15,32,68,.65)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('✦  SCRATCH TO REVEAL  ✦', w / 2, h / 2);
+  }
+
+  let lastX = null, lastY = null;
+  let lastProgressCheck = 0;
+
+  function scratch(x, y, isStart) {
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = Math.min(canvas.width, canvas.height) * 0.23;
+
+    ctx.beginPath();
+    if (isStart || lastX === null) {
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, y + 0.1);
+    } else {
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.globalCompositeOperation = 'source-over';
+
+    lastX = x;
+    lastY = y;
+
+    const now = performance.now();
+    if (now - lastProgressCheck > 100) {
+      lastProgressCheck = now;
+      requestAnimationFrame(updateProgress);
+    }
+  }
+
+  function getScratched() {
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const pixels    = imageData.data;
+    let transparent = 0;
+    for (let i = 3; i < pixels.length; i += 16) {
+      if (pixels[i] < 128) transparent++;
+    }
+    const total = pixels.length / 16;
+    return Math.round((transparent / total) * 100);
+  }
+
+  function updateProgress() {
+    if (isDone) return;
+    const pct = getScratched();
+    const display = Math.min(pct, 100);
+    progressBar.style.width = display + '%';
+    progressLbl.textContent = display + '% revealed';
+
+    if (pct >= THRESHOLD) {
+      onUnlocked();
+    }
+  }
+
+  function onUnlocked() {
+    if (isDone) return;
+    isDone = true;
+
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = 'rgba(0,0,0,1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.globalCompositeOperation = 'source-over';
+
+    progressBar.style.width = '100%';
+    progressLbl.textContent = '100% revealed ✦';
+
+    unlocked.classList.add('show');
+
+    setTimeout(() => {
+      document.body.classList.remove('scroll-locked');
+      revealHero();
+    }, 200);
+
+    function dismiss() {
+      gate.classList.add('dismissed');
+      gate.removeEventListener('click', dismiss);
+    }
+    gate.addEventListener('click', dismiss);
+    document.addEventListener('keydown', dismiss, { once: true });
+
+    setTimeout(dismiss, 400);
+  }
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width  / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const src = e.touches ? e.touches[0] : e;
+    return {
+      x: (src.clientX - rect.left)  * scaleX,
+      y: (src.clientY - rect.top)   * scaleY
+    };
+  }
+
+  function onStart(e) {
+    e.preventDefault();
+    isDrawing = true;
+    if (!hasStarted) {
+      hasStarted = true;
+      hint.classList.add('hidden');
+    }
+    const pos = getPos(e);
+    scratch(pos.x, pos.y, true);
+  }
+
+  function onMove(e) {
+    e.preventDefault();
+    if (!isDrawing || isDone) return;
+    const pos = getPos(e);
+    scratch(pos.x, pos.y, false);
+  }
+
+  function onEnd() { 
+    isDrawing = false; 
+    lastX = null; 
+    lastY = null;
+  }
+
+  canvas.addEventListener('mousedown',  onStart, { passive: false });
+  canvas.addEventListener('mousemove',  onMove,  { passive: false });
+  canvas.addEventListener('mouseup',   onEnd);
+  canvas.addEventListener('mouseleave', onEnd);
+  canvas.addEventListener('touchstart', onStart, { passive: false });
+  canvas.addEventListener('touchmove',  onMove,  { passive: false });
+  canvas.addEventListener('touchend',   onEnd);
+
+  gate.addEventListener('wheel',      e => e.preventDefault(), { passive: false });
+  gate.addEventListener('touchmove',  e => e.preventDefault(), { passive: false });
+
+  sizeCanvas();
+  window.addEventListener('resize', sizeCanvas);
 }
 
-document.body.classList.add('pl-active');
-
-if (document.readyState === 'complete') runPreloader();
-else window.addEventListener('load', runPreloader);
-
-/* Safety net: if load never fires within 4s, reveal everything */
-setTimeout(() => {
-  if (document.body.classList.contains('pl-active')) {
-    revealHero();
-    const pl = document.getElementById('preloader');
-    if (pl) pl.style.display = 'none';
-  }
-}, 4000);
+// Run on loaded
+if(document.readyState === 'complete'){ initScratch(); } else { window.addEventListener('load', initScratch); }
 
 /* ─────────────────────────────────────────
    SCROLL-PINNED HERO DRIVER
@@ -352,11 +524,16 @@ document.querySelectorAll('.scroll-in').forEach(el => rIO.observe(el));
   }
 
   function sizeSvg() {
-    const w = section.offsetWidth, h = section.offsetHeight;
+    const w = section.offsetWidth;
+    const h = section.offsetHeight;
     svgEl.setAttribute('width', w);
     svgEl.setAttribute('height', h);
     svgEl.setAttribute('viewBox', `0 0 ${w} ${h}`);
   }
+
+  /* ── Full layout pass ── */
+  let cachedSecTop = 0;
+  let cachedSecH = 0;
 
   function layout() {
     sizeSvg();
@@ -374,15 +551,16 @@ document.querySelectorAll('.scroll-in').forEach(el => rIO.observe(el));
     });
   }
 
+  /* ── Scroll progress ── */
   let _jRaf = null;
   function onScroll() {
-    if (!drawnEl._total) return;
+    if(!drawnEl._total) return;
     if (_jRaf) return; /* already scheduled — don't queue another */
     _jRaf = requestAnimationFrame(() => {
       _jRaf = null;
       const winH = window.innerHeight;
-      const rect = section.getBoundingClientRect();
-      const progress = Math.min(1, Math.max(0, (winH - rect.top) / (section.offsetHeight + winH)));
+      const currentTop = cachedSecTop - window.scrollY;
+      const progress = Math.min(1, Math.max(0, (winH - currentTop) / (cachedSecH + winH)));
       drawnEl.style.strokeDashoffset = (drawnEl._total * (1 - progress)).toFixed(1);
     });
   }
@@ -414,29 +592,24 @@ document.querySelectorAll('.scroll-in').forEach(el => rIO.observe(el));
    is refreshed on re-init (config rebuild) —
    no listener leak.
 ───────────────────────────────────────── */
-const _evAuto = { nodes: [], revealed: new WeakSet(), bound: false };
-
-function _evCheckNodes() {
-  const triggerLine = window.innerHeight * 0.60;
-  _evAuto.nodes.forEach(node => {
-    if (_evAuto.revealed.has(node)) return;
-    const rect = node.getBoundingClientRect();
-    if (rect.top + rect.height / 2 < triggerLine) {
-      _evAuto.revealed.add(node);
-      requestAnimationFrame(() => node.classList.add('ev-active'));
-    }
-  });
-}
+const _evAuto = { observer: null };
 
 function initEventsAutoOpen() {
-  _evAuto.nodes = Array.from(document.querySelectorAll('.ev-node'));
-  if (!_evAuto.nodes.length) return;
-  if (!_evAuto.bound) {
-    _evAuto.bound = true;
-    window.addEventListener('scroll', _evCheckNodes, { passive: true });
-    window.addEventListener('load', _evCheckNodes);
+  const nodes = Array.from(document.querySelectorAll('.ev-node:not(.ev-active)'));
+  if (!nodes.length) return;
+  
+  if (!_evAuto.observer) {
+    _evAuto.observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          requestAnimationFrame(() => entry.target.classList.add('ev-active'));
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -40% 0px" });
   }
-  _evCheckNodes();
+
+  nodes.forEach(node => _evAuto.observer.observe(node));
 }
 
 initEventsAutoOpen();
@@ -506,12 +679,19 @@ initEventsAutoOpen();
     }, 1235);
   }
 
-  function getCurtainProgress() {
-    if (!openEnabled) return 0;
-    const rect = section.getBoundingClientRect();
+  let cachedSecTop = 0;
+  window.addEventListener('load', () => cachedSecTop = section.getBoundingClientRect().top + window.scrollY);
+
+  let cachedCurtTop = 0;
+  window.addEventListener('load', () => cachedCurtTop = section.getBoundingClientRect().top + window.scrollY);
+
+  function getCurtainProgress(){
+    if(!openEnabled) return 0;
+    if(!cachedCurtTop) cachedCurtTop = section.getBoundingClientRect().top + window.scrollY;
+    const currentTop = cachedCurtTop - window.scrollY;
     const start = window.innerHeight * 0.55;
     const range = window.innerHeight * 0.91;
-    return Math.min(1, Math.max(0, (start - rect.top) / range));
+    return Math.min(1, Math.max(0, (start - currentTop) / range));
   }
 
   function applyProgress(p) {

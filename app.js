@@ -1,306 +1,5 @@
 // Database of 25 Premium Templates + 13 ShaadiPath Templates (Total 38 Premium layouts)
 const demos = [
-  {
-    code: "351",
-    id: "bloom-template",
-    title: "Bloom",
-    tag: "Floral Editorial",
-    tier: "Luxury",
-    categories: ["bestsellers", "botanical"],
-    url: "demos/bloom-template/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/venue-illustration-CJozVy2q.png",
-    description: "A romantic and beautiful botanical layout with elegant pastel floral visual systems, multi-day guest itineraries, and instant RSVP.",
-    features: ["Delicate floral watercolor illustrations", "Interactive ceremony countdown timer", "Multi-day timeline schedules", "WhatsApp RSVP questionnaire", "Elegant masonry photo gallery"]
-  },
-  {
-    code: "352",
-    id: "aventureros-demo",
-    title: "Aventureros",
-    tag: "Travel Inspired",
-    tier: "Premium",
-    categories: ["bestsellers", "modern"],
-    url: "demos/aventureros-demo/source/index.html",
-    previewImg: "demos/aventureros-demo/preview.png",
-    description: "A cinematic boarding-pass travel style template with custom schedules, flight itinerary visual markers, countdowns, and music.",
-    features: ["Unique airline ticket style header", "Travel stamp micro-animations", "Google Maps location links", "Floating media music controller", "Mobile-first booking request form"]
-  },
-  {
-    code: "353",
-    id: "maison-doree",
-    title: "Maison Dorée",
-    tag: "Luxury Gold",
-    tier: "Luxury",
-    categories: ["bestsellers", "classical"],
-    url: "demos/maison-doree/source/index.html",
-    previewImg: "demos/maison-doree/preview.png",
-    description: "An extravagant gold-laden wedding suite with elegant high-fashion serif lettering, detailed hotel stay guides, and itinerary notes.",
-    features: ["Brushed gold frames & scrollwork", "Premium hotel recommendations grid", "Elegant typography & fine line borders", "Ambient playlist music widget", "Integrated gift registry information"]
-  },
-  {
-    code: "354",
-    id: "teatro",
-    title: "Teatro",
-    tag: "Theatre Reveal",
-    tier: "Luxury",
-    categories: ["classical", "excellence"],
-    url: "demos/teatro/source/index.html",
-    previewImg: "demos/teatro/preview.png",
-    description: "A theatrical masterpiece featuring a custom animated stage curtain reveal on load, and vintage stageplay editorial design.",
-    features: ["Interactive animated velvet curtain intro", "Retro theater playbill visual aesthetic", "Sophisticated schedule timeline cards", "WhatsApp response form", "Luxury golden typographic styling"]
-  },
-  {
-    code: "355",
-    id: "nautical-template",
-    title: "Nautical",
-    tag: "Coastal Classic",
-    tier: "Premium",
-    categories: ["classical"],
-    url: "demos/nautical-template/source/index.html",
-    previewImg: "demos/nautical-template/preview.png",
-    description: "A clean oceanfront layout featuring soft blue color palettes, nautical typography details, and dress code cards.",
-    features: ["Seaside visual styling & anchors", "Interactive wedding day timeline", "Beach dress code guidelines card", "Integrated photo grid slider", "Direct location mapping"]
-  },
-  {
-    code: "356",
-    id: "rosas-template",
-    title: "Rosas",
-    tag: "Romantic Roses",
-    tier: "Premium",
-    categories: ["classical"],
-    url: "demos/rosas-template/source/index.html",
-    previewImg: "demos/rosas-template/preview.png",
-    description: "Soft pink rose watercolor visual systems with built-in intro video headers, elegant timeline markers, and gift list notes.",
-    features: ["Elegant rose illustrations", "Video intro opening frame", "Wedding countdown clock", "Gift notes section", "Interactive guest response forms"]
-  },
-  {
-    code: "357",
-    id: "majestic",
-    title: "Majestic Elegance",
-    tag: "Royal Luxury",
-    tier: "Luxury",
-    categories: ["bestsellers", "classical"],
-    url: "demos/majestic/source/index.html",
-    previewImg: "demos/majestic/source/assets/hero-template-majestic-D4H0kti9.webp",
-    description: "The crown jewel of classical invitations, featuring royal gold frames, custom crests, and extensive guest RSVP parameters.",
-    features: ["Custom digital wax seal crest animation", "Sleek multi-page layout simulator", "Advanced guest preference forms", "Gift list & registry widgets", "Aesthetic parallax photo sections"]
-  },
-  {
-    code: "358",
-    id: "majestic-template",
-    title: "Majestic Gold",
-    tier: "Premium",
-    tag: "Classic Gold",
-    categories: ["classical"],
-    url: "demos/majestic-template/source/index.html",
-    previewImg: "demos/majestic-template/preview.png",
-    description: "Clean classical layouts with gold leaf details, structured event schedule blocks, and instant RSVP replies.",
-    features: ["Brushed gold framing layout", "Clean timeline icons", "Gift registry note widget", "WhatsApp RSVP links", "Elegant mobile photo grid"]
-  },
-  {
-    code: "359",
-    id: "editorial",
-    title: "Boda Editorial",
-    tag: "Modern Editorial",
-    tier: "Premium",
-    categories: ["editorial"],
-    url: "demos/editorial/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-16-BN7G54Qj.jpg",
-    description: "A highly sophisticated minimalist style mimicking fashion magazines, high contrast serif titles, and asymmetric photo layouts.",
-    features: ["Asymmetric magazine-style layout", "Perfect high-contrast editorial typography", "Sleek inline music player", "Interactive maps & stays section", "Minimalist WhatsApp guest form"]
-  },
-  {
-    code: "360",
-    id: "daynight-template",
-    title: "Day & Night",
-    tag: "Dynamic Chic",
-    tier: "Premium",
-    categories: ["modern"],
-    url: "demos/daynight-template/source/index.html",
-    previewImg: "assets/media__1780060613681.jpg",
-    description: "A unique design that lets users toggle between a bright elegant cream Day Theme and a dark gold starry Night Theme.",
-    features: ["Interactive Day/Night aesthetic switcher", "Constellation micro-graphics", "Elegant dark gold contrast panels", "Floating map directions widget", "WhatsApp RSVP tracking"]
-  },
-  {
-    code: "361",
-    id: "dolcevita-demo",
-    title: "Dolce Vita",
-    tag: "Mediterranean Coast",
-    tier: "Luxury",
-    categories: ["classical"],
-    url: "demos/dolcevita-demo/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/accommodation-pool-mJ6MY4xs.png",
-    description: "Inspired by the Amalfi Coast, featuring vibrant majolica tiling patterns, deep blue oceans, and romantic scroll layout.",
-    features: ["Majolica blue tile framing visual elements", "Elegant Italian serif typography", "Floating audio player with preloaded soundtrack", "Interactive venue links", "Parallax image sections"]
-  },
-  {
-    code: "362",
-    id: "excellence-demo",
-    title: "Excellence Bespoke",
-    tag: "Bespoke Illustration",
-    tier: "Excellence",
-    categories: ["bestsellers", "excellence"],
-    url: "demos/excellence-demo/source/index.html",
-    previewImg: "demos/excellence-demo/preview.png",
-    description: "A completely bespoke digital layout including dynamic hand-drawn watercolor venue illustration overlays and custom intro motion.",
-    features: ["Hand-drawn custom venue painting overlay", "Premium cinematic opening screen", "Dynamic guest name personalization", "Accommodations booking modules", "Dual RSVP option (WhatsApp & Form)"]
-  },
-  {
-    code: "363",
-    id: "excellence-template",
-    title: "Excellence Classic",
-    tag: "Luxury Art",
-    tier: "Luxury",
-    categories: ["excellence"],
-    url: "demos/excellence-template/source/index.html",
-    previewImg: "demos/excellence-template/preview.png",
-    description: "High-end creative templates using beautiful hand-lettered gold headers, luxury fonts, and unlimited photo gallery.",
-    features: ["Hand-lettered golden calligraphy details", "Immersive media players", "Accommodation booking blocks", "Interactive wedding day timeline", "VIP Priority support"]
-  },
-  {
-    code: "364",
-    id: "finca-demo",
-    title: "Rustic Finca",
-    tag: "Earth Botanical",
-    tier: "Premium",
-    categories: ["botanical", "classical"],
-    url: "demos/finca-demo/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/weekend-church-oval-exdYj30l.png",
-    description: "Warm terracotta and sage rustic designs featuring organic olive branch watercolor drawings and country estate guidelines.",
-    features: ["Olive branch illustrations", "Warm terracotta & stone color palette", "Aesthetic country wedding timeline", "Accommodation suggestions block", "Interactive WhatsApp RSVPs"]
-  },
-  {
-    code: "365",
-    id: "floral-demo",
-    title: "Watercolor Floral",
-    tag: "Romantic Garden",
-    tier: "Premium",
-    categories: ["botanical"],
-    url: "demos/floral-demo/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/welcome-flowers-Dy0evJgO.png",
-    description: "Delicate and soft watercolor garden flowers surrounding clean modern invitation grids with music play functions.",
-    features: ["Hand-painted floral accents", "Aesthetic event calendar invite", "Sleek checklist guest response", "Google Maps location links", "Floating music controls"]
-  },
-  {
-    code: "366",
-    id: "mediterranean-template",
-    title: "Mediterranean Blue",
-    tag: "Ocean Escape",
-    tier: "Premium",
-    categories: ["modern"],
-    url: "demos/mediterranean-template/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-19-jTDIEDkB.jpg",
-    description: "Vibrant oceanfront theme with bright blue details, elegant Greek/Spanish mosaic tiles, and wedding countdown.",
-    features: ["Greek mosaic tile illustrations", "Bright maritime color palettes", "Wedding event timeline tracker", "WhatsApp guest confirmations", "Photo gallery grid"]
-  },
-  {
-    code: "367",
-    id: "premium-circo",
-    title: "Circo Whimsical",
-    tag: "Fantasy Carnival",
-    tier: "Luxury",
-    categories: ["excellence"],
-    url: "demos/premium-circo/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/checkered-frame-BwM-aUT2.png",
-    description: "A whimsical, unique, and delightful vintage circus/carnival layout designed for creative and unconventional couples.",
-    features: ["Animated ticket card intro", "Vintage carousel scroll graphics", "Interactive fun maps", "Delightful retro typography", "Custom RSVP questionnaires"]
-  },
-  {
-    code: "368",
-    id: "premium-elegante",
-    title: "Elegante Noir",
-    tag: "Noir Luxury",
-    tier: "Luxury",
-    categories: ["editorial", "modern"],
-    url: "demos/premium-elegante/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/black-tie-illustration-Bzqxj15v.png",
-    description: "A high-fashion black and deep gold high-contrast theme, combining bold serif headings and sleek photo filters.",
-    features: ["High-contrast dark luxury noir palette", "Bold editorial letterings", "Polished fade animations on scroll", "Interactive timeline & stays map", "Custom domain compatibility"]
-  },
-  {
-    code: "369",
-    id: "premium-selva",
-    title: "Selva Tropical",
-    tag: "Tropical Botanical",
-    tier: "Luxury",
-    categories: ["botanical"],
-    url: "demos/premium-selva/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/accommodation-key-BlOBCOEh.png",
-    description: "Deep lush forest greens, palm leaves, gold foil elements, and comprehensive lodging maps for destination events.",
-    features: ["Deep green jungle leaf overlays", "Gold foil accents & border framing", "Multi-day events itinerary", "Hotel accommodations grid", "RSVP with guest count dropdowns"]
-  },
-  {
-    code: "370",
-    id: "sweetlove-demo",
-    title: "Sweet Love",
-    tag: "Romantic Chic",
-    tier: "Premium",
-    categories: ["modern"],
-    url: "demos/sweetlove-demo/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-15-B6WOzNNx.jpg",
-    description: "Warm blush pink and champagne gold elements with pre-configured romantic audio loops and streamlined WhatsApp response cards.",
-    features: ["Soft pink & ivory aesthetic", "Pre-configured romantic music looping", "Dynamic events countdown timer", "Gift registry note block", "Direct WhatsApp RSVPs"]
-  },
-  {
-    code: "371",
-    id: "theatre-demo",
-    title: "Theatre Vintage",
-    tag: "Retro Playbill",
-    tier: "Luxury",
-    categories: ["excellence"],
-    url: "demos/theatre-demo/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-11-DtICv6j2.jpg",
-    description: "Vintage ticket stub and classic playbill visual system with ticket-punch details and old cinema typography.",
-    features: ["Vintage ticket stub styling", "Custom ticket punch animations", "Old cinema editorial typography", "Ceremony timeline blocks", "Gift registry cards"]
-  },
-  {
-    code: "372",
-    id: "minimalist-demo",
-    title: "Sleek Minimalist",
-    tag: "Clean Modern",
-    tier: "Premium",
-    categories: ["minimalist"],
-    url: "demos/minimalist-demo/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-2-CSzuzifn.jpg",
-    description: "An ultra-clean modern grid focusing attention on details with stunning sans-serif typography, large photos, and simple forms.",
-    features: ["Ultra-clean grid styling", "Luxury sans-serif pairings", "Integrated map pins", "Sleek single-button RSVP", "Minimalist timeline list"]
-  },
-  {
-    code: "373",
-    id: "save-the-date-candlelight",
-    title: "Candlelight STD",
-    tag: "Save the Date",
-    tier: "Save the Date",
-    categories: ["savethedate"],
-    url: "demos/save-the-date-candlelight/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-3-B8TX3EAU.jpg",
-    description: "A warm candlelight romantic pre-invitation landing card designed to announce your upcoming date with a countdown.",
-    features: ["Starry candlelight glowing layouts", "Live countdown clock", "Simple guest count WhatsApp form", "Sleek single photo card", "Pre-invite details banner"]
-  },
-  {
-    code: "374",
-    id: "save-the-date-lace",
-    title: "Lace STD",
-    tag: "Save the Date",
-    tier: "Save the Date",
-    categories: ["savethedate"],
-    url: "demos/save-the-date-lace/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-4-l95HTdkR.jpg",
-    description: "Delicate white lace watercolor details layered over elegant sand panels, designed for romantic pre-announcements.",
-    features: ["Lace design borders", "Clean romantic fonts", "Aesthetic 'Save our Date' calendar block", "Google Maps location placeholder", "WhatsApp quick response link"]
-  },
-  {
-    code: "375",
-    id: "save-the-date-scratch",
-    title: "Scratch Card STD",
-    tag: "Save the Date",
-    tier: "Save the Date",
-    categories: ["savethedate"],
-    url: "demos/save-the-date-scratch/source/index.html",
-    previewImg: "demos/bloom-template/source/assets/gallery-13-DgpPSe4h.jpg",
-    description: "An interactive digital scratch card where guests click or drag to rub off a golden coat, revealing the wedding date in a playful way.",
-    features: ["Interactive touch/click scratch canvas", "Golden scratch coating surface simulation", "Surprise date reveal animation", "Minimalist location details", "WhatsApp response links"]
-  },
-  
   // New ShaadiPath Traditional Indian wedding layouts (Copied & Integrated)
   {
     code: "376",
@@ -309,7 +8,7 @@ const demos = [
     tag: "Traditional Tanya",
     tier: "Luxury",
     categories: ["bestsellers", "indian", "traditional", "classical"],
-    url: "demos/shaadipath-template01/source/index.html",
+    url: "demos/shaadipath-template01/source/",
     previewImg: "demos/shaadipath-template01/preview.png",
     description: "Ganesha blessings, paper-cut walking elephants transition, and custom multi-celebration Jodhpur timelines.",
     features: ["Traditional Ganesha icon blessing", "Elephant walk scroll transition", "Mehendi, Haldi & Sagan timeline", "Preloaded traditional Indian music loop", "WhatsApp RSVP questionnaire"]
@@ -321,7 +20,7 @@ const demos = [
     tag: "Traditional Indian",
     tier: "Premium",
     categories: ["indian", "traditional"],
-    url: "demos/shaadipath-template02/source/index.html",
+    url: "demos/shaadipath-template02/source/",
     previewImg: "demos/shaadipath-template02/preview.png",
     description: "A gorgeous Rajputana fortress theme with bright saffron watercolor floral details and elegant Hindi-English fonts.",
     features: ["Rajasthan palace watercolor art", "Golden toran framing banners", "Multi-event timeline list", "Aesthetic photo grids", "Google Maps navigation link"]
@@ -333,7 +32,7 @@ const demos = [
     tag: "Traditional Luxury",
     tier: "Luxury",
     categories: ["indian", "traditional", "classical"],
-    url: "demos/shaadipath-template03/source/index.html",
+    url: "demos/shaadipath-template03/source/",
     previewImg: "demos/shaadipath-template03/preview.png",
     description: "Mandap marigold visual accents, paper-cut gold filigree, and royal sans-serif lettering.",
     features: ["Marigold toran garlands details", "Golden mandala preloader trace", "Accommodations stays guide", "Sleek musical soundtrack player", "WhatsApp RSVP integration"]
@@ -345,7 +44,7 @@ const demos = [
     tag: "Rustic Indian",
     tier: "Premium",
     categories: ["indian", "traditional"],
-    url: "demos/shaadipath-template04/source/index.html",
+    url: "demos/shaadipath-template04/source/",
     previewImg: "demos/shaadipath-template04/preview.png",
     description: "Warm terracotta clay textured panels, tea cups illustrations, and romantic blessings quotes.",
     features: ["Rustic terracotta visual paneling", "Aesthetic 'Chai Addicts' themed tag", "Haldi & Sagan ceremonies timeline", "Wedding date countdown clock", "Integrated maps location link"]
@@ -357,7 +56,7 @@ const demos = [
     tag: "Mandala Splendor",
     tier: "Luxury",
     categories: ["bestsellers", "indian", "traditional"],
-    url: "demos/shaadipath-template05/source/index.html",
+    url: "demos/shaadipath-template05/source/",
     previewImg: "demos/shaadipath-template05/preview.png",
     description: "Traditional watercolor royal peacock sketches, rich gold scroll lines, and dynamic photo galleries.",
     features: ["Watercolor royal peacock illustrations", "Mandala circular visual backdrops", "Accommodations booking modules", "Traditional music player loops", "VIP support included"]
@@ -369,7 +68,7 @@ const demos = [
     tag: "Vibrant Mandap",
     tier: "Premium",
     categories: ["indian", "traditional"],
-    url: "demos/shaadipath-template06/source/index.html",
+    url: "demos/shaadipath-template06/source/",
     previewImg: "demos/shaadipath-template06/preview.png",
     description: "Deep red shubh vivah motif layout, mandala circles, and checklist RSVP questions.",
     features: ["Shubh Vivah traditional banner logo", "Vibrant crimson and gold color system", "Checklist guest reply flow", "Ceremonies timing indicators", "Photo gallery slider"]
@@ -381,7 +80,7 @@ const demos = [
     tag: "Garden Pheras",
     tier: "Premium",
     categories: ["indian", "traditional", "botanical"],
-    url: "demos/shaadipath-template07/source/index.html",
+    url: "demos/shaadipath-template07/source/",
     previewImg: "demos/shaadipath-template07/preview.png",
     description: "Delicate marigold branch drawings and garden mandap ceremony notes, ideal for organic rustic celebrations.",
     features: ["Marigold branch watercolor sketches", "Soft sage and sandstone palettes", "Mandap ceremony timeline list", "WhatsApp RSVP links", "Google Maps direct routes"]
@@ -393,7 +92,7 @@ const demos = [
     tag: "Rajasthan Heritage",
     tier: "Luxury",
     categories: ["indian", "traditional", "excellence"],
-    url: "demos/shaadipath-template08/source/index.html",
+    url: "demos/shaadipath-template08/source/",
     previewImg: "demos/shaadipath-template08/preview.png",
     description: "Royal palace architectural illustrations, detailed wedding schedules, and stay instructions.",
     features: ["Umaid Bhawan architecture overlays", "Royal Rajputana visual layout", "Accommodations and transport grids", "Bespoke illustrated watercolor map compatibility", "Direct RSVP buttons"]
@@ -405,7 +104,7 @@ const demos = [
     tag: "Saffron Festive",
     tier: "Premium",
     categories: ["indian", "traditional"],
-    url: "demos/shaadipath-template09/source/index.html",
+    url: "demos/shaadipath-template09/source/",
     previewImg: "demos/shaadipath-template09/preview.png",
     description: "Saffron yellow and marigold colors, traditional folk dance patterns, and instant guest feedback.",
     features: ["Mehndi yellow festive visual systems", "Raas/Folk music looping track", "Event details with maps markers", "Dynamic date counter clock", "WhatsApp fast replies"]
@@ -417,7 +116,7 @@ const demos = [
     tag: "Heritage Pink",
     tier: "Luxury",
     categories: ["indian", "traditional"],
-    url: "demos/shaadipath-template10/source/index.html",
+    url: "demos/shaadipath-template10/source/",
     previewImg: "demos/shaadipath-template10/preview.png",
     description: "Heritage pink sand aesthetic, delicate screen overlay textures, and extensive playlist selectors.",
     features: ["Jaipur heritage pink visual overlays", "Traditional Jali screen textures", "Ambient soundtrack selector widget", "Accommodation guides panel", "RSVP with guest count selector"]
@@ -429,7 +128,7 @@ const demos = [
     tag: "Traditional Pre-Invite",
     tier: "Save the Date",
     categories: ["savethedate", "indian", "traditional"],
-    url: "demos/shaadipath-std-01-sand/source/index.html",
+    url: "demos/shaadipath-std-01-sand/source/",
     previewImg: "demos/shaadipath-std-01-sand/preview.png",
     description: "A gorgeous sand mandala Save the Date pre-invitation card with active countdown.",
     features: ["Mandala gold graphics", "Live countdown clock", "Simple RSVP links", "Elegant Sand color theme"]
@@ -441,7 +140,7 @@ const demos = [
     tag: "Traditional Pre-Invite",
     tier: "Save the Date",
     categories: ["savethedate", "indian", "traditional"],
-    url: "demos/shaadipath-std-02-peacock/source/index.html",
+    url: "demos/shaadipath-std-02-peacock/source/",
     previewImg: "demos/shaadipath-std-02-peacock/preview.png",
     description: "Watercolor peacock crest pre-invitation landing card designed for royal wedding previews.",
     features: ["Watercolor peacock crest overlay", "Sleek countdown widget", "WhatsApp quick RSVPs", "Traditional typography logo"]
@@ -453,7 +152,7 @@ const demos = [
     tag: "Traditional Pre-Invite",
     tier: "Save the Date",
     categories: ["savethedate", "indian", "traditional"],
-    url: "demos/shaadipath-std-03-Mirror/source/index.html",
+    url: "demos/shaadipath-std-03-Mirror/source/",
     previewImg: "demos/shaadipath-std-03-Mirror/preview.png",
     description: "A stunning modern mirrors collage Save the Date template featuring high contrast Indian festive tags.",
     features: ["Indian festive border frames", "Starry glow layouts", "Simple RSVP form", "Google Maps venue pins"]
@@ -901,7 +600,7 @@ function buildCardHtml(demo) {
     : `<div class="design-thumb-icon">${demo.title}</div>`;
 
   return `
-    <div class="design-card">
+    <div class="design-card reveal">
       <span class="design-tag">${demo.tag}</span>
       <span class="design-code-badge">#${demo.code}</span>
       <div class="design-thumb">
@@ -909,7 +608,6 @@ function buildCardHtml(demo) {
       </div>
       <div class="design-info">
         <h3>${demo.title} <span style="font-family: var(--font-sans); font-weight: normal; color: var(--text-secondary); font-size: 14px; margin-left: 6px;">#${demo.code}</span></h3>
-        <p>${demo.description}</p>
         <div class="design-footer">
           <span class="design-tier">${demo.tier}</span>
           <a class="design-link" href="#design/${demo.id}">
@@ -1922,7 +1620,85 @@ function init() {
   renderCatalog();
   renderSandboxFeature();
   bindEvents();
+  initReviews();
   handleRoute();
+}
+
+function initReviews() {
+  const toggleBtn = document.getElementById('toggle-review-btn');
+  const reviewForm = document.getElementById('write-review-form');
+  const starContainer = document.getElementById('star-rating-input');
+  const ratingInput = document.getElementById('review-rating-val');
+  const successMsg = document.getElementById('review-success-msg');
+  const reviewList = document.getElementById('review-list-container');
+
+  if (!toggleBtn || !reviewForm) return;
+
+  toggleBtn.addEventListener('click', () => {
+    reviewForm.style.display = reviewForm.style.display === 'none' ? 'block' : 'none';
+    if (reviewForm.style.display === 'block') {
+      toggleBtn.style.display = 'none'; // hide the button once clicked
+    }
+  });
+
+  if (starContainer) {
+    const stars = Array.from(starContainer.querySelectorAll('span'));
+    
+    function updateStars(val) {
+      stars.forEach((s, idx) => {
+        s.style.color = idx < val ? '#f5b301' : '#ccc';
+      });
+    }
+
+    // initial state
+    updateStars(5);
+
+    stars.forEach(star => {
+      star.addEventListener('click', (e) => {
+        const val = parseInt(e.target.getAttribute('data-val'), 10);
+        ratingInput.value = val;
+        updateStars(val);
+      });
+      star.addEventListener('mouseenter', (e) => {
+        const val = parseInt(e.target.getAttribute('data-val'), 10);
+        updateStars(val);
+      });
+    });
+
+    starContainer.addEventListener('mouseleave', () => {
+      updateStars(parseInt(ratingInput.value, 10));
+    });
+  }
+
+  reviewForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('review-name').value;
+    const text = document.getElementById('review-text').value;
+    const rating = parseInt(ratingInput.value, 10);
+
+    // Create a new review item
+    const newReview = document.createElement('div');
+    newReview.className = 'review-item';
+    newReview.style.cssText = 'background: var(--bg-secondary); padding: 15px; border-radius: var(--radius-sm); box-shadow: 0 2px 8px rgba(0,0,0,0.02); animation: fadeUp 0.5s ease;';
+    
+    let starsHtml = '';
+    for (let i = 0; i < 5; i++) {
+      starsHtml += i < rating ? '★' : '☆';
+    }
+
+    newReview.innerHTML = `
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <strong style="font-size: 0.95rem; color: var(--text-primary);">${name}</strong>
+        <span style="color: #f5b301; font-size: 0.9rem;">${starsHtml}</span>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">${text}</p>
+    `;
+
+    reviewList.insertBefore(newReview, reviewList.firstChild);
+
+    reviewForm.style.display = 'none';
+    successMsg.style.display = 'block';
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);

@@ -92,43 +92,99 @@
 <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">🔔</button>
 
 <!-- PRELOADER — spinning mandala trace (#1) -->
-<div id="preloader" class="preloader">
-  <div class="pl-content">
-    <div class="pl-mandala-wrap">
-      <svg class="pl-mandala-svg" viewBox="0 0 120 120" width="120" height="120" fill="none" xmlns="assets/svg-b05687485d.bin">
-        <!-- 3 concentric rings tracing in (#1) -->
-        <circle class="pl-ring-1" cx="60" cy="60" r="40" stroke="rgba(240,168,0,.70)" stroke-width="1.5"
-          stroke-dasharray="0" stroke-dashoffset="0"/>
-        <circle class="pl-ring-2" cx="60" cy="60" r="31" stroke="rgba(200,16,96,.60)" stroke-width="1.2"
-          stroke-dasharray="0" stroke-dashoffset="0"/>
-        <circle class="pl-ring-3" cx="60" cy="60" r="22" stroke="rgba(232,64,16,.55)" stroke-width="1.0"
-          stroke-dasharray="0" stroke-dashoffset="0"/>
-        <!-- Petals fade in (#1) -->
-        <g class="pl-petals">
-          <ellipse cx="60" cy="14" rx="4" ry="10" fill="rgba(200,16,96,.45)" transform="rotate(0   60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="10" fill="rgba(240,168,0,.40)" transform="rotate(45  60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="10" fill="rgba(232,64,16,.38)" transform="rotate(90  60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="10" fill="rgba(240,168,0,.40)" transform="rotate(135 60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="10" fill="rgba(200,16,96,.45)" transform="rotate(180 60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="10" fill="rgba(240,168,0,.40)" transform="rotate(225 60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="10" fill="rgba(232,64,16,.38)" transform="rotate(270 60 60)"/>
-          <ellipse cx="60" cy="14" rx="4" ry="10" fill="rgba(240,168,0,.40)" transform="rotate(315 60 60)"/>
+<!-- ═══ SCRATCH GATE ══════════════════════════════════ -->
+<div id="scratchGate" class="scratch-gate">
+  <div class="sg-bg"></div>
+
+  <!-- Floating ornaments on gate -->
+  <img class="sg-diya sg-dl" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="sg-diya sg-dr" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vl" src="assets/Element_204-a00fdaed6d.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vr" src="assets/Element_205-7988a52991.png" alt="" aria-hidden="true">
+
+  <div class="sg-content">
+    <!-- Top mandala -->
+    <div class="sg-mandala" aria-hidden="true">
+      <svg viewBox="0 0 120 120" width="72" height="72" style="color: var(--gold);">
+        <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+        <circle cx="60" cy="60" r="38" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/>
+        <g opacity=".18">
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(0 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(45 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(90 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(135 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(180 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(225 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(270 60 60)"/>
+          <ellipse cx="60" cy="18" rx="6" ry="15" fill="currentColor" transform="rotate(315 60 60)"/>
         </g>
-        <!-- Centre dot (#1) -->
-        <circle class="pl-centre-dot" cx="60" cy="60" r="4" fill="rgba(240,168,0,.80)"/>
-        <circle class="pl-centre-dot" cx="60" cy="60" r="2" fill="rgba(200,16,96,.90)"/>
+        <circle cx="60" cy="60" r="6" fill="currentColor" opacity=".6"/>
       </svg>
     </div>
-    <div class="pl-names" id="plNames">
-      <span class="pl-n1">Simran</span>
-      <span class="pl-weds">weds</span>
-      <span class="pl-n2">Harjot</span>
+
+    <!-- Couple names above scratch -->
+    <p class="sg-eyebrow">A Royal Invitation</p>
+    <div class="sg-names">
+      <span class="sg-bride pl-n1">Priya</span>
+      <span class="sg-heart">♡</span>
+      <span class="sg-groom pl-n2">Arjun</span>
+    </div>
+    <p class="sg-hint">✦ Scratch to reveal the wedding date ✦</p>
+
+    <!-- THE SCRATCH CARD -->
+    <div class="scratch-card-wrap">
+      <!-- Hidden date underneath -->
+      <div class="scratch-reveal" id="scratchReveal" aria-label="Wedding date">
+        <div class="sr-top">
+          <div class="sr-line"></div>
+          <span class="sr-label">Wedding Date</span>
+          <div class="sr-line"></div>
+        </div>
+        <div class="sr-date pl-date">
+          <span class="sr-day">12</span>
+          <span class="sr-sep">·</span>
+          <span class="sr-month">December</span>
+          <span class="sr-sep">·</span>
+          <span class="sr-year">2026</span>
+        </div>
+        <p class="sr-venue">Umaid Bhawan · Jodhpur</p>
+        <div class="sr-stars" aria-hidden="true">✦ ✦ ✦</div>
+      </div>
+      <!-- Canvas scratch surface -->
+      <canvas id="scratchCanvas" class="scratch-canvas" aria-hidden="true"></canvas>
+      <!-- Scratch texture hint overlay -->
+      <div class="scratch-hint-overlay" id="scratchHint">
+        <div class="sho-icon">
+          <svg viewBox="0 0 24 24" width="32" fill="none" stroke="url(#goldGrad)" stroke-width="0.5">
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D4AF37" />
+                <stop offset="50%" stop-color="#FFF8DC" />
+                <stop offset="100%" stop-color="#D4AF37" />
+              </linearGradient>
+            </defs>
+            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#goldGrad)" opacity="0.8"/>
+          </svg>
+        </div>
+        <span>Scratch here</span>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="sg-progress-wrap">
+      <div class="sg-progress-bar" id="sgProgress"></div>
+    </div>
+    <p class="sg-progress-label" id="sgProgressLabel">0% revealed</p>
+
+    <!-- Unlocked message (hidden until done) -->
+    <div class="sg-unlocked" id="sgUnlocked">
+      <p>🎊 Date revealed! Scroll to explore</p>
+      <div class="sg-unlock-arrow">↓</div>
     </div>
   </div>
 </div>
 
-<!-- HERO -->
-<div id="heroWrap" class="hero-wrap">
+<!-- HERO SCROLL SCENE -->\n\n  <div id="heroWrap" class="hero-wrap">
   <div id="heroPin" class="hero-pin">
 
     <!-- LAYER 1: Background — sunset ocean scene (static / slow parallax) -->
