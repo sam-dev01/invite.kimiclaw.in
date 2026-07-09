@@ -22,8 +22,8 @@
     <meta name="twitter:description" content="Stunning handcrafted digital wedding invitations with RSVP via WhatsApp, interactive maps, event timelines, music players, and 38 premium designs.">
     <link rel="preload" href="assets/thumbs/hero-bloom.webp" as="image" fetchpriority="high">
     <link rel="dns-prefetch" href="https://checkout.razorpay.com">
-    <link rel="preload" href="styles.css?v=1.0.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css?v=1.0.6"></noscript>
+    <link rel="preload" href="styles.css?v=1.0.7" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.0.7"></noscript>
     <style>
       *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
       :root{--bg-primary:#FCFAF7;--bg-card:#FFFFFF;--text-primary:#1F1D1A;--text-secondary:#6B655C;--border-color:#E2DBD3;--accent-gold:#C5A26B;--accent-gold-hover:#B5915A;--shadow-lg:0 32px 64px rgba(31,29,26,.12);--font-serif:Georgia,"Times New Roman",serif;--font-sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--radius-sm:6px}
@@ -33,9 +33,12 @@
       .brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-logo{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(197,162,107,.32);color:#C5A26B;font-family:var(--font-serif);font-size:20px;font-weight:700;background:linear-gradient(135deg,rgba(197,162,107,.1),rgba(197,162,107,0))}.brand-text{display:flex;flex-direction:column;line-height:1.1}.brand-text strong{font-family:var(--font-serif);font-size:20px;font-weight:700}.brand-text small{font-size:11px;color:#6B655C;letter-spacing:1px;text-transform:uppercase}.nav{display:flex;align-items:center;gap:28px}.nav-links{display:flex;align-items:center;gap:24px}.nav-link{font-size:14px;color:#6B655C}.nav-actions{display:flex;gap:10px}.icon-btn{width:40px;height:40px;border:1px solid var(--border-color);border-radius:50%;background:rgba(255,255,255,.55);display:grid;place-items:center}.hamburger{display:none;background:none;border:0;width:32px;height:24px;position:relative;z-index:200;flex-direction:column;justify-content:space-between;padding:4px;margin:-4px}.hamburger span{display:block;width:100%;height:2px;background:#1F1D1A;border-radius:2px}
       #app{padding-top:64px}.hero{min-height:calc(100svh - 64px);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:clamp(24px,6vw,64px);padding:48px clamp(16px,5vw,64px);background:radial-gradient(circle at 80% 20%,rgba(197,162,107,.08),transparent 40%),radial-gradient(circle at 10% 80%,rgba(94,114,95,.05),transparent 45%);position:relative;overflow:hidden}.hero-content{display:flex;flex-direction:column;gap:24px;max-width:680px}.eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:#C5A26B}.hero h1{font-family:var(--font-serif);font-size:clamp(38px,5.5vw,68px);font-weight:300;line-height:1.05}.hero h1 span{font-family:var(--font-serif);font-style:italic;font-weight:400;color:#C5A26B}.hero-lead{font-size:clamp(15px,2.2vw,18px);color:#6B655C;font-weight:300;line-height:1.6}.hero-actions{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:44px;padding:0 28px;border-radius:6px;font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap}.btn-primary{background:#1F1D1A;color:#FCFAF7;border:1px solid #1F1D1A}.btn-secondary{background:transparent;color:#1F1D1A;border:1px solid #E2DBD3}.btn-gold{background:#C5A26B;color:#fff;border:1px solid #C5A26B}.trust-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.trust-badge{font-size:12px;color:#6B655C;border:1px solid rgba(197,162,107,.2);padding:7px 10px;border-radius:99px;background:rgba(255,255,255,.55)}
       .hero-visual{display:flex;justify-content:center;align-items:center;position:relative}.phone-mockup{width:320px;max-width:100%;height:auto;aspect-ratio:1/2;background:#000;border:12px solid #1F1D1A;border-radius:40px;box-shadow:var(--shadow-lg),0 0 0 1px var(--border-color);position:relative;overflow:hidden;display:flex;flex-direction:column}.phone-mockup::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:24px;background:#1F1D1A;border-bottom-left-radius:16px;border-bottom-right-radius:16px;z-index:10}.phone-mockup::after{content:"";position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:120px;height:4px;background:rgba(255,255,255,.5);border-radius:2px;z-index:10}.phone-screen{flex:1;width:100%;height:100%;border-radius:28px;overflow:hidden;background:#fff;position:relative}.visual-backdrop{position:absolute;width:460px;height:460px;border:1px solid rgba(197,162,107,.15);border-radius:50%;z-index:-1}.visual-backdrop-inner{display:none}.welcome-screen{position:fixed;inset:0;z-index:99999;background:rgba(31,29,26,.55);display:flex;align-items:center;justify-content:center}
-      @media(max-width:1024px){.hero{grid-template-columns:1fr;text-align:center;padding-top:56px;padding-bottom:48px;min-height:auto}.hero-content{align-items:center;margin:0 auto;max-width:600px}.hero-actions{justify-content:center}}
-      @media(max-width:768px){.topbar{padding:14px 20px}.brand-text strong{font-size:17px}.hamburger{display:flex}.nav{position:fixed;top:0;right:-100%;width:min(80%,320px);height:100dvh;background:#fff;border-left:1px solid #E2DBD3;padding:90px 28px 32px;flex-direction:column;align-items:stretch;gap:32px;z-index:150}.nav-links{display:flex;flex-direction:column;gap:16px}.hero-actions{flex-direction:column;align-items:stretch;width:100%;max-width:340px;margin-left:auto;margin-right:auto}.hero-actions .btn{width:100%;justify-content:center}}
-      @media(max-width:600px){.hero{padding:40px 20px 56px;gap:28px}.hero h1{font-size:clamp(34px,10vw,46px)}.hero-lead{font-size:15px}.phone-mockup{width:min(236px,64vw);border-width:8px;border-radius:30px}.phone-screen{border-radius:22px}.brand-text small{display:none}.trust-badges{justify-content:center}}
+      .reviews-section{padding:72px clamp(16px,5vw,64px);background:linear-gradient(180deg,rgba(197,162,107,.04),transparent)}.reviews-header{max-width:780px;margin:0 auto 28px;text-align:center}.reviews-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.review-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:20px;padding:18px;box-shadow:var(--shadow-sm)}.review-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.review-name{font-weight:700}.review-stars{color:#C5A26B;letter-spacing:2px}.review-meta{font-size:12px;color:var(--text-secondary)}.review-text{color:var(--text-primary);line-height:1.7;margin-top:10px}.review-actions{display:flex;justify-content:center;margin-top:24px}.review-btn{min-width:220px}.review-modal{position:fixed;inset:0;z-index:100000;background:rgba(18,17,15,.6);display:none;align-items:center;justify-content:center;padding:20px}.review-modal.open{display:flex}.review-dialog{width:min(92vw,520px);background:var(--bg-card);border:1px solid var(--border-color);border-radius:24px;box-shadow:var(--shadow-lg);padding:24px}.review-dialog h3{font-size:28px;margin-bottom:8px}.review-dialog p{color:var(--text-secondary);margin-bottom:18px}.review-field{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}.review-field label{font-size:13px;font-weight:600}.review-field input,.review-field textarea{width:100%;border:1px solid var(--border-color);border-radius:12px;background:var(--bg-primary);color:var(--text-primary);padding:14px}.rating-input{display:flex;gap:8px;flex-wrap:wrap}.rating-input button{border:0;background:none;font-size:28px;line-height:1;cursor:pointer;color:rgba(197,162,107,.35)}.rating-input button.active{color:#C5A26B}.review-actions-row{display:flex;gap:12px;justify-content:flex-end;margin-top:8px}.review-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1F1D1A;color:#fff;padding:12px 16px;border-radius:999px;z-index:100001;display:none;box-shadow:var(--shadow-lg)}.review-toast.show{display:block}
+      .welcome-card{width:min(92vw,420px);background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border-color);border-radius:24px;box-shadow:var(--shadow-lg);padding:28px}.welcome-brand{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin-bottom:16px;font-family:var(--font-serif);font-size:28px;color:var(--accent-gold);border:1px solid rgba(197,162,107,.35);background:linear-gradient(135deg,rgba(197,162,107,.08),transparent)}.welcome-card h2{font-size:28px;margin-bottom:8px}.welcome-card p{color:var(--text-secondary);margin-bottom:18px}.welcome-options{display:grid;gap:14px;margin-bottom:18px}.welcome-label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}.welcome-select{width:100%;min-height:48px;border-radius:12px;border:1px solid var(--border-color);background:var(--bg-primary);color:var(--text-primary);padding:0 14px}
+      @media (max-width: 1024px) {.hero{grid-template-columns:1fr;text-align:center;padding-top:56px;padding-bottom:48px;min-height:auto}.hero-content{align-items:center;margin:0 auto;max-width:640px}.hero-actions{justify-content:center}.reviews-grid{grid-template-columns:1fr 1fr}}
+      @media (max-width: 768px) {.topbar{padding:14px 20px}.brand-text strong{font-size:17px}.hamburger{display:flex}.nav{position:fixed;top:0;right:-100%;width:min(84%,320px);height:100dvh;background:var(--bg-card);border-left:1px solid var(--border-color);padding:90px 28px 32px;flex-direction:column;align-items:stretch;gap:32px;z-index:150;box-shadow:-20px 0 60px rgba(0,0,0,0.12);transition:right .3s ease}.nav.open{right:0}.nav-links{display:flex;flex-direction:column;gap:16px}.hero-actions{flex-direction:column;align-items:stretch;width:100%;max-width:340px}.hero-actions .btn{width:100%;justify-content:center}.phone-mockup{width:min(260px,68vw);border-width:8px;border-radius:30px}.reviews-grid{grid-template-columns:1fr}.review-actions-row{flex-direction:column}.review-actions-row .btn{width:100%}}
+      @media (max-width: 600px) {.hero{padding:40px 20px 56px;gap:28px}.hero h1{font-size:clamp(34px,10vw,46px)}.hero-lead{font-size:15px}.brand-text small{display:none}.hero-visual{margin-top:8px}.welcome-card,.review-dialog{padding:22px;border-radius:20px}.welcome-card h2,.review-dialog h3{font-size:24px}.reviews-section{padding:56px 20px}.reviews-header{text-align:left}.review-btn{width:100%}}
+      @keyframes fadeInUp {from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
     </style>
   </head>
   <body data-theme="light">
@@ -49,7 +52,7 @@
         
         <div class="welcome-options">
           <div class="welcome-field">
-            <label class="welcome-label" for="welcome-lang">&#x1F310; Language</label>
+            <label class="welcome-label" for="welcome-lang">🌐 Language</label>
             <select id="welcome-lang" class="welcome-select">
               <option value="en">English</option>
               <option value="es">Español</option>
@@ -57,18 +60,52 @@
           </div>
           
           <div class="welcome-field">
-            <label class="welcome-label" for="welcome-currency">&#x1F4B0; Currency</label>
+            <label class="welcome-label" for="welcome-currency">💰 Currency</label>
             <select id="welcome-currency" class="welcome-select">
-              <option value="INR">&#x20B9; INR — Indian Rupee</option>
+              <option value="INR">₹ INR — Indian Rupee</option>
               <option value="USD">$ USD — US Dollar</option>
               <option value="EUR">€ EUR — Euro</option>
             </select>
           </div>
         </div>
         
-        <button id="welcome-continue-btn" class="btn btn-gold" style="width: 100%; margin-top: 8px; font-size: 15px; padding: 16px 24px;">Continue to Website &#x2192;</button>
+        <button id="welcome-continue-btn" class="btn btn-gold" style="width: 100%; margin-top: 8px; font-size: 15px; padding: 16px 24px;">Continue to Website →</button>
       </div>
     </div>
+
+    <div id="review-toast" class="review-toast">✅ Thank you for your review!</div>
+
+    <div id="review-modal" class="review-modal" aria-hidden="true">
+      <div class="review-dialog" role="dialog" aria-modal="true" aria-labelledby="review-modal-title">
+        <h3 id="review-modal-title">Write a Review</h3>
+        <p>Share your experience. Your review will appear instantly on the page.</p>
+        <form id="review-form">
+          <div class="review-field">
+            <label for="review-name">Name</label>
+            <input id="review-name" name="name" type="text" placeholder="Your name" maxlength="60" required>
+          </div>
+          <div class="review-field">
+            <label>Rating</label>
+            <div class="rating-input" id="review-rating" aria-label="Rating selector">
+              <button type="button" data-rating="1">★</button>
+              <button type="button" data-rating="2">★</button>
+              <button type="button" data-rating="3">★</button>
+              <button type="button" data-rating="4">★</button>
+              <button type="button" data-rating="5">★</button>
+            </div>
+          </div>
+          <div class="review-field">
+            <label for="review-text">Your Review</label>
+            <textarea id="review-text" name="review" rows="5" placeholder="Tell us what you liked..." minlength="20" maxlength="500" required></textarea>
+          </div>
+          <div class="review-actions-row">
+            <button type="button" id="review-cancel-btn" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-gold">Submit Review</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
     <!-- Premium Frosted Navigation Header -->
     <header class="topbar">
       <a class="brand" href="#home" aria-label="invite.kimiclaw.in Home">
@@ -79,7 +116,6 @@
         </div>
       </a>
       
-      <!-- Hamburger Menu Button for Mobile -->
       <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span>
         <span></span>
@@ -99,13 +135,8 @@
       </nav>
     </header>
 
-    <!-- Main Dynamic Application Container -->
     <main id="app">
-      
-      <!-- Home View Layout -->
       <div id="home-view">
-        
-        <!-- Hero Section -->
         <section class="hero" id="home">
           <div class="hero-content">
             <p class="eyebrow" data-i18n="heroEyebrow">Premium Custom Wedding Websites</p>
@@ -127,28 +158,21 @@
             <div class="visual-backdrop">
               <div class="visual-backdrop-inner"></div>
             </div>
-            
-            <!-- Floating Decorative Elements -->
             <div class="floating-el shape-1" aria-hidden="true">✦</div>
             <div class="floating-el shape-2" aria-hidden="true">✧</div>
             <div class="floating-el shape-3" aria-hidden="true"></div>
             <div class="floating-el shape-4" aria-hidden="true">✦</div>
             <div class="floating-el shape-5" aria-hidden="true"></div>
-            <!-- Dynamic Smartphone Simulator -->
             <div class="phone-mockup">
               <div class="phone-screen" id="hero-phone-screen">
                 <img src="assets/thumbs/hero-bloom.webp" alt="Template Preview" id="hero-placeholder" width="320" height="640" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:2;transition:opacity 0.6s ease;">
-                <!-- Iframe is loaded dynamically via JS on interaction to prevent 9MB payload blocking LCP & TBT -->
                 <script>
                   (function() {
                     var iframeLoaded = false;
                     function loadHeroIframe() {
                       if (iframeLoaded) return;
                       iframeLoaded = true;
-                      
-                      // Remove event listeners
                       window.removeEventListener('click', loadHeroIframe);
-                      
                       var iframe = document.createElement('iframe');
                       iframe.src = "demos/bloom-template/source/index.html";
                       iframe.id = "hero-phone-iframe";
@@ -170,7 +194,6 @@
           </div>
         </section>
 
-        <!-- Stats Counter Section -->
         <section class="stats-section" id="stats" aria-label="Our numbers">
           <div class="stats-grid">
             <div class="stat-item reveal">
@@ -196,7 +219,6 @@
           </div>
         </section>
 
-        <!-- Steps Section -->
         <section class="section bg-sec" id="how-it-works">
           <div class="section-header reveal">
             <p class="eyebrow" data-i18n="stepsEyebrow">The Process</p>
@@ -218,7 +240,7 @@
               <p data-i18n="step2Desc">Provide your names, dates, maps, photos, custom music playlist, and RSVP questions through our guided order form wizard.</p>
             </article>
             <article class="step-card reveal reveal-delay-2">
-              <div class="step-icon" style="font-size: 32px; margin-bottom: 16px;">👁️</div>
+              <div class="step-icon" style="font-size: 32px; margin-bottom: 16px;">👀</div>
               <div class="step-number">03</div>
               <h3 data-i18n="step3Title">Review Draft Preview</h3>
               <p data-i18n="step3Desc">Our designers customize the invitation specifically for you, setting up interactive features and delivering a draft preview link.</p>
@@ -232,926 +254,23 @@
           </div>
         </section>
 
-
-        <!-- Interactive Sandbox Playground -->
-        <section class="section" id="playground">
-          <div class="section-header reveal">
-            <p class="eyebrow" data-i18n="playEyebrow">Interactive Sandbox</p>
-            <h2 data-i18n="playTitle">Try the premium features.</h2>
-            <p data-i18n="playDesc">Interact with our simulated features below to see how they behave on a guests' mobile phone screen.</p>
+        <section class="reviews-section" id="reviews">
+          <div class="reviews-header">
+            <p class="eyebrow">Customer Reviews</p>
+            <h2>Real feedback from happy clients.</h2>
+            <p>Visitors can write a review, and the page will update instantly.</p>
           </div>
-          
-          <div class="sandbox-layout">
-            <div class="sandbox-tabs">
-              
-              <button class="sandbox-tab active" data-feature="rsvp">
-                <div class="sandbox-tab-icon">💬</div>
-                <div class="sandbox-tab-info">
-                  <h3 data-i18n="tabRsvpTitle">Instant RSVP via WhatsApp</h3>
-                  <p data-i18n="tabRsvpDesc">Simulate filling out food preferences and generating a beautifully formatted RSVP WhatsApp message.</p>
-                </div>
-              </button>
-              
-              <button class="sandbox-tab" data-feature="music">
-                <div class="sandbox-tab-icon">🎵</div>
-                <div class="sandbox-tab-info">
-                  <h3 data-i18n="tabMusicTitle">Ambient Music Player</h3>
-                  <p data-i18n="tabMusicDesc">Test our elegant, integrated floating music play widget with simulated sound wave feedback.</p>
-                </div>
-              </button>
-              
-              <button class="sandbox-tab" data-feature="timeline">
-                <div class="sandbox-tab-icon">⏳</div>
-                <div class="sandbox-tab-info">
-                  <h3 data-i18n="tabTimeTitle">Interactive Event Schedule</h3>
-                  <p data-i18n="tabTimeDesc">Interactive wedding itinerary showing ceremonies, dress codes, dinner, and dancing timelines.</p>
-                </div>
-              </button>
-              
-              <button class="sandbox-tab" data-feature="maps">
-                <div class="sandbox-tab-icon">📍</div>
-                <div class="sandbox-tab-info">
-                  <h3 data-i18n="tabMapsTitle">Venue Map Integration</h3>
-                  <p data-i18n="tabMapsDesc">Allows guests to view event locations and tap direct navigation coordinates for Google Maps.</p>
-                </div>
-              </button>
-              
-            </div>
-            
-            <div class="sandbox-simulator">
-              <div class="phone-mockup">
-                <div class="phone-screen">
-                  
-                  <!-- Inside Phone Simulator screen -->
-                  <div class="sim-screen" id="sim-display-box">
-                    <!-- Dynamic simulated feature widget goes here -->
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Template Catalog Section -->
-        <section class="section bg-sec" id="designs">
-          <div class="section-header reveal">
-            <p class="eyebrow" data-i18n="catEyebrow">Design Catalog</p>
-            <h2 data-i18n="catTitle">Choose your unique style.</h2>
-            <p data-i18n="catDesc">Explore our comprehensive collection of 38 luxury invitation templates designed to look spectacular on any mobile screen.</p>
-          </div>
-          
-          <div class="catalog-filters">
-            <button class="filter-btn active" data-filter="all" data-i18n="filterAll">All Designs</button>
-            <button class="filter-btn" data-filter="bestsellers" data-i18n="filterBest">Bestsellers</button>
-            <button class="filter-btn" data-filter="classical" data-i18n="filterClassic">Classical</button>
-            <button class="filter-btn" data-filter="modern" data-i18n="filterModern">Modern</button>
-            <button class="filter-btn" data-filter="editorial" data-i18n="filterEditorial">Editorial</button>
-            <button class="filter-btn" data-filter="traditional" data-i18n="filterTraditional">Traditional</button>
-            <button class="filter-btn" data-filter="indian" data-i18n="filterIndian">Indian</button>
-            <button class="filter-btn" data-filter="savethedate" data-i18n="filterStd">Save the Date</button>
-          </div>
-          
-          <div class="design-grid" id="catalog-grid">
-            <!-- Dynamic injection of 25 templates -->
-          </div>
-          
-          <div style="text-align: center; margin-top: 48px;">
-            <a href="#designs-hub" class="btn btn-gold" data-i18n="viewAllDesignsBtn" style="display: inline-block; padding: 14px 36px; font-size: 16px; letter-spacing: 1px;">View All 38 Designs</a>
-          </div>
-        </section>
-
-        <!-- Pricing Section with Dynamic Calculator (Hidden) -->
-        <section class="section" id="pricing" style="display: none;">
-          <div class="section-header reveal">
-            <p class="eyebrow" data-i18n="priceEyebrow">Pricing Plans</p>
-            <h2 data-i18n="priceTitle">Tailored packages for premium needs.</h2>
-            <p data-i18n="priceDesc">Transparent, flat pricing with zero monthly fees. Choose your package and configure custom add-ons instantly.</p>
-          </div>
-          
-          <div class="pricing-grid">
-            
-            <article class="price-card">
-              <h3 data-i18n="plan1Name" style="text-align: center; font-family: var(--font-serif); font-size: 32px; color: var(--text-primary); margin-bottom: 8px;">Essential</h3>
-              <div class="price-amt" id="price-card-essential" style="text-align: center; font-family: var(--font-serif); font-size: 48px; color: var(--accent-gold); margin-bottom: 8px;">₹4,999</div>
-              <p data-i18n="plan1Desc" style="text-align: center; margin-bottom: 16px;">Elegantly personal single-page invite featuring core invitation elements and beautiful photo presentation.</p>
-              <ul class="price-features">
-                <li>Customizable Couple Names</li>
-                <li>Shareable Invitation Link</li>
-                <li>Custom QR Code Access</li>
-                <li>Delivery within 24 Hours</li>
-              </ul>
-              <a href="#designs" class="btn btn-secondary" style="display: block; text-align: center; margin-top: auto;">View Templates</a>
-            </article>
-            
-            <article class="price-card featured" style="background: linear-gradient(145deg, #ffffff, #FCFAF7);">
-              <span class="price-badge" data-i18n="badgeFeatured">Popular</span>
-              <h3 data-i18n="plan2Name" style="text-align: center; font-family: var(--font-serif); font-size: 32px; color: var(--accent-gold); margin-bottom: 8px;">Premium</h3>
-              <div class="price-amt" id="price-card-premium" style="text-align: center; font-family: var(--font-serif); font-size: 48px; color: var(--accent-gold); margin-bottom: 8px;">₹8,999</div>
-              <p data-i18n="plan2Desc" style="text-align: center; margin-bottom: 16px;">A highly customizable and feature-packed digital wedding invitation experience with custom timelines and RSVP.</p>
-              <ul class="price-features">
-                <li>Fully Customizable Invitation Page</li>
-                <li>Custom Domain Setup</li>
-                <li>Premium Photo Gallery Experience</li>
-                <li>Personalized Theme & Layout Design</li>
-                <li>Interactive RSVP Integration</li>
-                <li>Advanced Animations & Effects</li>
-              </ul>
-              <a href="https://api.whatsapp.com/send?phone=34600000000&text=Hi,%20I'm%20interested%20in%20the%20Premium%20custom%20wedding%20invitation%20plan." class="btn btn-gold" target="_blank" rel="noreferrer" style="display: block; text-align: center; margin-top: auto;">Contact Now</a>
-            </article>
-            
-          </div>
-          
-
-        </section>
-
-        <!-- Custom Consultation Section -->
-        <section class="section bg-sec" id="consultation">
-          <div class="consultation">
-            <div class="consult-content">
-              <p class="eyebrow" data-i18n="consultEyebrow">Custom Consultation</p>
-              <h2 data-i18n="consultTitle">Do you want a completely unique masterpiece?</h2>
-              <p data-i18n="consultDesc">If you need an extraordinary wedding website designed entirely from scratch, with interactive elements, special animations, custom illustrations, or multi-day guest accommodations, get in touch with our lead designer today.</p>
-            </div>
-            
-            <form class="consult-form" id="consult-form">
-              <div class="form-group">
-                <label for="consult-name" data-i18n="labelName">Your Name</label>
-                <input type="text" id="consult-name" required placeholder="e.g. Sofia & Marc">
-              </div>
-              <div class="form-group">
-                <label for="consult-whatsapp" data-i18n="labelPhone">WhatsApp / Phone</label>
-                <input type="tel" id="consult-whatsapp" required placeholder="+34 600 000 000">
-              </div>
-              <div class="form-group">
-                <label for="consult-details" data-i18n="labelNotes">Wedding details & ideas</label>
-                <textarea id="consult-details" rows="3" placeholder="Tell us your wedding concept, ideas, or select a style from the catalog..."></textarea>
-              </div>
-              <button class="btn btn-primary" type="submit" data-i18n="consultBtn">Send Request</button>
-            </form>
-          </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section" id="faq">
-          <div class="section-header reveal">
-            <p class="eyebrow">FAQ</p>
-            <h2>Questions? We've got answers.</h2>
-            <p>Everything you need to know about our digital wedding invitations.</p>
-          </div>
-          <div class="faq-grid">
-
-            <div class="faq-item reveal">
-              <button class="faq-question" aria-expanded="false">
-                <span>How long does it take to deliver my invitation?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Most invitations are delivered within <strong>24 hours</strong> of receiving your details. Premium and custom orders may take up to 48 hours. We'll send you a draft preview link before going live.</p>
-              </div>
-            </div>
-
-            <div class="faq-item reveal reveal-delay-1">
-              <button class="faq-question" aria-expanded="false">
-                <span>Can I change the content after delivery?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Yes! We offer <strong>2 free revisions</strong> within 7 days of delivery. This includes name corrections, date changes, venue updates, and photo swaps.</p>
-              </div>
-            </div>
-
-            <div class="faq-item reveal reveal-delay-2">
-              <button class="faq-question" aria-expanded="false">
-                <span>Does the invitation work on all phones?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Absolutely. Every template is built <strong>mobile-first</strong> and tested across iOS (Safari) and Android (Chrome). They're responsive and look stunning on all screen sizes.</p>
-              </div>
-            </div>
-
-            <div class="faq-item reveal reveal-delay-3">
-              <button class="faq-question" aria-expanded="false">
-                <span>How does WhatsApp RSVP work?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Guests tap the RSVP button, fill in their details, and a beautifully formatted message is automatically sent to your WhatsApp. <strong>No app downloads required</strong> for your guests.</p>
-              </div>
-            </div>
-
-            <div class="faq-item reveal reveal-delay-4">
-              <button class="faq-question" aria-expanded="false">
-                <span>What payment methods do you accept?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>We accept all major methods via Razorpay — <strong>UPI, Net Banking, Credit/Debit Cards, and EMI</strong>. International payments via Visa and Mastercard are also supported.</p>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials-section" id="testimonials">
-          <div class="section-header reveal">
-            <p class="eyebrow">Happy Couples</p>
-            <h2>Loved by 500+ couples across India</h2>
-            <p>Real stories from real couples who chose invite.kimiclaw.in for their special day.</p>
-          </div>
-          <div class="testimonials-grid">
-
-            <article class="testimonial-card reveal">
-              <div class="testimonial-stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-              </div>
-              <p class="testimonial-text">"We were absolutely blown away. Our guests kept messaging us asking how we made such a beautiful invite. The WhatsApp RSVP feature alone saved us hours of follow-up calls!"</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">P</div>
-                <div class="testimonial-author-info">
-                  <strong>Priya &amp; Arjun Sharma</strong>
-                  <span>✦ Mumbai · December 2025</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card reveal reveal-delay-1">
-              <div class="testimonial-stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-              </div>
-              <p class="testimonial-text">"Delivered within 18 hours of placing our order. The ShadiPath template was stunning — exactly the royal Indian feel we wanted. Every animation was perfect on mobile."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">N</div>
-                <div class="testimonial-author-info">
-                  <strong>Nisha &amp; Rohan Mehta</strong>
-                  <span>✦ Delhi · November 2025</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="testimonial-card reveal reveal-delay-2">
-              <div class="testimonial-stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-              </div>
-              <p class="testimonial-text">"The interactive event timeline and venue map made it so convenient for our outstation guests. Professional quality at a fraction of what a website designer would charge."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">S</div>
-                <div class="testimonial-author-info">
-                  <strong>Sneha &amp; Karthik Iyer</strong>
-                  <span>✦ Bangalore · January 2026</span>
-                </div>
-              </div>
-            </article>
-
-          </div>
-
-          <!-- Dynamic User Reviews (from localStorage) -->
-          <div id="main-review-list" class="main-review-list" style="max-width:1100px;margin:32px auto 0;display:flex;flex-direction:column;gap:16px;"></div>
-
-          <!-- Write a Review CTA -->
-          <div class="write-review-cta" id="write-review-cta" style="max-width:700px;margin:40px auto 0;">
-            <button class="btn btn-secondary" id="main-toggle-review-btn" style="width:100%;padding:14px 20px;font-size:0.95rem;letter-spacing:0.5px;border:1px dashed var(--accent-gold);color:var(--accent-gold);background:rgba(197,162,107,0.04);border-radius:var(--radius-lg);transition:all 0.3s ease;">
-              ✍️ &nbsp; Share your experience — Write a Review
-            </button>
-            
-            <div id="main-write-review-form-wrap" style="display:none;margin-top:20px;">
-              <div class="testimonial-card" style="padding:32px;">
-                <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin:0 0 6px;color:var(--text-primary);">Leave a Review</h3>
-                <p style="font-size:13px;color:var(--text-secondary);margin:0 0 20px;">Tell us about your experience with invite.kimiclaw.in</p>
-                
-                <!-- Star Rating -->
-                <div style="margin-bottom:18px;">
-                  <label style="font-size:13px;font-weight:600;color:var(--text-primary);display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">Your Rating</label>
-                  <div id="main-star-rating" class="main-star-rating" style="display:flex;gap:6px;">
-                    <span data-val="1" style="font-size:2rem;cursor:pointer;color:#D0C8C0;transition:color 0.15s,transform 0.15s;" title="1 star">★</span>
-                    <span data-val="2" style="font-size:2rem;cursor:pointer;color:#D0C8C0;transition:color 0.15s,transform 0.15s;" title="2 stars">★</span>
-                    <span data-val="3" style="font-size:2rem;cursor:pointer;color:#D0C8C0;transition:color 0.15s,transform 0.15s;" title="3 stars">★</span>
-                    <span data-val="4" style="font-size:2rem;cursor:pointer;color:#D0C8C0;transition:color 0.15s,transform 0.15s;" title="4 stars">★</span>
-                    <span data-val="5" style="font-size:2rem;cursor:pointer;color:#D0C8C0;transition:color 0.15s,transform 0.15s;" title="5 stars">★</span>
-                  </div>
-                  <input type="hidden" id="main-review-rating-val" value="5">
-                </div>
-
-                <form id="main-write-review-form">
-                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
-                    <div>
-                      <label style="font-size:12px;font-weight:600;color:var(--text-primary);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.8px;">Your Name</label>
-                      <input type="text" id="main-review-name" placeholder="e.g. Priya &amp; Rohan" required
-                        style="width:100%;padding:11px 14px;border:1px solid var(--border-color);border-radius:var(--radius-sm);font-family:var(--font-sans);background:var(--bg-primary);color:var(--text-primary);font-size:14px;box-sizing:border-box;transition:border-color 0.2s;">
-                    </div>
-                    <div>
-                      <label style="font-size:12px;font-weight:600;color:var(--text-primary);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.8px;">City &amp; Month</label>
-                      <input type="text" id="main-review-location" placeholder="e.g. Mumbai · March 2026"
-                        style="width:100%;padding:11px 14px;border:1px solid var(--border-color);border-radius:var(--radius-sm);font-family:var(--font-sans);background:var(--bg-primary);color:var(--text-primary);font-size:14px;box-sizing:border-box;transition:border-color 0.2s;">
-                    </div>
-                  </div>
-                  <div style="margin-bottom:18px;">
-                    <label style="font-size:12px;font-weight:600;color:var(--text-primary);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.8px;">Your Review</label>
-                    <textarea id="main-review-text" rows="4" placeholder="Tell us about your experience — what you loved, what surprised you..." required
-                      style="width:100%;padding:11px 14px;border:1px solid var(--border-color);border-radius:var(--radius-sm);font-family:var(--font-sans);background:var(--bg-primary);color:var(--text-primary);font-size:14px;resize:vertical;box-sizing:border-box;transition:border-color 0.2s;"></textarea>
-                  </div>
-                  <div style="display:flex;gap:12px;">
-                    <button type="submit" class="btn btn-gold" style="flex:1;padding:13px 20px;font-size:0.95rem;">✅ &nbsp;Submit Review</button>
-                    <button type="button" id="main-cancel-review-btn" class="btn btn-secondary" style="padding:13px 20px;font-size:0.95rem;">Cancel</button>
-                  </div>
-                </form>
-
-                <!-- Success Message -->
-                <div id="main-review-success" style="display:none;padding:16px;background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.25);border-radius:var(--radius-sm);text-align:center;margin-top:12px;">
-                  <span style="font-size:1.4rem;">🎉</span>
-                  <p style="color:#27ae60;font-weight:600;margin:6px 0 2px;font-size:15px;">Thank you! Your review has been posted.</p>
-                  <p style="color:var(--text-secondary);font-size:13px;margin:0;">It's now live below for other couples to see.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-        
-      </div>
-
-      <!-- Separate Full Page Designs Hub View -->
-      <div id="designs-hub-view" style="display: none;">
-        <section class="section" id="designs-hub">
-          <div class="section-header reveal">
-            <p class="eyebrow" data-i18n="catEyebrow">Design Catalog</p>
-            <h2 data-i18n="hubTitle">Colección Atelier</h2>
-            <p data-i18n="hubDesc">Browse all our 38 luxury invitation designs. Filter by category, search by name, and instantly test them in our interactive smartphone simulator.</p>
-          </div>
-          
-          <!-- Search & Filter Controls -->
-          <div class="hub-controls">
-            <div class="form-group" style="width: 100%;">
-              <input type="text" id="hub-search-input" placeholder="Search designs by name..." style="padding: 14px 20px; border-radius: 30px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-primary); font-family: var(--font-sans); width: 100%; box-shadow: var(--shadow-sm); outline: none;">
-            </div>
-            <div class="catalog-filters" style="margin-bottom: 0;">
-              <button class="filter-btn active" data-hub-filter="all" data-i18n="filterAll">All Designs</button>
-              <button class="filter-btn" data-hub-filter="bestsellers" data-i18n="filterBest">Bestsellers</button>
-              <button class="filter-btn" data-hub-filter="classical" data-i18n="filterClassic">Classical</button>
-              <button class="filter-btn" data-hub-filter="modern" data-i18n="filterModern">Modern</button>
-              <button class="filter-btn" data-hub-filter="editorial" data-i18n="filterEditorial">Editorial</button>
-              <button class="filter-btn" data-hub-filter="traditional" data-i18n="filterTraditional">Traditional</button>
-              <button class="filter-btn" data-hub-filter="indian" data-i18n="filterIndian">Indian</button>
-              <button class="filter-btn" data-hub-filter="savethedate" data-i18n="filterStd">Save the Date</button>
-            </div>
-          </div>
-          
-          <div class="design-grid" id="hub-catalog-grid">
-            <!-- Dynamic injection of 25 templates with beautiful image previews -->
+          <div class="reviews-grid" id="reviews-grid"></div>
+          <div class="review-actions">
+            <button class="btn btn-gold review-btn" id="open-review-btn" type="button">Write a Review</button>
           </div>
         </section>
       </div>
 
-      <!-- Immersive Catalog Details View -->
-      <div id="detail-view" style="display: none;">
-        <section class="detail-page">
-          <div class="back-link" id="detail-back-link">
-            <span>←</span> <span data-i18n="detailBack">Back to catalog</span>
-          </div>
-          
-          <div class="detail-layout">
-            <!-- Left Info Panel -->
-            <div class="detail-copy">
-
-              <!-- ===== CHECKOUT STEP 1: Choose Layout + Buy Now ===== -->
-              <div class="checkout-step checkout-step-active" id="checkout-step-1">
-                <p class="eyebrow" id="detail-tag">Travel inspired</p>
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
-                  <h1 id="detail-title" style="margin-bottom: 0;">Aventureros</h1>
-                  <span id="detail-code" class="design-code-badge" style="position: static; font-size: 12px; padding: 6px 12px; border-radius: 6px; box-shadow: none;">KIMI-02</span>
-                </div>
-                <p class="lead" id="detail-desc">A cinematic travel-style digital invitation with customized ticket styling, itineraries, maps, music player, and WhatsApp guest replies.</p>
-                
-                <ul class="feature-list" id="detail-features">
-                  <!-- Injected features list -->
-                </ul>
-                
-                <div class="calc-section" style="margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-                  <span class="calc-section-label" data-i18n="detailPlanLabel">Choose Layout Base Plan</span>
-                  <select id="detail-plan-selector" style="font-family: var(--font-sans); width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 14px; font-weight: 600; margin-bottom: 20px;">
-                    <option value="Simple">Simple</option>
-                    <option value="CustomDomain" selected>Custom Domain</option>
-                    <option value="ScratchGallery">Scratch + Photo Gallery</option>
-                  </select>
-                </div>
-                
-                <div class="detail-actions" style="display: flex; gap: 12px; margin-top: 20px; width: 100%;">
-                  <button class="btn btn-gold" id="detail-buy-btn" style="flex: 1; font-size: 15px; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 8px;">🛍️ Buy Now</button>
-                  <a id="detail-demo-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1; font-size: 15px; padding: 14px 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
-                    👀 Live Preview
-                  </a>
-                </div>
-
-                <!-- Customer Reviews Section -->
-                <div class="reviews-section" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-color);">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; font-family: var(--font-serif); color: var(--text-primary); margin: 0;">Customer Reviews</h3>
-                    <div class="overall-rating" style="display: flex; align-items: center; gap: 5px; color: #f5b301;">
-                      ★★★★★ <span style="color: var(--text-secondary); font-size: 0.9rem; margin-left: 5px;">(4.9/5)</span>
-                    </div>
-                  </div>
-
-                  <!-- Review List -->
-                  <div class="review-list" id="review-list-container" style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px;">
-                    <div class="review-item" style="background: var(--bg-secondary); padding: 15px; border-radius: var(--radius-sm); box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-                      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                        <strong style="font-size: 0.95rem; color: var(--text-primary);">Priya & Rahul</strong>
-                        <span style="color: #f5b301; font-size: 0.9rem;">★★★★★</span>
-                      </div>
-                      <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">Absolutely loved this template! Our guests were amazed by the design and the WhatsApp RSVP made tracking so easy.</p>
-                    </div>
-                  </div>
-
-                  <!-- Write Review Toggle -->
-                  <div class="write-review-container">
-                    <button class="btn btn-secondary" id="toggle-review-btn" style="width: 100%; padding: 10px; font-size: 0.9rem; background: transparent; border: 1px solid var(--border-color); color: var(--text-primary);">Write a Review</button>
-                    
-                    <form id="write-review-form" style="display: none; margin-top: 15px; background: var(--bg-secondary); padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-                      <h4 style="margin: 0 0 10px 0; font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary);">Leave your rating</h4>
-                      <div class="star-rating-input" id="star-rating-input" style="font-size: 1.5rem; color: #ccc; cursor: pointer; margin-bottom: 15px; user-select: none;">
-                        <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
-                      </div>
-                      <input type="hidden" id="review-rating-val" value="5">
-                      <input type="text" id="review-name" placeholder="Your Name (e.g. Aditi & Kunal)" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); box-sizing: border-box;">
-                      <textarea id="review-text" rows="3" placeholder="Tell us about your experience..." required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); resize: vertical; box-sizing: border-box;"></textarea>
-                      <button type="submit" class="btn btn-gold" style="width: 100%; padding: 12px; font-size: 0.95rem;">Submit Review</button>
-                    </form>
-                    <div id="review-success-msg" style="display: none; margin-top: 15px; padding: 12px; background: rgba(46,204,113,0.1); color: #2ecc71; border-radius: var(--radius-sm); text-align: center; font-size: 0.9rem; border: 1px solid rgba(46,204,113,0.2);">
-                      Thank you! Your review has been submitted.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ===== CHECKOUT STEP 2: Details & Contact Information ===== -->
-              <div class="checkout-step" id="checkout-step-2">
-                <!-- Progress Indicator -->
-                <div class="checkout-progress">
-                  <div class="checkout-progress-step completed"><span>1</span><small>Choose</small></div>
-                  <div class="checkout-progress-line completed"></div>
-                  <div class="checkout-progress-step active"><span>2</span><small>Details</small></div>
-                  <div class="checkout-progress-line"></div>
-                  <div class="checkout-progress-step"><span>3</span><small>Payment</small></div>
-                  <div class="checkout-progress-line"></div>
-                  <div class="checkout-progress-step"><span>4</span><small>Confirm</small></div>
-                </div>
-
-                <h2 class="checkout-heading">Contact Details</h2>
-                <p class="checkout-subtitle">Tell us how to reach you to finalize your design.</p>
-
-                <form id="checkout-details-form" class="checkout-form" onsubmit="return false;">
-                  <div class="checkout-section-label">📱 Contact Information</div>
-                  <div class="checkout-form-grid">
-                    <div class="checkout-field">
-                      <label for="ck-contact-name">Your Name <span class="req">*</span></label>
-                      <input type="text" id="ck-contact-name" name="contactName" required placeholder="e.g. Tanya & Rohan">
-                    </div>
-                    <div class="checkout-field">
-                      <label for="ck-email">Email Address <span class="req">*</span></label>
-                      <input type="email" id="ck-email" name="contactEmail" required placeholder="e.g. tanya@email.com">
-                    </div>
-                    <div class="checkout-field">
-                      <label for="ck-phone">WhatsApp / Phone <span class="req">*</span></label>
-                      <input type="tel" id="ck-phone" name="contactPhone" required placeholder="e.g. +91 98765 43210">
-                    </div>
-                    <div class="checkout-field">
-                      <label for="ck-guests">Estimated Guest Count</label>
-                      <input type="number" id="ck-guests" name="guests" min="5" value="100">
-                    </div>
-                  </div>
-
-                  <div class="checkout-actions">
-                    <button type="button" class="btn btn-secondary" id="ck-back-to-step1">← Back</button>
-                    <button type="button" class="btn btn-gold" id="ck-to-payment">Continue →</button>
-                  </div>
-                </form>
-              </div>
-
-              <!-- ===== CHECKOUT STEP 3: Payment Page ===== -->
-              <div class="checkout-step" id="checkout-step-3">
-                <!-- Progress Indicator -->
-                <div class="checkout-progress">
-                  <div class="checkout-progress-step completed"><span>1</span><small>Choose</small></div>
-                  <div class="checkout-progress-line completed"></div>
-                  <div class="checkout-progress-step completed"><span>2</span><small>Details</small></div>
-                  <div class="checkout-progress-line completed"></div>
-                  <div class="checkout-progress-step active"><span>3</span><small>Confirm</small></div>
-                  <div class="checkout-progress-line"></div>
-                  <div class="checkout-progress-step"><span>4</span><small>Confirm</small></div>
-                </div>
-
-                 <h2 class="checkout-heading">Order Summary</h2>
-                 <p class="checkout-subtitle">Review your invitation order details before confirming.</p>
- 
-                 <!-- Order Summary Card - Premium -->
-                 <div class="payment-summary-card">
-                   <div class="payment-summary-header">
-                     <span>📋 Order Summary</span>
-                     <span style="font-size:11px; opacity:0.8; font-weight:400; letter-spacing:0;">Review details before confirming</span>
-                   </div>
-                   <div class="payment-summary-row">
-                     <span>🎨 Design Template</span>
-                     <span id="pay-design-name" style="font-weight:700;">Aventureros</span>
-                   </div>
-                   <div class="payment-summary-row">
-                     <span>📦 Layout Plan</span>
-                     <span id="pay-plan-name">Custom Domain</span>
-                   </div>
-                   <div class="payment-summary-row total" style="display: none;">
-                     <span style="font-size:15px; font-weight:700;">Total Amount</span>
-                     <strong id="pay-total">₹1,999</strong>
-                   </div>
-                 </div>
- 
-                 <!-- Payment Method Selection (Hidden) -->
-                 <div class="payment-methods" style="display: none;">
-                   <div class="payment-method-label">Choose Payment Method</div>
-                   <div class="payment-method-options">
-                     <label class="payment-method-option selected">
-                       <input type="radio" name="paymentMethod" value="upi" checked>
-                       <div class="payment-method-card">
-                         <span class="payment-method-icon">📱</span>
-                         <div>
-                           <div style="font-weight:600;">UPI / GPay</div>
-                           <div style="font-size:11px; opacity:0.7;">Instant</div>
-                         </div>
-                       </div>
-                     </label>
-                     <label class="payment-method-option">
-                       <input type="radio" name="paymentMethod" value="card">
-                       <div class="payment-method-card">
-                         <span class="payment-method-icon">💳</span>
-                         <div>
-                           <div style="font-weight:600;">Card</div>
-                           <div style="font-size:11px; opacity:0.7;">Visa / Mastercard</div>
-                         </div>
-                       </div>
-                     </label>
-                     <label class="payment-method-option">
-                       <input type="radio" name="paymentMethod" value="netbanking">
-                       <div class="payment-method-card">
-                         <span class="payment-method-icon">🏦</span>
-                         <div>
-                           <div style="font-weight:600;">Net Banking</div>
-                           <div style="font-size:11px; opacity:0.7;">All banks</div>
-                         </div>
-                       </div>
-                     </label>
-                     <label class="payment-method-option">
-                       <input type="radio" name="paymentMethod" value="whatsapp">
-                       <div class="payment-method-card">
-                         <span class="payment-method-icon">💬</span>
-                         <div>
-                           <div style="font-weight:600;">WhatsApp</div>
-                           <div style="font-size:11px; opacity:0.7;">Manual invoice</div>
-                         </div>
-                       </div>
-                     </label>
-                   </div>
-                 </div>
- 
-                 <!-- Security badge (Hidden) -->
-                 <div style="display: none; align-items:center; gap:10px; background: rgba(34,197,94,0.07); border:1px solid rgba(34,197,94,0.2); border-radius:10px; padding:12px 16px; margin-bottom:20px;">
-                   <span style="font-size:20px;">🔒</span>
-                   <div>
-                     <div style="font-size:12px; font-weight:700; color:#16a34a;">100% Secure Payment</div>
-                     <div style="font-size:11px; color:var(--text-secondary);">256-bit SSL encryption &bull; Powered by Razorpay</div>
-                   </div>
-                 </div>
- 
-                 <div class="checkout-actions">
-                   <button type="button" class="btn btn-secondary" id="ck-back-to-step2">← Back</button>
-                   <button type="button" class="btn btn-gold" id="ck-pay-now" style="font-size:16px; flex:1;">Confirm Order →</button>
-                 </div>
-              </div>
-
-              <!-- ===== CHECKOUT STEP 4: Confirmation Page ===== -->
-              <div class="checkout-step" id="checkout-step-4">
-                <!-- Progress Indicator -->
-                <div class="checkout-progress">
-                  <div class="checkout-progress-step completed"><span>✓</span><small>Choose</small></div>
-                  <div class="checkout-progress-line completed"></div>
-                  <div class="checkout-progress-step completed"><span>✓</span><small>Details</small></div>
-                  <div class="checkout-progress-line completed"></div>
-                  <div class="checkout-progress-step completed"><span>✓</span><small>Payment</small></div>
-                  <div class="checkout-progress-line completed"></div>
-                  <div class="checkout-progress-step completed"><span>✓</span><small>Confirm</small></div>
-                </div>
-
-                <div class="confirmation-box">
-                  <div class="confirmation-icon">✅</div>
-                  <h2 class="confirmation-title">Order Confirmed!</h2>
-                  <p class="confirmation-message">Thank you for your order. Our design team will start working on your personalized invitation right away.</p>
-                  
-                  <div class="confirmation-details">
-                    <div class="confirmation-row">
-                      <span>Order ID</span>
-                      <strong id="conf-order-id">KC-2026-001</strong>
-                    </div>
-                    <div class="confirmation-row">
-                      <span>Design</span>
-                      <strong id="conf-design">Aventureros</strong>
-                    </div>
-                    <div class="confirmation-row">
-                      <span>Plan</span>
-                      <strong id="conf-plan">Custom Domain</strong>
-                    </div>
-                    <div class="confirmation-row" style="display: none;">
-                      <span>Amount Paid</span>
-                      <strong id="conf-amount">₹1,999</strong>
-                    </div>
-                    <div class="confirmation-row">
-                      <span>Expected Delivery</span>
-                      <strong id="conf-delivery">Within 48 hours</strong>
-                    </div>
-                  </div>
-
-                  <p class="confirmation-next-steps">📩 A confirmation email has been sent. Our designer will reach out on WhatsApp within 24 hours to start personalizing your invite.</p>
-
-                  <div class="confirmation-actions">
-                    <a href="#designs-hub" class="btn btn-secondary">Browse More Designs</a>
-                    <button class="btn btn-gold" id="conf-whatsapp-btn">💬 Chat on WhatsApp</button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            
-            <!-- Right Phone Previewer Frame -->
-            <div class="preview-frame-container">
-              <div class="visual-backdrop">
-                <div class="visual-backdrop-inner"></div>
-              </div>
-              <div class="phone-mockup">
-                <div class="phone-screen">
-                  <iframe src="" id="detail-phone-iframe" title="Wedding Template Live Preview"></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
+      <div id="detail-view" style="display:none"></div>
+      <div id="designs-hub" style="display:none"></div>
     </main>
 
-    <!-- Guided Multi-Step Form Wizard Modal -->
-    <dialog id="wizard-dialog">
-      <div class="wizard-container">
-        
-        <div class="wizard-header">
-          <h2 id="wizard-form-title" data-i18n="wizTitle">Custom Order Details</h2>
-          <button class="close-btn" id="wizard-close-btn" aria-label="Close dialog">&times;</button>
-        </div>
-        
-        <div class="wizard-progress">
-          <div class="wizard-progress-bar" id="wizard-progress-bar"></div>
-        </div>
-        
-        <form class="wizard-content" id="wizard-form" onsubmit="return false;">
-          
-          <!-- Step 1: Base Configuration -->
-          <div class="wizard-step active" data-step="1">
-            <h3 data-i18n="wizStep1Header">1. Selection & Package</h3>
-            <div class="form-grid">
-              
-              <div class="form-group">
-                <label for="wiz-package" data-i18n="labelPlan">Target Plan</label>
-                <select id="wiz-package" name="package" required>
-                  <option value="Simple">Simple</option>
-                  <option value="CustomDomain" selected>Custom Domain</option>
-                  <option value="ScratchGallery">Scratch + Photo Gallery</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="wiz-base-style" data-i18n="labelBase">Invitation Base Style</label>
-                <select id="wiz-base-style" name="baseStyle" required>
-                  <!-- Populated dynamically via JS -->
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="wiz-currency" data-i18n="labelCurrency">Preferred Currency</label>
-                <select id="wiz-currency" name="currency">
-                  <option value="INR">INR (₹) / Indian Rupees</option>
-                  <option value="EUR">EUR (€) / Euros</option>
-                  <option value="USD">USD ($) / US Dollars</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="wiz-guest-count" data-i18n="labelGuests">Estimated Guest Count</label>
-                <input type="number" id="wiz-guest-count" name="guests" min="5" value="100">
-              </div>
-              
-            </div>
-          </div>
-          
-          <!-- Step 2: Couple & Wedding Event Details -->
-          <div class="wizard-step" data-step="2">
-            <h3 data-i18n="wizStep2Header">2. Wedding Event details</h3>
-            <div class="form-grid">
-              
-              <div class="form-group floating">
-                <input type="text" id="wiz-bride" name="brideName" required placeholder=" ">
-                <label for="wiz-bride" data-i18n="labelBride">Bride's Name</label>
-              </div>
-              
-              <div class="form-group floating">
-                <input type="text" id="wiz-groom" name="groomName" required placeholder=" ">
-                <label for="wiz-groom" data-i18n="labelGroom">Groom's Name</label>
-              </div>
-              
-              <div class="form-group floating">
-                <input type="date" id="wiz-date" name="weddingDate" required>
-                <label for="wiz-date" data-i18n="labelDate">Wedding Date</label>
-              </div>
-              
-              <div class="form-group floating">
-                <input type="text" id="wiz-venue" name="venue" required placeholder=" ">
-                <label for="wiz-venue" data-i18n="labelVenue">Wedding Venue</label>
-              </div>
-              
-              <div class="form-group wide floating">
-                <textarea id="wiz-notes" name="notes" rows="3" placeholder=" "></textarea>
-                <label for="wiz-notes" data-i18n="labelNotes">Custom Requests, Timeline, or Music Track</label>
-              </div>
-              
-            </div>
-          </div>
-          
-          <!-- Step 3: Contact & Premium Upgrades -->
-          <div class="wizard-step" data-step="3">
-            <h3 data-i18n="wizStep3Header">3. Upgrades & Contact</h3>
-            <div class="form-grid">
-              
-              <div class="form-group floating">
-                <input type="text" id="wiz-name" name="contactName" required placeholder=" ">
-                <label for="wiz-name" data-i18n="labelContactName">Your Contact Name</label>
-              </div>
-              
-              <div class="form-group floating">
-                <input type="email" id="wiz-email" name="contactEmail" required placeholder=" ">
-                <label for="wiz-email" data-i18n="labelContactEmail">Email Address</label>
-              </div>
-              
-              <div class="form-group floating">
-                <input type="tel" id="wiz-phone" name="contactPhone" required placeholder=" ">
-                <label for="wiz-phone" data-i18n="labelContactPhone">WhatsApp / Phone Number</label>
-              </div>
-              
-              <div class="form-group wide" style="margin-top: 10px;">
-                <label data-i18n="labelUpgrades">Premium Upgrades (Included in Total):</label>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px;">
-                  <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; text-transform: none; font-size: 13px; cursor: pointer;">
-                    <input type="checkbox" name="addon_domain" id="wiz-addon-domain"> <span data-i18n="addonDomain">Custom Domain</span>
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; text-transform: none; font-size: 13px; cursor: pointer;">
-                    <input type="checkbox" name="addon_intro" id="wiz-addon-intro"> <span data-i18n="addonIntro">Animated Intro</span>
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; text-transform: none; font-size: 13px; cursor: pointer;">
-                    <input type="checkbox" name="addon_map" id="wiz-addon-map"> <span data-i18n="addonMap">Illustrated Map</span>
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; text-transform: none; font-size: 13px; cursor: pointer;">
-                    <input type="checkbox" name="addon_pers" id="wiz-addon-pers"> <span data-i18n="addonPers">Name Personalization</span>
-                  </label>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-          
-          <!-- Step 4: Summary Breakdown & Send -->
-          <div class="wizard-step" data-step="4">
-            <h3 data-i18n="wizStep4Header">4. Order Summary</h3>
-            
-            <div class="wizard-summary-card">
-              <div class="wizard-summary-row">
-                <span data-i18n="summaryBrideGroom">Couple Details:</span>
-                <span id="summary-names">Sofia & Marc</span>
-              </div>
-              <div class="wizard-summary-row">
-                <span data-i18n="summaryDate">Date & Venue:</span>
-                <span id="summary-date-venue">October 15, 2026 at Barcelona</span>
-              </div>
-              <div class="wizard-summary-row">
-                <span data-i18n="summaryBasePlan">Layout Base Plan:</span>
-                <span id="summary-package">Premium</span>
-              </div>
-              <div class="wizard-summary-row">
-                <span data-i18n="summaryBaseStyle">Design Style:</span>
-                <span id="summary-style">Bloom</span>
-              </div>
-              <div class="wizard-summary-row" id="summary-addons-row">
-                <span data-i18n="summaryAddons">Addons Selected:</span>
-                <span id="summary-addons" style="text-align: right; font-size: 12px; color: var(--text-secondary);">None</span>
-              </div>
-              <div class="wizard-summary-row" style="border-top: 1px solid var(--border-color); padding-top: 12px; display: none;">
-                <span data-i18n="summaryTotal">Estimated Total:</span>
-                <strong id="summary-total-price">₹8,999</strong>
-              </div>
-            </div>
-            
-            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px;" data-i18n="summaryNotice">Your order request will be securely saved locally. We will generate a structured WhatsApp message to submit directly to our design atelier for immediate personal drafting.</p>
-          </div>
-          
-        </form>
-        
-        <div class="wizard-footer">
-          <button class="btn btn-secondary" id="wiz-prev-btn" style="display: none;" data-i18n="wizBtnPrev">Previous</button>
-          <button class="btn btn-primary" id="wiz-next-btn" data-i18n="wizBtnNext">Next Step</button>
-          <button class="btn btn-gold" id="wiz-submit-btn" style="display: none;" data-i18n="wizBtnSubmit">Order via WhatsApp</button>
-        </div>
-        
-      </div>
-    </dialog>
-
-    <!-- Luxury Footer Section -->
-    <footer>
-      <div class="footer-grid">
-        <div class="footer-col reveal" style="grid-column: span 2;">
-          <a class="brand" href="#home" style="margin-bottom: 8px;">
-            <div class="brand-logo" style="border-color: #FFFFFF; color: #FFFFFF;">K</div>
-            <div class="brand-text">
-              <strong style="color: #FFFFFF;">invite.kimiclaw.in</strong>
-              <small style="color: #A29A90;">Premium Digital Invitations</small>
-            </div>
-          </a>
-          <p style="color: #A29A90; font-size: 14px; line-height: 1.6; max-width: 320px;" data-i18n="footerTagline">Bespoke luxury wedding invitation websites crafted by professional designers. Fully interactive, mobile-optimized, and built to amaze your guests.</p>
-        </div>
-        
-        <div class="footer-col reveal reveal-delay-1">
-          <h4 data-i18n="footerProducts">Solutions</h4>
-          <div class="footer-links">
-            <a href="#designs" class="footer-link" data-i18n="footerLinkDemos">Design Catalog</a>
-            <a href="#playground" class="footer-link" data-i18n="footerLinkFeatures">Features Sandbox</a>
-            <a href="#consultation" class="footer-link" data-i18n="footerLinkCustom">Custom Masterpiece</a>
-          </div>
-        </div>
-        
-        <div class="footer-col reveal reveal-delay-2">
-          <h4 data-i18n="footerSupport">Our Studio</h4>
-          <div class="footer-links">
-            <span class="footer-link" data-i18n="footerContactHours">Mon - Sat: 9:00 - 19:00</span>
-            <span class="footer-link">hello@invite.kimiclaw.in</span>
-            <span class="footer-link">+34 600 000 000</span>
-            <span class="footer-link">Barcelona / Barcelona-Madrid Studio</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-bottom reveal reveal-delay-3">
-        <span id="footer-copyright">&copy; 2026 invite.kimiclaw.in. All rights reserved. Handcrafted by design professionals.</span>
-        <div style="display: flex; gap: 16px;">
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Terms of Service</a>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Absolute Visual Watermark -->
-    <div class="watermark" aria-hidden="true">
-      <span>invite.kimiclaw.in</span>
-    </div>
-
-    <!-- Sticky WhatsApp CTA Button -->
-    <a
-      id="wa-float-btn"
-      class="wa-float"
-      href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20a%20digital%20wedding%20invitation!%20Please%20share%20more%20details."
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat on WhatsApp to order your invitation"
-    >
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-      </svg>
-      <span class="wa-float-label">Order via WhatsApp</span>
-    </a>
-
-    <!-- Razorpay SDK (deferred — loaded only when user initiates payment) -->
-    <script>
-      window.loadRazorpay = function() {
-        if (window._rzpLoaded) return Promise.resolve();
-        return new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          s.src = 'https://checkout.razorpay.com/v1/checkout.js';
-          s.onload = function() { window._rzpLoaded = true; resolve(); };
-          s.onerror = reject;
-          document.head.appendChild(s);
-        });
-      };
-      // Error reporter — moved to bottom so it doesn't block render
-      window.addEventListener('error', function(e) {
-        var banner = document.createElement('div');
-        banner.style.cssText = 'position:fixed;top:0;left:0;width:100%;background:#e74c3c;color:#fff;padding:16px;z-index:999999;font-family:monospace;font-size:14px';
-        banner.innerHTML = '<strong>⚠️ JS Error:</strong> ' + e.message;
-        document.body.appendChild(banner);
-      });
-    </script>
-    <!-- Local logic script — deferred for performance -->
-    <script src="app.js?v=1.0.8" defer></script>
+    <script src="app.js"></script>
   </body>
 </html>
