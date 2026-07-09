@@ -1621,6 +1621,7 @@ function init() {
   renderSandboxFeature();
   bindEvents();
   initReviews();
+  initMainReviews();
   handleRoute();
 }
 
@@ -1734,6 +1735,133 @@ document.addEventListener("DOMContentLoaded", init);
 // Run init immediately in case DOMContentLoaded already fired
 if (document.readyState === "interactive" || document.readyState === "complete") {
   init();
+}
+
+/* ════════════════════════════════════
+   MAIN PAGE REVIEWS (Testimonials section)
+════════════════════════════════════ */
+function initMainReviews() {
+  const toggleBtn     = document.getElementById('main-toggle-review-btn');
+  const formWrap      = document.getElementById('main-write-review-form-wrap');
+  const form          = document.getElementById('main-write-review-form');
+  const starContainer = document.getElementById('main-star-rating');
+  const ratingInput   = document.getElementById('main-review-rating-val');
+  const successMsg    = document.getElementById('main-review-success');
+  const reviewList    = document.getElementById('main-review-list');
+  const cancelBtn     = document.getElementById('main-cancel-review-btn');
+
+  if (!toggleBtn || !form || !reviewList) return;
+
+  /* ---- Star rating ---- */
+  let selectedRating = 5;
+  if (starContainer) {
+    const stars = Array.from(starContainer.querySelectorAll('span'));
+    function paintStars(val) {
+      stars.forEach((s, i) => {
+        s.style.color     = i < val ? '#C5A26B' : '#D0C8C0';
+        s.style.transform = i < val ? 'scale(1.15)' : 'scale(1)';
+      });
+    }
+    paintStars(selectedRating);
+    stars.forEach(s => {
+      s.addEventListener('mouseenter', e => paintStars(+e.target.dataset.val));
+      s.addEventListener('click', e => {
+        selectedRating      = +e.target.dataset.val;
+        ratingInput.value   = selectedRating;
+        paintStars(selectedRating);
+      });
+    });
+    starContainer.addEventListener('mouseleave', () => paintStars(selectedRating));
+  }
+
+  /* ---- Render saved reviews ---- */
+  function getInitials(name) {
+    return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  }
+
+  function renderMainReviews() {
+    const saved = JSON.parse(localStorage.getItem('kimiclawReviews') || '[]');
+    if (!saved.length) { reviewList.innerHTML = ''; return; }
+
+    reviewList.innerHTML = saved.slice().reverse().map(rev => {
+      let stars = '';
+      for (let i = 0; i < 5; i++) stars += i < rev.rating ? '★' : '☆';
+      const initials  = getInitials(rev.name || 'A');
+      const location  = rev.location ? `✦ ${rev.location}` : '';
+      const dateStr   = rev.date ? new Date(rev.date).toLocaleDateString('en-IN', { month: 'long', year: 'numeric' }) : '';
+      return `
+        <article class="testimonial-card" style="animation:fadeUp 0.5s ease both;">
+          <div class="testimonial-stars" style="margin-bottom:16px;">${[...stars].map(s => `<span style="color:${s==='★'?'#C5A26B':'#D0C8C0'}">${s}</span>`).join('')}</div>
+          <p class="testimonial-text">"${rev.text}"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">${initials}</div>
+            <div class="testimonial-author-info">
+              <strong>${rev.name}</strong>
+              <span>${location}${location && dateStr ? ' · ' : ''}${dateStr}</span>
+            </div>
+          </div>
+        </article>`;
+    }).join('');
+  }
+
+  renderMainReviews();
+
+  /* ---- Toggle form ---- */
+  toggleBtn.addEventListener('click', () => {
+    formWrap.style.display = 'block';
+    toggleBtn.style.display = 'none';
+    formWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', () => {
+      formWrap.style.display = 'none';
+      toggleBtn.style.display = 'block';
+      successMsg.style.display = 'none';
+      form.reset();
+      selectedRating = 5;
+      if (starContainer) {
+        const stars = Array.from(starContainer.querySelectorAll('span'));
+        stars.forEach((s, i) => {
+          s.style.color     = i < 5 ? '#C5A26B' : '#D0C8C0';
+          s.style.transform = i < 5 ? 'scale(1.15)' : 'scale(1)';
+        });
+      }
+    });
+  }
+
+  /* ---- Submit ---- */
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name     = document.getElementById('main-review-name').value.trim();
+    const location = document.getElementById('main-review-location').value.trim();
+    const text     = document.getElementById('main-review-text').value.trim();
+    const rating   = selectedRating;
+
+    if (!name || !text) return;
+
+    const saved = JSON.parse(localStorage.getItem('kimiclawReviews') || '[]');
+    saved.push({ name, location, text, rating, date: new Date().toISOString() });
+    localStorage.setItem('kimiclawReviews', JSON.stringify(saved));
+
+    // Render updated list instantly
+    renderMainReviews();
+
+    // Show success, hide form
+    form.style.display  = 'none';
+    successMsg.style.display = 'block';
+    form.reset();
+    selectedRating = 5;
+
+    // After 4 seconds, reset the whole CTA
+    setTimeout(() => {
+      formWrap.style.display   = 'none';
+      toggleBtn.style.display  = 'block';
+      toggleBtn.textContent    = '✍️  Share your experience again — Write a Review';
+      successMsg.style.display = 'none';
+      form.style.display       = 'block';
+    }, 4000);
+  });
 }
 
 /* ════════════════════════════════════
