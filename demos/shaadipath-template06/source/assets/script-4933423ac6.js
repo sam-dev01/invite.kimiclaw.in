@@ -190,7 +190,7 @@ class Petals{
     this.el=document.getElementById(id);
     this.max=opts.max||6;
     this.rate=opts.rate||1600;
-    this.src='assets/elements/Element 2.png';
+    this.src='assets/Element_205-eaefeacd47.png';
     this.active=false;this.pool=new Set();this._iv=null;
   }
   spawn(){
@@ -500,7 +500,7 @@ function burstPetals(fromEl){
   const r=fromEl.getBoundingClientRect();
   const cx=r.left+r.width/2;
   const cy=r.top+r.height/2;
-  const src='assets/elements/Element 2.png';
+  const src='assets/Element_205-eaefeacd47.png';
   for(let i=0;i<22;i++){
     const el=document.createElement('div');
     el.className='burst-p';
@@ -598,7 +598,7 @@ function burstPetals(fromEl){
       s.life -= s.decay;
       const a = Math.min(1, s.life * 2);
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.size * s.life, 0, Math.PI * 2);
+      ctx.arc(s.x, s.y, Math.max(0, s.size * s.life), 0, Math.PI * 2);
       ctx.fillStyle = `hsla(${s.hue},100%,72%,${a})`;
       ctx.shadowColor = `hsla(${s.hue},100%,80%,${a * 0.6})`;
       ctx.shadowBlur  = 6;

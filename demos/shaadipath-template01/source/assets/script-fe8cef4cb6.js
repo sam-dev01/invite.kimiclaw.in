@@ -661,22 +661,26 @@ initEventsAutoOpen();
       return;
     }
 
-    bride.classList.add('st-pull');
-    groom.classList.add('st-pull');
+    if (!isTouch) {
+      bride.classList.add('st-pull');
+      groom.classList.add('st-pull');
+    }
 
     setTimeout(() => {
       bride.classList.remove('st-pull');
       groom.classList.remove('st-pull');
-      bride.classList.add('st-tension');
-      groom.classList.add('st-tension');
-    }, 715);
+      if (!isTouch) {
+        bride.classList.add('st-tension');
+        groom.classList.add('st-tension');
+      }
+    }, isTouch ? 120 : 715);
 
     setTimeout(() => {
       bride.classList.remove('st-tension');
       groom.classList.remove('st-tension');
       openEnabled = true;
       applyProgress(getCurtainProgress());
-    }, 1235);
+    }, isTouch ? 220 : 1235);
   }
 
   let cachedSecTop = 0;
@@ -707,7 +711,7 @@ initEventsAutoOpen();
       curtR.style.filter = `drop-shadow(-${(eased * 26).toFixed(1)}px 0 28px rgba(61,30,46,${(eased * .40).toFixed(2)}))`;
     }
 
-    const charDrift = eased * 28;
+    const charDrift = eased * (isTouch ? 12 : 28);
     const charScale = 1 - eased * 0.04;
     bride.style.transform = `translate3d(-${charDrift.toFixed(1)}px,0,0) scale(${charScale.toFixed(3)})`;
     groom.style.transform = `translate3d(${charDrift.toFixed(1)}px,0,0) scale(${charScale.toFixed(3)})`;

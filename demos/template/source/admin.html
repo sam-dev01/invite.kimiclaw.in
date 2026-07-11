@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invite — Config Editor</title>
+<style>
+  :root{--gold:#C8860A;--deep:#0D1B3E;--ivory:#F0E0B0;--rose:#A01830;--ok:#4a8a5a;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Georgia,serif;background:#0D1B3E;color:#F0E0B0;padding:24px}
+  h1{font-size:1.4rem;font-weight:400;letter-spacing:.02em;margin-bottom:4px}
+  p.sub{opacity:.6;font-size:.85rem;margin-bottom:28px;font-family:Arial,sans-serif}
+  .card{background:rgba(255,255,255,.04);border:1px solid rgba(200,134,10,.25);border-radius:10px;padding:20px 22px;margin-bottom:20px}
+  .card h2{font-size:.95rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin:0 0 16px;font-family:Arial,sans-serif;font-weight:600}
+  label{display:block;font-size:.72rem;letter-spacing:.06em;opacity:.7;margin-bottom:5px;font-family:Arial,sans-serif}
+  input[type=text],input[type=date],input[type=tel],input[type=url],input[type=number],textarea,select{
+    width:100%;padding:9px 11px;margin-bottom:14px;border-radius:5px;border:1px solid rgba(200,134,10,.3);
+    background:rgba(0,0,0,.25);color:#F0E0B0;font-family:Arial,sans-serif;font-size:.85rem;outline:none;
+  }
+  input:focus,textarea:focus,select:focus{border-color:var(--gold)}
+  textarea{resize:vertical;min-height:60px}
+  .row{display:flex;gap:14px}
+  .row>div{flex:1}
+  .list-item{border:1px solid rgba(200,134,10,.18);border-radius:6px;padding:12px;margin-bottom:10px;position:relative;background:rgba(0,0,0,.15)}
+  .list-item button.rm{position:absolute;top:8px;right:8px;background:rgba(160,24,48,.7);border:none;color:#fff;width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:.75rem;line-height:1}
+  button.add{background:transparent;border:1px dashed var(--gold);color:var(--gold);padding:8px 16px;border-radius:6px;cursor:pointer;font-family:Arial,sans-serif;font-size:.78rem}
+  button.add:hover{background:rgba(200,134,10,.12)}
+  .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px}
+  button.primary{background:var(--gold);color:#1A0F00;border:none;padding:12px 26px;border-radius:6px;font-family:Arial,sans-serif;font-weight:700;letter-spacing:.05em;cursor:pointer;font-size:.85rem}
+  button.primary:hover{filter:brightness(1.1)}
+  button.ghost{background:transparent;border:1px solid rgba(200,134,10,.4);color:var(--gold);padding:11px 20px;border-radius:6px;cursor:pointer;font-family:Arial,sans-serif;font-size:.82rem}
+  #output{width:100%;min-height:220px;font-family:'Courier New',monospace;font-size:.78rem;background:#060C18;color:#8fd18f;border:1px solid rgba(200,134,10,.3);border-radius:8px;padding:14px;margin-top:14px;white-space:pre;overflow:auto}
+  .msg{font-family:Arial,sans-serif;font-size:.8rem;color:var(--ok);margin-left:8px}
+  .steps{font-family:Arial,sans-serif;font-size:.8rem;line-height:1.7;opacity:.75}
+  .steps code{background:rgba(200,134,10,.15);padding:1px 6px;border-radius:4px}
+  hr{border:none;border-top:1px solid rgba(200,134,10,.15);margin:14px 0}
+  .checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-family:Arial,sans-serif;font-size:.82rem}
+  .checkbox-row input{width:auto;margin:0}
+</style>
+</head>
+<body>
+
+<h1>✦ Wedding Invite — Config Editor</h1>
+<p class="sub">Fill this in, click "Generate Config", then paste the result into your <code>index.html</code>. No code editing required.</p>
+
+<div class="card">
+  <h2>Load Existing Config (optional)</h2>
+  <p class="steps">If you already have a config in your <code>index.html</code> — the JSON inside <code>&lt;script type="application/json" id="wedding-config"&gt;</code> — paste it here to edit it instead of starting fresh.</p>
+  <textarea id="loadBox" placeholder="Paste existing JSON config here, then click Load →"></textarea>
+  <button class="ghost" onclick="loadExisting()">Load into form</button>
+</div>
+
+<div class="card">
+  <h2>Couple</h2>
+  <div class="row">
+    <div><label>Bride's Name</label><input type="text" id="bride" value="Tanya"></div>
+    <div><label>Groom's Name</label><input type="text" id="groom" value="Rohan"></div>
+  </div>
+  <div class="row">
+    <div><label>Wedding Date</label><input type="date" id="date" value="2026-12-12"></div>
+    <div><label>WhatsApp Number (with country code, digits only)</label><input type="tel" id="whatsapp" placeholder="919876543210"></div>
+  </div>
+  <label>Venue</label><input type="text" id="venue" placeholder="e.g. Umaid Bhawan Palace, Jodhpur">
+  <label>Hashtag</label><input type="text" id="hashtag" placeholder="#TanyaWedsRohan">
+</div>
+
+<div class="card">
+  <h2>Invitation</h2>
+  <label>Blessing text (shown at top of invite card)</label>
+  <textarea id="blessing" placeholder="With the blessings of the divine and the love of our families"></textarea>
+  <div class="row">
+    <div><label>Bride's Father</label><input type="text" id="brideFather"></div>
+    <div><label>Bride's Mother</label><input type="text" id="brideMother"></div>
+  </div>
+  <div class="row">
+    <div><label>Groom's Father</label><input type="text" id="groomFather"></div>
+    <div><label>Groom's Mother</label><input type="text" id="groomMother"></div>
+  </div>
+  <div class="checkbox-row"><input type="checkbox" id="showGrandparents"> <label for="showGrandparents" style="margin:0">Show grandparents' names</label></div>
+  <div class="row">
+    <div><label>Bride's Grandfather</label><input type="text" id="brideGF"></div>
+    <div><label>Bride's Grandmother</label><input type="text" id="brideGM"></div>
+  </div>
+  <div class="row">
+    <div><label>Groom's Grandfather</label><input type="text" id="groomGF"></div>
+    <div><label>Groom's Grandmother</label><input type="text" id="groomGM"></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Events</h2>
+  <div id="eventsList"></div>
+  <button class="add" onclick="addEvent()">+ Add Event</button>
+</div>
+
+<div class="card">
+  <h2>Our Story</h2>
+  <div class="checkbox-row"><input type="checkbox" id="storyShow" checked> <label for="storyShow" style="margin:0">Show story section</label></div>
+  <label>Short verse / tagline</label>
+  <input type="text" id="storyText" placeholder="Two souls, one chai stall, a lifetime of mornings.">
+  <label>Tags (comma separated)</label>
+  <input type="text" id="storyTags" placeholder="Hopeless romantics, Chai addicts, Jodhpur dreamers">
+</div>
+
+<div class="card">
+  <h2>Gallery Photos</h2>
+  <p class="steps">Add the file path for each photo (upload your photos into the <code>assets</code> folder first, then reference them here, e.g. <code>assets/photo1.jpg</code>). Any number of photos is supported.</p>
+  <div id="galleryList"></div>
+  <button class="add" onclick="addPhoto()">+ Add Photo</button>
+</div>
+
+<div class="card">
+  <h2>Things To Know</h2>
+  <div id="thingsList"></div>
+  <button class="add" onclick="addThing()">+ Add Item</button>
+</div>
+
+<div class="card">
+  <h2>RSVP</h2>
+  <label>Heading</label><input type="text" id="rsvpHeading" value="Will you join us?">
+  <label>Subtext</label><textarea id="rsvpSubtext">We've saved a seat for you.</textarea>
+  <label>Button Text</label><input type="text" id="rsvpBtnText" value="Yes, I'll be there">
+  <label>Webhook URL (optional — saves guest RSVPs somewhere you control, e.g. a Google Apps Script Web App URL)</label>
+  <input type="url" id="rsvpWebhook" placeholder="https://script.google.com/macros/s/AKfycb.../exec">
+  <p class="steps">Don't have a webhook? Leave blank — RSVPs will still work via WhatsApp, they just won't be saved to a spreadsheet automatically.</p>
+</div>
+
+<div class="card">
+  <h2>Music</h2>
+  <div class="checkbox-row"><input type="checkbox" id="musicEnabled"> <label for="musicEnabled" style="margin:0">Enable background music</label></div>
+  <label>Music file path</label><input type="text" id="musicSrc" placeholder="assets/song.mp3">
+</div>
+
+<div class="actions">
+  <button class="primary" onclick="generate()">Generate Config JSON</button>
+  <span class="msg" id="copyMsg"></span>
+</div>
+<pre id="output"></pre>
+<p class="steps" style="margin-top:10px">
+  <strong>How to use this:</strong> click Generate, then Copy. Open <code>index.html</code> in a text editor, find the line
+  <code>&lt;script type="application/json" id="wedding-config"&gt;...&lt;/script&gt;</code>, and replace everything between those tags with what you copied. Save the file.
+</p>
+
+<script>
+function addEvent(name,date,time,venue,desc,icon){
+  const div = document.createElement('div');
+  div.className = 'list-item ev-item';
+  div.innerHTML = `
+    <button class="rm" onclick="this.parentElement.remove()">×</button>
+    <div class="row">
+      <div><label>Event Name</label><input type="text" class="ev-name" value="${name||''}" placeholder="Mehendi"></div>
+      <div><label>Date</label><input type="date" class="ev-date" value="${date||''}"></div>
+    </div>
+    <div class="row">
+      <div><label>Time</label><input type="text" class="ev-time" value="${time||''}" placeholder="14:00"></div>
+      <div><label>Venue</label><input type="text" class="ev-venue" value="${venue||''}" placeholder="Garden Pavilion"></div>
+    </div>
+    <label>Description</label><input type="text" class="ev-desc" value="${desc||''}">
+    <label>Icon path (optional)</label><input type="text" class="ev-icon" value="${icon||''}" placeholder="assets/icon-mehendi.png">
+  `;
+  document.getElementById('eventsList').appendChild(div);
+}
+function addPhoto(path){
+  const div = document.createElement('div');
+  div.className = 'list-item';
+  div.innerHTML = `<button class="rm" onclick="this.parentElement.remove()">×</button>
+    <label>Photo path</label><input type="text" class="photo-path" value="${path||''}" placeholder="assets/photo1.jpg">`;
+  document.getElementById('galleryList').appendChild(div);
+}
+function addThing(label,value){
+  const div = document.createElement('div');
+  div.className = 'list-item';
+  div.innerHTML = `<button class="rm" onclick="this.parentElement.remove()">×</button>
+    <div class="row">
+      <div><label>Label</label><input type="text" class="thing-label" value="${label||''}" placeholder="Dress Code"></div>
+      <div><label>Value</label><input type="text" class="thing-value" value="${value||''}" placeholder="Indian Festive"></div>
+    </div>`;
+  document.getElementById('thingsList').appendChild(div);
+}
+
+// Seed with a couple of starter rows
+addEvent('Mehendi','2026-12-11','14:00','Garden Pavilion','Henna artistry, folk music, and marigold everywhere.');
+addPhoto('assets/photo1.jpg');
+addPhoto('assets/photo2.jpg');
+addThing('Dress Code','Indian Festive');
+addThing('Parking','Available on-site');
+
+function generate(){
+  const events = Array.from(document.querySelectorAll('.ev-item')).map(function(row){
+    return {
+      name: row.querySelector('.ev-name').value,
+      date: row.querySelector('.ev-date').value,
+      time: row.querySelector('.ev-time').value,
+      venue: row.querySelector('.ev-venue').value,
+      desc: row.querySelector('.ev-desc').value,
+      icon: row.querySelector('.ev-icon').value
+    };
+  });
+  const photos = Array.from(document.querySelectorAll('.photo-path')).map(i=>i.value).filter(Boolean);
+  const thingsToKnow = Array.from(document.querySelectorAll('#thingsList .list-item')).map(function(row){
+    return { label: row.querySelector('.thing-label').value, value: row.querySelector('.thing-value').value };
+  }).filter(t=>t.label);
+
+  const config = {
+    couple: {
+      bride: val('bride'), groom: val('groom'), date: val('date'),
+      venue: val('venue'), whatsapp: val('whatsapp'), hashtag: val('hashtag')
+    },
+    invite: {
+      blessing: val('blessing'),
+      brideFather: val('brideFather'), brideMother: val('brideMother'),
+      groomFather: val('groomFather'), groomMother: val('groomMother'),
+      showGrandparents: document.getElementById('showGrandparents').checked,
+      brideGF: val('brideGF'), brideGM: val('brideGM'),
+      groomGF: val('groomGF'), groomGM: val('groomGM')
+    },
+    events: events,
+    story: {
+      show: document.getElementById('storyShow').checked,
+      customHashtag: '',
+      storyMode: val('storyText') ? 'story' : 'tags',
+      storyText: val('storyText'),
+      tags: val('storyTags').split(',').map(s=>s.trim()).filter(Boolean)
+    },
+    gallery: { show: true, layout: '4', photos: photos },
+    thingsToKnow: thingsToKnow,
+    rsvp: {
+      mode: 'whatsapp',
+      heading: val('rsvpHeading'),
+      subtext: val('rsvpSubtext'),
+      btnText: val('rsvpBtnText'),
+      whatsapp: val('whatsapp'),
+      webhookUrl: val('rsvpWebhook')
+    },
+    music: { enabled: document.getElementById('musicEnabled').checked, src: val('musicSrc'), name: '' },
+    calendarUrls: buildCalendarUrls()
+  };
+
+  document.getElementById('output').textContent = JSON.stringify(config, null, 2);
+  document.getElementById('copyMsg').textContent = '';
+  addCopyButtonOnce();
+}
+
+function buildCalendarUrls(){
+  const bride = val('bride'), groom = val('groom'), date = val('date');
+  if(!date) return { google:'', apple:'' };
+  const compact = date.replace(/-/g,'');
+  const next = new Date(date+'T00:00'); next.setDate(next.getDate()+1);
+  const nextCompact = next.toISOString().slice(0,10).replace(/-/g,'');
+  const text = encodeURIComponent(bride+' weds '+groom);
+  return {
+    google: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+text+'&dates='+compact+'/'+nextCompact+'&location=',
+    apple: 'data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:'+compact+'%0ADTEND:'+nextCompact+'%0ASUMMARY:'+text+'%0AEND:VEVENT%0AEND:VCALENDAR'
+  };
+}
+
+function val(id){ return document.getElementById(id).value.trim(); }
+
+function addCopyButtonOnce(){
+  if(document.getElementById('copyBtn')) return;
+  const btn = document.createElement('button');
+  btn.id = 'copyBtn';
+  btn.className = 'ghost';
+  btn.textContent = 'Copy to Clipboard';
+  btn.style.marginLeft = '4px';
+  btn.onclick = function(){
+    navigator.clipboard.writeText(document.getElementById('output').textContent).then(function(){
+      document.getElementById('copyMsg').textContent = '✓ Copied!';
+      setTimeout(()=>document.getElementById('copyMsg').textContent='', 2000);
+    });
+  };
+  document.querySelector('.actions').appendChild(btn);
+}
+
+function loadExisting(){
+  try{
+    const cfg = JSON.parse(document.getElementById('loadBox').value);
+    const c = cfg.couple||{}, inv = cfg.invite||{}, rsvp = cfg.rsvp||{}, story = cfg.story||{}, music = cfg.music||{};
+    setVal('bride', c.bride); setVal('groom', c.groom); setVal('date', c.date);
+    setVal('venue', c.venue); setVal('whatsapp', c.whatsapp); setVal('hashtag', c.hashtag);
+    setVal('blessing', inv.blessing); setVal('brideFather', inv.brideFather); setVal('brideMother', inv.brideMother);
+    setVal('groomFather', inv.groomFather); setVal('groomMother', inv.groomMother);
+    document.getElementById('showGrandparents').checked = !!inv.showGrandparents;
+    setVal('brideGF', inv.brideGF); setVal('brideGM', inv.brideGM); setVal('groomGF', inv.groomGF); setVal('groomGM', inv.groomGM);
+
+    document.getElementById('eventsList').innerHTML = '';
+    (cfg.events||[]).forEach(e=>addEvent(e.name,e.date,e.time,e.venue,e.desc,e.icon));
+
+    document.getElementById('storyShow').checked = story.show!==false;
+    setVal('storyText', story.storyText);
+    setVal('storyTags', (story.tags||[]).join(', '));
+
+    document.getElementById('galleryList').innerHTML = '';
+    ((cfg.gallery||{}).photos||[]).forEach(p=>addPhoto(p));
+
+    document.getElementById('thingsList').innerHTML = '';
+    (cfg.thingsToKnow||[]).forEach(t=>addThing(t.label,t.value));
+
+    setVal('rsvpHeading', rsvp.heading); setVal('rsvpSubtext', rsvp.subtext); setVal('rsvpBtnText', rsvp.btnText);
+    setVal('rsvpWebhook', rsvp.webhookUrl);
+
+    document.getElementById('musicEnabled').checked = !!music.enabled;
+    setVal('musicSrc', music.src);
+
+    document.getElementById('copyMsg').textContent = '✓ Loaded';
+    setTimeout(()=>document.getElementById('copyMsg').textContent='', 2000);
+  }catch(err){
+    alert('Could not parse that JSON. Make sure you pasted the full config object.');
+  }
+}
+function setVal(id,v){ if(v!==undefined && v!==null) document.getElementById(id).value = v; }
+</script>
+</body>
+</html>

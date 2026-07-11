@@ -54,12 +54,32 @@ const isTouch = window.matchMedia('(pointer:coarse)').matches;
    1600ms → preloader fades out, hero animates in
 ───────────────────────────────────────── */
 /* ─────────────────────────────────────────
-   PRELOADER — graceful reveal
-   Body gets .pl-active immediately (inline
-   script in <head> sets it). If JS fails or
-   preloader not found, everything is visible
-   by default via CSS fallback.
+   PRELOADER — 1.6s total
+   300ms  → gold line draws
+   700ms  → names fade up
+   1600ms → preloader fades out, hero animates in
 ───────────────────────────────────────── */
+function initPreloader() {
+  const pl = document.getElementById('preloader');
+  if (!pl) {
+    revealHero();
+    return;
+  }
+
+  setTimeout(() => {
+    pl.classList.add('li');
+  }, 300);
+
+  setTimeout(() => {
+    pl.classList.add('ni');
+  }, 700);
+
+  setTimeout(() => {
+    pl.classList.add('away');
+    revealHero();
+  }, 1600);
+}
+
 function revealHero(){
   document.body.classList.remove('pl-active');
   const palace  = document.querySelector('.hl-palace');
@@ -68,218 +88,6 @@ function revealHero(){
   if(palace)  palace.classList.add('in');
   if(flowers) flowers.classList.add('in');
   if(copy)    copy.classList.add('in');
-}
-
-function initScratch() {
-  const gate        = document.getElementById('scratchGate');
-  const canvas      = document.getElementById('scratchCanvas');
-  const hint        = document.getElementById('scratchHint');
-  const progressBar = document.getElementById('sgProgress');
-  const progressLbl = document.getElementById('sgProgressLabel');
-  const unlocked    = document.getElementById('sgUnlocked');
-  if (!gate || !canvas){
-    revealHero();
-    return;
-  }
-
-  // Lock scroll
-  document.body.classList.add('scroll-locked');
-
-  const ctx = canvas.getContext('2d');
-  const THRESHOLD = 55;   // % needed to unlock
-  let isDrawing   = false;
-  let hasStarted  = false;
-  let isDone      = false;
-
-  /* Size canvas to wrapper */
-  function sizeCanvas() {
-    const wrap = canvas.parentElement;
-    canvas.width  = wrap.offsetWidth;
-    canvas.height = wrap.offsetHeight;
-    drawScratchLayer();
-  }
-
-  /* Fill canvas with the gold foil scratch surface */
-  function drawScratchLayer() {
-    const w = canvas.width, h = canvas.height;
-
-    // Premium gold foil gradient background (angled)
-    const grad = ctx.createLinearGradient(0, 0, w, h);
-    grad.addColorStop(0,   '#B58428');
-    grad.addColorStop(0.3, '#F7D070');
-    grad.addColorStop(0.5, '#FFF7B0');
-    grad.addColorStop(0.7, '#D29B35');
-    grad.addColorStop(1,   '#A37119');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, w, h);
-
-    // Subtle metallic noise texture
-    for (let i = 0; i < 350; i++) {
-      ctx.beginPath();
-      ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1.5 + 0.3, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0,0,0,' + (Math.random() * 0.08 + 0.03) + ')';
-      ctx.fill();
-    }
-    for (let i = 0; i < 200; i++) {
-      ctx.beginPath();
-      ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1 + 0.2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,255,255,' + (Math.random() * 0.15 + 0.05) + ')';
-      ctx.fill();
-    }
-
-    // Centre instruction text
-    ctx.font = 'bold 14px Jost, sans-serif';
-    ctx.fillStyle = 'rgba(15,32,68,.65)';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('✦  SCRATCH TO REVEAL  ✦', w / 2, h / 2);
-  }
-
-  let lastX = null, lastY = null;
-  let lastProgressCheck = 0;
-
-  /* Erase under finger/pointer using destination-out */
-  function scratch(x, y, isStart) {
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.lineWidth = Math.min(canvas.width, canvas.height) * 0.23; // adaptive brush (2x radius)
-
-    ctx.beginPath();
-    if (isStart || lastX === null) {
-      ctx.moveTo(x, y);
-      ctx.lineTo(x, y + 0.1); // Small tick to draw a round cap for a single tap
-    } else {
-      ctx.moveTo(lastX, lastY);
-      ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    ctx.globalCompositeOperation = 'source-over';
-
-    lastX = x;
-    lastY = y;
-
-    // Throttle the expensive getImageData call to prevent lag
-    const now = performance.now();
-    if (now - lastProgressCheck > 100) {
-      lastProgressCheck = now;
-      requestAnimationFrame(updateProgress);
-    }
-  }
-
-  /* Sample pixel transparency to calculate % scratched */
-  function getScratched() {
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const pixels    = imageData.data;
-    let transparent = 0;
-    // Sample every 4th pixel for performance
-    for (let i = 3; i < pixels.length; i += 16) {
-      if (pixels[i] < 128) transparent++;
-    }
-    const total = pixels.length / 16;
-    return Math.round((transparent / total) * 100);
-  }
-
-  function updateProgress() {
-    if (isDone) return;
-    const pct = getScratched();
-    const display = Math.min(pct, 100);
-    progressBar.style.width = display + '%';
-    progressLbl.textContent = display + '% revealed';
-
-    if (pct >= THRESHOLD) {
-      onUnlocked();
-    }
-  }
-
-  function onUnlocked() {
-    if (isDone) return;
-    isDone = true;
-
-    // Fade out rest of canvas completely
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.fillStyle = 'rgba(0,0,0,1)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.globalCompositeOperation = 'source-over';
-
-    progressBar.style.width = '100%';
-    progressLbl.textContent = '100% revealed ✦';
-
-    // Show unlock CTA
-    unlocked.classList.add('show');
-
-    // Unlock scroll after short delay
-    setTimeout(() => {
-      document.body.classList.remove('scroll-locked');
-      revealHero();
-    }, 200);
-
-    // Dismiss gate when user clicks/taps or presses key
-    function dismiss() {
-      gate.classList.add('dismissed');
-      gate.removeEventListener('click', dismiss);
-    }
-    gate.addEventListener('click', dismiss);
-    document.addEventListener('keydown', dismiss, { once: true });
-
-    // Auto-dismiss very quickly so it feels instant
-    setTimeout(dismiss, 400);
-  }
-
-  /* ── EVENT HELPERS ────────────────────────────────── */
-  function getPos(e) {
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width  / rect.width;
-    const scaleY = canvas.height / rect.height;
-    const src = e.touches ? e.touches[0] : e;
-    return {
-      x: (src.clientX - rect.left)  * scaleX,
-      y: (src.clientY - rect.top)   * scaleY
-    };
-  }
-
-  function onStart(e) {
-    e.preventDefault();
-    isDrawing = true;
-    if (!hasStarted) {
-      hasStarted = true;
-      hint.classList.add('hidden');
-    }
-    const pos = getPos(e);
-    scratch(pos.x, pos.y, true);
-  }
-
-  function onMove(e) {
-    e.preventDefault();
-    if (!isDrawing || isDone) return;
-    const pos = getPos(e);
-    scratch(pos.x, pos.y, false);
-  }
-
-  function onEnd() { 
-    isDrawing = false; 
-    lastX = null; 
-    lastY = null;
-  }
-
-  /* Mouse */
-  canvas.addEventListener('mousedown',  onStart, { passive: false });
-  canvas.addEventListener('mousemove',  onMove,  { passive: false });
-  canvas.addEventListener('mouseup',   onEnd);
-  canvas.addEventListener('mouseleave', onEnd);
-
-  /* Touch */
-  canvas.addEventListener('touchstart', onStart, { passive: false });
-  canvas.addEventListener('touchmove',  onMove,  { passive: false });
-  canvas.addEventListener('touchend',   onEnd);
-
-  /* Block scroll while gate is up */
-  gate.addEventListener('wheel',      e => e.preventDefault(), { passive: false });
-  gate.addEventListener('touchmove',  e => e.preventDefault(), { passive: false });
-
-  /* Init */
-  sizeCanvas();
-  window.addEventListener('resize', sizeCanvas);
 }
 
 /* ── SCROLL ANIMATIONS (AOS-like) ───────────── */
@@ -312,11 +120,11 @@ document.body.classList.add('pl-active');
 
 // Run when page is fully loaded; if already loaded, run immediately
 if(document.readyState === 'complete'){
-  initScratch();
+  initPreloader();
   initScrollAnim();
 } else {
   window.addEventListener('load', () => {
-    initScratch();
+    initPreloader();
     initScrollAnim();
   });
 }
@@ -744,16 +552,20 @@ initEventsAutoOpen();
     sequenceDone = true;
 
     // Phase 1 — Pull
-    bride.classList.add('st-pull');
-    groom.classList.add('st-pull');
+    if (!isTouch) {
+      bride.classList.add('st-pull');
+      groom.classList.add('st-pull');
+    }
 
     // Phase 2 — Tension (715ms)
     setTimeout(() => {
       bride.classList.remove('st-pull');
       groom.classList.remove('st-pull');
-      bride.classList.add('st-tension');
-      groom.classList.add('st-tension');
-    }, 715);
+      if (!isTouch) {
+        bride.classList.add('st-tension');
+        groom.classList.add('st-tension');
+      }
+    }, isTouch ? 120 : 715);
 
     // Phase 3 — Enable scroll-driven open (1235ms)
     setTimeout(() => {
@@ -762,7 +574,7 @@ initEventsAutoOpen();
       openEnabled = true;
       // Apply current scroll progress immediately in case user already scrolled
       applyProgress(getCurtainProgress());
-    }, 1235);
+    }, isTouch ? 220 : 1235);
   }
 
   /* ── Scroll progress for curtain (0→1) ──
@@ -797,7 +609,7 @@ initEventsAutoOpen();
     }
 
     // Characters follow curtain outward (drift + slight scale down as they "recede")
-    const charDrift = eased * 28;  // px outward
+    const charDrift = eased * (isTouch ? 12 : 28);  // px outward
     const charScale = 1 - eased * 0.04;
     bride.style.transform = `translateX(-${charDrift.toFixed(1)}px) scale(${charScale.toFixed(3)})`;
     groom.style.transform = `translateX(${charDrift.toFixed(1)}px)  scale(${charScale.toFixed(3)})`;
@@ -839,7 +651,6 @@ initEventsAutoOpen();
   });
 
 })();
-
 
 /* ─────────────────────────────────────────
    RSVP — WhatsApp button petal burst on click

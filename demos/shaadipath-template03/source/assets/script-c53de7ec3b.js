@@ -1,14 +1,14 @@
-'use strict';
+﻿'use strict';
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    GLOBALS
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const isTouch = window.matchMedia('(pointer:coarse)').matches;
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LUXURY ANIMATION 7: MAGNETIC CURSOR
-   Platinum crosshair ring — architectural.
-───────────────────────────────────────── */
+   Platinum crosshair ring â€” architectural.
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function initCursor(){
   if(isTouch) return;
   const ring = document.getElementById('cRing');
@@ -33,7 +33,7 @@ const isTouch = window.matchMedia('(pointer:coarse)').matches;
     ry += (dy - ry) * 0.082;
     ring.style.left = rx + 'px';
     ring.style.top  = ry + 'px';
-    // Gold bloom over interactive, platinum default — T03 palette
+    // Gold bloom over interactive, platinum default â€” T03 palette
     ring.style.boxShadow = document.body.classList.contains('ch')
       ? '0 0 36px 12px rgba(200,168,112,.40)'
       : '0 0 12px 2px rgba(176,160,128,.15)';
@@ -46,12 +46,12 @@ const isTouch = window.matchMedia('(pointer:coarse)').matches;
   });
 })();
 
-/* ─────────────────────────────────────────
-   PRELOADER — 2.0s total (slower = editorial)
-   400ms  → platinum line draws
-   900ms  → names silk-fade up
-   2000ms → preloader fades out, hero reveals
-───────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   PRELOADER â€” 2.0s total (slower = editorial)
+   400ms  â†’ platinum line draws
+   900ms  â†’ names silk-fade up
+   2000ms â†’ preloader fades out, hero reveals
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function revealHero(){
   document.body.classList.remove('pl-active');
   const arch   = document.querySelector('.hl-palace');
@@ -87,12 +87,12 @@ setTimeout(() => {
   }
 }, 5000);
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LUXURY ANIMATION: AMBIENT HERO PARTICLES
    CSS-powered floating gold dust particles.
    Created in JS, animated purely in CSS.
    30 particles on desktop, 12 on mobile.
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function initHeroParticles(){
   const container = document.getElementById('heroParticles');
   if(!container) return;
@@ -102,7 +102,7 @@ setTimeout(() => {
     const p = document.createElement('div');
     p.className = 'hp';
     const x    = 5 + Math.random() * 90;
-    const dur  = 10 + Math.random() * 16;   // 10–26s cycle
+    const dur  = 10 + Math.random() * 16;   // 10â€“26s cycle
     const del  = Math.random() * -20;        // negative delay = pre-started
     const dx   = (Math.random() - 0.5) * 60; // horizontal drift
     const size = Math.random() < 0.3 ? 3 : (Math.random() < 0.6 ? 2 : 1.5);
@@ -111,14 +111,14 @@ setTimeout(() => {
   }
 })();
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    SCROLL-PINNED HERO DRIVER
    T03 INNOVATION: Dual parallax rates
-   ─ Arch (l3)    → scale 1.0 → 1.45 (standard)
-   ─ Couple (l4)  → scale 1.0 → 1.20 (slower)
+   â”€ Arch (l3)    â†’ scale 1.0 â†’ 1.45 (standard)
+   â”€ Couple (l4)  â†’ scale 1.0 â†’ 1.20 (slower)
    Net result: couple appears to recede INTO
    the arch as the user scrolls, creating depth.
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const heroWrap    = document.getElementById('heroWrap');
 const heroPin     = document.getElementById('heroPin');
 const archEl      = document.getElementById('l3');    // The arch
@@ -143,7 +143,7 @@ function driveHero(){
   const mx = isTouch ? 0 : mouseX;
   const my = isTouch ? 0 : mouseY;
 
-  // ARCH — 3D perspective tilt on mouse + standard zoom (Change 06)
+  // ARCH â€” 3D perspective tilt on mouse + standard zoom (Change 06)
   if(archEl){
     const scale  = 1.0 + p * 0.45;
     const tiltX  = mx * -10;
@@ -152,12 +152,12 @@ function driveHero(){
     archEl.style.filter    = `drop-shadow(0 ${(12+p*18).toFixed(0)}px ${(40+p*30).toFixed(0)}px rgba(42,36,32,${(0.10+p*0.12).toFixed(2)}))`;
   }
 
-  // COUPLE — slower zoom (1.0→1.20) + slight upward float — depth effect
+  // COUPLE â€” slower zoom (1.0â†’1.20) + slight upward float â€” depth effect
   if(coupleEl){
     const coupleScale = 1.0 + p * 0.20;
     const coupleY     = p * -15;
     const tiltX       = mx * -2;
-    coupleEl.style.transform = `translateX(calc(-50% + ${tiltX}px)) translateY(${coupleY}px) scale(${coupleScale})`;
+    coupleEl.style.transform = `translateX(calc(-50% + ${tiltX}px)) translateY(calc(-50% + ${coupleY}px)) scale(${coupleScale})`;
     coupleEl.style.opacity = String(Math.max(0.3, 1 - p * 0.5));
   }
 
@@ -199,14 +199,14 @@ if(!isTouch && heroPin){
   });
 }
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LUXURY ANIMATION: MERLION FOUNTAIN ARC
    Realistic water arcs from each merlion mouth toward the centre.
-   Left merlion jets water RIGHT + UP → peaks at centre-top → falls down.
-   Right merlion jets water LEFT + UP → peaks at centre-top → falls down.
+   Left merlion jets water RIGHT + UP â†’ peaks at centre-top â†’ falls down.
+   Right merlion jets water LEFT + UP â†’ peaks at centre-top â†’ falls down.
    Three bezier stream curves per merlion + water-drop particles that
    travel along the arc path (gravity bends them naturally).
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function initMerlionWater(){
   const bridge = document.getElementById('urnBridge');
   const lineEl = document.getElementById('urnBridgeLine');
@@ -249,7 +249,7 @@ if(!isTouch && heroPin){
   let frameId;
   let t = 0;
 
-  // ── Mouth positions ──
+  // â”€â”€ Mouth positions â”€â”€
   // Placed right at the inner/top of each merlion head, close to statue
   function getMouths(){
     const W    = canvas.width;
@@ -265,24 +265,24 @@ if(!isTouch && heroPin){
     ];
   }
 
-  // ── Spawn a water-drop particle ──
-  // Matches yellow sketch: shoots UPWARD (55°–75° above horizontal) with
+  // â”€â”€ Spawn a water-drop particle â”€â”€
+  // Matches yellow sketch: shoots UPWARD (55Â°â€“75Â° above horizontal) with
   // a tiny inward nudge. Gravity pulls it back down through the centre
-  // toward the lotus — creating a tall narrow arch per merlion.
+  // toward the lotus â€” creating a tall narrow arch per merlion.
   function spawnDrop(m){
     const W   = canvas.width;
     const col = COLS[Math.floor(Math.random() * COLS.length)];
 
     // Steep upward launch angle (matches the tall arch in the sketch)
-    const angleDeg = 40 + Math.random() * 16;  // 40°–54° above horizontal
+    const angleDeg = 40 + Math.random() * 16;  // 40Â°â€“54Â° above horizontal
     const angleRad = (angleDeg * Math.PI) / 180;
 
-    // Speed calibrated so peak is ~100–140px above mouth on mobile,
-    // slightly more on desktop. Formula: v²·sin²θ / (2g) = peak_height
-    // target peak ~120px → v = sqrt(2 * 0.18 * 120) / sin(angle) ≈ 8–9
+    // Speed calibrated so peak is ~100â€“140px above mouth on mobile,
+    // slightly more on desktop. Formula: vÂ²Â·sinÂ²Î¸ / (2g) = peak_height
+    // target peak ~120px â†’ v = sqrt(2 * 0.18 * 120) / sin(angle) â‰ˆ 8â€“9
     const baseSpeed = 3.5 + Math.random() * 2.0 + (W > 600 ? 1.5 : 0);
 
-    // Small inward horizontal component (toward centre) — keeps arc narrow
+    // Small inward horizontal component (toward centre) â€” keeps arc narrow
     const vx = m.side * Math.cos(angleRad) * baseSpeed * 0.30;
     const vy = -Math.sin(angleRad) * baseSpeed; // strong upward
 
@@ -310,7 +310,7 @@ if(!isTouch && heroPin){
     t++;
     spawnTick++;
 
-    // Stream curves removed — particles only for clean confetti-water look
+    // Stream curves removed â€” particles only for clean confetti-water look
 
     // Update & draw particles
     particles = particles.filter(p => p.life > 0 && p.y < canvas.height + 50);
@@ -347,7 +347,7 @@ if(!isTouch && heroPin){
       ctx.restore();
     }
 
-    // Spawn drops — reduced 30%: every frame, 2–3 per mouth (was 3–5)
+    // Spawn drops â€” reduced 30%: every frame, 2â€“3 per mouth (was 3â€“5)
     {
       const mouths = getMouths();
       mouths.forEach(m => {
@@ -379,12 +379,12 @@ if(!isTouch && heroPin){
   io.observe(bridge);
 })();
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LUXURY ANIMATION: MINIMAL PETAL RAIN
-   T03 version — champagne leaf petals.
+   T03 version â€” champagne leaf petals.
    Max 4 per section, very slow rate.
    Opacity reduced to 0.35 for editorial subtlety.
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 class Petals {
   constructor(id, opts={}){
     this.el    = document.getElementById(id);
@@ -451,7 +451,7 @@ class Petals {
   }
 }
 
-// T03 petal systems — minimal counts, slow editorial rates. Story+gallery added.
+// T03 petal systems â€” minimal counts, slow editorial rates. Story+gallery added.
 const PS = {
   hero:    new Petals('petalHero',    { max: isTouch?40:60,  rate: isTouch?350:200 }),
   invite:  new Petals('petalInvite',  { max: isTouch?30:50,  rate: isTouch?400:250 }),
@@ -475,10 +475,10 @@ const sIO = new IntersectionObserver(entries => {
   if(el) sIO.observe(el);
 });
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LUXURY ANIMATION 6: SILK FADE SCROLL REVEAL
    1.2s editorial pace vs T01's 0.8s.
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const rIO = new IntersectionObserver(entries => {
   entries.forEach(({ target, isIntersecting }) => {
     if(isIntersecting){
@@ -492,11 +492,11 @@ document.querySelectorAll('.scroll-in').forEach(el => rIO.observe(el));
 const inviteCard = document.querySelector('.invite-card');
 if(inviteCard) rIO.observe(inviteCard);
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LUXURY ANIMATION 3: PLATINUM LINE DRAWS
    SVG underlines animate in under section headings
    when they enter the viewport.
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function initLineDraws(){
   const lines = document.querySelectorAll('.sh-line');
   if(!lines.length) return;
@@ -514,9 +514,9 @@ if(inviteCard) rIO.observe(inviteCard);
   lines.forEach(l => lineIO.observe(l));
 })();
 
-/* ─────────────────────────────────────────
-   EVENTS — Journey Line (identical to T01/T02)
-───────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   EVENTS â€” Journey Line (identical to T01/T02)
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function initEventsJourney(){
   if(window.matchMedia('(min-width:681px)').matches) return;
   const section  = document.getElementById('events');
@@ -601,9 +601,9 @@ if(inviteCard) rIO.observe(inviteCard);
   window.addEventListener('resize', () => { clearTimeout(rTO); rTO = setTimeout(layout, 180); });
 })();
 
-/* ─────────────────────────────────────────
-   EVENTS — Scroll-triggered detail reveal
-───────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   EVENTS â€” Scroll-triggered detail reveal
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function initEventsAutoOpen(){
   const nodes = Array.from(document.querySelectorAll('.ev-node'));
   if(!nodes.length) return;
@@ -625,10 +625,10 @@ function initEventsAutoOpen(){
 }
 initEventsAutoOpen();
 
-/* ─────────────────────────────────────────
-   3D CARD TILT — events + gallery (T03 Change 07)
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   3D CARD TILT â€” events + gallery (T03 Change 07)
    Restrained angles to match T03 editorial feel
-─────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function initCardTilt(){
   function attachMouseTilt(el){
     if(el._tiltAttached) return;
@@ -670,11 +670,11 @@ initEventsAutoOpen();
   };
 })();
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    HERO COUNTDOWN TIMER (T03 Change 12)
    Reads WEDDING_CONFIG.couple.date.
    Falls back to 12 Dec 2026.
-─────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function initCountdown(){
   const el = document.getElementById('heroCountdown');
   if(!el) return;
@@ -691,7 +691,7 @@ initEventsAutoOpen();
   function tick(){
     const diff = getTarget() - Date.now();
     if(diff <= 0){
-      el.innerHTML = '<span class="hc-cd-unit"><span class="hc-cd-num" style="font-size:clamp(.6rem,1.4vw,.85rem)">We\'re Married ♥</span></span>';
+      el.innerHTML = '<span class="hc-cd-unit"><span class="hc-cd-num" style="font-size:clamp(.6rem,1.4vw,.85rem)">We\'re Married â™¥</span></span>';
       return;
     }
     const d = Math.floor(diff / 86400000);
@@ -700,23 +700,23 @@ initEventsAutoOpen();
     const s = Math.floor((diff % 60000)    / 1000);
     el.innerHTML =
       `<span class="hc-cd-unit"><span class="hc-cd-num">${d}</span><span class="hc-cd-label">Days</span></span>` +
-      `<span class="hc-cd-sep">·</span>` +
+      `<span class="hc-cd-sep">Â·</span>` +
       `<span class="hc-cd-unit"><span class="hc-cd-num">${pad(h)}</span><span class="hc-cd-label">Hrs</span></span>` +
-      `<span class="hc-cd-sep">·</span>` +
+      `<span class="hc-cd-sep">Â·</span>` +
       `<span class="hc-cd-unit"><span class="hc-cd-num">${pad(m)}</span><span class="hc-cd-label">Min</span></span>` +
-      `<span class="hc-cd-sep">·</span>` +
+      `<span class="hc-cd-sep">Â·</span>` +
       `<span class="hc-cd-unit"><span class="hc-cd-num">${pad(s)}</span><span class="hc-cd-label">Sec</span></span>`;
   }
   tick();
   setInterval(tick, 1000);
 })();
 
-/* ─────────────────────────────────────────
-   STORY — Theatrical Curtain Reveal
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   STORY â€” Theatrical Curtain Reveal
    T03 version: slower, more restrained.
    Curtain open speed reduced.
    Story petal colours: warm champagne tones.
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function initCurtainReveal(){
   const section  = document.getElementById('story');
   const stage    = document.getElementById('stStage');
@@ -753,8 +753,10 @@ initEventsAutoOpen();
   function runSequence(){
     if(sequenceDone) return;
     sequenceDone = true;
-    bride.classList.add('st-pull');
-    groom.classList.add('st-pull');
+    if (!isTouch) {
+      bride.classList.add('st-pull');
+      groom.classList.add('st-pull');
+    }
     setTimeout(() => {
       bride.classList.remove('st-pull'); groom.classList.remove('st-pull');
       bride.classList.add('st-tension'); groom.classList.add('st-tension');
@@ -780,7 +782,7 @@ initEventsAutoOpen();
     const eased = p < 1 ? 1 - Math.pow(1-p, 3.2) : 1;
     curtL.style.transform = `translateX(-${(eased*100).toFixed(2)}%)`;
     curtR.style.transform = `translateX(${(eased*100).toFixed(2)}%)`;
-    // Growing shadow as curtains part — physical weight
+    // Growing shadow as curtains part â€” physical weight
     curtL.style.filter = `drop-shadow(${(eased*24).toFixed(1)}px 0 30px rgba(42,36,32,${(eased*.28).toFixed(2)}))`;
     curtR.style.filter = `drop-shadow(-${(eased*24).toFixed(1)}px 0 30px rgba(42,36,32,${(eased*.28).toFixed(2)}))`;
     const charDrift = eased * 22;
@@ -813,10 +815,10 @@ initEventsAutoOpen();
   });
 })();
 
-/* ─────────────────────────────────────────
-   RSVP — Subtle leaf burst on click
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   RSVP â€” Subtle leaf burst on click
    T03 version: much smaller, champagne only
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function burstPetals(fromEl){
   const r   = fromEl.getBoundingClientRect();
   const cx  = r.left + r.width/2;
@@ -851,3 +853,4 @@ function burstPetals(fromEl){
   if(!btn) return;
   btn.addEventListener('click', () => { burstPetals(btn); });
 })();
+

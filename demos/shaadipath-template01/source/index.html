@@ -39,10 +39,10 @@
   <div class="sg-bg"></div>
 
   <!-- Floating ornaments on gate -->
-  <img class="sg-diya sg-dl" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
-  <img class="sg-diya sg-dr" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
-  <img class="sg-vine sg-vl" src="assets/Element_204-a00fdaed6d.png" alt="" aria-hidden="true">
-  <img class="sg-vine sg-vr" src="assets/Element_205-7988a52991.png" alt="" aria-hidden="true">
+  <img class="sg-diya sg-dl" src="assets/Element_201-4f5283889f.png" alt="" aria-hidden="true">
+  <img class="sg-diya sg-dr" src="assets/Element_201-4f5283889f.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vl" src="assets/Element_204-03d5916c5b.png" alt="" aria-hidden="true">
+  <img class="sg-vine sg-vr" src="assets/Element_205-cbfd2ffa8a.png" alt="" aria-hidden="true">
 
   <div class="sg-content">
     <!-- Top mandala -->
@@ -126,7 +126,9 @@
   </div>
 </div>
 
-<!-- HERO SCROLL SCENE -->\n\n  <div id="heroWrap" class="hero-wrap">
+<!-- HERO SCROLL SCENE -->
+
+  <div id="heroWrap" class="hero-wrap">
     <div id="heroPin" class="hero-pin">
 
       <div class="hero-sky"></div>
@@ -758,11 +760,11 @@
     </svg>
   </div>
 
-  <img class="s-diya-l" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
-  <img class="s-diya-r" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="s-diya-l" src="assets/Element_201-4f5283889f.png" alt="" aria-hidden="true">
+  <img class="s-diya-r" src="assets/Element_201-4f5283889f.png" alt="" aria-hidden="true">
 
   <div class="rsvp-toran" aria-hidden="true">
-    <img src="assets/Background_204-24ddb4a1ad.png" alt="" class="toran-img">
+    <img src="assets/Background_204-90c092437c.png" alt="" class="toran-img">
   </div>
 
   <div id="petalRsvp" class="petal-canvas"></div>
@@ -834,10 +836,6 @@
       You'll be redirected to WhatsApp to confirm your attendance.
     </p>
 
-    <div class="scroll-in" style="--sd:.48s">
-      <button type="button" class="dl-card-btn" id="dlCardBtn">⬇ Download Invite Card</button>
-    </div>
-
     <!-- Gold rule below -->
     <div class="rsvp-rule scroll-in" style="--sd:.5s">
       <svg viewBox="0 0 400 12" width="100%" style="max-width:400px">
@@ -852,6 +850,7 @@
 
   <!-- ═══ FOOTER ═══ -->
   <footer class="footer">
+    <div class="ft-glow" aria-hidden="true"></div>
     <svg class="ft-lotus" viewBox="0 0 80 40" width="70" aria-hidden="true">
       <ellipse cx="40" cy="34" rx="7" ry="11" fill="#C4985A" opacity="0.2" transform="rotate(-40 40 34)" />
       <ellipse cx="40" cy="34" rx="7" ry="11" fill="#C4985A" opacity="0.2" transform="rotate(-20 40 34)" />
@@ -863,7 +862,8 @@
     <div class="ft-names">Priya &amp; Arjun</div>
     <div class="ft-rule"></div>
     <p class="ft-date">12 December 2026 · Umaid Bhawan Palace, Jodhpur</p>
-    <p class="ft-credit">Crafted with love on <a href="#">invite.kimiclaw.in</a></p>
+    <p class="ft-note">With love, laughter, and a lifetime of togetherness.</p>
+    <p class="ft-credit">invite.kimiclaw.in</p>
   </footer>
 
   <script src="assets/script-fe8cef4cb6.js?v=3"></script>
@@ -1054,9 +1054,11 @@
             else { waBtn.href = rsvp.form_url; waBtn.setAttribute('target', '_blank'); waBtn.setAttribute('rel', 'noopener noreferrer'); }
           } else {
             const phone = ((couple.whatsapp || rsvp.whatsapp || '').replace(/\D/g, ''));
-            const full = phone.startsWith('91') ? phone : '91' + phone;
-            const msg = encodeURIComponent('Hi ' + couple.bride + ' & ' + couple.groom + '! I would love to join your celebration!');
-            waBtn.href = 'https://wa.me/' + full + '?text=' + msg;
+            if (phone) {
+              const full = (phone.length > 0 && phone.startsWith('91')) ? phone : '91' + phone;
+              const msg = encodeURIComponent('Hi ' + couple.bride + ' & ' + couple.groom + '! I would love to join your celebration!');
+              waBtn.href = 'https://wa.me/' + full + '?text=' + msg;
+            }
           }
         }
         const btnInner = rsvpSec.querySelector('.rsvp-wa-inner');

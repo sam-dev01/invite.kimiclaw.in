@@ -1,788 +1,710 @@
 ﻿<!doctype html>
 <html lang="en">
-<head>
-<script type="application/json" id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/Arch_Demo2-c5e5069388.png","assets/Arch_demo-4a6fa0ed1d.png","assets/landscape_demo-2128a45968.png","assets/hero-arch_demo-bfb642a1bc.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We've saved a seat for you — at our table, in our hearts, and under the royal sky. Come celebrate with us as we begin this new chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"assets/render-9041edc121.bin\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261212%0ADTEND:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
-<script>window.__WEDDING_CONFIG__ = JSON.parse(document.getElementById('wedding-config').textContent);</script>
-<script>
-</script>
-<script>
-(function() {
-  var bride = 'Tanya';
-  var groom = 'Rohan';
-  var date  = '12 December 2026';
-  function updatePreloader() {
-    // Names in preloader
-    var n1 = document.querySelector('.pl-n1');
-    var n2 = document.querySelector('.pl-n2');
-    if (n1) n1.textContent = bride;
-    if (n2) n2.textContent = groom;
-    // Names in hero copy
-    var hb = document.querySelector('.hc-bride');
-    var hg = document.querySelector('.hc-groom');
-    if (hb) hb.textContent = bride;
-    if (hg) hg.textContent = groom;
-    // template09: patch #introNames .word spans
-    var introNames = document.getElementById('introNames');
-    if (introNames && bride && groom) {
-      var words = Array.from(introNames.querySelectorAll('.word')).filter(function(w) {
-        return !w.classList.contains('amp-wrap');
-      });
-      if (words.length >= 2) { words[0].textContent = bride; words[words.length - 1].textContent = groom; }
-    }
-    // template09: patch intro date and venue
-    var introDate = document.getElementById('introDate');
-    if (introDate && date) introDate.textContent = date;
 
-    // Fallback: replace any leaf text still reading the placeholder names
-    document.querySelectorAll('*').forEach(function(el) {
-      if (el.children.length === 0 && el.textContent.trim() === 'Priya') el.textContent = bride;
-      if (el.children.length === 0 && el.textContent.trim() === 'Arjun') el.textContent = groom;
-    });
-    // Date injection
-    if (date) {
-      var found = false;
-      document.querySelectorAll('*').forEach(function(el) {
-        if (el.children.length === 0) {
-          var txt = el.textContent.trim();
-          if (
-            txt === '14 February 2025' || txt === '14 FEBRUARY 2025' ||
-            el.classList.contains('pre-date') ||
-            el.classList.contains('preloader-date') ||
-            el.classList.contains('pl-date')
-          ) {
-            el.textContent = date;
-            found = true;
+<head>
+  <meta property="og:title" content="invite.kimiclaw.in — Wedding Website Template" />
+  <meta property="og:description"
+    content="Preview this wedding invitation template. Create your own beautiful wedding website with invite.kimiclaw.in." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://invite.kimiclaw.in/preview/template09" />
+  <meta property="og:image" content="https://invite.kimiclaw.in/images/og/og-template09.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="invite.kimiclaw.in — Wedding Website Template" />
+  <meta name="twitter:description"
+    content="Preview this wedding invitation template. Create your own beautiful wedding website with invite.kimiclaw.in." />
+  <meta name="twitter:image" content="https://invite.kimiclaw.in/images/og/og-template09.png" />
+  <script type="application/json"
+    id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/Arch_Demo2.png","assets/Arch_demo.png","assets/landscape_demo.png","assets/hero-arch_demo.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We've saved a seat for you — at our table, in our hearts, and under the royal sky. Come celebrate with us as we begin this new chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"https://calendar.google.com/calendar/render?action=TEMPLATE\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//KimiClaw//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART;VALUE=DATE:20261212%0ADTEND;VALUE=DATE:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0ASTATUS:CONFIRMED%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
+  <script>window.__WEDDING_CONFIG__ = JSON.parse(document.getElementById('wedding-config').textContent);</script>
+  <script>
+  </script>
+  <script>
+    (function () {
+      var bride = 'Tanya';
+      var groom = 'Rohan';
+      var date = '12 December 2026';
+      function updatePreloader() {
+        // Names in preloader
+        var n1 = document.querySelector('.pl-n1');
+        var n2 = document.querySelector('.pl-n2');
+        if (n1) n1.textContent = bride;
+        if (n2) n2.textContent = groom;
+        // Names in hero copy
+        var hb = document.querySelector('.hc-bride');
+        var hg = document.querySelector('.hc-groom');
+        if (hb) hb.textContent = bride;
+        if (hg) hg.textContent = groom;
+        // template09: patch #introNames .word spans
+        var introNames = document.getElementById('introNames');
+        if (introNames && bride && groom) {
+          var words = Array.from(introNames.querySelectorAll('.word')).filter(function (w) {
+            return !w.classList.contains('amp-wrap');
+          });
+          if (words.length >= 2) { words[0].textContent = bride; words[words.length - 1].textContent = groom; }
+        }
+        // template09: patch intro date and venue
+        var introDate = document.getElementById('introDate');
+        if (introDate && date) introDate.textContent = date;
+
+        // Fallback: replace any leaf text still reading the placeholder names
+        document.querySelectorAll('*').forEach(function (el) {
+          if (el.children.length === 0 && el.textContent.trim() === 'Priya') el.textContent = bride;
+          if (el.children.length === 0 && el.textContent.trim() === 'Arjun') el.textContent = groom;
+        });
+        // Date injection
+        if (date) {
+          var found = false;
+          document.querySelectorAll('*').forEach(function (el) {
+            if (el.children.length === 0) {
+              var txt = el.textContent.trim();
+              if (
+                txt === '14 February 2025' || txt === '14 FEBRUARY 2025' ||
+                el.classList.contains('pre-date') ||
+                el.classList.contains('preloader-date') ||
+                el.classList.contains('pl-date')
+              ) {
+                el.textContent = date;
+                found = true;
+              }
+            }
+          });
+          // No existing date element found — insert one after .pl-names
+          if (!found) {
+            var container = document.querySelector('.pl-names') || document.querySelector('.pl-content');
+            if (container && !container.querySelector('.pl-date-injected')) {
+              var dateEl = document.createElement('span');
+              dateEl.className = 'pl-date-injected';
+              dateEl.textContent = date;
+              dateEl.style.cssText = 'display:block;font-family:"DM Sans",sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,152,90,0.75);margin-top:10px;';
+              container.appendChild(dateEl);
+            }
           }
         }
-      });
-      // No existing date element found — insert one after .pl-names
-      if (!found) {
-        var container = document.querySelector('.pl-names') || document.querySelector('.pl-content');
-        if (container && !container.querySelector('.pl-date-injected')) {
-          var dateEl = document.createElement('span');
-          dateEl.className = 'pl-date-injected';
-          dateEl.textContent = date;
-          dateEl.style.cssText = 'display:block;font-family:"DM Sans",sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,152,90,0.75);margin-top:10px;';
-          container.appendChild(dateEl);
-        }
       }
-    }
-  }
-  updatePreloader();
-  document.addEventListener('DOMContentLoaded', updatePreloader);
-})();
-</script>
+      updatePreloader();
+      document.addEventListener('DOMContentLoaded', updatePreloader);
+    })();
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tanya &amp; Rohan's Wedding</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="assets/css2-d6513ff5bc.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style-65e305b369.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Parisienne&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="assets/style.css">
 </head>
+
 <body class="intro-active">
 
-<!-- ═══════════════════════════════════
+  <!-- ═══════════════════════════════════
      INTRO
 ═══════════════════════════════════ -->
-<section class="intro" id="intro" aria-label="Opening scene">
+  <section class="intro" id="intro" aria-label="Opening scene">
 
-  <!-- Background layers -->
-  <img class="intro-bg intro-bg-dark" id="introBgDark" alt="" aria-hidden="true" decoding="async" fetchpriority="high">
-  <img class="intro-bg intro-bg-lit"  id="introBgLit"  alt="" aria-hidden="true" decoding="async">
+    <!-- Background layers -->
+    <img class="intro-bg intro-bg-dark" id="introBgDark" alt="" aria-hidden="true" decoding="async"
+      fetchpriority="high">
+    <img class="intro-bg intro-bg-lit" id="introBgLit" alt="" aria-hidden="true" decoding="async">
 
-  <!-- Glow system -->
-  <div class="intro-vignette"      aria-hidden="true"></div>
-  <div class="intro-dark-vignette" aria-hidden="true"></div>
-  <div class="intro-warm-glow"     aria-hidden="true"></div>
-  <div class="intro-jhoomer-glow"  aria-hidden="true"></div>
-  <div class="intro-rose-scatter"  aria-hidden="true"></div>
+    <!-- Glow system -->
+    <div class="intro-vignette" aria-hidden="true"></div>
+    <div class="intro-dark-vignette" aria-hidden="true"></div>
+    <div class="intro-warm-glow" aria-hidden="true"></div>
+    <div class="intro-jhoomer-glow" aria-hidden="true"></div>
+    <div class="intro-rose-scatter" aria-hidden="true"></div>
 
-  <!-- Particles (lit only) -->
-  <div class="intro-dust"   id="introDust"   aria-hidden="true"></div>
-  <div class="intro-petals" id="introPetals" aria-hidden="true"></div>
+    <!-- Particles (lit only) -->
+    <div class="intro-dust" id="introDust" aria-hidden="true"></div>
+    <div class="intro-petals" id="introPetals" aria-hidden="true"></div>
 
-  <!-- Floral clusters — bottom corners, lit only -->
-  <img class="intro-floral-left"  id="introFloralLeft"
-       alt="" aria-hidden="true" decoding="async">
-  <img class="intro-floral-right" id="introFloralRight"
-       alt="" aria-hidden="true" decoding="async">
+    <!-- Floral clusters — bottom corners, lit only -->
+    <img class="intro-floral-left" id="introFloralLeft" alt="" aria-hidden="true" decoding="async">
+    <img class="intro-floral-right" id="introFloralRight" alt="" aria-hidden="true" decoding="async">
 
-  <!-- Diyas — arch gate floor, lit only -->
-  <div class="diya-wrap diya-left" id="diyaWrapLeft">
-    <img class="diya-img" id="introDiyaLeft"  alt="" aria-hidden="true" decoding="async">
-    <div class="diya-floor-glow"></div>
-  </div>
-  <div class="diya-wrap diya-right" id="diyaWrapRight">
-    <img class="diya-img" id="introDiyaRight" alt="" aria-hidden="true" decoding="async">
-    <div class="diya-floor-glow"></div>
-  </div>
-
-  <!-- Jhoomer — lit only -->
-  <img class="intro-jhoomer" id="introJhoomer"
-       alt="" aria-hidden="true" decoding="async">
-
-  <!-- Rope anchor glow -->
-  <div class="rope-anchor-glow" aria-hidden="true"></div>
-
-  <!-- ROPE — the hero interaction -->
-  <button class="rope-button" id="ropeButton" type="button"
-          aria-label="Pull the rope to light our celebration">
-    <img class="rope-img" id="ropeImg" alt="" aria-hidden="true" draggable="false">
-    <span class="rope-halo" aria-hidden="true"></span>
-  </button>
-
-  <!-- Instruction (dark state) -->
-  <div class="intro-instruction" id="introInstruction" aria-hidden="true">
-    <div class="pull-ritual-cue"></div>
-    <span class="pull-label">Pull to light us up</span>
-  </div>
-  <div class="pull-feedback" id="pullFeedback" aria-hidden="true">A little deeper to wake the lights</div>
-
-  <!-- Text reveal -->
-  <div class="intro-reveal" id="introReveal" aria-live="polite">
-    <h1 class="names intro-reveal-item" id="introNames">
-      <span class="word">Aarav</span> <span class="word amp-wrap"><span class="amp">&amp;</span></span><br><span class="word">Meera</span>
-    </h1>
-    <div class="ornament intro-reveal-item" id="introOrnament">
-      <span></span><i></i><span></span>
+    <!-- Diyas — arch gate floor, lit only -->
+    <div class="diya-wrap diya-left" id="diyaWrapLeft">
+      <img class="diya-img" id="introDiyaLeft" alt="" aria-hidden="true" decoding="async">
+      <div class="diya-floor-glow"></div>
     </div>
-    <p class="date  intro-reveal-item" id="introDate">12 · December · 2026</p>
-    <p class="venue intro-reveal-item" id="introVenue">The Oberoi Udaivilas, Udaipur</p>
-  </div>
+    <div class="diya-wrap diya-right" id="diyaWrapRight">
+      <img class="diya-img" id="introDiyaRight" alt="" aria-hidden="true" decoding="async">
+      <div class="diya-floor-glow"></div>
+    </div>
 
-  <!-- Lotus CTA -->
-  <div class="lotus-cta-group" id="lotusCTAGroup">
-    <button class="lotus-button" id="lotusButton" type="button"
-            aria-label="Tap the lotus to join us">
-      <img class="lotus-glow-burst" id="lotusGlowBurst" alt="" aria-hidden="true" decoding="async">
-      <img class="lotus-icon-img"   id="lotusIconImg"   alt="" aria-hidden="true" draggable="false">
-      <img class="lotus-open-img"   id="lotusOpenImg"   alt="" aria-hidden="true" draggable="false">
+    <!-- Jhoomer — lit only -->
+    <img class="intro-jhoomer" id="introJhoomer" alt="" aria-hidden="true" decoding="async">
+
+    <!-- Rope anchor glow -->
+    <div class="rope-anchor-glow" aria-hidden="true"></div>
+
+    <!-- ROPE — the hero interaction -->
+    <button class="rope-button" id="ropeButton" type="button" aria-label="Pull the rope to light our celebration">
+      <img class="rope-img" id="ropeImg" alt="" aria-hidden="true" draggable="false">
+      <span class="rope-halo" aria-hidden="true"></span>
     </button>
-    <p class="lotus-cta-label" id="lotusButtonText" aria-hidden="true">Tap the lotus to join us</p>
-  </div>
 
-  <button class="skip-intro" id="skipIntro" type="button">skip intro</button>
-</section>
+    <!-- Instruction (dark state) -->
+    <div class="intro-instruction" id="introInstruction" aria-hidden="true">
+      <div class="pull-ritual-cue"></div>
+      <span class="pull-label">Pull to light us up</span>
+    </div>
+    <div class="pull-feedback" id="pullFeedback" aria-hidden="true">A little deeper to wake the lights</div>
 
-<!-- ═══════════════════════════════════
+    <!-- Text reveal -->
+    <div class="intro-reveal" id="introReveal" aria-live="polite">
+      <h1 class="names intro-reveal-item" id="introNames">
+        <span class="word">Aarav</span> <span class="word amp-wrap"><span class="amp">&amp;</span></span><br><span
+          class="word">Meera</span>
+      </h1>
+      <div class="ornament intro-reveal-item" id="introOrnament">
+        <span></span><i></i><span></span>
+      </div>
+      <p class="date  intro-reveal-item" id="introDate">12 · December · 2026</p>
+      <p class="venue intro-reveal-item" id="introVenue">The Oberoi Udaivilas, Udaipur</p>
+    </div>
+
+    <!-- Lotus CTA -->
+    <div class="lotus-cta-group" id="lotusCTAGroup">
+      <button class="lotus-button" id="lotusButton" type="button" aria-label="Tap the lotus to join us">
+        <img class="lotus-glow-burst" id="lotusGlowBurst" alt="" aria-hidden="true" decoding="async">
+        <img class="lotus-icon-img" id="lotusIconImg" alt="" aria-hidden="true" draggable="false">
+        <img class="lotus-open-img" id="lotusOpenImg" alt="" aria-hidden="true" draggable="false">
+      </button>
+      <p class="lotus-cta-label" id="lotusButtonText" aria-hidden="true">Tap the lotus to join us</p>
+    </div>
+
+    <button class="skip-intro" id="skipIntro" type="button">skip intro</button>
+  </section>
+
+  <!-- ═══════════════════════════════════
      PAGE SHELL
 ═══════════════════════════════════ -->
-<main class="page-shell">
-  <section class="section invite-section" id="invite" aria-labelledby="inviteTitle">
+  <main class="page-shell">
+    <section class="section invite-section" id="invite" aria-labelledby="inviteTitle">
 
-    <!-- Layer 1 — Pichwai background, ken-burns -->
-    <div class="invite-bg" aria-hidden="true"></div>
+      <!-- Layer 1 — Pichwai background, ken-burns -->
+      <div class="invite-bg" aria-hidden="true"></div>
 
-    <!-- Layer 2 — Dark vignette -->
-    <div class="invite-vignette" aria-hidden="true"></div>
+      <!-- Layer 2 — Dark vignette -->
+      <div class="invite-vignette" aria-hidden="true"></div>
 
-    <!-- Rose petal shower, spawned from bird positions -->
-    <canvas class="invite-petals" id="invitePetals" aria-hidden="true"></canvas>
+      <!-- Rose petal shower, spawned from bird positions -->
+      <canvas class="invite-petals" id="invitePetals" aria-hidden="true"></canvas>
 
-    <!-- Birds — spritesheet, two birds chasing left→right -->
-    <div class="invite-birds" id="inviteBirds" aria-hidden="true">
-      <div class="inv-bird inv-bird--a" id="invBirdA"></div>
-      <div class="inv-bird inv-bird--b" id="invBirdB"></div>
-    </div>
-
-    <!-- Layer 3 — Arch PNG as floating frame (card-wrap contains ONLY the arch) -->
-    <div class="invite-card-wrap">
-      <img class="invite-arch-frame" src="assets/pn-inv-fr-card-m-v01-0e63c42313.webp"
-           alt="" aria-hidden="true" decoding="async" draggable="false">
-    </div>
-
-    <!-- Layer 4 — Text, absolutely positioned within the section -->
-    <div class="invite-text-content">
-
-      <!-- Grandparents blessing — shown when HAS_GRANDPARENTS = true in script.js -->
-      <div class="inv-blessing">
-        <p class="inv-overline">With the blessings of</p>
-        <p>Late Smt. Kamla Kapoor &amp; Shri Harish Kapoor</p>
-        <p>Smt. Leela Sharma &amp; Shri Mohan Sharma</p>
+      <!-- Birds — spritesheet, two birds chasing left→right -->
+      <div class="invite-birds" id="inviteBirds" aria-hidden="true">
+        <div class="inv-bird inv-bird--a" id="invBirdA"></div>
+        <div class="inv-bird inv-bird--b" id="invBirdB"></div>
       </div>
 
-      <!-- Alternative top block — shown when HAS_GRANDPARENTS = false in script.js -->
-      <div class="inv-blessing-alt">
-        <p class="inv-blessing-alt-line1">With the blessings of the divine</p>
-        <p class="inv-blessing-alt-line2">and the love of our families</p>
-        <p class="inv-blessing-alt-line3">Together we invite you to celebrate</p>
+      <!-- Layer 3 — Arch PNG as floating frame (card-wrap contains ONLY the arch) -->
+      <div class="invite-card-wrap">
+        <img class="invite-arch-frame"
+          src="assets/invite/pn-inv-fr-card-m-v01.webp" alt=""
+          aria-hidden="true" decoding="async" draggable="false">
       </div>
 
-      <p class="inv-kicker">Together with their families</p>
+      <!-- Layer 4 — Text, absolutely positioned within the section -->
+      <div class="invite-text-content">
 
-      <img class="inv-lotus-div" src="assets/pn-inv-div-lotus-divider-x-v01-4a396303fc.webp"
-           alt="" aria-hidden="true" decoding="async">
+        <!-- Grandparents blessing — shown when HAS_GRANDPARENTS = true in script.js -->
+        <div class="inv-blessing">
+          <p class="inv-overline">With the blessings of</p>
+          <p>Late Smt. Kamla Kapoor &amp; Shri Harish Kapoor</p>
+          <p>Smt. Leela Sharma &amp; Shri Mohan Sharma</p>
+        </div>
 
-      <h2 class="inv-names" id="inviteTitle">Aarav <span class="inv-amp">&amp;</span> Meera</h2>
+        <!-- Alternative top block — shown when HAS_GRANDPARENTS = false in script.js -->
+        <div class="inv-blessing-alt">
+          <p class="inv-blessing-alt-line1">With the blessings of the divine</p>
+          <p class="inv-blessing-alt-line2">and the love of our families</p>
+        </div>
 
-      <img class="inv-lotus-div" src="assets/pn-inv-div-lotus-divider-x-v01-4a396303fc.webp"
-           alt="" aria-hidden="true" decoding="async">
+        <p class="inv-kicker">Together with their families</p>
 
-      <div class="inv-parents">
-        <p>D/O Mr. Rajesh Sharma &amp; Mrs. Kavita Sharma</p>
-        <p>S/O Mr. Sanjay Kapoor &amp; Mrs. Neeta Kapoor</p>
+        <img class="inv-lotus-div"
+          src="assets/invite/pn-inv-div-lotus-divider-x-v01.webp"
+          alt="" aria-hidden="true" decoding="async">
+
+        <h2 class="inv-names" id="inviteTitle">Aarav <span class="inv-amp">&amp;</span> Meera</h2>
+
+        <img class="inv-lotus-div"
+          src="assets/invite/pn-inv-div-lotus-divider-x-v01.webp"
+          alt="" aria-hidden="true" decoding="async">
+
+        <div class="inv-parents">
+          <p>D/O Mr. Rajesh Sharma &amp; Mrs. Kavita Sharma</p>
+          <p>S/O Mr. Sanjay Kapoor &amp; Mrs. Neeta Kapoor</p>
+        </div>
+
+        <p class="inv-occasion">invite you to celebrate their wedding</p>
+
+        <div class="inv-meta">
+          <p class="inv-date">12 December 2026</p>
+          <p class="inv-venue">The Oberoi Udaivilas, Udaipur</p>
+        </div>
+
       </div>
 
-      <p class="inv-occasion">invite you to celebrate their wedding</p>
-
-      <div class="inv-meta">
-        <p class="inv-date">12 December 2026</p>
-        <p class="inv-venue">The Oberoi Udaivilas, Udaipur</p>
+      <!-- CTA outside the arch — floats on the Pichwai background -->
+      <div class="inv-cta">
+        <a class="inv-btn" href="#events">View Events</a>
       </div>
 
-    </div>
+    </section>
 
-    <!-- CTA outside the arch — floats on the Pichwai background -->
-    <div class="inv-cta">
-      <a class="inv-btn" href="#events">View Events</a>
-    </div>
+    <section class="section events-section" id="events" aria-labelledby="evtTitle">
 
-  </section>
+      <!-- Background gradient -->
+      <div class="evt-bg" aria-hidden="true"></div>
+      <!-- Rose watercolor texture at very low opacity -->
+      <div class="evt-tex-overlay" aria-hidden="true"></div>
+      <!-- Starfield canvas — open night sky feel -->
+      <canvas class="evt-stars" id="evtStars" aria-hidden="true"></canvas>
+      <div class="evt-bg-vignette" aria-hidden="true"></div>
+      <div class="evt-birds" id="evtBirds" aria-hidden="true"></div>
 
-  <section class="section events-section" id="events" aria-labelledby="evtTitle">
-
-    <!-- Background gradient -->
-    <div class="evt-bg" aria-hidden="true"></div>
-    <!-- Rose watercolor texture at very low opacity -->
-    <div class="evt-tex-overlay" aria-hidden="true"></div>
-    <!-- Starfield canvas — open night sky feel -->
-    <canvas class="evt-stars" id="evtStars" aria-hidden="true"></canvas>
-    <div class="evt-bg-vignette" aria-hidden="true"></div>
-    <div class="evt-birds" id="evtBirds" aria-hidden="true"></div>
-
-    <!-- Jhoomer — top center, pendulum sway -->
-    <div class="evt-jhoomer-wrap" aria-hidden="true">
-      <div class="evt-jhoomer-inner">
-        <img class="evt-jhoomer-img"
-             src="assets/pn-shr-mot-jhoomer-hanging-x-v01-3d577c80ca.webp"
-             alt="" decoding="async" loading="lazy" draggable="false">
+      <!-- Jhoomer — top center, pendulum sway -->
+      <div class="evt-jhoomer-wrap" aria-hidden="true">
+        <div class="evt-jhoomer-inner">
+          <img class="evt-jhoomer-img"
+            src="assets/shared/pn-shr-mot-jhoomer-hanging-x-v01.webp"
+            alt="" decoding="async" loading="lazy" draggable="false">
+        </div>
       </div>
-    </div>
 
-    <!-- Floral corners — proper individual assets, no mirror hack -->
-    <img class="evt-corner evt-corner--tl"
-         src="assets/pn-shr-div-floral-corner-top-left-x-v01-be77ee277d.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-    <img class="evt-corner evt-corner--tr"
-         src="assets/pn-shr-div-floral-corner-top-right-x-v01-2005bae756.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+      <!-- Floral corners — proper individual assets, no mirror hack -->
+      <img class="evt-corner evt-corner--tl"
+        src="assets/shared/pn-shr-div-floral-corner-top-left-x-v01.webp"
+        alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+      <img class="evt-corner evt-corner--tr"
+        src="assets/shared/pn-shr-div-floral-corner-top-right-x-v01.webp"
+        alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
 
-    <!-- Floral border — bottom edge -->
-    <div class="evt-floral-border evt-floral-border--bot" aria-hidden="true">
-      <img src="assets/pn-shr-div-floral-border-horizontal-x-v01-190fa33db9.webp"
-           alt="" decoding="async" loading="lazy" draggable="false">
-    </div>
-
-    <!-- Warm ambient glow -->
-    <div class="evt-glow-mid" aria-hidden="true"></div>
-
-    <!-- ── LEFT COLUMN (top → bottom) ── -->
-    <!-- Banana leaf — upper left -->
-    <img class="evt-bananaleaf"
-         src="assets/Banaleaf-c7f06acc9e.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-
-    <!-- Peacock — mid left, faces inward naturally -->
-    <img class="evt-peacock" id="evtPeacock"
-         src="assets/pn-shr-mot-peacock-main-x-v01-56354c8e2d.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-
-    <!-- Diya — lower left -->
-    <img class="evt-diya evt-diya--l"
-         src="assets/Diya-78eb74e94d.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-
-    <!-- ── RIGHT COLUMN (top → bottom) ── -->
-    <!-- Chhatri — upper right -->
-    <img class="evt-chhatri"
-         src="assets/pn-shr-mot-chhatri-ornate-x-v01-386093697a.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-
-    <!-- Elephant — mid right, mirrored to face inward -->
-    <img class="evt-elephant" id="evtElephant"
-         src="assets/pn-shr-mot-elephant-main-x-v01-8b9457bedc.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-
-    <!-- Diya — lower right -->
-    <img class="evt-diya evt-diya--r"
-         src="assets/Diya-78eb74e94d.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-
-    <!-- ── BOTTOM CENTRE ── -->
-    <!-- Cow — peeking from below, centred -->
-    <img class="evt-cow"
-         src="assets/pn-shr-mot-cow-main-x-v01-1f73d95ca4.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-
-    <!-- Floating lotus accents — subtle, two positions only -->
-    <img class="evt-lotus evt-lotus--1"
-         src="assets/pn-shr-mot-lotus-flower-x-v01-2f57ebcbae.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-    <img class="evt-lotus evt-lotus--2"
-         src="assets/pn-shr-mot-lotus-flower-x-v01-2f57ebcbae.webp"
-         alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
-
-    <!-- Section header — children animate in when parent enters view -->
-    <div class="evt-header reveal-item" id="evtHeader">
-      <p class="evt-eyebrow">Celebration Journey</p>
-      <h2 class="evt-title" id="evtTitle">Our Events</h2>
-      <img class="evt-divider"
-           src="assets/pn-evt-div-lotus-vine-x-v01-983e47d9d2.webp"
-           alt="" aria-hidden="true" decoding="async">
-    </div>
-
-    <!-- Ceremonial journey — vine path + event cards -->
-    <div class="evt-journey">
-      <div class="evt-path-wrap" id="evtPathWrap" aria-hidden="true">
-        <img class="evt-path-vine"
-             src="assets/pn-evt-pth-ceremonial-vine-m-v01-49e193fa03.webp"
-             alt="" aria-hidden="true" decoding="async">
+      <!-- Floral border — bottom edge -->
+      <div class="evt-floral-border evt-floral-border--bot" aria-hidden="true">
+        <img
+          src="assets/shared/pn-shr-div-floral-border-horizontal-x-v01.webp"
+          alt="" decoding="async" loading="lazy" draggable="false">
       </div>
-      <div class="evt-stops" id="evtStops" role="list"></div>
-    </div>
 
-  </section>
+      <!-- Warm ambient glow -->
+      <div class="evt-glow-mid" aria-hidden="true"></div>
 
-  <!-- ═══════════════════════════════════
+      <!-- ── LEFT COLUMN (top → bottom) ── -->
+      <!-- Banana leaf — upper left -->
+      <img class="evt-bananaleaf" src="assets/shared/Banaleaf.webp"
+        alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+
+      <!-- Peacock — mid left, faces inward naturally -->
+      <img class="evt-peacock" id="evtPeacock"
+        src="assets/shared/pn-shr-mot-peacock-main-x-v01.webp" alt=""
+        aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+
+      <!-- Diya — lower left -->
+      <img class="evt-diya evt-diya--l" src="assets/shared/Diya.webp"
+        alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+
+      <!-- ── RIGHT COLUMN (top → bottom) ── -->
+      <!-- Chhatri — upper right -->
+      <img class="evt-chhatri"
+        src="assets/shared/pn-shr-mot-chhatri-ornate-x-v01.webp"
+        alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+
+      <!-- Elephant — mid right, mirrored to face inward -->
+      <img class="evt-elephant" id="evtElephant"
+        src="assets/shared/pn-shr-mot-elephant-main-x-v01.webp"
+        alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+
+      <!-- Diya — lower right -->
+      <img class="evt-diya evt-diya--r" src="assets/shared/Diya.webp"
+        alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+
+      <!-- ── BOTTOM CENTRE ── -->
+      <!-- Cow — peeking from below, centred -->
+      <img class="evt-cow"
+        src="assets/shared/pn-shr-mot-cow-main-x-v01.webp" alt=""
+        aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+
+      <!-- Floating lotus accents — subtle, two positions only -->
+      <img class="evt-lotus evt-lotus--1"
+        src="assets/shared/pn-shr-mot-lotus-flower-x-v01.webp" alt=""
+        aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+      <img class="evt-lotus evt-lotus--2"
+        src="assets/shared/pn-shr-mot-lotus-flower-x-v01.webp" alt=""
+        aria-hidden="true" decoding="async" loading="lazy" draggable="false">
+
+      <!-- Section header — children animate in when parent enters view -->
+      <div class="evt-header reveal-item" id="evtHeader">
+        <p class="evt-eyebrow">Celebration Journey</p>
+        <h2 class="evt-title" id="evtTitle">Our Events</h2>
+        <img class="evt-divider"
+          src="assets/event/pn-evt-div-lotus-vine-x-v01.webp" alt=""
+          aria-hidden="true" decoding="async">
+      </div>
+
+      <!-- Ceremonial journey — vine path + event cards -->
+      <div class="evt-journey">
+        <div class="evt-path-wrap" id="evtPathWrap" aria-hidden="true">
+          <img class="evt-path-vine"
+            src="assets/event/pn-evt-pth-ceremonial-vine-m-v01.webp"
+            alt="" aria-hidden="true" decoding="async">
+        </div>
+        <div class="evt-stops" id="evtStops" role="list"></div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════
        MEET THE COUPLE — Secret Garden Reveal
   ═══════════════════════════════════ -->
-  <section class="section cpl-section" id="couple" aria-labelledby="cplTitle">
+    <section class="section cpl-section" id="couple" aria-labelledby="cplTitle">
 
-    <!-- Background: Secret Garden painting -->
-    <div class="cpl-bg" aria-hidden="true"></div>
-    <!-- Soft vignette to blend top/bottom with adjacent sections -->
-    <div class="cpl-vignette" aria-hidden="true"></div>
+      <!-- Background: Secret Garden painting -->
+      <div class="cpl-bg" aria-hidden="true"></div>
+      <!-- Soft vignette to blend top/bottom with adjacent sections -->
+      <div class="cpl-vignette" aria-hidden="true"></div>
 
-    <!-- Tree overlays — these part on scroll -->
-    <div class="cpl-tree cpl-tree--left" id="cplTreeLeft" aria-hidden="true">
-      <img src="assets/pn-cpl-ovl-tree-left-m-v01-454e6d2b45.webp" alt="" decoding="async" draggable="false">
-    </div>
-    <div class="cpl-tree cpl-tree--right" id="cplTreeRight" aria-hidden="true">
-      <img src="assets/pn-cpl-ovl-tree-right-m-v01-61655e6f75.webp" alt="" decoding="async" draggable="false">
-    </div>
+      <!-- Tree overlays — these part on scroll -->
+      <div class="cpl-tree cpl-tree--left" id="cplTreeLeft" aria-hidden="true">
+        <img
+          src="assets/meet_the_couple/pn-cpl-ovl-tree-left-m-v01.webp"
+          alt="" decoding="async" draggable="false">
+      </div>
+      <div class="cpl-tree cpl-tree--right" id="cplTreeRight" aria-hidden="true">
+        <img
+          src="assets/meet_the_couple/pn-cpl-ovl-tree-right-m-v01.webp"
+          alt="" decoding="async" draggable="false">
+      </div>
 
-    <!-- Content — revealed as trees part -->
-    <div class="cpl-content" id="cplContent">
+      <!-- Content — revealed as trees part -->
+      <div class="cpl-content" id="cplContent">
+
+        <!-- Section header -->
+        <div class="cpl-header reveal-item">
+          <p class="cpl-eyebrow">A love story</p>
+          <h2 class="cpl-title" id="cplTitle">Meet the Couple</h2>
+          <div class="cpl-ornament" aria-hidden="true">
+            <span></span>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <ellipse cx="11" cy="8" rx="2.8" ry="5.8" fill="rgba(216,169,87,.78)" transform="rotate(0   11 11)" />
+              <ellipse cx="11" cy="8" rx="2.8" ry="5.8" fill="rgba(216,169,87,.58)" transform="rotate(60  11 11)" />
+              <ellipse cx="11" cy="8" rx="2.8" ry="5.8" fill="rgba(216,169,87,.58)" transform="rotate(-60 11 11)" />
+              <ellipse cx="11" cy="8" rx="2.2" ry="4.8" fill="rgba(216,169,87,.38)" transform="rotate(120 11 11)" />
+              <ellipse cx="11" cy="8" rx="2.2" ry="4.8" fill="rgba(216,169,87,.38)" transform="rotate(-120 11 11)" />
+              <ellipse cx="11" cy="8" rx="1.8" ry="4.2" fill="rgba(216,169,87,.26)" transform="rotate(180 11 11)" />
+              <circle cx="11" cy="11" r="2.0" fill="rgba(216,169,87,.88)" />
+            </svg>
+            <span></span>
+          </div>
+        </div>
+
+        <!-- Story — one short paragraph -->
+        <div class="cpl-story reveal-item">
+          <p class="cpl-story-body">
+            A monsoon evening in Udaipur, a marigold archway, and a girl laughing in the rain — that was all it took.
+            Three years, countless chai mornings, and one nervous rooftop proposal in Jaipur later, Aarav &amp; Meera
+            are ready to begin their most beautiful chapter yet.
+          </p>
+          <!-- Personality tags — rendered by applyConfigPhase2 if story.tags exist -->
+          <div class="cpl-tags" id="cplTags" aria-hidden="true"></div>
+          <!-- Wedding hashtag — populated by applyConfigPhase2 when set -->
+          <p class="cpl-story-htag" id="cplHashtag" hidden></p>
+        </div>
+
+      </div><!-- /cpl-content -->
+
+    </section>
+
+    <section class="section gallery-section" id="gallery" aria-labelledby="galTitle">
+
+      <!-- Courtyard background -->
+      <div class="gal-bg" aria-hidden="true"></div>
+      <div class="gal-bg-vignette" aria-hidden="true"></div>
 
       <!-- Section header -->
-      <div class="cpl-header reveal-item">
-        <p class="cpl-eyebrow">A love story</p>
-        <h2 class="cpl-title" id="cplTitle">Meet the Couple</h2>
-        <div class="cpl-ornament" aria-hidden="true">
-        <span></span>
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="assets/svg-b05687485d.bin" aria-hidden="true">
-          <ellipse cx="11" cy="8"  rx="2.8" ry="5.8" fill="rgba(216,169,87,.78)" transform="rotate(0   11 11)"/>
-          <ellipse cx="11" cy="8"  rx="2.8" ry="5.8" fill="rgba(216,169,87,.58)" transform="rotate(60  11 11)"/>
-          <ellipse cx="11" cy="8"  rx="2.8" ry="5.8" fill="rgba(216,169,87,.58)" transform="rotate(-60 11 11)"/>
-          <ellipse cx="11" cy="8"  rx="2.2" ry="4.8" fill="rgba(216,169,87,.38)" transform="rotate(120 11 11)"/>
-          <ellipse cx="11" cy="8"  rx="2.2" ry="4.8" fill="rgba(216,169,87,.38)" transform="rotate(-120 11 11)"/>
-          <ellipse cx="11" cy="8"  rx="1.8" ry="4.2" fill="rgba(216,169,87,.26)" transform="rotate(180 11 11)"/>
-          <circle  cx="11" cy="11" r="2.0" fill="rgba(216,169,87,.88)"/>
-        </svg>
-        <span></span>
-      </div>
+      <div class="gal-header reveal-item">
+        <p class="eyebrow gal-eyebrow">Memories</p>
+        <h2 class="section-title gal-title" id="galTitle">Gallery Wall</h2>
       </div>
 
-      <!-- Story — one short paragraph -->
-      <div class="cpl-story reveal-item">
-        <p class="cpl-story-body">
-          A monsoon evening in Udaipur, a marigold archway, and a girl laughing in the rain — that was all it took. Three years, countless chai mornings, and one nervous rooftop proposal in Jaipur later, Aarav &amp; Meera are ready to begin their most beautiful chapter yet.
-        </p>
-        <!-- Personality tags — rendered by applyConfigPhase2 if story.tags exist -->
-        <div class="cpl-tags" id="cplTags" aria-hidden="true"></div>
-      </div>
+      <!-- Hanging frames wall — rendered by JS -->
+      <div class="gal-wall" id="galWall" role="list" aria-label="Photo gallery"></div>
 
-    </div><!-- /cpl-content -->
-
-  </section>
-
-  <section class="section gallery-section" id="gallery" aria-labelledby="galTitle">
-
-    <!-- Courtyard background -->
-    <div class="gal-bg" aria-hidden="true"></div>
-    <div class="gal-bg-vignette" aria-hidden="true"></div>
-
-    <!-- Section header -->
-    <div class="gal-header reveal-item">
-      <p class="eyebrow gal-eyebrow">Memories</p>
-      <h2 class="section-title gal-title" id="galTitle">Gallery Wall</h2>
-    </div>
-
-    <!-- Hanging frames wall — rendered by JS -->
-    <div class="gal-wall" id="galWall" role="list" aria-label="Photo gallery"></div>
-
-    <!-- Lightbox overlay -->
-    <div class="gal-lightbox" id="galLightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
-      <button class="gal-lb-close" id="galLbClose" aria-label="Close photo viewer">&#x2715;</button>
-      <button class="gal-lb-prev"  id="galLbPrev"  aria-label="Previous photo">&#8249;</button>
-      <button class="gal-lb-next"  id="galLbNext"  aria-label="Next photo">&#8250;</button>
-      <div class="gal-lb-inner">
-        <img class="gal-lb-img" id="galLbImg" alt="" decoding="async">
-        <p  class="gal-lb-caption" id="galLbCaption"></p>
-      </div>
-    </div>
-
-  </section>
-
-  <section class="section ttk-section" id="things" aria-labelledby="ttkTitle">
-    <div class="ttk-border-top" aria-hidden="true"></div>
-    <div class="ttk-border-bot" aria-hidden="true"></div>
-
-    <!-- Pichwai animal motif backdrop — purely decorative -->
-    <div class="ttk-motif-layer" aria-hidden="true">
-      <img class="ttk-motif ttk-motif--peacock"
-           src="assets/pn-shr-mot-peacock-main-x-v01-56354c8e2d.webp" alt="" draggable="false">
-      <img class="ttk-motif ttk-motif--elephant ttk-motif--elephant-l"
-           src="assets/pn-shr-mot-elephant-main-x-v01-8b9457bedc.webp" alt="" draggable="false">
-      <img class="ttk-motif ttk-motif--elephant ttk-motif--elephant-r"
-           src="assets/pn-shr-mot-elephant-main-x-v01-8b9457bedc.webp" alt="" draggable="false">
-      <img class="ttk-motif ttk-motif--cow"
-           src="assets/pn-shr-mot-cow-main-x-v01-f1cf59830d.webp" alt="" draggable="false">
-    </div>
-
-    <div class="ttk-inner">
-      <div class="ttk-header reveal-item">
-        <span class="ttk-eyebrow">Guest Essentials</span>
-        <h2 class="ttk-heading" id="ttkTitle">Things to Know</h2>
-        <div class="ttk-ornament" aria-hidden="true">
-          <span></span>
-          <i></i>
-          <img class="ttk-lotus-divider"
-               src="assets/pn-inv-div-lotus-divider-x-v01-4a396303fc.webp"
-               alt="" draggable="false" width="36" height="36">
-          <i></i>
-          <span></span>
+      <!-- Lightbox overlay -->
+      <div class="gal-lightbox" id="galLightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+        <button class="gal-lb-close" id="galLbClose" aria-label="Close photo viewer">&#x2715;</button>
+        <button class="gal-lb-prev" id="galLbPrev" aria-label="Previous photo">&#8249;</button>
+        <button class="gal-lb-next" id="galLbNext" aria-label="Next photo">&#8250;</button>
+        <div class="gal-lb-inner">
+          <img class="gal-lb-img" id="galLbImg" alt="" decoding="async">
+          <p class="gal-lb-caption" id="galLbCaption"></p>
         </div>
-        <p class="ttk-subline">A few thoughtful details to help you celebrate in ease.</p>
       </div>
-      <div class="ttk-grid" id="ttkGrid" role="list" aria-label="Guest information cards"></div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════
+    </section>
+
+    <section class="section ttk-section" id="things" aria-labelledby="ttkTitle">
+      <div class="ttk-border-top" aria-hidden="true"></div>
+      <div class="ttk-border-bot" aria-hidden="true"></div>
+
+      <!-- Pichwai animal motif backdrop — purely decorative -->
+      <div class="ttk-motif-layer" aria-hidden="true">
+        <img class="ttk-motif ttk-motif--peacock"
+          src="assets/shared/pn-shr-mot-peacock-main-x-v01.webp"
+          alt="" draggable="false">
+        <img class="ttk-motif ttk-motif--elephant ttk-motif--elephant-l"
+          src="assets/shared/pn-shr-mot-elephant-main-x-v01.webp"
+          alt="" draggable="false">
+        <img class="ttk-motif ttk-motif--elephant ttk-motif--elephant-r"
+          src="assets/shared/pn-shr-mot-elephant-main-x-v01.webp"
+          alt="" draggable="false">
+        <img class="ttk-motif ttk-motif--cow"
+          src="assets/hero/pn-shr-mot-cow-main-x-v01.webp" alt=""
+          draggable="false">
+      </div>
+
+      <div class="ttk-inner">
+        <div class="ttk-header reveal-item">
+          <span class="ttk-eyebrow">Guest Essentials</span>
+          <h2 class="ttk-heading" id="ttkTitle">Things to Know</h2>
+          <div class="ttk-ornament" aria-hidden="true">
+            <span></span>
+            <i></i>
+            <img class="ttk-lotus-divider"
+              src="assets/invite/pn-inv-div-lotus-divider-x-v01.webp"
+              alt="" draggable="false" width="36" height="36">
+            <i></i>
+            <span></span>
+          </div>
+          <p class="ttk-subline">A few thoughtful details to help you celebrate in ease.</p>
+        </div>
+        <div class="ttk-grid" id="ttkGrid" role="list" aria-label="Guest information cards"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
        RSVP — Royal Night Finale
   ═══════════════════════════════════ -->
-  <section class="section rsvp-section" id="rsvp" aria-labelledby="rsvpHeadline">
+    <section class="section rsvp-section" id="rsvp" aria-labelledby="rsvpHeadline">
 
-    <!-- Background: palace courtyard at night -->
-    <div class="rsvp-bg" aria-hidden="true"></div>
+      <!-- Background: palace courtyard at night -->
+      <div class="rsvp-bg" aria-hidden="true"></div>
 
-    <!-- Subtle readability veil — central gradient, lets bg breathe -->
-    <div class="rsvp-veil" aria-hidden="true"></div>
+      <!-- Subtle readability veil — central gradient, lets bg breathe -->
+      <div class="rsvp-veil" aria-hidden="true"></div>
 
-    <!-- ── Live animation canvas: fireworks ── -->
-    <canvas class="rsvp-fireworks-canvas" id="rsvpFireworksCanvas" aria-hidden="true"></canvas>
+      <!-- ── Live animation canvas: fireworks ── -->
+      <canvas class="rsvp-fireworks-canvas" id="rsvpFireworksCanvas" aria-hidden="true"></canvas>
 
 
-    <!-- ── Ambient lamp glows (lower courtyard) ── -->
-    <div class="rsvp-lamp-glows" aria-hidden="true">
-      <span class="rsvp-lamp rsvp-lamp--l"></span>
-      <span class="rsvp-lamp rsvp-lamp--r"></span>
-      <span class="rsvp-lamp rsvp-lamp--cl"></span>
-      <span class="rsvp-lamp rsvp-lamp--cr"></span>
-    </div>
-
-    <!-- ── Lotus divider (from provided asset, top of section) ── -->
-    <div class="rsvp-lotus-top" aria-hidden="true">
-      <img src="assets/pn-rsvp-div-finale-lotus-x-v01-a35800b1f3.webp" alt="" decoding="async" loading="lazy">
-    </div>
-
-    <!-- ── Content block ── -->
-    <div class="rsvp-content">
-
-      <p  class="rsvp-eyebrow  rsvp-reveal" aria-hidden="true">JOIN THE CELEBRATION</p>
-
-      <h2 class="rsvp-headline rsvp-reveal" id="rsvpHeadline">
-        <span class="rsvp-hl-will">Will you</span>
-        <span class="rsvp-hl-join">JOIN US?</span>
-      </h2>
-
-      <p class="rsvp-body rsvp-reveal">
-        We've saved a seat for you — at our table, in our hearts,
-        and under the royal sky. Come celebrate with us as we begin
-        this new chapter together.
-      </p>
-
-      <!-- Primary CTA -->
-      <div class="rsvp-cta-wrap rsvp-reveal">
-        <a class="rsvp-btn-primary"
-           href="assets/910000000000-ac073dc680.bin"
-           target="_blank" rel="noreferrer"
-           aria-label="RSVP — Yes, I'll be there. Opens WhatsApp.">
-          <span class="rsvp-btn-inner">YES, I'LL BE THERE</span>
-        </a>
-        <p class="rsvp-helper">You'll be redirected to WhatsApp to confirm your attendance.</p>
+      <!-- ── Ambient lamp glows (lower courtyard) ── -->
+      <div class="rsvp-lamp-glows" aria-hidden="true">
+        <span class="rsvp-lamp rsvp-lamp--l"></span>
+        <span class="rsvp-lamp rsvp-lamp--r"></span>
+        <span class="rsvp-lamp rsvp-lamp--cl"></span>
+        <span class="rsvp-lamp rsvp-lamp--cr"></span>
       </div>
 
-      <!-- Save the Date -->
-      <div class="rsvp-std rsvp-reveal">
-        <p class="rsvp-std-heading">SAVE THE DATE</p>
-        <div class="rsvp-std-btns">
-          <a class="rsvp-cal-btn" id="rsvpGcalBtn" href="#" target="_blank" rel="noreferrer"
-             aria-label="Add to Google Calendar">
-            <svg class="rsvp-cal-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <rect x="2" y="3" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.4"/>
-              <path d="M7 1v4M13 1v4M2 8h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-            Add to Google Calendar
+      <!-- ── Lotus divider (from provided asset, top of section) ── -->
+      <div class="rsvp-lotus-top" aria-hidden="true">
+        <img src="assets/rsvp/pn-rsvp-div-finale-lotus-x-v01.webp"
+          alt="" decoding="async" loading="lazy">
+      </div>
+
+      <!-- ── Content block ── -->
+      <div class="rsvp-content">
+
+        <p class="rsvp-eyebrow  rsvp-reveal" aria-hidden="true">JOIN THE CELEBRATION</p>
+
+        <h2 class="rsvp-headline rsvp-reveal" id="rsvpHeadline">
+          <span class="rsvp-hl-will">Will you</span>
+          <span class="rsvp-hl-join">JOIN US?</span>
+        </h2>
+
+        <p class="rsvp-body rsvp-reveal">
+          We've saved a seat for you — at our table, in our hearts,
+          and under the royal sky. Come celebrate with us as we begin
+          this new chapter together.
+        </p>
+
+        <!-- Primary CTA -->
+        <div class="rsvp-cta-wrap rsvp-reveal">
+          <a class="rsvp-btn-primary"
+            href="https://wa.me/910000000000?text=Yes%2C%20I%27ll%20be%20there%20%E2%80%94%20Aarav%20%26%20Meera%27s%20celebration!"
+            target="_blank" rel="noreferrer" aria-label="RSVP — Yes, I'll be there. Opens WhatsApp.">
+            <span class="rsvp-btn-inner">YES, I'LL BE THERE</span>
           </a>
-          <a class="rsvp-cal-btn" id="rsvpIcalBtn" href="#" download="aarav-meera-wedding.ics"
-             aria-label="Add to Apple Calendar">
-            <svg class="rsvp-cal-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <rect x="2" y="3" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.4"/>
-              <path d="M7 1v4M13 1v4M2 8h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              <path d="M10 11v3M8.5 14h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-            Add to Apple Calendar
-          </a>
+          <p class="rsvp-helper">You'll be redirected to WhatsApp to confirm your attendance.</p>
         </div>
-      </div>
 
-    </div><!-- /rsvp-content -->
+        <!-- Save the Date -->
+        <div class="rsvp-std rsvp-reveal">
+          <p class="rsvp-std-heading">SAVE THE DATE</p>
+          <div class="rsvp-std-btns">
+            <a class="rsvp-cal-btn" id="rsvpGcalBtn" href="#" target="_blank" rel="noreferrer"
+              aria-label="Add to Google Calendar">
+              <svg class="rsvp-cal-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="3" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.4" />
+                <path d="M7 1v4M13 1v4M2 8h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+              </svg>
+              Add to Google Calendar
+            </a>
+            <a class="rsvp-cal-btn" id="rsvpIcalBtn" href="#" download="aarav-meera-wedding.ics"
+              aria-label="Add to Apple Calendar">
+              <svg class="rsvp-cal-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="3" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.4" />
+                <path d="M7 1v4M13 1v4M2 8h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                <path d="M10 11v3M8.5 14h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+              </svg>
+              Add to Apple Calendar
+            </a>
+          </div>
+        </div>
 
-  </section>
+      </div><!-- /rsvp-content -->
 
-  <!-- ═══════════════════════════════════
+    </section>
+
+    <!-- ═══════════════════════════════════
        CLOSING — Love note farewell
   ═══════════════════════════════════ -->
-  <section class="section closing-section" id="closing" aria-labelledby="closingTitle">
-    <div class="closing-bg"  aria-hidden="true"></div>
-    <div class="closing-veil" aria-hidden="true"></div>
+    <section class="section closing-section" id="closing" aria-labelledby="closingTitle">
+      <div class="closing-bg" aria-hidden="true"></div>
+      <div class="closing-veil" aria-hidden="true"></div>
 
-    <div class="closing-content reveal-item">
-      <div class="rsvp-closing-frame">
-        <span class="rsvp-corner rsvp-corner--tr" aria-hidden="true"></span>
-        <span class="rsvp-corner rsvp-corner--bl" aria-hidden="true"></span>
+      <div class="closing-content reveal-item">
+        <div class="rsvp-closing-frame">
+          <span class="rsvp-corner rsvp-corner--tr" aria-hidden="true"></span>
+          <span class="rsvp-corner rsvp-corner--bl" aria-hidden="true"></span>
 
-        <img class="closing-lotus"
-             src="assets/pn-inv-div-lotus-divider-x-v01-4a396303fc.webp"
-             alt="" aria-hidden="true" decoding="async" loading="lazy">
+          <img class="closing-lotus"
+            src="assets/invite/pn-inv-div-lotus-divider-x-v01.webp"
+            alt="" aria-hidden="true" decoding="async" loading="lazy">
 
-        <p class="closing-eyebrow">With all our love</p>
+          <p class="closing-eyebrow">With all our love</p>
 
-        <h2 class="closing-names" id="closingTitle">Aarav &amp; Meera</h2>
+          <h2 class="closing-names" id="closingTitle">Aarav &amp; Meera</h2>
 
-        <div class="closing-ornament" aria-hidden="true">
-          <span></span>
-          <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="assets/svg-b05687485d.bin" aria-hidden="true">
-            <ellipse cx="11" cy="8"  rx="2.8" ry="5.8" fill="rgba(216,169,87,.72)" transform="rotate(0   11 11)"/>
-            <ellipse cx="11" cy="8"  rx="2.8" ry="5.8" fill="rgba(216,169,87,.52)" transform="rotate(60  11 11)"/>
-            <ellipse cx="11" cy="8"  rx="2.8" ry="5.8" fill="rgba(216,169,87,.52)" transform="rotate(-60 11 11)"/>
-            <ellipse cx="11" cy="8"  rx="2.2" ry="4.8" fill="rgba(216,169,87,.34)" transform="rotate(120 11 11)"/>
-            <ellipse cx="11" cy="8"  rx="2.2" ry="4.8" fill="rgba(216,169,87,.34)" transform="rotate(-120 11 11)"/>
-            <ellipse cx="11" cy="8"  rx="1.8" ry="4.2" fill="rgba(216,169,87,.22)" transform="rotate(180 11 11)"/>
-            <circle  cx="11" cy="11" r="2.0"  fill="rgba(216,169,87,.85)"/>
-          </svg>
-          <span></span>
+          <div class="closing-ornament" aria-hidden="true">
+            <span></span>
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <ellipse cx="11" cy="8" rx="2.8" ry="5.8" fill="rgba(216,169,87,.72)" transform="rotate(0   11 11)" />
+              <ellipse cx="11" cy="8" rx="2.8" ry="5.8" fill="rgba(216,169,87,.52)" transform="rotate(60  11 11)" />
+              <ellipse cx="11" cy="8" rx="2.8" ry="5.8" fill="rgba(216,169,87,.52)" transform="rotate(-60 11 11)" />
+              <ellipse cx="11" cy="8" rx="2.2" ry="4.8" fill="rgba(216,169,87,.34)" transform="rotate(120 11 11)" />
+              <ellipse cx="11" cy="8" rx="2.2" ry="4.8" fill="rgba(216,169,87,.34)" transform="rotate(-120 11 11)" />
+              <ellipse cx="11" cy="8" rx="1.8" ry="4.2" fill="rgba(216,169,87,.22)" transform="rotate(180 11 11)" />
+              <circle cx="11" cy="11" r="2.0" fill="rgba(216,169,87,.85)" />
+            </svg>
+            <span></span>
+          </div>
+
+          <p class="closing-line">You make this moment complete.</p>
+          <p class="closing-date">12 · December · 2026</p>
         </div>
-
-        <p class="closing-line">You make this moment complete.</p>
-        <p class="closing-date">12 · December · 2026</p>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-<section id="rsvp" class="s-rsvp">
-
-  <div class="rsvp-paper-veil"></div>
-
-  <!-- Petal clusters — ruby/gold on parchment -->
-  <div class="rsvp-florals" aria-hidden="true">
-    <svg class="rsvp-fl rsvp-fl--tl" viewBox="0 0 180 180" fill="none">
-      <ellipse cx="60"  cy="90"  rx="18" ry="42" fill="var(--rose)" opacity=".07" transform="rotate(-30 60 90)"/>
-      <ellipse cx="90"  cy="55"  rx="14" ry="36" fill="var(--gold)" opacity=".06" transform="rotate(20 90 55)"/>
-      <ellipse cx="115" cy="95"  rx="16" ry="38" fill="var(--rose)" opacity=".05" transform="rotate(60 115 95)"/>
-      <circle  cx="88"  cy="88"  r="6"            fill="var(--gold)" opacity=".10"/>
-    </svg>
-    <svg class="rsvp-fl rsvp-fl--br" viewBox="0 0 180 180" fill="none">
-      <ellipse cx="60"  cy="90"  rx="18" ry="42" fill="var(--rose)" opacity=".07" transform="rotate(-30 60 90)"/>
-      <ellipse cx="90"  cy="55"  rx="14" ry="36" fill="var(--gold)" opacity=".06" transform="rotate(20 90 55)"/>
-      <ellipse cx="115" cy="95"  rx="16" ry="38" fill="var(--rose)" opacity=".05" transform="rotate(60 115 95)"/>
-      <circle  cx="88"  cy="88"  r="6"            fill="var(--gold)" opacity=".10"/>
-    </svg>
-    <svg class="rsvp-fl rsvp-fl--tr" viewBox="0 0 120 120" fill="none">
-      <ellipse cx="40" cy="60" rx="10" ry="28" fill="var(--rose)" opacity=".07" transform="rotate(15 40 60)"/>
-      <ellipse cx="75" cy="45" rx="9"  ry="24" fill="var(--gold)" opacity=".06" transform="rotate(-40 75 45)"/>
-    </svg>
-    <svg class="rsvp-fl rsvp-fl--bl" viewBox="0 0 120 120" fill="none">
-      <ellipse cx="40" cy="60" rx="10" ry="28" fill="var(--rose)" opacity=".07" transform="rotate(15 40 60)"/>
-      <ellipse cx="75" cy="45" rx="9"  ry="24" fill="var(--gold)" opacity=".06" transform="rotate(-40 75 45)"/>
-    </svg>
-  </div>
-
-  <img class="s-diya-l" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
-  <img class="s-diya-r" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
-
-  <div class="rsvp-toran" aria-hidden="true">
-    <img src="assets/Background_204-24ddb4a1ad.png" alt="" class="toran-img">
-  </div>
-
-  <div id="petalRsvp" class="petal-canvas"></div>
-
-  <div class="container rsvp-body">
-
-    <!-- Gold ornamental rule -->
-    <div class="rsvp-rule scroll-in">
-      <svg viewBox="0 0 400 12" width="100%" style="max-width:400px">
-        <line x1="0"   y1="6" x2="168" y2="6" stroke="var(--gold)" stroke-width="0.8" opacity=".40"/>
-        <path d="M 184 6 m -8 0 a 8 8 0 1 0 16 0 a 8 8 0 1 0 -16 0" fill="none" stroke="var(--gold)" stroke-width="1" opacity=".60"/>
-        <line x1="200" y1="6" x2="400" y2="6" stroke="var(--gold)" stroke-width="0.8" opacity=".40"/>
-      </svg>
-    </div>
-
-    <span class="rsvp-eye scroll-in" style="--sd:.05s">Join the Celebration</span>
-
-    <h2 class="rsvp-heading scroll-in" id="rsvpHeading" style="--sd:.12s">
-      Will you <em>join us?</em>
-    </h2>
-
-    <p class="rsvp-sub scroll-in" id="rsvpSub" style="--sd:.22s">
-      We've saved a seat for you — at our table, in our hearts, and under the royal sky.<br>
-      Come celebrate with us as we begin this new chapter together.
+  <footer class="footer"
+    style="text-align:center;padding:28px 16px 36px;background:#0a0908;color:rgba(216,169,87,.72);font-family:inherit;letter-spacing:.08em;font-size:.78rem;">
+    <p class="ft-credit" style="margin:0;">Crafted with love on <a href="https://invite.kimiclaw.in" target="_blank"
+        rel="noopener"
+        style="color:#d8a957;text-decoration:none;border-bottom:1px solid rgba(216,169,87,.4);">invite.kimiclaw.in</a>
     </p>
+  </footer>
 
-    <form class="rsvp-form scroll-in" id="rsvpDetailsForm" style="--sd:.28s">
-      <div class="rsvp-row">
-        <div class="rsvp-field">
-          <label for="rsvpName">Your Name</label>
-          <input type="text" id="rsvpName" name="name" placeholder="e.g. Aditi Sharma" required>
-        </div>
-        <div class="rsvp-field">
-          <label for="rsvpGuests">Guests</label>
-          <input type="number" id="rsvpGuests" name="guests" min="1" max="10" value="1" required>
-        </div>
+  <nav class="floating-menu" id="floatingMenu" aria-label="Navigation">
+
+    <!-- Circular Pichwai menu panel -->
+    <div class="menu-panel" id="menuPanel" role="dialog" aria-label="Site navigation">
+      <div class="menu-bg-circle">
+        <img class="menu-bg-img"
+          src="assets/shared/Menu_background.webp" alt=""
+          aria-hidden="true" draggable="false">
       </div>
-      <div class="rsvp-field">
-        <label for="rsvpAttending">Will you attend?</label>
-        <select id="rsvpAttending" name="attending">
-          <option value="Yes, joyfully!">Yes, joyfully! 🎉</option>
-          <option value="Not sure yet">Not sure yet</option>
-          <option value="Sorry, can't make it">Sorry, can't make it</option>
-        </select>
+      <div class="menu-nav-header" aria-hidden="true">Navigation</div>
+      <div class="menu-lotus-top" aria-hidden="true">
+        <svg viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="28">
+          <ellipse cx="16" cy="14" rx="6" ry="5" fill="#d8a957" opacity=".7" />
+          <ellipse cx="8" cy="12" rx="5" ry="4" fill="#d8a957" opacity=".5" />
+          <ellipse cx="24" cy="12" rx="5" ry="4" fill="#d8a957" opacity=".5" />
+        </svg>
       </div>
-    </form>
-
-    <div class="rsvp-cta-wrap scroll-in" style="--sd:.34s">
-      <a
-        id="rsvpWaBtn"
-        class="rsvp-wa-btn"
-        href="https://wa.me/919243400679"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="RSVP via WhatsApp"
-      >
-        <span class="rsvp-wa-shimmer"></span>
-        <span class="rsvp-wa-inner">
-          <svg class="rsvp-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.121 1.527 5.855L0 24l6.306-1.506A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.37l-.359-.214-3.737.892.93-3.63-.235-.373A9.818 9.818 0 1112 21.818z"/>
-          </svg>
-          Yes, I'll be there ✨
-        </span>
-      </a>
+      <nav class="menu-links" aria-label="Page sections">
+        <a class="menu-link" href="#" id="menuHome">Home</a>
+        <div class="menu-divider" aria-hidden="true"></div>
+        <a class="menu-link" href="#invite">Invite</a>
+        <div class="menu-divider" aria-hidden="true"></div>
+        <a class="menu-link" href="#events">Events</a>
+        <div class="menu-divider" aria-hidden="true"></div>
+        <a class="menu-link" href="#couple">Meet the Couple</a>
+        <div class="menu-divider" aria-hidden="true"></div>
+        <a class="menu-link" href="#gallery">Gallery</a>
+        <div class="menu-divider" aria-hidden="true"></div>
+        <a class="menu-link" href="#things">Things to Know</a>
+        <div class="menu-divider" aria-hidden="true"></div>
+        <a class="menu-link" href="#rsvp">RSVP</a>
+      </nav>
     </div>
 
-    <p class="rsvp-ps scroll-in" style="--sd:.44s">
-      You'll be redirected to WhatsApp to confirm your attendance.
-    </p>
+    <!-- Music toggle button (above compass) -->
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Play music" aria-pressed="false">
+      <img class="music-icon-img" src="assets/shared/music_icon.webp"
+        alt="" aria-hidden="true" draggable="false">
+    </button>
 
-    <div class="scroll-in" style="--sd:.48s">
-      <button type="button" class="dl-card-btn" id="dlCardBtn">⬇ Download Invite Card</button>
-    </div>
+    <!-- Compass toggle button -->
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">
+      <img class="compass-img" src="assets/shared/compass.webp"
+        alt="Navigation compass" draggable="false">
+    </button>
+  </nav>
 
-    <!-- Gold rule below -->
-    <div class="rsvp-rule scroll-in" style="--sd:.5s">
-      <svg viewBox="0 0 400 12" width="100%" style="max-width:400px">
-        <line x1="0"   y1="6" x2="168" y2="6" stroke="var(--gold)" stroke-width="0.8" opacity=".40"/>
-        <path d="M 184 6 m -8 0 a 8 8 0 1 0 16 0 a 8 8 0 1 0 -16 0" fill="none" stroke="var(--gold)" stroke-width="1" opacity=".60"/>
-        <line x1="200" y1="6" x2="400" y2="6" stroke="var(--gold)" stroke-width="0.8" opacity=".40"/>
-      </svg>
-    </div>
+  <!-- Background music — starts on rope pull -->
+  <audio id="bgMusic" src="assets/Template_09.mp3" loop
+    preload="none"></audio>
 
-  </div>
-</section>
-
-<footer class="footer" style="text-align:center;padding:28px 16px 36px;background:#0a0908;color:rgba(216,169,87,.72);font-family:inherit;letter-spacing:.08em;font-size:.78rem;">
-  <p class="ft-credit" style="margin:0;">Crafted with love on <a href="#" target="_blank" rel="noopener" style="color:#d8a957;text-decoration:none;border-bottom:1px solid rgba(216,169,87,.4);">invite.kimiclaw.in</a></p>
-</footer>
-
-<nav class="floating-menu" id="floatingMenu" aria-label="Navigation">
-
-  <!-- Circular Pichwai menu panel -->
-  <div class="menu-panel" id="menuPanel" role="dialog" aria-label="Site navigation">
-    <div class="menu-bg-circle">
-      <img class="menu-bg-img" src="assets/Menu_background-a3dc96b761.webp" alt="" aria-hidden="true" draggable="false">
-    </div>
-    <div class="menu-nav-header" aria-hidden="true">Navigation</div>
-    <div class="menu-lotus-top" aria-hidden="true">
-      <svg viewBox="0 0 32 16" fill="none" xmlns="assets/svg-b05687485d.bin" width="28">
-        <ellipse cx="16" cy="14" rx="6" ry="5" fill="#d8a957" opacity=".7"/>
-        <ellipse cx="8"  cy="12" rx="5" ry="4" fill="#d8a957" opacity=".5"/>
-        <ellipse cx="24" cy="12" rx="5" ry="4" fill="#d8a957" opacity=".5"/>
-      </svg>
-    </div>
-    <nav class="menu-links" aria-label="Page sections">
-      <a class="menu-link" href="#" id="menuHome">Home</a>
-      <div class="menu-divider" aria-hidden="true"></div>
-      <a class="menu-link" href="#invite">Invite</a>
-      <div class="menu-divider" aria-hidden="true"></div>
-      <a class="menu-link" href="#events">Events</a>
-      <div class="menu-divider" aria-hidden="true"></div>
-      <a class="menu-link" href="#couple">Meet the Couple</a>
-      <div class="menu-divider" aria-hidden="true"></div>
-      <a class="menu-link" href="#gallery">Gallery</a>
-      <div class="menu-divider" aria-hidden="true"></div>
-      <a class="menu-link" href="#things">Things to Know</a>
-      <div class="menu-divider" aria-hidden="true"></div>
-      <a class="menu-link" href="#rsvp">RSVP</a>
-    </nav>
-  </div>
-
-  <!-- Music toggle button (above compass) -->
-  <button class="music-toggle" id="musicToggle" type="button"
-          aria-label="Play music" aria-pressed="false">
-    <img class="music-icon-img" src="assets/music_icon-478df179d0.webp"
-         alt="" aria-hidden="true" draggable="false">
-  </button>
-
-  <!-- Compass toggle button -->
-  <button class="menu-toggle" id="menuToggle" type="button"
-          aria-label="Open navigation" aria-expanded="false">
-    <img class="compass-img" src="assets/compass-1c8e269395.webp"
-         alt="Navigation compass" draggable="false">
-  </button>
-</nav>
-
-<!-- Background music — starts on rope pull -->
-<audio id="bgMusic" src="assets/Template_09-97b6431288.mp3" loop preload="none"></audio>
-
-<script src="assets/script-8ac40bf5ea.js" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var cfg = window.__WEDDING_CONFIG__;
-  if (!cfg || !cfg.invite || cfg.invite.parentsOrder !== 'groom_first') return;
-  var bEl = document.getElementById('iBrideParents');
-  var gEl = document.getElementById('iGroomParents');
-  if (bEl) { var em = bEl.closest('.fam-parents') && bEl.closest('.fam-parents').querySelector('em'); if (em) em.textContent = 'Son of'; }
-  if (gEl) { var em2 = gEl.closest('.fam-parents') && gEl.closest('.fam-parents').querySelector('em'); if (em2) em2.textContent = 'Daughter of'; }
-});
-</script>
-<script>
-document.addEventListener('click', function(e) {
-  if (e.defaultPrevented) return;
-  var link = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
-  if (!link) return;
-  var href = link.getAttribute('href') || '';
-  if (!href || href === '#') return;
-  var id = href.slice(1);
-  try { id = decodeURIComponent(id); } catch (_) {}
-  var target = document.getElementById(id);
-  if (!target) return;
-  e.preventDefault();
-  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-</script>
+  <script src="assets/script.js"
+    defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var cfg = window.__WEDDING_CONFIG__;
+      if (!cfg || !cfg.invite || cfg.invite.parentsOrder !== 'groom_first') return;
+      var bEl = document.getElementById('iBrideParents');
+      var gEl = document.getElementById('iGroomParents');
+      if (bEl) { var em = bEl.closest('.fam-parents') && bEl.closest('.fam-parents').querySelector('em'); if (em) em.textContent = 'Son of'; }
+      if (gEl) { var em2 = gEl.closest('.fam-parents') && gEl.closest('.fam-parents').querySelector('em'); if (em2) em2.textContent = 'Daughter of'; }
+      /* Template 10 — swap the hardcoded "Daughter of" / "Son of" role labels.
+         buildConfigData already swapped the parent DATA, so #invBrideParents now
+         holds the groom's parents (and must read "Son of") and #invGroomParents
+         holds the bride's parents (and must read "Daughter of"). Without this the
+         labels stay fixed and the swap renders mismatched. */
+      var t10Roles = document.querySelectorAll('.inv-parents .inv-parent-role');
+      if (t10Roles.length >= 2) { t10Roles[0].textContent = 'Son of'; t10Roles[1].textContent = 'Daughter of'; }
+    });
+  </script>
+  <script>
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented) return;
+      var link = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (!href || href === '#') return;
+      var id = href.slice(1);
+      try { id = decodeURIComponent(id); } catch (_) { }
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
 </body>
+
 </html>

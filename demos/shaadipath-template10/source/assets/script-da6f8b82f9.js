@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
    Template 10 — Champagne Intro
    Interaction: press-and-hold (or drag up) the cork.
    At threshold the bottle pops and the reveal unfolds.
@@ -1445,20 +1445,7 @@ setTimeout(startIdle, IDLE_DELAY_MS);
           ? '<p class="ev-card-desc" style="font-size:1.12rem;color:rgba(60,42,12,0.58);line-height:1.65;margin:5px 0;padding:0 5%;font-style:italic;font-family:inherit;text-align:center;">' + ev.desc + '</p>'
           : '';
 
-        /* Cupid decoration — alternates left / right */
-        var cupidHtml = isOdd
-          ? '<div class="ev-card-cupid" aria-hidden="true">' +
-            '<div class="ev-cupid-clip"><img src="assets/Events/Cupid.webp" alt="" draggable="false" decoding="async" loading="lazy"></div>' +
-            '<div class="ev-cupid-petal-wrap"><img class="ev-cupid-petal" src="assets/Events/petal.webp" alt="" draggable="false" decoding="async" loading="lazy"></div>' +
-            '<div class="ev-cupid-petal-wrap"><img class="ev-cupid-petal" src="assets/Events/petal.webp" alt="" draggable="false" decoding="async" loading="lazy"></div>' +
-            '<div class="ev-cupid-petal-wrap"><img class="ev-cupid-petal" src="assets/Events/petal.webp" alt="" draggable="false" decoding="async" loading="lazy"></div>' +
-            '<div class="ev-cupid-petal-wrap"><img class="ev-cupid-petal" src="assets/Events/petal.webp" alt="" draggable="false" decoding="async" loading="lazy"></div>' +
-            '<div class="ev-cupid-petal-wrap"><img class="ev-cupid-petal" src="assets/Events/petal.webp" alt="" draggable="false" decoding="async" loading="lazy"></div>' +
-            '</div>'
-          : '<div class="ev-card-cupid-right" aria-hidden="true">' +
-            '<div class="ev-cupid-clip"><img src="assets/Events/Cupid_right.webp" alt="" draggable="false" decoding="async" loading="lazy"></div>' +
-            '<div class="ev-cupid-arrow-wrap"><img class="ev-cupid-arrow" src="assets/Events/Arrow.webp" alt="" draggable="false" decoding="async" loading="lazy"></div>' +
-            '</div>';
+        var cupidHtml = '';
 
         var evDate = ev.date ? fmtLongDate(ev.date) : '';
         var evTime = ev.time ? fmtTime(ev.time) : '';
@@ -1467,7 +1454,7 @@ setTimeout(startIdle, IDLE_DELAY_MS);
           '<div class="ev-card-wrap ev-reveal" data-delay="' + delay + '">' +
           cupidHtml +
           '<div class="ev-card">' +
-          '<img class="ev-card-img" src="assets/Events/Event_Card.webp" alt="" decoding="async" loading="lazy" draggable="false">' +
+          '<img class="ev-card-img" src="assets/Event_Card-9593bceb2b.webp" alt="" decoding="async" loading="lazy" draggable="false">' +
           '<div class="ev-card-body">' +
           '<div class="ev-card-illus"><img src="' + iconSrc + '" alt="' + (ev.name || '') + '" decoding="async" loading="lazy" draggable="false"></div>' +
           '<p class="ev-card-label">' + (ev.name || '') + '</p>' +
@@ -1596,7 +1583,7 @@ setTimeout(startIdle, IDLE_DELAY_MS);
           '<span class="ttk-card-icon-ring"></span>' +
           '<span class="ttk-card-icon-ring ttk-card-icon-ring--outer"></span>' +
           '<div class="ttk-card-icon">' +
-          '<img src="assets/TTK/' + imgFile + '" alt="" class="ttk-card-img" loading="lazy" draggable="false">' +
+          '<img src="assets/Paper-483826b1c7.webp" alt="" class="ttk-card-img" loading="lazy" draggable="false" onerror="this.src=\'assets/Paper-483826b1c7.webp\'">' +
           '</div></div>' +
           '<p class="ttk-card-label">' + (item.label || '') + '</p>' +
           '<span class="ttk-card-rule" aria-hidden="true"></span>' +
@@ -1878,10 +1865,10 @@ setTimeout(startIdle, IDLE_DELAY_MS);
 
   /* ── Card data (image-based) ────────────────────────── */
   const TTK_CARDS = [
-    { label: "Dress Code",    img: "Dress_Code.webp",    body: "Smart formal — florals and pastels for ladies, lounge suit for gentlemen. Please avoid all-white." },
-    { label: "Venue",         img: "Venue.webp",         body: "Please be seated by 10:45 AM. Ceremony is at 11:00 AM sharp and is unplugged — kindly silence phones." },
-    { label: "Stay Options",  img: "Stay_options.webp",  body: "Rooms reserved at Vivanta Goa. Mention the wedding when booking for special rates." },
-    { label: "Gift Registry", img: "Gift_registry.webp", body: "Your presence is our greatest gift. A registry is available on request." },
+    { label: "Dress Code",    img: "Dress_Code.png",    body: "Smart formal — florals and pastels for ladies, lounge suit for gentlemen. Please avoid all-white." },
+    { label: "Venue",         img: "Venue.png",         body: "Please be seated by 10:45 AM. Ceremony is at 11:00 AM sharp and is unplugged — kindly silence phones." },
+    { label: "Stay Options",  img: "Stay_options.png",  body: "Rooms reserved at Vivanta Goa. Mention the wedding when booking for special rates." },
+    { label: "Gift Registry", img: "Gift_registry.png", body: "Your presence is our greatest gift. A registry is available on request." },
   ];
 
   /* ── Build and inject each card ─────────────────────── */
@@ -1901,7 +1888,7 @@ setTimeout(startIdle, IDLE_DELAY_MS);
           <span class="ttk-card-icon-ring"></span>
           <span class="ttk-card-icon-ring ttk-card-icon-ring--outer"></span>
           <div  class="ttk-card-icon">
-            <img src="assets/TTK/${card.img}" alt="" class="ttk-card-img" loading="lazy" draggable="false">
+            <img src="assets/TTK/${card.img}" alt="" class="ttk-card-img" loading="lazy" draggable="false" onerror="this.src='assets/Paper-483826b1c7.webp'">
           </div>
         </div>
         <p   class="ttk-card-label">${card.label}</p>
@@ -2100,8 +2087,8 @@ setTimeout(startIdle, IDLE_DELAY_MS);
   if (rmq) return; /* respect prefers-reduced-motion */
 
   const SRCS = [
-    "assets/Meet the couple/petal_1.webp",
-    "assets/Meet the couple/petal_2.webp"
+    "assets/petal-ac8ce5b4b8.webp",
+    "assets/petal-ac8ce5b4b8.webp"
   ];
 
   let timer   = null;

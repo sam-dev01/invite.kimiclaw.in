@@ -1,7 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="application/json" id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/photo1-440172ed05.jpg","assets/photo2-2f971e6f22.jpg","assets/photo3-33243c7880.png","assets/photo4-02ec9fd501.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We've saved a seat for you in our garden â€” at our table, in our hearts, under an open sky full of marigolds. Come celebrate with us as we begin this beautiful chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"assets/render-9041edc121.bin\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261212%0ADTEND:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
+<script type="application/json" id="wedding-config">{"couple":{"bride":"Tanya","groom":"Rohan","date":"2026-12-12","venue":"","whatsapp":"","hashtag":"#TanyaWedsRohan"},"invite":{"blessing":"","brideFather":"","brideMother":"","groomFather":"","groomMother":"","showGrandparents":false,"brideGF":"","brideGM":"","groomGF":"","groomGM":""},"events":[],"story":{"show":true,"customHashtag":"","tags":[]},"gallery":{"show":true,"layout":"4","photos":["assets/photo1-440172ed05.jpg","assets/photo2-2f971e6f22.jpg","assets/photo3-33243c7880.png","assets/photo4-02ec9fd501.png"]},"thingsToKnow":[],"rsvp":{"mode":"whatsapp","heading":"Will you join us?","subtext":"We've saved a seat for you in our garden — at our table, in our hearts, under an open sky full of marigolds. Come celebrate with us as we begin this beautiful chapter together.","btnText":"Yes, I'll be there","whatsapp":""},"music":{"enabled":false,"src":"","name":""},"calendarUrls":{"google":"assets/render-9041edc121.bin\u0026text=Tanya%20weds%20Rohan\u0026dates=20261212/20261213\u0026location=","apple":"data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20261212%0ADTEND:20261213%0ASUMMARY:Tanya%20weds%20Rohan%0ALOCATION:%0AEND:VEVENT%0AEND:VCALENDAR"}}</script>
 <script>window.__WEDDING_CONFIG__ = JSON.parse(document.getElementById('wedding-config').textContent);</script>
 <script>
 </script>
@@ -43,7 +43,7 @@
           }
         }
       });
-      // No existing date element found â€” insert one after .pl-names
+      // No existing date element found — insert one after .pl-names
       if (!found) {
         var container = document.querySelector('.pl-names') || document.querySelector('.pl-content');
         if (container && !container.querySelector('.pl-date-injected')) {
@@ -62,7 +62,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title id="page-title">Priya &amp; Arjun Â· 12.12.2026</title>
+<title id="page-title">Priya &amp; Arjun · 12.12.2026</title>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preload" href="assets/Herp_20Palace-8e2f60f45c.png" as="image">
@@ -72,7 +72,7 @@
 <link href="assets/css2-ba092343ef.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/style-8e9e8e8668.css">
 <script>
-  // Injected by invite.kimiclaw.in Ã¢Â€Â” do not remove
+  // Injected by invite.kimiclaw.in â do not remove
   if (typeof window.__WEDDING_CONFIG__ !== 'undefined' && window.__WEDDING_CONFIG__) {
     var WEDDING_CONFIG = window.__WEDDING_CONFIG__;
   }
@@ -86,9 +86,9 @@
 <audio id="bgMusic" loop preload="none">
   <source src="assets/Template_04-48a0ee7b4e.mp3" type="audio/mpeg">
 </audio>
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">ðŸ””</button>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">🔔</button>
 
-<!-- PRELOADER â€” marigold mandala trace on warm garden gradient -->
+<!-- PRELOADER — marigold mandala trace on warm garden gradient -->
 <div id="preloader" class="preloader">
   <div class="pl-bg"></div>
   <div class="pl-content">
@@ -119,18 +119,18 @@
 </div>
 
 <!-- HERO
-     Layer stack z-order: sky(0) Â· particles(1) Â· couple(4) Â· mandap(5) Â· floats(8) Â· names(9)
+     Layer stack z-order: sky(0) · particles(1) · couple(4) · mandap(5) · floats(8) · names(9)
      The couple (Hero Couple.png) sits INSIDE the mandap opening.
-     Both zoom on scroll but at different rates â€” couple slower â€” creating depth.
+     Both zoom on scroll but at different rates — couple slower — creating depth.
 -->
 <div id="heroWrap" class="hero-wrap">
   <div id="heroPin" class="hero-pin">
     <div class="hero-sky"></div>
     <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
 
-    <!-- Couple z:4 â€” inside mandap opening, slower parallax -->
+    <!-- Couple z:4 — inside mandap opening, slower parallax -->
     <img id="l4" class="hl hl-couple" src="assets/Hero_20Couple-6aba1cc290.png" alt="">
-    <!-- Mandap z:5 â€” scroll-zoom 1.0â†’1.45 -->
+    <!-- Mandap z:5 — scroll-zoom 1.0→1.45 -->
     <img id="l3" class="hl hl-palace" src="assets/Herp_20Palace-8e2f60f45c.png" alt="">
 
     <div class="hero-floats" aria-hidden="true">
@@ -141,7 +141,7 @@
     </div>
     <div id="petalHero" class="petal-canvas"></div>
 
-    <!-- Rangoli orbs â€” marigold + coral atmospheric glow -->
+    <!-- Rangoli orbs — marigold + coral atmospheric glow -->
     <div class="rangoli-orb" style="top:18%;left:8%;animation-delay:0s" aria-hidden="true"></div>
     <div class="rangoli-orb" style="top:55%;right:9%;animation-delay:6s" aria-hidden="true"></div>
 
@@ -149,7 +149,7 @@
       <h1 class="hc-bride"><span>Priya</span></h1>
       <span class="hc-weds">weds</span>
       <h1 class="hc-groom"><span>Arjun</span></h1>
-      <!-- Countdown â€” reads WEDDING_CONFIG.couple.date, falls back 12 Dec 2026 -->
+      <!-- Countdown — reads WEDDING_CONFIG.couple.date, falls back 12 Dec 2026 -->
       <div id="heroCountdown" class="hc-countdown" aria-label="Countdown to the wedding"></div>
     </div>
     <div class="scroll-nudge" id="scrollNudge">
@@ -159,7 +159,7 @@
   </div>
 </div>
 
-<!-- PEACOCK BRIDGE â€” single centred peacock replaces two urns -->
+<!-- PEACOCK BRIDGE — single centred peacock replaces two urns -->
 <div class="peacock-bridge" id="peacockBridge" aria-hidden="true">
   <div class="pb-glow"></div>
   <div class="pb-fan"  id="pbFan"></div>
@@ -216,7 +216,7 @@
           <div class="fam-gp" id="iFamGpBride" style="display:none"></div>
           <div class="fam-parents"><em>Daughter of</em><br><span id="iBrideParents">Mr. &amp; Mrs. Suresh Sharma</span></div>
         </div>
-        <div class="fam-dot">âœ¿</div>
+        <div class="fam-dot">✿</div>
         <div class="fam-side">
           <div class="fam-gp" id="iFamGpGroom" style="display:none"></div>
           <div class="fam-parents"><em>Son of</em><br><span id="iGroomParents">Mr. &amp; Mrs. Ramesh Kapoor</span></div>
@@ -228,7 +228,7 @@
   <div id="petalInvite" class="petal-canvas"></div>
 </section>
 
-<!-- Wave â€” coral into events -->
+<!-- Wave — coral into events -->
 <div class="wdiv">
   <svg viewBox="0 0 1440 48" preserveAspectRatio="none">
     <path d="M0,24 C360,48 720,0 1080,24 C1260,36 1440,12 1440,24 L1440,48 L0,48Z" fill="#F5EDD8"/>
@@ -267,33 +267,33 @@
     <div class="ev-float-stage" id="evStage">
       <article class="ev-node ev-row1 scroll-in" style="--sd:.05s" data-idx="0">
         <div class="ev-icon-wrap"><img src="assets/icon-mehendi-475fb68de0.png" alt="Mehendi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Mehendi</span><span class="ev-date">11 Dec Â· 2:00 PM</span></div>
-        <div class="ev-detail"><p class="ev-venue">Garden Pavilion</p><p class="ev-desc">Henna, marigolds, folk music, and afternoon light.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
+        <div class="ev-label"><span class="ev-name">Mehendi</span><span class="ev-date">11 Dec · 2:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">Garden Pavilion</p><p class="ev-desc">Henna, marigolds, folk music, and afternoon light.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
       </article>
       <article class="ev-node ev-row1 scroll-in" style="--sd:.15s" data-idx="1">
         <div class="ev-icon-wrap"><img src="assets/icon-haldi-8cb1847f7a.png" alt="Haldi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Haldi</span><span class="ev-date">11 Dec Â· 10:00 AM</span></div>
-        <div class="ev-detail"><p class="ev-venue">The Garden Room</p><p class="ev-desc">Turmeric, saffron, laughter, and morning sunshine.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
+        <div class="ev-label"><span class="ev-name">Haldi</span><span class="ev-date">11 Dec · 10:00 AM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Garden Room</p><p class="ev-desc">Turmeric, saffron, laughter, and morning sunshine.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
       </article>
       <article class="ev-node ev-row1 scroll-in" style="--sd:.25s" data-idx="2">
         <div class="ev-icon-wrap"><img src="assets/icon-cocktail-d7616e042f.png" alt="Cocktail" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Cocktail</span><span class="ev-date">11 Dec Â· 7:30 PM</span></div>
-        <div class="ev-detail"><p class="ev-venue">The Terrace</p><p class="ev-desc">Garden cocktails under a canopy of string lights.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
+        <div class="ev-label"><span class="ev-name">Cocktail</span><span class="ev-date">11 Dec · 7:30 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Terrace</p><p class="ev-desc">Garden cocktails under a canopy of string lights.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
       </article>
       <article class="ev-node ev-row2 scroll-in" style="--sd:.10s" data-idx="3">
         <div class="ev-icon-wrap"><img src="assets/icon-sagan-85ac80a9c3.png" alt="Sagan" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Sagan</span><span class="ev-date">11 Dec Â· 5:00 PM</span></div>
-        <div class="ev-detail"><p class="ev-venue">Drawing Room</p><p class="ev-desc">Family blessings before the big day begins.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
+        <div class="ev-label"><span class="ev-name">Sagan</span><span class="ev-date">11 Dec · 5:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">Drawing Room</p><p class="ev-desc">Family blessings before the big day begins.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
       </article>
       <article class="ev-node ev-row2 ev-node--hero scroll-in" style="--sd:.20s" data-idx="4">
         <div class="ev-icon-wrap"><img src="assets/icon-shaadi-e4b930708e.png" alt="Shaadi" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Shaadi</span><span class="ev-date">12 Dec Â· 10:00 AM</span></div>
-        <div class="ev-detail"><p class="ev-venue">The Grand Mandap</p><p class="ev-desc">Seven vows, one lifetime â€” the moment that matters.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
+        <div class="ev-label"><span class="ev-name">Shaadi</span><span class="ev-date">12 Dec · 10:00 AM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Grand Mandap</p><p class="ev-desc">Seven vows, one lifetime — the moment that matters.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
       </article>
       <article class="ev-node ev-row2 scroll-in" style="--sd:.30s" data-idx="5">
         <div class="ev-icon-wrap"><img src="assets/icon-reception-d6df8b24b7.png" alt="Reception" class="ev-icon" loading="lazy"><div class="ev-glow"></div></div>
-        <div class="ev-label"><span class="ev-name">Reception</span><span class="ev-date">12 Dec Â· 7:00 PM</span></div>
-        <div class="ev-detail"><p class="ev-venue">The Garden Terrace</p><p class="ev-desc">Dance, dine, and celebrate as the stars come out.</p><a href="#" class="ev-cta">ðŸ“ Open in Google Maps</a></div>
+        <div class="ev-label"><span class="ev-name">Reception</span><span class="ev-date">12 Dec · 7:00 PM</span></div>
+        <div class="ev-detail"><p class="ev-venue">The Garden Terrace</p><p class="ev-desc">Dance, dine, and celebrate as the stars come out.</p><a href="#" class="ev-cta">📍 Open in Google Maps</a></div>
       </article>
     </div>
   </div>
@@ -314,7 +314,7 @@
   </svg>
 </div>
 
-<!-- STORY â€” Garden curtain reveal -->
+<!-- STORY — Garden curtain reveal -->
 <section id="story" class="s-story">
   <div class="st-paper-bg"></div>
   <div class="st-stage" id="stStage">
@@ -489,7 +489,7 @@
 
   <div class="rsvp-paper-veil"></div>
 
-  <!-- Petal clusters — ruby/gold on parchment -->
+  <!-- Petal clusters � ruby/gold on parchment -->
   <div class="rsvp-florals" aria-hidden="true">
     <svg class="rsvp-fl rsvp-fl--tl" viewBox="0 0 180 180" fill="none">
       <ellipse cx="60"  cy="90"  rx="18" ry="42" fill="var(--rose)" opacity=".07" transform="rotate(-30 60 90)"/>
@@ -513,11 +513,11 @@
     </svg>
   </div>
 
-  <img class="s-diya-l" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
-  <img class="s-diya-r" src="assets/Element_201-a8193248f0.png" alt="" aria-hidden="true">
+  <img class="s-diya-l" src="assets/Element_201-223daa35d5.png" alt="" aria-hidden="true">
+  <img class="s-diya-r" src="assets/Element_201-223daa35d5.png" alt="" aria-hidden="true">
 
   <div class="rsvp-toran" aria-hidden="true">
-    <img src="assets/Background_204-24ddb4a1ad.png" alt="" class="toran-img">
+    <img src="assets/Background_204-64a4271d35.png" alt="" class="toran-img">
   </div>
 
   <div id="petalRsvp" class="petal-canvas"></div>
@@ -540,7 +540,7 @@
     </h2>
 
     <p class="rsvp-sub scroll-in" id="rsvpSub" style="--sd:.22s">
-      We've saved a seat for you — at our table, in our hearts, and under the royal sky.<br>
+      We've saved a seat for you � at our table, in our hearts, and under the royal sky.<br>
       Come celebrate with us as we begin this new chapter together.
     </p>
 
@@ -558,7 +558,7 @@
       <div class="rsvp-field">
         <label for="rsvpAttending">Will you attend?</label>
         <select id="rsvpAttending" name="attending">
-          <option value="Yes, joyfully!">Yes, joyfully! 🎉</option>
+          <option value="Yes, joyfully!">Yes, joyfully! ??</option>
           <option value="Not sure yet">Not sure yet</option>
           <option value="Sorry, can't make it">Sorry, can't make it</option>
         </select>
@@ -580,7 +580,7 @@
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.121 1.527 5.855L0 24l6.306-1.506A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.37l-.359-.214-3.737.892.93-3.63-.235-.373A9.818 9.818 0 1112 21.818z"/>
           </svg>
-          Yes, I'll be there ✨
+          Yes, I'll be there ?
         </span>
       </a>
     </div>
@@ -588,12 +588,7 @@
     <p class="rsvp-ps scroll-in" style="--sd:.44s">
       You'll be redirected to WhatsApp to confirm your attendance.
     </p>
-
-    <div class="scroll-in" style="--sd:.48s">
-      <button type="button" class="dl-card-btn" id="dlCardBtn">⬇ Download Invite Card</button>
-    </div>
-
-    <!-- Gold rule below -->
+<!-- Gold rule below -->
     <div class="rsvp-rule scroll-in" style="--sd:.5s">
       <svg viewBox="0 0 400 12" width="100%" style="max-width:400px">
         <line x1="0"   y1="6" x2="168" y2="6" stroke="var(--gold)" stroke-width="0.8" opacity=".40"/>
@@ -605,8 +600,9 @@
   </div>
 </section>
 
-<!-- FOOTER â€” deep earthy dark -->
+<!-- FOOTER — deep earthy dark -->
 <footer class="footer">
+    <div class="ft-glow" aria-hidden="true"></div>
   <svg class="ft-lotus" viewBox="0 0 80 40" width="66" aria-hidden="true">
     <ellipse cx="40" cy="34" rx="7" ry="11" fill="#D4A060" opacity="0.22" transform="rotate(-40 40 34)"/>
     <ellipse cx="40" cy="34" rx="7" ry="11" fill="#E8A0A0" opacity="0.20" transform="rotate(-20 40 34)"/>
@@ -617,8 +613,9 @@
   </svg>
   <div class="ft-names">Priya &amp; Arjun</div>
   <div class="ft-rule"></div>
-  <p class="ft-date">12 December 2026 Â· Umaid Bhawan Palace, Jodhpur</p>
-  <p class="ft-credit">Crafted with love on <a href="#" target="_blank" rel="noopener">invite.kimiclaw.in</a></p>
+  <p class="ft-date">12 December 2026 · Umaid Bhawan Palace, Jodhpur</p>
+  <p class="ft-note">With love, laughter, and a lifetime of togetherness.</p>
+    <p class="ft-credit">invite.kimiclaw.in</p>
 </footer>
 
 <script src="assets/script-964d88d57c.js"></script>
@@ -634,7 +631,7 @@
   function el(id){return document.getElementById(id);}
   function setText(id,txt){const e=el(id);if(e&&txt)e.textContent=txt;}
   const dShort=couple.date?new Date(couple.date+'T00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'2-digit',year:'numeric'}):'';
-  document.title=couple.bride+' & '+couple.groom+' Â· '+dShort;
+  document.title=couple.bride+' & '+couple.groom+' · '+dShort;
   const heroCopy=el('heroCopy');
   if(heroCopy){
     const bEl=heroCopy.querySelector('.hc-bride span'),gEl=heroCopy.querySelector('.hc-groom span');
@@ -677,8 +674,8 @@
       const sd=(idx*.1).toFixed(2);
       const dStr=ev.date?new Date(ev.date+'T00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'';
       const tStr=fmtT(ev.time);
-      const dateLabel=[dStr,tStr].filter(Boolean).join(' Â· ');
-      const mapsLink=ev.mapsLink?`<a href="${ev.mapsLink}" target="_blank" class="ev-cta">ðŸ“ Open in Google Maps</a>`:'';
+      const dateLabel=[dStr,tStr].filter(Boolean).join(' · ');
+      const mapsLink=ev.mapsLink?`<a href="${ev.mapsLink}" target="_blank" class="ev-cta">📍 Open in Google Maps</a>`:'';
       let colStyle='';
       if(isRow2&&row2Len<maxCols){const r2i=idx-half;const col=row2Len===1?'1/-1':`${Math.round(r2i*(maxCols-1)/(row2Len-1))+1}`;colStyle=`grid-column:${col};`;}
       return`<article class="ev-node ${row} ${hero} scroll-in" style="--sd:${sd}s;${colStyle}" data-idx="${idx}">
@@ -770,9 +767,9 @@
   const ftN=document.querySelector('.ft-names');
   if(ftN)ftN.textContent=couple.bride+' & '+couple.groom;
   const ftD=document.querySelector('.ft-date');
-  if(ftD)ftD.textContent=fmt(couple.date)+(couple.venue?' Â· '+couple.venue:'');
+  if(ftD)ftD.textContent=fmt(couple.date)+(couple.venue?' · '+couple.venue:'');
   initMusic();
-  console.log('invite.kimiclaw.in T04: Config applied âœ¿');
+  console.log('invite.kimiclaw.in T04: Config applied ✿');
 })();
 if(typeof WEDDING_CONFIG==='undefined')initMusic();
 
@@ -788,8 +785,8 @@ function initMusic(){
     playing=p;
     if(iconOn)iconOn.style.display=p?'none':'';
     if(iconOff)iconOff.style.display=p?'':'none';
-    if(lbl)lbl.textContent=p?'â™ª Mute':'â™ª Music';
-    btn.classList.toggle('playing',p);btn.textContent=p?'ðŸ””':'ðŸ”•';
+    if(lbl)lbl.textContent=p?'♪ Mute':'♪ Music';
+    btn.classList.toggle('playing',p);btn.textContent=p?'🔔':'🔕';
   }
   window.toggleMusic=function(){if(playing){audio.pause();setPlayingUI(false);}else{audio.play().then(()=>setPlayingUI(true)).catch(()=>setPlayingUI(false));}};
   function tryAutoplay(){

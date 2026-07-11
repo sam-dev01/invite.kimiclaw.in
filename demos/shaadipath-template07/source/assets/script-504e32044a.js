@@ -276,7 +276,7 @@ class Petals{
     this.el=document.getElementById(id);
     this.max=opts.max||10;
     this.rate=opts.rate||900;
-    this.src='assets/elements/Element 2.png';
+    this.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 40"><ellipse cx="10" cy="20" rx="8" ry="18" fill="%23F0A800" opacity="0.8"/></svg>';
     this.active=false;this.pool=new Set();this._iv=null;
   }
   spawn(){
@@ -593,7 +593,7 @@ function burstPetals(fromEl){
   const r=fromEl.getBoundingClientRect();
   const cx=r.left+r.width/2;
   const cy=r.top+r.height/2;
-  const src='assets/elements/Element 2.png';
+  const src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 40"><ellipse cx="10" cy="20" rx="8" ry="18" fill="%23F0A800" opacity="0.8"/></svg>';
   for(let i=0;i<28;i++){
     const el=document.createElement('div');
     el.className='burst-p';

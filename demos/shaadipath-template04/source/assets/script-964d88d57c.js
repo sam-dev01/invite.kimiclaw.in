@@ -161,7 +161,7 @@ if(!isTouch&&heroPin){
   if(!bridge||!fan||!body||!img) return;
 
   const CFG={
-    src:'assets/elements/feather-transparent.png',
+    src:'assets/Element_204-ee359125bd.png',
     count:23, arc:160, featherAspect:0.534, lenMult:1.55,
     tailX:0.485, tailY:0.937,
     /* Auto cycle: open for openDur ms, closed for closeDur ms */
@@ -283,7 +283,7 @@ class Petals{
     this.el=document.getElementById(id);
     this.max=opts.max||7;
     this.rate=opts.rate||1300;
-    this.src='assets/elements/Element 2.png';
+    this.src='assets/Element_204-ee359125bd.png';
     this.active=false;this.pool=new Set();this._iv=null;
   }
   spawn(){
@@ -564,8 +564,10 @@ initEventsAutoOpen();
   function runSequence(){
     if(seqDone) return;
     seqDone=true;
-    bride.classList.add('st-pull');
-    groom.classList.add('st-pull');
+    if (!isTouch) {
+      bride.classList.add('st-pull');
+      groom.classList.add('st-pull');
+    }
     setTimeout(()=>{
       bride.classList.remove('st-pull');groom.classList.remove('st-pull');
       bride.classList.add('st-tension');groom.classList.add('st-tension');
@@ -619,7 +621,7 @@ function burstPetals(fromEl){
   const r=fromEl.getBoundingClientRect();
   const cx=r.left+r.width/2;
   const cy=r.top+r.height/2;
-  const src='assets/elements/Element 2.png';
+  const src='assets/Element_204-ee359125bd.png';
   // 22 petals — full marigold explosion
   for(let i=0;i<22;i++){
     const el=document.createElement('div');

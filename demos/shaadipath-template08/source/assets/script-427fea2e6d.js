@@ -198,7 +198,7 @@ class Petals{
     this.el=document.getElementById(id);
     this.max=opts.max||3;
     this.rate=opts.rate||3200;
-    this.src='assets/elements/Element 2.png';
+    this.src='assets/Element_205-1f3c1ef266.png';
     this.active=false;this.pool=new Set();this._iv=null;
   }
   spawn(){
@@ -460,7 +460,7 @@ function burstPetals(fromEl){
   const r=fromEl.getBoundingClientRect();
   const cx=r.left+r.width/2;
   const cy=r.top+r.height/2;
-  const src='assets/elements/Element 2.png';
+  const src='assets/Element_205-1f3c1ef266.png';
   // T08: 12 petals only — architectural restraint
   for(let i=0;i<12;i++){
     const el=document.createElement('div');

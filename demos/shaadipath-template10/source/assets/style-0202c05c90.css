@@ -1,9 +1,9 @@
-﻿/* ═══════════════════════════════════════════════════════
-   Template 10 — Christian Wedding
-   Champagne intro · mobile-first · premium/cinematic
-═══════════════════════════════════════════════════════ */
+/* -------------------------------------------------------
+   Template 10 � Christian Wedding
+   Champagne intro � mobile-first � premium/cinematic
+------------------------------------------------------- */
 
-/* ─── Custom Properties ─────────────────────────────── */
+/* --- Custom Properties ------------------------------- */
 :root {
   --deep: var(--warm-dark);
   --rose: var(--gold-light);
@@ -22,7 +22,7 @@
   --cork-lift: 0px;
 }
 
-/* ─── Reset ──────────────────────────────────────────── */
+/* --- Reset -------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -46,9 +46,9 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    INTRO SECTION
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .intro {
   position: fixed;
@@ -61,7 +61,7 @@ body.intro-active {
   touch-action: none;
 }
 
-/* Cinematic dissolve — fast clean fade so display:none doesn't cut visually */
+/* Cinematic dissolve � fast clean fade so display:none doesn't cut visually */
 .intro.is-done {
   pointer-events: none;
   opacity: 0;
@@ -69,7 +69,7 @@ body.intro-active {
 }
 
 
-/* ── Background image ──────────────────────────────── */
+/* -- Background image -------------------------------- */
 
 .intro-bg {
   position: absolute;
@@ -90,9 +90,9 @@ body.intro-active {
 }
 
 
-/* ── Atmosphere overlays ───────────────────────────── */
+/* -- Atmosphere overlays ----------------------------- */
 
-/* Top gradient — darkens ceiling, creates depth */
+/* Top gradient � darkens ceiling, creates depth */
 .intro-atm-top {
   position: absolute;
   inset: 0;
@@ -106,7 +106,7 @@ body.intro-active {
   );
 }
 
-/* Radial edge vignette — edges fall to warm gold, keeps eye on bottle */
+/* Radial edge vignette � edges fall to warm gold, keeps eye on bottle */
 .intro-vignette {
   position: absolute;
   inset: 0;
@@ -129,7 +129,7 @@ body.intro-active {
   pointer-events: none;
 }
 
-/* Mist canvas — sits just behind the bottle scene */
+/* Mist canvas � sits just behind the bottle scene */
 #mistCanvas {
   position: absolute;
   inset: 0;
@@ -139,7 +139,7 @@ body.intro-active {
   pointer-events: none;
 }
 
-/* Burst canvas — above bottle scene, below bloom overlay */
+/* Burst canvas � above bottle scene, below bloom overlay */
 #burstCanvas {
   position: fixed;
   inset: 0;
@@ -149,7 +149,7 @@ body.intro-active {
   pointer-events: none;
 }
 
-/* Bottom gradient — grounds the bottle, darkens stage */
+/* Bottom gradient � grounds the bottle, darkens stage */
 .intro-atm-bot {
   position: absolute;
   inset: 0;
@@ -163,7 +163,7 @@ body.intro-active {
   );
 }
 
-/* Center radial — focuses light on bottle zone (shifted left) */
+/* Center radial � focuses light on bottle zone (shifted left) */
 .intro-atm-center {
   position: absolute;
   inset: 0;
@@ -179,7 +179,7 @@ body.intro-active {
 
 
 
-/* ── Wordmark / invite badge ───────────────────────── */
+/* -- Wordmark / invite badge ------------------------- */
 
 .intro-wordmark {
   position: absolute;
@@ -230,7 +230,7 @@ body.intro-active {
 }
 
 
-/* ── Instruction cue ───────────────────────────────── */
+/* -- Instruction cue --------------------------------- */
 
 .intro-cue {
   position: absolute;
@@ -273,7 +273,7 @@ body.intro-active {
   100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); filter: blur(0); }
 }
 
-/* Burning ember glow — cycles through cool gold → hot white-orange → deep amber */
+/* Burning ember glow � cycles through cool gold ? hot white-orange ? deep amber */
 @keyframes cueEmberGlow {
   0% {
     color: #f5ecda;
@@ -310,7 +310,7 @@ body.intro-active {
   }
 }
 
-/* Charging state — intense white-hot flare when held */
+/* Charging state � intense white-hot flare when held */
 .intro-cue.is-charging {
   color: #fffef5;
   text-shadow:
@@ -327,12 +327,12 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    BOTTLE SCENE
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 /*
-  2× size bottle, tilted ~13° clockwise, emerging from the left corner.
+  2� size bottle, tilted ~13� clockwise, emerging from the left corner.
   ~12% of the bottle width extends off-screen left.
   bottom: 2% lifts the bottle so the label is clearly visible on screen.
 */
@@ -348,7 +348,7 @@ body.intro-active {
   will-change: transform;
 }
 
-/* Idle float with gentle shake — subtle life before interaction */
+/* Idle float with gentle shake � subtle life before interaction */
 @keyframes bottleFloat {
   0%   { transform: rotate(13.00deg) translateY(0px);    }
   12%  { transform: rotate(13.22deg) translateY(-1.5px); }
@@ -368,7 +368,7 @@ body.intro-active {
   animation: none;
 }
 
-/* Recoil — fires immediately after pop */
+/* Recoil � fires immediately after pop */
 @keyframes sceneRecoil {
   0%   { transform: rotate(13deg) translateY(0px); }
   18%  { transform: rotate(13deg) translateY(8px) scaleY(0.9975); }
@@ -381,7 +381,7 @@ body.intro-active {
 }
 
 
-/* ── Contact shadow ────────────────────────────────── */
+/* -- Contact shadow ---------------------------------- */
 
 .b-shadow {
   position: absolute;
@@ -403,7 +403,7 @@ body.intro-active {
 }
 
 
-/* ── Bottle composite stack ────────────────────────── */
+/* -- Bottle composite stack -------------------------- */
 
 .b-stack {
   position: relative;
@@ -413,7 +413,7 @@ body.intro-active {
   will-change: transform;
 }
 
-/* Base layer — renders ABOVE the cork (z-index:1) so the bottle neck
+/* Base layer � renders ABOVE the cork (z-index:1) so the bottle neck
    naturally hides the lower portion of the cork, giving the illusion
    the cork is physically inserted inside the bottle. */
 .b-body {
@@ -425,7 +425,7 @@ body.intro-active {
   pointer-events: none;
   user-select: none;
   /*
-    Fix 1 — Integration + label fix:
+    Fix 1 � Integration + label fix:
     sepia(0.2) warms the cold glass to match the candlelit bg.
     brightness(0.85) pulls it out of the "AI white box" flatness.
     drop-shadow: left angled shadow from chandelier above-left,
@@ -450,12 +450,12 @@ body.intro-active {
 }
 
 /*
-  Neck mask — removed. Cork is placed behind the bottle body image
+  Neck mask � removed. Cork is placed behind the bottle body image
   using z-index, so the bottle neck naturally hides the cork's lower half.
 */
 
 
-/* ── Couple's label overlay — premium oval crest ──────── */
+/* -- Couple's label overlay � premium oval crest -------- */
 
 .b-label {
   position: absolute;
@@ -471,7 +471,7 @@ body.intro-active {
   justify-content: center;
 }
 
-/* Oval crest shape — thin gold border, paper texture, inner glow */
+/* Oval crest shape � thin gold border, paper texture, inner glow */
 .b-label-crest {
   display: flex;
   flex-direction: column;
@@ -502,7 +502,7 @@ body.intro-active {
   gap: 0.02em;
 }
 
-/* Inner rule — thin ornamental line between initials and date */
+/* Inner rule � thin ornamental line between initials and date */
 .b-label-rule-inner {
   width: 55%;
   height: 1px;
@@ -516,7 +516,7 @@ body.intro-active {
   );
 }
 
-/* Date line on bottle label — bold and clearly readable */
+/* Date line on bottle label � bold and clearly readable */
 .b-label-date {
   font-family: var(--ui);
   font-size: clamp(0.42rem, 1.8vw, 0.60rem);
@@ -542,7 +542,7 @@ body.intro-active {
 
 .bl-amp {
   font-family: var(--display);
-  font-size: clamp(1.60rem, 10.0vw, 2.20rem);  /* ~2× initials */
+  font-size: clamp(1.60rem, 10.0vw, 2.20rem);  /* ~2� initials */
   font-weight: 300;
   font-style: italic;
   color: rgba(100, 70, 18, 0.76);
@@ -555,7 +555,7 @@ body.intro-active {
 /* (label rule is now .b-label-rule-inner, inside the crest) */
 
 
-/* ── Cork fizz — pre-pop champagne bubbles near cork ─── */
+/* -- Cork fizz � pre-pop champagne bubbles near cork --- */
 
 .cork-fizz {
   position: absolute;
@@ -595,8 +595,8 @@ body.intro-active {
 .cork-fizz.is-popped { display: none; }
 
 
-/* ── Unified color grade overlay ──────────────────────── */
-/* Warm gold + lavender haze + soft brown vignette — sits between
+/* -- Unified color grade overlay ------------------------ */
+/* Warm gold + lavender haze + soft brown vignette � sits between
    the vignette and the dust canvas, tints everything underneath */
 
 .intro-color-grade {
@@ -605,19 +605,19 @@ body.intro-active {
   z-index: 3;
   pointer-events: none;
   background:
-    /* Subtle lavender haze — upper-right quadrant */
+    /* Subtle lavender haze � upper-right quadrant */
     radial-gradient(
       ellipse 45% 30% at 72% 22%,
       rgba(155, 125, 210, 0.055) 0%,
       transparent 100%
     ),
-    /* Warm amber bloom — lower left, behind bottle zone */
+    /* Warm amber bloom � lower left, behind bottle zone */
     radial-gradient(
       ellipse 50% 40% at 22% 72%,
       rgba(160, 110, 30, 0.065) 0%,
       transparent 100%
     ),
-    /* Soft brown vignette edges — deepens the cinematic frame */
+    /* Soft brown vignette edges � deepens the cinematic frame */
     radial-gradient(
       ellipse 100% 100% at 50% 50%,
       transparent 42%,
@@ -631,8 +631,8 @@ body.intro-active {
   Cork sits BEHIND the bottle body (z-index:1 vs bottle z-index:2).
   The bottle neck image naturally paints over the cork's lower cylinder,
   giving the feel it is physically inserted inside.
-  top: -5% — cork cap protrudes above the rim; body hidden behind the neck.
-  width: 19% — matches the neck opening diameter.
+  top: -5% � cork cap protrudes above the rim; body hidden behind the neck.
+  width: 19% � matches the neck opening diameter.
 */
 .cork-btn {
   position: absolute;
@@ -652,7 +652,7 @@ body.intro-active {
 }
 
 .cork-btn::before {
-  /* Invisible hit-area extension — easier to grab on mobile */
+  /* Invisible hit-area extension � easier to grab on mobile */
   content: "";
   position: absolute;
   inset: -22px -28px -14px;
@@ -683,7 +683,7 @@ body.intro-active {
           drop-shadow(0 2px 5px  rgba(14, 11, 7, 0.35));
 }
 
-/* Warm glow halo — expands as pressure builds */
+/* Warm glow halo � expands as pressure builds */
 .cork-halo {
   position: absolute;
   inset: -36%;
@@ -713,7 +713,7 @@ body.intro-active {
   50%       { opacity: 1.00; transform: scale(1.08); }
 }
 
-/* ── Pulsing gold rings — always-on idle signal ─────── */
+/* -- Pulsing gold rings � always-on idle signal ------- */
 
 .cork-ring {
   position: absolute;
@@ -743,7 +743,7 @@ body.intro-active {
 }
 
 
-/* Cork pop trajectory — natural arc, tumbles then fades */
+/* Cork pop trajectory � natural arc, tumbles then fades */
 @keyframes corkFly {
   0%   {
     transform: translateX(-50%) translateY(var(--cork-lift, 0px)) rotate(0deg);
@@ -765,15 +765,15 @@ body.intro-active {
 }
 
 .cork-btn.is-popped {
-  /* 1.9 s duration — fast burst then gravity deceleration */
+  /* 1.9 s duration � fast burst then gravity deceleration */
   animation: corkFly 1.9s cubic-bezier(0.18, 0, 0.42, 1) forwards;
   pointer-events: none;
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    FX LAYERS
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .b-fx {
   position: absolute;
@@ -784,7 +784,7 @@ body.intro-active {
 }
 
 
-/* ── Neck foam ─────────────────────────────────────── */
+/* -- Neck foam --------------------------------------- */
 /*
   bottom: 96% pins the foam's anchor right at the bottle mouth
   (the very top of b-scene). transform-origin: bottom center
@@ -811,10 +811,10 @@ body.intro-active {
 }
 
 
-/* ── Mist / V-spray ────────────────────────────────── */
+/* -- Mist / V-spray ---------------------------------- */
 /*
   bottom: 96% anchors the V-spray origin exactly at the bottle mouth.
-  The asset's bottom point is the burst source — it fans upward/outward.
+  The asset's bottom point is the burst source � it fans upward/outward.
 */
 .b-mist {
   bottom: 98%;
@@ -837,14 +837,14 @@ body.intro-active {
 }
 
 
-/* ── Cinematic flash — fired on pop ────────────────── */
+/* -- Cinematic flash � fired on pop ------------------ */
 /*
   Two-stage: first a bright spot bursts from the cork area,
   then the full-screen bloom rolls outward.
   The spot fires at 0ms, the main flash at 130ms (in JS).
 */
 
-/* Stage 1 — tight spot burst at the cork/bottle-mouth area */
+/* Stage 1 � tight spot burst at the cork/bottle-mouth area */
 .intro-flash-spot {
   display: none;
   background: radial-gradient(
@@ -867,7 +867,7 @@ body.intro-active {
   animation: corkSpotFlash 0.60s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Stage 2 — full cinematic bloom rolls out from bottle-mouth zone */
+/* Stage 2 � full cinematic bloom rolls out from bottle-mouth zone */
 .intro-flash {
   display: none;
   background: radial-gradient(
@@ -894,7 +894,7 @@ body.intro-active {
 }
 
 
-/* ── Ivory bloom — post-pop fade to white/ivory ─────── */
+/* -- Ivory bloom � post-pop fade to white/ivory ------- */
 /*
   Gives a soft film-overexposure feel as the intro dissolves.
   Fades in after the flash peak, peaks during the intro's exit
@@ -934,9 +934,9 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
-   NAMES REVEAL — handoff to next section
-═══════════════════════════════════════════════════════ */
+/* -------------------------------------------------------
+   NAMES REVEAL � handoff to next section
+------------------------------------------------------- */
 
 .intro-reveal {
   position: absolute;
@@ -1086,7 +1086,7 @@ body.intro-active {
 .rv-enter:active { transform: scale(0.97); }
 
 
-/* ─── Skip button — minimal text link, no pill ─────── */
+/* --- Skip button � minimal text link, no pill ------- */
 
 .intro-skip {
   position: fixed;
@@ -1135,7 +1135,7 @@ body.intro-active {
 }
 
 
-/* ─── Shared keyframes ──────────────────────────────── */
+/* --- Shared keyframes -------------------------------- */
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -1153,24 +1153,24 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    PAGE SHELL
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .page-shell {
   background: #ede8f5;
   min-height: 100vh;
 }
 
-/* ── Unified lavender stage — hide per-section bg images ── */
+/* -- Unified lavender stage � hide per-section bg images -- */
 .inv-bg,
 .st-bg,
 .gl-bg { display: none; }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    HERO SECTION
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .hero {
   position: relative;
@@ -1187,10 +1187,10 @@ body.intro-active {
     );
 }
 
-/* ── White curtain wipe ─────────────────────────────── */
+/* -- White curtain wipe ------------------------------- */
 
 /*
-  Soft radial ivory bloom from center — replaces the hard-edged
+  Soft radial ivory bloom from center � replaces the hard-edged
   expanding rectangle. Blooms outward like a camera overexposure,
   holds at peak, then dissolves away to reveal the hero video.
 */
@@ -1203,7 +1203,7 @@ body.intro-active {
   opacity: 1;
 }
 
-/* Full-screen soft bloom — radial gradient fades to transparent at edges */
+/* Full-screen soft bloom � radial gradient fades to transparent at edges */
 .hero-wipe-line {
   position: absolute;
   inset: -5%;
@@ -1231,7 +1231,7 @@ body.intro-active {
 }
 
 
-/* ── Poster fallback — sits behind video, visible until video plays ── */
+/* -- Poster fallback � sits behind video, visible until video plays -- */
 
 .hero-poster {
   position: absolute;
@@ -1246,7 +1246,7 @@ body.intro-active {
 }
 
 
-/* ── Video ──────────────────────────────────────────── */
+/* -- Video -------------------------------------------- */
 
 .hero-video {
   position: absolute;
@@ -1265,7 +1265,7 @@ body.intro-active {
 }
 
 
-/* ── Overlay — minimal, video is bright/white ───────── */
+/* -- Overlay � minimal, video is bright/white --------- */
 
 .hero-overlay {
   position: absolute;
@@ -1282,7 +1282,7 @@ body.intro-active {
 }
 
 
-/* ── Hero text overlay ──────────────────────────────── */
+/* -- Hero text overlay -------------------------------- */
 
 .hero-text {
   position: absolute;
@@ -1291,14 +1291,14 @@ body.intro-active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Text anchored higher — more headroom, less centre-heavy */
+  /* Text anchored higher � more headroom, less centre-heavy */
   justify-content: flex-start;
   padding-top: 7svh;
   text-align: center;
   padding-left: 8vw;
   padding-right: 8vw;
   pointer-events: none;
-  /* Soft ivory radial glow — behind text only, not full-frame */
+  /* Soft ivory radial glow � behind text only, not full-frame */
   background: radial-gradient(
     ellipse 78% 55% at 50% 34%,
     rgba(255, 252, 242, 0.26) 0%,
@@ -1484,11 +1484,11 @@ body.intro-active {
 }
 
 
-/* ── Hero text — scroll-driven parallax/fade ────────── */
-/* JS writes transform + opacity directly — no CSS transition needed */
+/* -- Hero text � scroll-driven parallax/fade ---------- */
+/* JS writes transform + opacity directly � no CSS transition needed */
 
 
-/* ── Scroll cue ──────────────────────────────────────── */
+/* -- Scroll cue ---------------------------------------- */
 
 .hero-scroll-cue {
   position: absolute;
@@ -1510,7 +1510,7 @@ body.intro-active {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Pop-in — springs up from below with a bounce overshoot */
+/* Pop-in � springs up from below with a bounce overshoot */
 .hero-scroll-cue.is-visible {
   animation: hscPopIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
@@ -1545,7 +1545,7 @@ body.intro-active {
   display: block;
 }
 
-/* Bounce float — more energetic than before */
+/* Bounce float � more energetic than before */
 .hero-scroll-cue.is-visible .hsc-arrow {
   animation: hscFloat 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
@@ -1558,7 +1558,7 @@ body.intro-active {
 }
 
 
-/* ─── Hero responsive ────────────────────────────────── */
+/* --- Hero responsive ---------------------------------- */
 
 @media (min-width: 768px) {
   .ht-names-wrap {
@@ -1588,7 +1588,7 @@ body.intro-active {
   }
 }
 
-/* Reduced motion — skip clip reveal, just fade in */
+/* Reduced motion � skip clip reveal, just fade in */
 @media (prefers-reduced-motion: reduce) {
   .ht-name-inner {
     transform: none !important;
@@ -1603,18 +1603,18 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    RESPONSIVE REFINEMENTS
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
-/* Larger phones — minor width adjustment */
+/* Larger phones � minor width adjustment */
 @media (min-width: 390px) {
   .b-scene {
     width: 82vw;
   }
 }
 
-/* Tablet and above — still left-corner, 2× tablet size */
+/* Tablet and above � still left-corner, 2� tablet size */
 @media (min-width: 768px) {
   .b-scene {
     width: 44vw;
@@ -1628,7 +1628,7 @@ body.intro-active {
   }
 }
 
-/* Landscape phones — 2× landscape size, tilt maintained */
+/* Landscape phones � 2� landscape size, tilt maintained */
 @media (max-height: 500px) and (orientation: landscape) {
   .b-scene {
     width: 36vw;
@@ -1641,7 +1641,7 @@ body.intro-active {
   .intro-skip     { bottom: 2.5%; }
 }
 
-/* Reduced motion — skip animations, go straight to reveal */
+/* Reduced motion � skip animations, go straight to reveal */
 @media (prefers-reduced-motion: reduce) {
   .intro-bg,
   .b-scene.is-idle,
@@ -1652,9 +1652,9 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    INVITE SECTION
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 :root {
   --lav:        #9b8cbe;
@@ -1665,12 +1665,12 @@ body.intro-active {
   --plum-mid:   #4a3870;
 }
 
-/* ═══════════════════════════════════════════════════════
-   INVITE SECTION — Premium closed cover opens upward
-   Assets: invite_bg.webp · invite_cover_front.webp
-           invite_cover_inside.webp · invite_inner_card.webp
-           vellum_layer_1.webp · vellum_layer_2.webp
-═══════════════════════════════════════════════════════ */
+/* -------------------------------------------------------
+   INVITE SECTION � Premium closed cover opens upward
+   Assets: invite_bg.webp � invite_cover_front.webp
+           invite_cover_inside.webp � invite_inner_card.webp
+           vellum_layer_1.webp � vellum_layer_2.webp
+------------------------------------------------------- */
 
 .invite {
   position: relative;
@@ -1686,7 +1686,7 @@ body.intro-active {
   background: #ede8f5;
 }
 
-/* ── Background ─────────────────────────────────────── */
+/* -- Background --------------------------------------- */
 
 .inv-bg {
   position: absolute;
@@ -1705,12 +1705,12 @@ body.intro-active {
   50%       { transform: scale(1.024); }
 }
 
-/* Edge vignettes — do not darken centre */
+/* Edge vignettes � do not darken centre */
 .inv-atm-top,
 .inv-atm-bot { display: none; }
 
 
-/* ── Scene wrapper — floats as one luxury unit ────────── */
+/* -- Scene wrapper � floats as one luxury unit ---------- */
 
 .inv-scene-wrap {
   position: relative;
@@ -1739,7 +1739,7 @@ body.intro-active {
   100% { transform: translateY(0px);  }
 }
 
-/* ── Ambient glow halos ──────────────────────────────── */
+/* -- Ambient glow halos -------------------------------- */
 
 .inv-glow-back {
   position: absolute;
@@ -1783,7 +1783,7 @@ body.intro-active {
 }
 
 
-/* ── Stationery stack ─────────────────────────────────── */
+/* -- Stationery stack ----------------------------------- */
 
 /* Perspective lives on the stack so children can 3D transform
    without filter interference from parent elements            */
@@ -1793,7 +1793,7 @@ body.intro-active {
   perspective-origin: 32% 50%;
 }
 
-/* Vellum layers — absolutely placed, same footprint as inner card */
+/* Vellum layers � absolutely placed, same footprint as inner card */
 .inv-vellum {
   position: absolute;
   top: 0;
@@ -1823,7 +1823,7 @@ body.intro-active {
   opacity: 0.94;
 }
 
-/* Inner card — position: relative sets the stack's height reference */
+/* Inner card � position: relative sets the stack's height reference */
 .inv-inner-card-wrap {
   position: relative;
   z-index: 3;
@@ -1841,7 +1841,7 @@ body.intro-active {
     drop-shadow(0  2px  7px rgba(46, 33, 72, 0.14));
 }
 
-/* Text body — fills the inner card; z-index above card, below cover */
+/* Text body � fills the inner card; z-index above card, below cover */
 .inv-body {
   position: absolute;
   inset: 0;
@@ -1856,7 +1856,7 @@ body.intro-active {
 }
 
 
-/* ── Text reveal — soft bloom animation ──────────────── */
+/* -- Text reveal � soft bloom animation ---------------- */
 
 .inv-reveal {
   opacity: 0;
@@ -1875,7 +1875,7 @@ body.intro-active {
 }
 
 
-/* ── Cover edge shadow — dims as cover swings left ─────── */
+/* -- Cover edge shadow � dims as cover swings left ------- */
 
 .inv-cover-shadow {
   position: absolute;
@@ -1901,11 +1901,11 @@ body.intro-active {
 }
 
 
-/* ── 3D invitation cover ──────────────────────────────── */
+/* -- 3D invitation cover -------------------------------- */
 
 /*  The cover has two faces:
-    — front:  invite_cover_front.webp  (seen when closed)
-    — inside: invite_cover_inside.webp (seen mid-flip as it opens)
+    � front:  invite_cover_front.webp  (seen when closed)
+    � inside: invite_cover_inside.webp (seen mid-flip as it opens)
 
     transform-origin: left center pins the "spine" along the left edge.
     rotateY(-170deg) swings the right side of the cover backward,
@@ -1929,7 +1929,7 @@ body.intro-active {
   transform: rotateY(-170deg);
 }
 
-/* Front face — visible when closed (0° → ~–89°) */
+/* Front face � visible when closed (0� ? ~�89�) */
 .inv-cover-front {
   position: absolute;
   inset: 0;
@@ -1941,8 +1941,8 @@ body.intro-active {
     drop-shadow(0  2px  8px rgba(46, 33, 72, 0.18));
 }
 
-/* Inside face — rotated 180° on its own Y axis so backface
-   becomes the "front" when the cover has opened past –90°  */
+/* Inside face � rotated 180� on its own Y axis so backface
+   becomes the "front" when the cover has opened past �90�  */
 .inv-cover-inside {
   position: absolute;
   inset: 0;
@@ -1965,7 +1965,7 @@ body.intro-active {
 }
 
 
-/* ── Parent names ─────────────────────────────────────── */
+/* -- Parent names --------------------------------------- */
 
 .inv-parents {
   margin-bottom: 0.30rem;
@@ -1992,7 +1992,7 @@ body.intro-active {
 }
 
 
-/* ── Request line ─────────────────────────────────────── */
+/* -- Request line --------------------------------------- */
 
 .inv-request {
   font-family: var(--display);
@@ -2006,7 +2006,7 @@ body.intro-active {
 }
 
 
-/* ── Invite text line ─────────────────────────────────── */
+/* -- Invite text line ----------------------------------- */
 
 .inv-invite-text {
   font-family: var(--display);
@@ -2020,7 +2020,7 @@ body.intro-active {
 }
 
 
-/* ── Parent role labels ───────────────────────────────── */
+/* -- Parent role labels --------------------------------- */
 
 .inv-parent-role {
   display: block;
@@ -2034,7 +2034,7 @@ body.intro-active {
 }
 
 
-/* ── Occasion line ────────────────────────────────────── */
+/* -- Occasion line -------------------------------------- */
 
 .inv-occasion {
   font-family: var(--display);
@@ -2049,7 +2049,7 @@ body.intro-active {
 }
 
 
-/* ── Ornament rule ────────────────────────────────────── */
+/* -- Ornament rule -------------------------------------- */
 
 .inv-rule-wrap {
   display: flex;
@@ -2075,7 +2075,7 @@ body.intro-active {
 .inv-rule-line:last-child { transform: scaleX(-1); }
 
 
-/* ── Couple names ─────────────────────────────────────── */
+/* -- Couple names --------------------------------------- */
 
 .inv-names {
   display: flex;
@@ -2134,7 +2134,7 @@ body.intro-active {
 }
 
 
-/* ── Date block ───────────────────────────────────────── */
+/* -- Date block ----------------------------------------- */
 
 .inv-date-block { margin-bottom: 0.30rem; }
 
@@ -2176,7 +2176,7 @@ body.intro-active {
 }
 
 
-/* ── Venue block ──────────────────────────────────────── */
+/* -- Venue block ---------------------------------------- */
 
 .inv-venue-block { margin-bottom: 0; }
 
@@ -2199,7 +2199,7 @@ body.intro-active {
 }
 
 
-/* ── Responsive ──────────────────────────────────────── */
+/* -- Responsive ---------------------------------------- */
 
 @media (min-width: 480px) {
   .inv-scene-wrap { width: min(84vw, 460px); }
@@ -2241,9 +2241,9 @@ body.intro-active {
 }
 
 
-/* ── Dove sprite — 6-frame flapping animation ────────── */
+/* -- Dove sprite � 6-frame flapping animation ---------- */
 /*
-   Wrapper clips the img to one frame (110 × 220px, overflow:hidden).
+   Wrapper clips the img to one frame (110 � 220px, overflow:hidden).
    A horizontal mask gradient fades both edges softly so wing feathers
    that reach the frame boundary dissolve naturally instead of being
    hard-cut, eliminating the visible "feather slice" artifact.
@@ -2283,7 +2283,7 @@ body.intro-active {
   opacity: 1;
 }
 
-/* Full sprite sheet — 6 frames × 110px = 660px wide at display scale */
+/* Full sprite sheet � 6 frames � 110px = 660px wide at display scale */
 .inv-dove-sprite {
   display: block;
   width: 660px;
@@ -2310,9 +2310,9 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    EVENTS SECTION
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .events {
   position: relative;
@@ -2328,7 +2328,7 @@ body.intro-active {
 }
 
 
-/* ── Atmosphere overlays ─────────────────────────────── */
+/* -- Atmosphere overlays ------------------------------- */
 
 .ev-atm-top,
 .ev-atm-bot { display: none; }
@@ -2343,7 +2343,7 @@ body.intro-active {
 }
 
 
-/* ── Floating glow orbs ──────────────────────────────── */
+/* -- Floating glow orbs -------------------------------- */
 
 .ev-orb {
   position: absolute;
@@ -2415,7 +2415,7 @@ body.intro-active {
 }
 
 
-/* ── Section header ──────────────────────────────────── */
+/* -- Section header ------------------------------------ */
 
 .ev-header {
   position: relative;
@@ -2469,9 +2469,9 @@ body.intro-active {
 .ev-rule-line:last-child { transform: scaleX(-1); }
 
 
-/* ── Cupid decoration ────────────────────────────────── */
+/* -- Cupid decoration ---------------------------------- */
 
-/* ── Shared sprite keyframes (used by card cupids) ───── */
+/* -- Shared sprite keyframes (used by card cupids) ----- */
 
 @keyframes cupidFly {
   0%   { transform: translateY(0px)   translateX(0px)  rotate(-2deg);  }
@@ -2481,7 +2481,7 @@ body.intro-active {
   100% { transform: translateY(0px)   translateX(0px)  rotate(-2deg);  }
 }
 
-/* Clipping window — shows exactly one sprite frame at a time */
+/* Clipping window � shows exactly one sprite frame at a time */
 .ev-cupid-clip {
   width: 100%;
   overflow: hidden;
@@ -2489,7 +2489,7 @@ body.intro-active {
 
 /*
   img is 600% of the clip width = all 6 frames laid out horizontally.
-  steps(6) steps through each frame — last step lands at frame 6 (5/6 of
+  steps(6) steps through each frame � last step lands at frame 6 (5/6 of
   the range), the -100% endpoint is never rendered before the loop restarts.
 */
 .ev-cupid-clip img {
@@ -2507,7 +2507,7 @@ body.intro-active {
 }
 
 
-/* ── Event cards grid ────────────────────────────────── */
+/* -- Event cards grid ---------------------------------- */
 
 .ev-grid {
   position: relative;
@@ -2543,12 +2543,12 @@ body.intro-active {
 }
 
 
-/* ── Card wrapper — positioning context + scroll reveal + float ── */
+/* -- Card wrapper � positioning context + scroll reveal + float -- */
 
 .ev-card-wrap { position: relative; } /* anchors the per-card cupid */
 
 /*
-  Float uses negative delays so each card enters mid-cycle —
+  Float uses negative delays so each card enters mid-cycle �
   they appear already floating, not starting from rest.
 */
 .ev-card-wrap:nth-child(1) { animation-delay:  0s;     }
@@ -2571,11 +2571,11 @@ body.intro-active {
 }
 
 
-/* ── Card — shadow + hover lift ──────────────────────── */
+/* -- Card � shadow + hover lift ------------------------ */
 
-/* ── Per-card cupid — floats at top-left of every alternate (odd) card ── */
+/* -- Per-card cupid � floats at top-left of every alternate (odd) card -- */
 
-/* Left cupid — odd cards (1, 3, 5…) */
+/* Left cupid � odd cards (1, 3, 5�) */
 .ev-card-cupid {
   position: absolute;
   top: -70px;
@@ -2618,7 +2618,7 @@ body.intro-active {
   animation-play-state: running;
 }
 
-/* Right cupid — even cards (2, 4, 6…) */
+/* Right cupid � even cards (2, 4, 6�) */
 .ev-card-cupid-right {
   position: absolute;
   top: -70px;
@@ -2662,7 +2662,7 @@ body.intro-active {
 }
 
 
-/* ── Petals — synced to sprite frame 3 (cupid's open hand) ── */
+/* -- Petals � synced to sprite frame 3 (cupid's open hand) -- */
 
 /*
   Sprite: 5s / 6 frames = 0.833s per frame.
@@ -2716,7 +2716,7 @@ body.intro-active {
   then stay invisible 45-100% until the next frame-3 loop fires.
 */
 
-/* Petal 1 — arcs right, falls to bottom-center-right */
+/* Petal 1 � arcs right, falls to bottom-center-right */
 @keyframes petal1 {
   0%   { opacity: 0;   transform: translate(0,     0)       rotate(-18deg) scale(0.7);  }
   5%   { opacity: 1;   transform: translate(5px,  -18px)    rotate(-10deg) scale(1.0);  }
@@ -2726,7 +2726,7 @@ body.intro-active {
   100% { opacity: 0;   transform: translate(116px, 210px)   rotate(60deg)  scale(0.78); }
 }
 
-/* Petal 2 — falls nearly straight down, covers center */
+/* Petal 2 � falls nearly straight down, covers center */
 @keyframes petal2 {
   0%   { opacity: 0;   transform: translate(0,    0)        rotate(12deg)  scale(0.65); }
   5%   { opacity: 1;   transform: translate(-4px, -10px)    rotate(6deg)   scale(1.0);  }
@@ -2736,7 +2736,7 @@ body.intro-active {
   100% { opacity: 0;   transform: translate(30px,  240px)   rotate(-65deg) scale(0.75); }
 }
 
-/* Petal 3 — wide rightward sweep, reaches far-right edge */
+/* Petal 3 � wide rightward sweep, reaches far-right edge */
 @keyframes petal3 {
   0%   { opacity: 0;   transform: translate(0,     0)       rotate(-6deg)  scale(0.8);  }
   5%   { opacity: 1;   transform: translate(10px, -22px)    rotate(2deg)   scale(1.0);  }
@@ -2746,7 +2746,7 @@ body.intro-active {
   100% { opacity: 0;   transform: translate(176px, 170px)   rotate(82deg)  scale(0.80); }
 }
 
-/* Petal 4 — sweeps left, reaches far-left edge */
+/* Petal 4 � sweeps left, reaches far-left edge */
 @keyframes petal4 {
   0%   { opacity: 0;   transform: translate(0,      0)       rotate(18deg)  scale(0.7);  }
   6%   { opacity: 1;   transform: translate(-8px,  -6px)     rotate(10deg)  scale(1.0);  }
@@ -2756,7 +2756,7 @@ body.intro-active {
   100% { opacity: 0;   transform: translate(-143px, 200px)   rotate(-82deg) scale(0.75); }
 }
 
-/* Petal 5 — high arc, falls to center-right */
+/* Petal 5 � high arc, falls to center-right */
 @keyframes petal5 {
   0%   { opacity: 0;   transform: translate(0,    0)         rotate(-24deg) scale(0.72); }
   5%   { opacity: 1;   transform: translate(7px, -22px)      rotate(-16deg) scale(1.0);  }
@@ -2767,16 +2767,16 @@ body.intro-active {
 }
 
 
-/* ── Arrow — synced to sprite frame 5 (cupid's bow release) ── */
+/* -- Arrow � synced to sprite frame 5 (cupid's bow release) -- */
 
 /*
-  Frame 5 starts at 3.333s (= 4 × 0.833s). Arrow uses duration: 5s so it
+  Frame 5 starts at 3.333s (= 4 � 0.833s). Arrow uses duration: 5s so it
   re-fires on the same frame every sprite cycle.
 
-  Cupid_right.webp faces LEFT — bow arm extends to the LEFT at ~48% from top.
+  Cupid_right.webp faces LEFT � bow arm extends to the LEFT at ~48% from top.
   Arrow.webp tip is on LEFT; rotate(15deg) CW points it lower-left, matching
   a natural downward bow shot across the card.
-  left: 8px places the tip at the bow tip in the sprite (≈10% from cupid's
+  left: 8px places the tip at the bow tip in the sprite (�10% from cupid's
   left edge), so the arrow appears to launch from the bow, not from behind.
 */
 .ev-cupid-arrow-wrap {
@@ -2817,7 +2817,7 @@ body.intro-active {
 }
 
 
-/* ── Card — full Event_Card.webp as vellum background ────────────── */
+/* -- Card � full Event_Card.webp as vellum background -------------- */
 
 .ev-card {
   position: relative;
@@ -2836,7 +2836,7 @@ body.intro-active {
   transform: translateY(-4px);
 }
 
-/* Full vellum card image — sets the card's dimensions and visual frame */
+/* Full vellum card image � sets the card's dimensions and visual frame */
 .ev-card-img {
   display: block;
   width: 100%;
@@ -2845,7 +2845,7 @@ body.intro-active {
   user-select: none;
 }
 
-/* Body — absolutely fills the card, flex column: illustration then text */
+/* Body � absolutely fills the card, flex column: illustration then text */
 .ev-card-body {
   position: absolute;
   inset: 0;
@@ -2858,7 +2858,7 @@ body.intro-active {
   pointer-events: none;
 }
 
-/* ── Event illustration — sits near top, icon prominent ── */
+/* -- Event illustration � sits near top, icon prominent -- */
 .ev-card-illus {
   width: 34%;
   flex: 0 0 auto;
@@ -2877,7 +2877,7 @@ body.intro-active {
   filter: drop-shadow(0 2px 5px rgba(46, 33, 72, 0.12));
 }
 
-/* ── Text content ── */
+/* -- Text content -- */
 .ev-card-label {
   font-family: var(--display);
   font-size: clamp(1.55rem, 5.8vw, 2.0rem);
@@ -2964,10 +2964,10 @@ body.intro-active {
 }
 
 
-/* ── Scroll reveal ───────────────────────────────────── */
+/* -- Scroll reveal ------------------------------------- */
 
 /*
-  Card wraps: opacity + blur only — no translateY so the float
+  Card wraps: opacity + blur only � no translateY so the float
   animation (which uses transform) is never blocked by a reveal
   conflict on the same property.
 */
@@ -2992,7 +2992,7 @@ body.intro-active {
 .ev-header .ev-reveal.is-in    { transform: translateY(0); }
 
 
-/* ── Responsive ──────────────────────────────────────── */
+/* -- Responsive ---------------------------------------- */
 
 @media (min-width: 768px) {
   .ev-header { margin-bottom: 4rem; }
@@ -3022,9 +3022,9 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
-   STORY SECTION — Cinematic love letter
-═══════════════════════════════════════════════════════ */
+/* -------------------------------------------------------
+   STORY SECTION � Cinematic love letter
+------------------------------------------------------- */
 
 .story {
   position: relative;
@@ -3039,7 +3039,7 @@ body.intro-active {
 }
 
 
-/* ── Background ──────────────────────────────────────── */
+/* -- Background ---------------------------------------- */
 
 .st-bg {
   position: absolute;
@@ -3060,13 +3060,13 @@ body.intro-active {
 }
 
 
-/* ── Atmospheric vignettes ───────────────────────────── */
+/* -- Atmospheric vignettes ----------------------------- */
 
 .st-atm-top,
 .st-atm-bot { display: none; }
 
 
-/* ── Floating glow orbs ──────────────────────────────── */
+/* -- Floating glow orbs -------------------------------- */
 
 .st-orb {
   position: absolute;
@@ -3118,7 +3118,7 @@ body.intro-active {
 }
 
 
-/* ── Section header ──────────────────────────────────── */
+/* -- Section header ------------------------------------ */
 
 .st-header {
   position: relative;
@@ -3172,7 +3172,7 @@ body.intro-active {
 .st-rule-line:last-child { transform: scaleX(-1); }
 
 
-/* ── Letter floating wrapper ────────────────────────── */
+/* -- Letter floating wrapper -------------------------- */
 
 .st-letter-wrap {
   position: relative;
@@ -3233,7 +3233,7 @@ body.intro-active {
 }
 
 
-/* ── Letter card ─────────────────────────────────────── */
+/* -- Letter card --------------------------------------- */
 
 .st-letter {
   position: relative;
@@ -3252,7 +3252,7 @@ body.intro-active {
   user-select: none;
 }
 
-/* Body fills the paper card — flex column, center-aligned text */
+/* Body fills the paper card � flex column, center-aligned text */
 .st-letter-body {
   position: absolute;
   inset: 0;
@@ -3266,7 +3266,7 @@ body.intro-active {
 }
 
 
-/* ── Top ornament — static, always visible ───────────── */
+/* -- Top ornament � static, always visible ------------- */
 
 .st-top-ornament {
   display: flex;
@@ -3292,10 +3292,10 @@ body.intro-active {
 }
 
 
-/* ── Story lines — scroll-driven color reveal ────────── */
+/* -- Story lines � scroll-driven color reveal ---------- */
 /*
   All text is visible from the start in a warm faded-ink tone
-  (rgba(160,135,100,0.40) — like old ink on parchment).
+  (rgba(160,135,100,0.40) � like old ink on parchment).
   As each line scrolls into view, a keyframe animation fills it
   with full colour through a brief lavender glow, then settles.
 */
@@ -3340,7 +3340,7 @@ body.intro-active {
 }
 
 
-/* ── Divider ─────────────────────────────────────────── */
+/* -- Divider ------------------------------------------- */
 
 .st-letter-divider {
   display: flex;
@@ -3378,7 +3378,7 @@ body.intro-active {
 }
 
 
-/* ── Signature — colour bloom + gentle float ─────────── */
+/* -- Signature � colour bloom + gentle float ----------- */
 
 .st-signature {
   font-family: var(--display);
@@ -3426,7 +3426,7 @@ body.intro-active {
 }
 
 
-/* ── Header scroll reveal — matches ev-reveal pattern ── */
+/* -- Header scroll reveal � matches ev-reveal pattern -- */
 
 .st-reveal {
   opacity: 0;
@@ -3448,7 +3448,7 @@ body.intro-active {
 .st-header .st-reveal.is-in { transform: translateY(0); }
 
 
-/* ── Responsive ──────────────────────────────────────── */
+/* -- Responsive ---------------------------------------- */
 
 @media (min-width: 480px) {
   .st-letter-wrap { width: min(78vw, 410px); }
@@ -3467,7 +3467,7 @@ body.intro-active {
   .st-signature { font-size: clamp(1.48rem, 3.75vw, 1.90rem); }
 }
 
-/* ── Bouquet centrepiece ─────────────────────────────── */
+/* -- Bouquet centrepiece ------------------------------- */
 
 .st-bouquet-wrap {
   position: relative;
@@ -3519,7 +3519,7 @@ body.intro-active {
   .st-bouquet { width: min(32vw, 290px); }
 }
 
-/* ── Petal shower ──────────────────────────────────── */
+/* -- Petal shower ------------------------------------ */
 
 .st-petal-shower {
   position: absolute;
@@ -3553,7 +3553,7 @@ body.intro-active {
   100% { transform: translateY(114vh) rotate(var(--petal-rot, 280deg)); opacity: 0;   }
 }
 
-/* Sine-wave sway: 8 linear steps approximate sin() continuously —
+/* Sine-wave sway: 8 linear steps approximate sin() continuously �
    no ease-in-out deceleration, so the petal never "hangs" at reversal */
 @keyframes stPetalSway {
   0%    { transform: translateX(0px); }
@@ -3599,7 +3599,7 @@ body.intro-active {
     transition: none !important;
   }
 
-  /* Skip animation — jump straight to final colour state */
+  /* Skip animation � jump straight to final colour state */
   .st-line,
   .st-signature {
     color: rgba(46, 33, 72, 0.84) !important;
@@ -3616,8 +3616,8 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
-   GALLERY SECTION — Captured in Grace
+/* -------------------------------------------------------
+   GALLERY SECTION � Captured in Grace
    Sticky scroll-driven cinematic composition.
 
    The section is intentionally tall (230svh) so there
@@ -3625,15 +3625,15 @@ body.intro-active {
      Hero appears via IntersectionObserver the moment the section
    enters the viewport (opacity CSS transition, no scroll needed).
    Scroll driver handles scale + side/bottom motion only:
-     Act 2 (p 0.00 → 0.44)  Hero scale settles; sides sweep in
-     Act 3 (p 0.44 → 0.76)  Panorama rises from below
+     Act 2 (p 0.00 ? 0.44)  Hero scale settles; sides sweep in
+     Act 3 (p 0.44 ? 0.76)  Panorama rises from below
 
-   .gl-scroll-track  height is count-based (60–170svh).
+   .gl-scroll-track  height is count-based (60�170svh).
    .gl-stage         is sticky (top:0, height:100svh).
-   JS maps scroll progress → inline transforms on frames.
-   NO CSS transitions on frames — JS owns the animation.
+   JS maps scroll progress ? inline transforms on frames.
+   NO CSS transitions on frames � JS owns the animation.
    Float animations (CSS) take over after p > 0.88.
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .gallery {
   position: relative;
@@ -3643,7 +3643,7 @@ body.intro-active {
 }
 
 
-/* ── Background image ──────────────────────────────── */
+/* -- Background image -------------------------------- */
 
 .gl-bg {
   position: absolute;
@@ -3667,13 +3667,13 @@ body.intro-active {
 }
 
 
-/* ── Atmospheric overlays ───────────────────────────── */
+/* -- Atmospheric overlays ----------------------------- */
 
 .gl-atm-top,
 .gl-atm-bot { display: none; }
 
 
-/* ── Floating glow orbs ──────────────────────────────── */
+/* -- Floating glow orbs -------------------------------- */
 
 .gl-orb {
   position: absolute;
@@ -3715,7 +3715,7 @@ body.intro-active {
 }
 
 
-/* ── Section header ──────────────────────────────────── */
+/* -- Section header ------------------------------------ */
 
 .gl-header {
   position: relative;
@@ -3765,7 +3765,7 @@ body.intro-active {
 .gl-rule-line:last-child { transform: scaleX(-1); }
 
 
-/* ── Header reveal ───────────────────────────────────── */
+/* -- Header reveal ------------------------------------- */
 
 .gl-reveal {
   opacity: 0;
@@ -3787,7 +3787,7 @@ body.intro-active {
 .gl-header .gl-reveal.is-in { transform: translateY(0); }
 
 
-/* ── Carousel track — perspective container ──────────── */
+/* -- Carousel track � perspective container ------------ */
 
 .gl-scroll-track {
   position: relative;
@@ -3802,15 +3802,15 @@ body.intro-active {
 }
 
 
-/* ── Rotating carousel stage ─────────────────────────── */
+/* -- Rotating carousel stage --------------------------- */
 
 .gl-stage {
   position: relative;
-  /* Reference square — frames translate out on Z axis */
+  /* Reference square � frames translate out on Z axis */
   width: 215px;
   height: 286px;
   transform-style: preserve-3d;
-  /* Slow, dreamlike rotation — one full turn every 24 s */
+  /* Slow, dreamlike rotation � one full turn every 24 s */
   animation: glCarouselSpin 24s linear infinite;
   animation-play-state: paused;   /* JS starts it on viewport entry */
   will-change: transform;
@@ -3822,7 +3822,7 @@ body.intro-active {
 }
 
 
-/* ── Frame base — carousel slot ──────────────────────── */
+/* -- Frame base � carousel slot ------------------------ */
 
 .gl-frame {
   position: absolute;
@@ -3834,14 +3834,14 @@ body.intro-active {
   will-change: transform;
 }
 
-/* Frames placed at 90° intervals — the stage rotation does the rest */
+/* Frames placed at 90� intervals � the stage rotation does the rest */
 .gl-frame--hero   { transform: rotateY(  0deg) translateZ(210px); }
 .gl-frame--left   { transform: rotateY( 90deg) translateZ(210px); }
 .gl-frame--right  { transform: rotateY(180deg) translateZ(210px); }
 .gl-frame--bottom { transform: rotateY(270deg) translateZ(210px); }
 
 
-/* ── Frame inner — image container ───────────────────── */
+/* -- Frame inner � image container --------------------- */
 
 .gl-frame-inner {
   position: relative;
@@ -3864,7 +3864,7 @@ body.intro-active {
   pointer-events: none;
 }
 
-/* Diagonal sheen — unchanged */
+/* Diagonal sheen � unchanged */
 .gl-shimmer {
   position: absolute;
   inset: 0;
@@ -3896,7 +3896,7 @@ body.intro-active {
 .gl-frame.is-glowing .gl-frame-glow { opacity: 1; }
 
 
-/* ── Mobile — tighter carousel radius ────────────────── */
+/* -- Mobile � tighter carousel radius ------------------ */
 
 @media (max-width: 639px) {
   .gl-scroll-track {
@@ -3917,7 +3917,7 @@ body.intro-active {
 }
 
 
-/* ── count variants — hide unused frames ─────────────── */
+/* -- count variants � hide unused frames --------------- */
 
 .gallery[data-count="1"] #glLeft,
 .gallery[data-count="1"] #glRight,
@@ -3929,21 +3929,21 @@ body.intro-active {
 .gallery[data-count="3"] #glBottom { display: none; }
 
 
-/* ── Reduced motion ──────────────────────────────────── */
+/* -- Reduced motion ------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
   .gl-stage { animation: none !important; }
 }
 
 
-/* ── Responsive ──────────────────────────────────────── */
+/* -- Responsive ---------------------------------------- */
 
 @media (min-width: 768px) {
   .gl-header { padding-top: 6rem; padding-bottom: 5rem; }
 }
 
 
-/* ── Reduced motion — show all frames statically ─────── */
+/* -- Reduced motion � show all frames statically ------- */
 
 @media (prefers-reduced-motion: reduce) {
   .gl-bg,
@@ -3969,9 +3969,9 @@ body.intro-active {
   .gl-frame-glow               { opacity: 1 !important; }
 }
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    THINGS TO KNOW SECTION
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .ttk {
   position: relative;
@@ -3987,7 +3987,7 @@ body.intro-active {
 }
 
 
-/* ── Atmosphere overlays ─────────────────────────────── */
+/* -- Atmosphere overlays ------------------------------- */
 
 .ttk-atm-top,
 .ttk-atm-bot { display: none; }
@@ -4002,7 +4002,7 @@ body.intro-active {
 }
 
 
-/* ── Floating glow orbs ──────────────────────────────── */
+/* -- Floating glow orbs -------------------------------- */
 
 .ttk-orb {
   position: absolute;
@@ -4062,7 +4062,7 @@ body.intro-active {
 }
 
 
-/* ── Section header ──────────────────────────────────── */
+/* -- Section header ------------------------------------ */
 
 .ttk-header {
   position: relative;
@@ -4124,7 +4124,7 @@ body.intro-active {
 }
 
 
-/* ── Header reveal — same pattern as Events ──────────── */
+/* -- Header reveal � same pattern as Events ------------ */
 
 .ttk-reveal {
   opacity: 0;
@@ -4143,7 +4143,7 @@ body.intro-active {
 }
 
 
-/* ── Cards grid ──────────────────────────────────────── */
+/* -- Cards grid ---------------------------------------- */
 
 .ttk-grid {
   position: relative;
@@ -4162,7 +4162,7 @@ body.intro-active {
 }
 
 
-/* ── Single card ─────────────────────────────────────── */
+/* -- Single card --------------------------------------- */
 
 .ttk-card {
   position: relative;
@@ -4247,7 +4247,7 @@ body.intro-active {
 .ttk-card.is-in:hover::after  { opacity: 1; }
 
 
-/* ── Shine sweep (hover) ─────────────────────────────── */
+/* -- Shine sweep (hover) ------------------------------- */
 
 .ttk-card-shine {
   position: absolute;
@@ -4280,7 +4280,7 @@ body.intro-active {
 .ttk-card:hover .ttk-card-shine::after { left: 130%; }
 
 
-/* ── Card inner content ──────────────────────────────── */
+/* -- Card inner content -------------------------------- */
 
 .ttk-card-inner {
   position: relative;
@@ -4297,7 +4297,7 @@ body.intro-active {
 }
 
 
-/* ── Card number badge ───────────────────────────────── */
+/* -- Card number badge --------------------------------- */
 
 .ttk-card-num {
   position: absolute;
@@ -4317,7 +4317,7 @@ body.intro-active {
 .ttk-card:hover .ttk-card-num { color: rgba(155, 140, 190, 0.80); }
 
 
-/* ── Icon wrap + rings ───────────────────────────────── */
+/* -- Icon wrap + rings --------------------------------- */
 
 .ttk-card-icon-wrap {
   position: relative;
@@ -4330,7 +4330,7 @@ body.intro-active {
 
 /* sparkle ornament on hover */
 .ttk-card-icon-wrap::after {
-  content: "✦";
+  content: "?";
   position: absolute;
   top: -3px; right: -3px;
   font-size: 0.48rem;
@@ -4394,7 +4394,7 @@ body.intro-active {
 }
 
 
-/* ── Card icon — transparent, images float on card surface ── */
+/* -- Card icon � transparent, images float on card surface -- */
 
 .ttk-card-icon {
   display: flex;
@@ -4424,7 +4424,7 @@ body.intro-active {
 }
 
 
-/* ── Card image — black bg removed via screen blend ─────── */
+/* -- Card image � black bg removed via screen blend ------- */
 
 .ttk-card-img {
   display: block;
@@ -4466,7 +4466,7 @@ body.intro-active {
 .ttk-card:nth-child(11) .ttk-card-img { transition-delay: 0.88s; }
 .ttk-card:nth-child(12) .ttk-card-img { transition-delay: 0.96s; }
 
-/* float — each card phase-shifted so they don't bob in sync */
+/* float � each card phase-shifted so they don't bob in sync */
 @keyframes ttkImgFloat {
   0%   { transform: translateY(0px)  scale(1.00); }
   45%  { transform: translateY(-6px) scale(1.01); }
@@ -4477,7 +4477,7 @@ body.intro-active {
 .ttk-card:nth-child(even) .ttk-card-img { animation-delay: -0.4s; }
 .ttk-card:nth-child(3n)   .ttk-card-img { animation-delay: -3.1s; }
 
-/* hover — glow flares, float pauses */
+/* hover � glow flares, float pauses */
 .ttk-card:hover .ttk-card-img {
   filter:
     drop-shadow(0 0 18px rgba(197, 184, 232, 0.80))
@@ -4488,7 +4488,7 @@ body.intro-active {
 }
 
 
-/* ── Card label ──────────────────────────────────────── */
+/* -- Card label ---------------------------------------- */
 
 .ttk-card-label {
   font-family: var(--display);
@@ -4504,7 +4504,7 @@ body.intro-active {
 .ttk-card:hover .ttk-card-label { color: var(--gold); }
 
 
-/* ── Card rule ───────────────────────────────────────── */
+/* -- Card rule ----------------------------------------- */
 
 .ttk-card-rule {
   display: block;
@@ -4524,7 +4524,7 @@ body.intro-active {
 .ttk-card.is-in .ttk-card-rule { width: 32px; }
 
 
-/* ── Card body text ──────────────────────────────────── */
+/* -- Card body text ------------------------------------ */
 
 .ttk-card-body {
   font-family: var(--display);
@@ -4537,7 +4537,7 @@ body.intro-active {
 }
 
 
-/* ── Touch device active feedback ────────────────────── */
+/* -- Touch device active feedback ---------------------- */
 
 @media (hover: none) {
   .ttk-card.is-in:active {
@@ -4551,7 +4551,7 @@ body.intro-active {
 }
 
 
-/* ── Reduced motion ──────────────────────────────────── */
+/* -- Reduced motion ------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
   .ttk-orb--1,
@@ -4573,13 +4573,13 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
-   RSVP SECTION — Full-bleed video background, cinematic
+/* -------------------------------------------------------
+   RSVP SECTION � Full-bleed video background, cinematic
    text reveal. Video fills the entire section; content
    layers on top with staggered fade-up animations.
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
-/* ── Section shell ───────────────────────────────────── */
+/* -- Section shell ------------------------------------- */
 
 .rsvp {
   position: relative;
@@ -4591,12 +4591,12 @@ body.intro-active {
   overflow: hidden;
   isolation: isolate;
 
-  /* Rich warm-dark base — shows through transparent video areas */
+  /* Rich warm-dark base � shows through transparent video areas */
   background: #100c08;
 }
 
 
-/* ── Full-bleed background video ─────────────────────── */
+/* -- Full-bleed background video ----------------------- */
 
 .rsvp-video {
   position: absolute;
@@ -4612,14 +4612,14 @@ body.intro-active {
 }
 
 
-/* ── Cinematic overlay stack ─────────────────────────── */
+/* -- Cinematic overlay stack --------------------------- */
 
 .rsvp-overlay,
 .rsvp-overlay-top,
 .rsvp-overlay-bot { display: none; }
 
 
-/* ── Content — floats above every overlay layer ──────── */
+/* -- Content � floats above every overlay layer -------- */
 
 .rsvp-content {
   position: relative;
@@ -4636,7 +4636,7 @@ body.intro-active {
 }
 
 
-/* ── Eyebrow ─────────────────────────────────────────── */
+/* -- Eyebrow ------------------------------------------- */
 
 .rsvp-eyebrow {
   font-family: var(--ui);
@@ -4649,7 +4649,7 @@ body.intro-active {
 }
 
 
-/* ── Heading ─────────────────────────────────────────── */
+/* -- Heading ------------------------------------------- */
 
 .rsvp-title {
   font-family: var(--display);
@@ -4663,7 +4663,7 @@ body.intro-active {
 }
 
 
-/* ── Ornamental rule ─────────────────────────────────── */
+/* -- Ornamental rule ----------------------------------- */
 
 .rsvp-rule-wrap {
   display: flex;
@@ -4689,7 +4689,7 @@ body.intro-active {
 .rsvp-rule-line:last-child { transform: scaleX(-1); }
 
 
-/* ── Body text ───────────────────────────────────────── */
+/* -- Body text ----------------------------------------- */
 
 .rsvp-body {
   font-family: var(--display);
@@ -4709,7 +4709,7 @@ body.intro-active {
 }
 
 
-/* ── CTA block ───────────────────────────────────────── */
+/* -- CTA block ----------------------------------------- */
 
 .rsvp-cta-block {
   display: flex;
@@ -4722,7 +4722,7 @@ body.intro-active {
   padding-top: 3rem;
 }
 
-/* Primary button — champagne border, deep fill on hover */
+/* Primary button � champagne border, deep fill on hover */
 .rsvp-btn {
   display: inline-block;
   font-family: var(--ui);
@@ -4802,7 +4802,7 @@ body.intro-active {
 }
 
 
-/* ── Helper text ─────────────────────────────────────── */
+/* -- Helper text --------------------------------------- */
 
 .rsvp-helper {
   font-family: var(--ui);
@@ -4814,7 +4814,7 @@ body.intro-active {
 }
 
 
-/* ── Calendar block ──────────────────────────────────── */
+/* -- Calendar block ------------------------------------ */
 
 .rsvp-calendar {
   width: 90%;
@@ -4874,7 +4874,7 @@ body.intro-active {
 }
 
 
-/* ── Cinematic scroll-reveal ─────────────────────────── */
+/* -- Cinematic scroll-reveal --------------------------- */
 /* Each element starts invisible, blurred, and raised 24px.
    JS stamps .is-in with a staggered data-delay; it then
    transitions into full opacity / position. */
@@ -4896,7 +4896,7 @@ body.intro-active {
 }
 
 
-/* ── Responsive ──────────────────────────────────────── */
+/* -- Responsive ---------------------------------------- */
 
 @media (min-width: 768px) {
   .rsvp-content { padding: 4.5rem 2.5rem 5vh; }
@@ -4908,7 +4908,7 @@ body.intro-active {
 }
 
 
-/* ── Reduced motion ──────────────────────────────────── */
+/* -- Reduced motion ------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
   .rsvp-btn               { animation: none !important; }
@@ -4923,9 +4923,9 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    FOOTER
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .site-footer {
   position: relative;
@@ -4950,7 +4950,7 @@ body.intro-active {
 }
 
 
-/* ── Top divider ──────────────────────────────────────── */
+/* -- Top divider ---------------------------------------- */
 
 .ft-divider {
   display: flex;
@@ -4978,7 +4978,7 @@ body.intro-active {
 }
 
 
-/* ── Names ────────────────────────────────────────────── */
+/* -- Names ---------------------------------------------- */
 
 .ft-names {
   font-family: var(--display);
@@ -5003,7 +5003,7 @@ body.intro-active {
 }
 
 
-/* ── Date ─────────────────────────────────────────────── */
+/* -- Date ----------------------------------------------- */
 
 .ft-date {
   font-family: var(--ui);
@@ -5016,7 +5016,7 @@ body.intro-active {
 }
 
 
-/* ── Tagline ──────────────────────────────────────────── */
+/* -- Tagline -------------------------------------------- */
 
 .ft-tagline {
   font-family: var(--display);
@@ -5029,7 +5029,7 @@ body.intro-active {
 }
 
 
-/* ── Bottom rule ──────────────────────────────────────── */
+/* -- Bottom rule ---------------------------------------- */
 
 .ft-bottom-rule {
   width: min(80px, 22vw);
@@ -5044,7 +5044,7 @@ body.intro-active {
 }
 
 
-/* ── Credit ───────────────────────────────────────────── */
+/* -- Credit --------------------------------------------- */
 
 .ft-credit {
   font-family: var(--ui);
@@ -5056,7 +5056,7 @@ body.intro-active {
 }
 
 
-/* ── Scroll reveal ────────────────────────────────────── */
+/* -- Scroll reveal -------------------------------------- */
 
 .ft-reveal {
   opacity: 0;
@@ -5075,7 +5075,7 @@ body.intro-active {
 }
 
 
-/* ── Reduced motion ──────────────────────────────────── */
+/* -- Reduced motion ------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
   .ft-reveal {
@@ -5087,11 +5087,11 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    MUSIC TOGGLE BUTTON
    Fixed bottom-right. Hidden until cork pops, then fades in.
    Ripple ring suggests live sound waves when playing.
-═══════════════════════════════════════════════════════ */
+------------------------------------------------------- */
 
 .music-btn {
   position: fixed;
@@ -5135,7 +5135,7 @@ body.intro-active {
   color: #c9a84c;
 }
 
-/* Expanding ripple ring — live sound-wave indicator */
+/* Expanding ripple ring � live sound-wave indicator */
 .music-btn::before {
   content: '';
   position: absolute;
@@ -5157,7 +5157,7 @@ body.intro-active {
   opacity: 0;
 }
 
-/* Icon switching — cross-fade between on / off states */
+/* Icon switching � cross-fade between on / off states */
 .music-icon {
   position: absolute;
   transition: opacity 0.22s ease;
@@ -5166,7 +5166,7 @@ body.intro-active {
 .music-btn.is-muted .music-icon--on  { opacity: 0; }
 .music-btn.is-muted .music-icon--off { opacity: 1; }
 
-/* Reduced motion — disable all transitions and ripple */
+/* Reduced motion � disable all transitions and ripple */
 @media (prefers-reduced-motion: reduce) {
   .music-btn,
   .music-btn.is-visible { transition: none !important; }
@@ -5175,11 +5175,11 @@ body.intro-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════
+/* -------------------------------------------------------
    NAVIGATION CLUSTER
    Fixed bottom-right, above the music button.
-   Contains a toggle (hamburger → X) and a slide-up menu.
-═══════════════════════════════════════════════════════ */
+   Contains a toggle (hamburger ? X) and a slide-up menu.
+------------------------------------------------------- */
 
 .nav-cluster {
   position: fixed;
@@ -5200,7 +5200,7 @@ body.intro-active {
   pointer-events: auto;
 }
 
-/* ── Toggle button ───────────────────────────────────── */
+/* -- Toggle button ------------------------------------- */
 
 .nav-toggle {
   position: relative;
@@ -5230,7 +5230,7 @@ body.intro-active {
   color: var(--gold);
 }
 
-/* Icon cross-fade: hamburger ↔ X */
+/* Icon cross-fade: hamburger ? X */
 .nav-icon {
   position: absolute;
   transition: opacity 0.22s ease, transform 0.22s ease;
@@ -5248,7 +5248,7 @@ body.intro-active {
   transform: rotate(0deg) scale(1);
 }
 
-/* ── Menu panel ──────────────────────────────────────── */
+/* -- Menu panel ---------------------------------------- */
 
 .nav-menu {
   position: absolute;
@@ -5278,7 +5278,7 @@ body.intro-active {
   pointer-events: auto;
 }
 
-/* ── Menu items ──────────────────────────────────────── */
+/* -- Menu items ---------------------------------------- */
 
 .nav-menu-list {
   list-style: none;
@@ -5332,7 +5332,7 @@ body.intro-active {
   color: rgba(201, 168, 76, 0.85);
 }
 
-/* ── Reduced motion ──────────────────────────────────── */
+/* -- Reduced motion ------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
   .nav-cluster,
@@ -5343,7 +5343,7 @@ body.intro-active {
 }
 
 
-/* ═══ RSVP — deep parchment-on-dark ═══ */
+/* --- RSVP � deep parchment-on-dark --- */
 .s-rsvp{
   position:relative;
   background:var(--cream);
@@ -5359,7 +5359,7 @@ body.intro-active {
     linear-gradient(180deg,var(--cream) 0%,#F0E0B0 100%);
 }
 
-/* Floral scatter — now ruby on parchment */
+/* Floral scatter � now ruby on parchment */
 .rsvp-florals{position:absolute;inset:0;pointer-events:none;z-index:0}
 .rsvp-fl{position:absolute}
 .rsvp-fl--tl{top:-30px;left:-30px;width:200px;height:200px}
@@ -5418,7 +5418,7 @@ body.intro-active {
 }
 .rsvp-cta-wrap{margin-bottom:24px;position:relative;z-index:1;text-align:center}
 
-/* RSVP button — elegant pill shape */
+/* RSVP button � elegant pill shape */
 .rsvp-wa-btn{
   position:relative;
   display:inline-flex;
@@ -5509,9 +5509,9 @@ body.intro-active {
 
 
 
-\n\n/* ═══════════════════════════════════════════════════════
+\n\n/* -------------------------------------------------------
    SCRATCH GATE
-   ═══════════════════════════════════════════════════════ */
+   ------------------------------------------------------- */
 .scratch-gate {
   position: fixed;
   inset: 0;
@@ -5602,7 +5602,7 @@ body.intro-active {
   margin-bottom: 24px;
 }
 
-/* ── THE SCRATCH CARD ───────────────────────────────── */
+/* -- THE SCRATCH CARD --------------------------------- */
 .scratch-card-wrap {
   position: relative;
   width: min(340px, 88vw);
@@ -5753,3 +5753,14 @@ body.intro-active {
   .sg-mandala { display: none; }
   .scratch-card-wrap { height: 140px; }
 }\n
+/* batch polish: scratch gate home palette */
+.sg-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 24%, rgba(250, 243, 232, .38) 0%, transparent 58%),
+    radial-gradient(ellipse 60% 48% at 76% 72%, rgba(196, 152, 90, .18) 0%, transparent 56%),
+    linear-gradient(170deg, #EAA8B4 0%, #F0C4A0 40%, #F5D0A8 68%, #FAE4C4 100%) !important;
+}
+.sg-eyebrow { color: color-mix(in srgb, var(--deep) 54%, transparent) !important; }
+.sg-bride, .sg-groom { color: var(--deep) !important; text-shadow: 0 2px 24px rgba(250, 240, 232, .72); }
+.sg-hint { color: color-mix(in srgb, var(--deep) 60%, transparent) !important; }
+.scratch-card-wrap { box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 40%, transparent), 0 15px 50px rgba(61,30,46,.22), 0 0 60px rgba(250,243,232,.36), inset 0 2px 10px rgba(255,255,255,.3) !important; }
